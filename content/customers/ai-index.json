@@ -1,0 +1,630 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-25T06:28:42.229Z",
+  "count": 89,
+  "entries": [
+    {
+      "slug": "adas-quality-inspection",
+      "title": "ADAS质检",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "面向汽车维修门店的ADAS质检助手，串联工单、扫描报告、SOP与质保规则。返修风险漏判下降45%60%，交车审核耗时下降50%65%。"
+    },
+    {
+      "slug": "ai-ad-script-generator",
+      "title": "AI广告脚本生成器",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "基于FastGPT构建电商广告脚本智能生成系统，编导填表即可自动产出含分镜、口播、投放策略的可拍摄脚本，支持5种广告类型一键切换。脚本产出效率提升90%，多版本"
+    },
+    {
+      "slug": "ai-customer-profiling",
+      "title": "AI客群画像",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "FastGPT连接交易、行为、评论与广告数据，自动生成电商客群画像和投放建议，让活动复盘与人群运营更快闭环。"
+    },
+    {
+      "slug": "ai-customer-service-ticketing-system",
+      "title": "AI智能客服工单系统",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "基于FastGPT的全渠道智能客服机器人，集成情绪感知话术匹配与钉钉多维表自动同步，覆盖售前咨询、售后支持、工单生成全流程。AI解决率达85%，人工转接率降至1"
+    },
+    {
+      "slug": "ai-financial-audit-solution",
+      "title": "财务智能审单助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "延锋国际借助FastGPT搭建财务AI智能审单方案，结构化入库财务制度与审核规则，自动化处理52万+年单据，统一审核标准并保留异常单据人工复核环节形成闭环"
+    },
+    {
+      "slug": "ai-intelligent-customer-service",
+      "title": "AI智能客服方案",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "昭昭医考借助FastGPT搭建AI智能客服，整合课程报考等FAQ专属知识库，实现多轮对话与人工转接，解决日均万级咨询的响应滞后问题，提升服务效率与学员体验。"
+    },
+    {
+      "slug": "ai-part-number-analyzer-system",
+      "title": "AI元器件料号解析系统",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "南京商络电子使用FastGPT搭建AI元器件料号解析系统，实现从原始料号到结构化企业数据库的全自动化闭环，解决复杂料号解析痛点，打破传统局限，提升业务处理效率。"
+    },
+    {
+      "slug": "ai-technical-documentation-assistant",
+      "title": "AI技术文档助手",
+      "category": "internet-it-technology",
+      "categoryName": "互联网/IT/科技",
+      "description": "基于FastGPT构建半导体行业技术文档智能问答系统，覆盖芯片SDK开发查询、代码生成、技术规格解析全场景。文档查询效率提升85%，研发人员自助解决率提升至78"
+    },
+    {
+      "slug": "ai-travel-itinerary-planner",
+      "title": "AI旅游行程规划",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建旅行社智能行程规划系统，覆盖目的地推荐、行程定制、酒店门票预订全场景，支持APP/微信/平台/Web全渠道。AI行程规划率70%，人工定制"
+    },
+    {
+      "slug": "auto-repair-qa-assistant",
+      "title": "汽修问答助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建汽修知识问答助手，覆盖故障排查、保养咨询和维修安全。AI解决率约72%，平均响应降至15秒内。"
+    },
+    {
+      "slug": "automotive-sales-script-assistant",
+      "title": "汽车话术助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT为汽车线上客服实时推荐销售话术。响应时间缩短70%，线索转化率提升25%。"
+    },
+    {
+      "slug": "bid-document-review-assistant",
+      "title": "标书审查助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT对招投标文件做合规审查并输出Excel报告。初审耗时下降65%，关键遗漏下降55%。"
+    },
+    {
+      "slug": "bidding-report-assistant",
+      "title": "竞价报告助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "基于FastGPT将多份金融竞价材料自动组装成完整报告。报告整理耗时下降70%，章节覆盖率提升到90%+，复核效率提升50%。"
+    },
+    {
+      "slug": "biological-reagent-consultation-assistant",
+      "title": "生物试剂咨询助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建生物试剂产品智能咨询系统，销售和客服可即时查询产品价格、货号、说明书、应用场景和实验方案，双知识库精准分工。单次产品查询从平均8分钟缩至3"
+    },
+    {
+      "slug": "biomedical-customer-service-assistant",
+      "title": "诺诺助手智能客服",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "三诺生物借助FastGPT搭建诺诺助手智能客服，通过企业微信、小程序提供服务，实现常规问题自动应答、复杂问题转人工，缓解客服人力压力，提升用户咨询体验。"
+    },
+    {
+      "slug": "bom-sales-quotation-assistant",
+      "title": "BOM销售报价助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建制造业销售BOM智能报价系统，支持自然语言需求识别、产品自动匹配、BOM成本实时查询与结构化报价单生成。报价效率提升90%，产品匹配准确率"
+    },
+    {
+      "slug": "bridge-inspection-intelligent-agent",
+      "title": "桥梁巡检诊断智能体",
+      "category": "transportation-logistics",
+      "categoryName": "交通/运输/物流",
+      "description": "华东沿海某路桥基础设施运营集团依托FastGPT搭建多源协同桥梁协同巡检诊断智能体，解决传统巡检效率低下等痛点，实现全流程自动化巡检调度、病害识别与诊断报告生成"
+    },
+    {
+      "slug": "chatppt-assistant",
+      "title": "ChatPPT助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT把文字材料自动生成PPT大纲与演示文稿。初稿制作耗时下降75%，内容结构返工减少50%。"
+    },
+    {
+      "slug": "civil-code-qa-assistant",
+      "title": "民法典问答助手",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT构建民法典问答助手，覆盖条文检索、依据解释、边界提示和律师复核。检索耗时下降80%，知识命中率达85%。"
+    },
+    {
+      "slug": "clinical-trial-prescreening",
+      "title": "临床试验预筛智能体",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "某制药企业使用FastGPT搭建临床试验预筛智能体，对接现有电子病历系统，依托低代码工作流与RAG向量知识库能力解决人工效率低标准不统一痛点，可自主迭代调整流程"
+    },
+    {
+      "slug": "college-application-assistant",
+      "title": "志愿填报助手",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "基于FastGPT构建高考志愿智能辅导系统，覆盖分数画像、院校匹配、方案复核和多渠道交付。方案生成耗时缩短90%以上。"
+    },
+    {
+      "slug": "content-compliance-review-assistant",
+      "title": "内容合规审核助手",
+      "category": "media-film-cultural-creativity",
+      "categoryName": "传媒/影视/文创",
+      "description": "基于FastGPT构建内容合规智能审核系统，覆盖广告文案、商品描述、社媒内容、UGC评论全场景的三级分类审核与自动改写。审核效率提升90%，违规内容拦截率提升至"
+    },
+    {
+      "slug": "contract-attachment-review",
+      "title": "合同附件智能评审",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT对合同PDF进行三方强一致比对，覆盖订单、履约、金额、商品与签章风险。人工初审耗时下降60%，异常召回率目标95%。"
+    },
+    {
+      "slug": "contract-field-comparison-assistant",
+      "title": "合同字段比对助手",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT比对总包合同与分包采购方案关键字段，自动生成风险警示表。字段核查耗时下降70%，漏审风险降低45%。"
+    },
+    {
+      "slug": "contract-version-comparison-assistant",
+      "title": "合同版本对比助手",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT自动比对多版本合同，过滤水印并输出差异清单。审核耗时下降70%，遗漏率下降60%。"
+    },
+    {
+      "slug": "data-chart-assistant",
+      "title": "数据图表助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建企业数据可视化助手，支持自然语言生成经营图表与周报。报表制作耗时下降75%，口径返工减少50%。"
+    },
+    {
+      "slug": "document-cross-review",
+      "title": "文档交叉审查",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建PFMEA控制计划作业指导书三文件自动交叉审查系统，覆盖10项审查规则，自动检测工序对应、参数一致性、特殊特性符号传递和预防措施落实。审查"
+    },
+    {
+      "slug": "ecommerce-image-generation-assistant",
+      "title": "电商生图助手",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "基于FastGPT构建AI商品图生产系统，覆盖换装、场景搭配与跨境本土化。拍摄成本下降90%，出图效率提升10倍。"
+    },
+    {
+      "slug": "education-sdg-analysis-system",
+      "title": "SDG智能分析系统",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "香港教育大学依托FastGPT搭建SDG智能分析系统，自动处理校内海量学术资源关联联合国17项SDG目标，提升梳理效率、统一关联标准，支撑院校科研管理与课程设计"
+    },
+    {
+      "slug": "energy-storage-operations-ai",
+      "title": "储能运营AI",
+      "category": "energy-minerals-chemicals",
+      "categoryName": "能源/矿产/化工",
+      "description": "FastGPT串联项目评估、运行策略、结算复盘与投标响应，帮助储能团队把方案响应提速70%，解释成本下降50%。"
+    },
+    {
+      "slug": "english-tutor-sales-assistant",
+      "title": "英语外教销服助手",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "基于FastGPT构建英语教育销服知识助手，帮助销售顾问和服务老师随时查询课程卖点、异议处理、销售SOP和服务流程，输出可直接复制给家长的专业话术。话术响应时间"
+    },
+    {
+      "slug": "enterprise-email-writing-assistant-2",
+      "title": "企业邮件撰写助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建企业级邮件智能撰写与发送系统，覆盖商务沟通、项目汇报、跨部门协作、客户跟进全场景，支持SMTP一键发送。邮件撰写效率提升80%，内容合规提"
+    },
+    {
+      "slug": "enterprise-report-auto-generation",
+      "title": "企业报告自动生成",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建企业报告智能生成系统，覆盖资料解析、大纲确认、分章撰写和文档输出。编制周期缩短90%以上。"
+    },
+    {
+      "slug": "event-planning-assistant",
+      "title": "活动策划助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT生成并持续修改活动方案，覆盖社区运营、品牌公关、内部活动。策划耗时下降60%，返工轮次减少45%。"
+    },
+    {
+      "slug": "fastgpt-ai-search-marketing-system",
+      "title": "AI搜索营销系统",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "上海曼朗市场营销策划借助FastGPT搭建AI搜索营销系统，整合企业内部各类营销资源，提升营销内容产出效率与精准度，标准化AI营销服务能力，增强业务竞争力。"
+    },
+    {
+      "slug": "fastgpt-factory-qa-assistant",
+      "title": "员捷办自助问答助手",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "联邦制药依托FastGPT搭建员捷办厂区员工自助问答助手，嵌入官方公众号，解决员工咨询分散痛点，减少HR重复答疑，适配生物医药企业办公场景，满足高频咨询需求。"
+    },
+    {
+      "slug": "fastgpt-medical-exam-diagnosis",
+      "title": "医考能力诊断系统",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "昭昭医考依托FastGPT搭建医学备考专项能力图谱精准诊断干预系统，解决医学备考中的能力诊断难题，实现学习风险预警与定制化备考训练的精细化管理。"
+    },
+    {
+      "slug": "fastgpt-pharmacy-research-solution",
+      "title": "医药研发AI方案",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "某医药研发企业针对医疗客服、研发文档管理、企微群运营的多重业务需求，借助FastGPT搭建专属AI解决方案，覆盖三大核心业务场景，有效提升业务效率与标准化程度"
+    },
+    {
+      "slug": "fastgpt-supplier-recommendation-system",
+      "title": "供应商智能推荐助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "延锋国际（上汽集团旗下汽车零部件企业）借助FastGPT搭建供应商智能推荐系统，将采购初筛耗时从数天压缩至几分钟，实现采购决策的数据化与高效化"
+    },
+    {
+      "slug": "feishu-contract-review",
+      "title": "飞书合同审查",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT连接飞书审批，自动核对合同附件与申请单并回写审查评论。初审从3040分钟压缩到23分钟。"
+    },
+    {
+      "slug": "feishu-smart-reimbursement-assistant",
+      "title": "飞书智能报销助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建飞书智能报销助手，覆盖发票上传识别、报销类型自动分类、开票公司匹配、出差审批关联、外币检测拦截全流程。单张票据处理从3分钟降至10秒，人力"
+    },
+    {
+      "slug": "financial-leasing-smart-marketing-assistant",
+      "title": "智能营销助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "浙江千亿级金融租赁公司用FastGPT搭建智能营销助手，将全品类业务资料入库知识库，依托对话交互生成定制方案，解决人力占用与响应慢问题，优化流程释放优质人力"
+    },
+    {
+      "slug": "financial-report-retrieval-solution",
+      "title": "研报智能检索助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "朝阳永续针对金融研报分析的传统痛点，借助FastGPT搭建RAG智能研报检索方案，批量解析研报并整合结构化观点，为金融从业者提供高效研报信息获取路径"
+    },
+    {
+      "slug": "financial-reporting-ai-assistant",
+      "title": "财报分析智能助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "朝阳永续依托FastGPT搭建AI辅助财报分析方案，自动化抓取财务结构化数据生成初稿，让编辑聚焦深度洞察，解决人工分析效率与成本难题，提升内容产出与运营效率。"
+    },
+    {
+      "slug": "financial-terminal-ai-search",
+      "title": "金融终端AI智能搜索",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "朝阳永续借助FastGPT为GoGoal金融终端搭建自然语言语义检索工作流，嵌入终端实现自然语言提问匹配功能入口并跳转，优化体验并缩短新用户上手周期、减少客服咨"
+    },
+    {
+      "slug": "financing-daily-report-assistant",
+      "title": "融资日报助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "基于FastGPT构建融资事件追踪与日报推送助手。日报整理耗时下降85%，关键事件覆盖率提升60%。"
+    },
+    {
+      "slug": "government-provident-fund-intelligent-qa",
+      "title": "政务公积金智能问答",
+      "category": "government-public-services",
+      "categoryName": "政务/公共/事业",
+      "description": "宁夏希望信息产业借助FastGPT搭建专属政务知识库，打造政务服务咨询助手与公积金智能问答AI应用，秒级回复政策内容，减轻线下窗口压力，满足群众线上政务咨询需求"
+    },
+    {
+      "slug": "heuristic-problem-solving-assistant",
+      "title": "启发式做题助手",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "基于FastGPT构建启发式做题助手，分层追问、逻辑拆解、错因反馈，引导学生自主解题。直接给答案减少70%，思路形成率提升35%。"
+    },
+    {
+      "slug": "hospital-guide-assistant",
+      "title": "医院导诊助手",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "基于FastGPT构建医院智能导诊助手，覆盖医生查询、科室推荐、就医流程和医院信息问答。标准咨询自动解决率提升至78%，平均响应时间缩短至15秒，人工导诊压力下"
+    },
+    {
+      "slug": "insurance-claims-initial-review-assistant",
+      "title": "保险理赔初审助手",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "基于FastGPT构建保险理赔智能初审系统，覆盖身份时效校验、保障责任匹配、费用合理性审查三路并行审核，自动生成三档判定报告。审核效率提升85%，初审准确率提升"
+    },
+    {
+      "slug": "intelligent-bid-document-writing",
+      "title": "智能投标文稿",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建企业申报/投标文稿智能生成系统，覆盖文档解析→知识库增强→AI逐章生成→质量审核→docx输出全链路。将传统数周文稿编制周期压缩至15分钟"
+    },
+    {
+      "slug": "intelligent-document-outline-extraction",
+      "title": "智能文档提纲提取",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建AI智能文档提纲提取系统，上传PDF/Word自动解析层级结构、分离序号与标题、生成标准化目录。文档结构化耗时从30分钟缩短至10秒，准确"
+    },
+    {
+      "slug": "intelligent-due-diligence-agent-for-financial-leasing",
+      "title": "智能尽调报告智能体",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "某浙江千亿级金融租赁公司借助FastGPT搭建智能尽调报告智能体，解决租前尽调人工整合信息繁琐耗时的痛点，优化风控流程、释放高端人力，提升展业效率与风控标准统一"
+    },
+    {
+      "slug": "intelligent-question-generation-assistant",
+      "title": "智能出题助手",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "基于FastGPT按教材课件自动生成试卷、答题卡和答案。出题耗时下降80%，内容贴合度提升35%。"
+    },
+    {
+      "slug": "interview-assistant",
+      "title": "面试辅助助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建AI面试辅助系统，覆盖简历解析、定制出题、答案批改与面试纪要。面试准备时间下降70%，评分一致性提升45%。"
+    },
+    {
+      "slug": "isap-it-ops-robot-solution",
+      "title": "iSAP IT运维机器人",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "上汽旗下延锋国际，借助FastGPT搭建iSAP IT运维机器人，整合SAP运维文档与FAQ，实现对话式故障识别，集成企微提工单，自动化处理运维咨询提升响应效率"
+    },
+    {
+      "slug": "it-operations-qa-assistant",
+      "title": "运维问答助手",
+      "category": "internet-it-technology",
+      "categoryName": "互联网/IT/科技",
+      "description": "基于FastGPT构建企业IT运维知识问答入口。重复咨询减少65%，故障排查响应时间缩短70%。"
+    },
+    {
+      "slug": "jd-generation-assistant",
+      "title": "JD生成助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT把岗位需求自动生成高质量JD，统一职责、技能和候选人画像。撰写耗时下降75%，返工率下降50%。"
+    },
+    {
+      "slug": "k12-intelligent-homework-grading",
+      "title": "AI学伴智能批改",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "四川启鸣达人依托FastGPT搭建全链路AI服务能力，推出AI学伴APP，支持学生拍照上传作业，为K12师生提供全学科智能批改与个性化辅导，解决教学效率瓶颈。"
+    },
+    {
+      "slug": "law-firm-document-assistant",
+      "title": "律所文书助手",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT构建律所案例文书起草系统，覆盖材料解析、图片证据识别、冲突授权闸口和四路质检。草稿准备时间缩短55%，证据引用完整率提升35%。"
+    },
+    {
+      "slug": "learning-insight-engine-for-medical-education",
+      "title": "智能学习洞察引擎",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "昭昭医考依托FastGPT搭建智能学习洞察引擎，整合多维度学习行为数据，构建学生学习画像并生成学情报告，优化学习评估与个性化辅导，实现教学模式升级。"
+    },
+    {
+      "slug": "legal-due-diligence-assistant",
+      "title": "法务尽调助手",
+      "category": "legal-affairs-compliance",
+      "categoryName": "法律/法务/合规",
+      "description": "基于FastGPT生成法律尽调清单并核对资料覆盖。清单准备耗时下降60%，资料缺口识别率提升45%。"
+    },
+    {
+      "slug": "multi-platform-rewriting",
+      "title": "多平台改写",
+      "category": "media-film-cultural-creativity",
+      "categoryName": "传媒/影视/文创",
+      "description": "基于FastGPT对标小红书、公众号等平台风格改写内容。出稿耗时下降70%，返工减少45%，内容采纳率提升40%。"
+    },
+    {
+      "slug": "nmr-intelligent-analysis",
+      "title": "NMR智能解析",
+      "category": "energy-minerals-chemicals",
+      "categoryName": "能源/矿产/化工",
+      "description": "基于FastGPT构建核磁氢谱智能解析系统，实现谱图上传→峰识别→结构解析→多谱图对比→报告生成全流程自动化。单样品分析从2小时缩短至3分钟，峰识别精度达0.0"
+    },
+    {
+      "slug": "oa-assistant-biopharma-case",
+      "title": "OA智能助手",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "联邦制药作为生物医药行业生产企业，借助FastGPT搭建OA智能助手，简化办公流程，大幅提升办公效率，将流程发起时长从35分钟缩短至30秒"
+    },
+    {
+      "slug": "packaging-review-assistant",
+      "title": "包装审查助手",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT审查食品包装文字与营养成分表。初审耗时下降80%，合规漏检风险降低60%。"
+    },
+    {
+      "slug": "pharma-talent-decision-agent",
+      "title": "点将台人才决策智能体",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "国内生物医药企业联邦制药，借助FastGPT打造点将台人才数据决策智能体，对接多业务数据库实现人才数据自动化分析与报告生成，助力管理层快速获取全面人才全景信息，"
+    },
+    {
+      "slug": "pharmaceutical-gmp-sop-qa-agent",
+      "title": "GMP/SOP制度问答智能体",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "生物医药行业某制药企业借助FastGPT搭建GMP/SOP制度问答智能体，实现制度秒级查询、合规答复统一，缩短新员工培训周期并降低合规风险。"
+    },
+    {
+      "slug": "private-domain-consultation-conversion-assistant",
+      "title": "私域咨询转化助手",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "基于FastGPT构建大健康私域AI咨询转化系统，AI自主识别客户意向并自动同步线索至数据库，严守医疗合规边界。线索录入效率提升95%，有效转化率提升40%，人"
+    },
+    {
+      "slug": "procurement-form-filling-assistant",
+      "title": "采购填表助手",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT自动解析招投标文件并填充订货单模板。单据处理耗时下降85%，字段复核工作减少60%。"
+    },
+    {
+      "slug": "quality-document-inspection-assistant",
+      "title": "质量文档智能迎检助手",
+      "category": "medical-health-wellness",
+      "categoryName": "医疗/健康/康养",
+      "description": "某制药企业借助FastGPT搭建质量文档智能迎检助手，整合全生命周期质量文档，实现AI关联检索与证据链自动生成，高效应对药监迎检并降低人工整理工作量与合规风险。"
+    },
+    {
+      "slug": "resume-screening-agent",
+      "title": "简历筛选Agent",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建AI简历初筛系统，覆盖批量解析、六维评分、候选人排序与结果推送。初筛周期缩短90%，漏筛率降至4%以下。"
+    },
+    {
+      "slug": "retail-ai-dispatch-platform",
+      "title": "AI派单中台",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "欧派家居借助FastGPT搭建AI派单中台，实现通话信息自动化提取录入、设计师分配与多模态解析，解决人工处理繁琐问题，优化业务流程提升效率减少录入差错"
+    },
+    {
+      "slug": "retail-intelligent-customer-service",
+      "title": "零售智能客服",
+      "category": "e-commerce-retail-trade",
+      "categoryName": "电商/零售/商贸",
+      "description": "基于FastGPT构建全渠道零售智能客服工单系统，覆盖文字+图片多模态交互、实时情绪分析、知识库驱动问答和钉钉工单自动创建。31节点工作流实现7×24小时智能响"
+    },
+    {
+      "slug": "sales-order-agent",
+      "title": "销售开单智能体",
+      "category": "energy-minerals-chemicals",
+      "categoryName": "能源/矿产/化工",
+      "description": "基于FastGPT构建大宗贸易AI销售开单助手，覆盖口语化开单、实体对齐、二次确认与ERP订单创建。开单耗时下降60%，缺项退回减少45%。"
+    },
+    {
+      "slug": "securities-ai-platform-fastgpt",
+      "title": "招证灵瞳一体化AI平台",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "招商证券国际作为跨境金融服务机构，基于FastGPT搭建招证灵瞳一体化AI平台，整合多类智能体与自动化工作流，实现业务智能化升级并保障数据安全，释放核心业务精力"
+    },
+    {
+      "slug": "security-requirement-review",
+      "title": "安全需求智能评审",
+      "category": "business",
+      "categoryName": "企业通用",
+      "description": "基于FastGPT构建SSDLC安全需求自动生成系统，覆盖安全问卷解析→风险评级计算→需求适用性判定→多区域合规处理→需求清单导出全链路。47节点工作流将安全评"
+    },
+    {
+      "slug": "shipping-fulfillment-risk-control",
+      "title": "发货履约风控",
+      "category": "energy-minerals-chemicals",
+      "categoryName": "能源/矿产/化工",
+      "description": "基于FastGPT构建大宗贸易发货助手，先匹配销售订单再校验提货资料，填单耗时下降70%，异常拦截率提升60%。"
+    },
+    {
+      "slug": "study-planning-assistant",
+      "title": "学习规划助手",
+      "category": "education-training-research-study",
+      "categoryName": "教育/培训/研学",
+      "description": "基于FastGPT把试卷练习转成学情诊断和学习规划书。诊断耗时下降70%，招生转化提升25%。"
+    },
+    {
+      "slug": "text-sql-institution-agent",
+      "title": "制度与项目查询智能体",
+      "category": "construction-engineering-renovation",
+      "categoryName": "建筑/工程/装修",
+      "description": "上海邮电设计咨询研究院作为电子通信领域专业设计咨询机构，借助FastGPT搭建制度与项目查询智能体，解决原有制度权限管控难、数据查询门槛高的问题，实现高效智能办"
+    },
+    {
+      "slug": "three-special-ai-assistants",
+      "title": "三套专项智能助手",
+      "category": "government-public-services",
+      "categoryName": "政务/公共/事业",
+      "description": "某政府监管执法单位基于FastGPT搭建三款专项智能助手，覆盖廉政管理、财务合规、业务检验场景，无需深度算法开发快速落地，解决人工检索问题，适配单位安全合规要求"
+    },
+    {
+      "slug": "ticket-classification-assistant",
+      "title": "工单分类助手",
+      "category": "government-public-services",
+      "categoryName": "政务/公共/事业",
+      "description": "基于FastGPT批量识别12345工单类别并建议承办部门。人工分拣量下降60%75%，批量处理时间缩短70%85%。"
+    },
+    {
+      "slug": "travel-planning-assistant",
+      "title": "旅行策划助手",
+      "category": "wen-tourism-leisure-entertainment",
+      "categoryName": "文旅/休闲/娱乐",
+      "description": "基于FastGPT按天生成个性化旅行行程，覆盖交通、门票、住宿和预算。规划耗时下降75%，转化提升30%。"
+    },
+    {
+      "slug": "travel-planning-expert",
+      "title": "旅行规划专家",
+      "category": "wen-tourism-leisure-entertainment",
+      "categoryName": "文旅/休闲/娱乐",
+      "description": "基于FastGPT构建AI行程规划助手，连接高德地图MCP、天气与导航能力。方案生成缩短95%，人工转接下降60%。"
+    },
+    {
+      "slug": "tunnel-operation-safety-intelligent-agent",
+      "title": "隧道运营安全应急智能体",
+      "category": "transportation-logistics",
+      "categoryName": "交通/运输/物流",
+      "description": "华东沿海某路桥基础设施运营集团基于FastGPT搭建隧道运营安全应急管控智能体，解决传统告警误报高、运维负担重的问题，整合多维度上下文数据过滤无效告警提升隧道运"
+    },
+    {
+      "slug": "vda6-3-intelligent-audit",
+      "title": "VDA6.3智能审核",
+      "category": "manufacturing-production-processing",
+      "categoryName": "制造/生产/加工",
+      "description": "基于FastGPT构建VDA 6.3过程审核系统，覆盖P6生产过程6个子要素26个提问项自动评审，支持多文件并行解析、知识库驱动条款评分与自动降级判定。审核周期"
+    },
+    {
+      "slug": "wechat-sales-and-copy-optimizer",
+      "title": "企微销售与文案助手",
+      "category": "internet-it-technology",
+      "categoryName": "互联网/IT/科技",
+      "description": "针对电子/互联网行业的苏州共营互联网公司借助FastGPT搭建企微销售助手与朋友圈文案优化工具，降低销售重复沟通工作量，优化营销文案平台适配效果"
+    },
+    {
+      "slug": "yc-intelligent-customer-service",
+      "title": "YC小易智能客服",
+      "category": "transportation-logistics",
+      "categoryName": "交通/运输/物流",
+      "description": "长株潭烟草物流借助FastGPT搭建YC小易智能客服，整合多类业务知识库与低代码工作流能力，为客户提供全天候智能咨询，优化内部资料检索流程，升级业务效率。"
+    },
+    {
+      "slug": "yield-reporting-intelligent-agent",
+      "title": "收益率播报智能体",
+      "category": "finance-insurance-wealth-management",
+      "categoryName": "金融/保险/理财",
+      "description": "招商证券国际借助FastGPT搭建收益率播报智能体，实现全自动化处理多源融资资讯与收益率数据，替代每日重复的人工抓取整理流程，帮助团队释放精力专注核心业务"
+    }
+  ]
+}

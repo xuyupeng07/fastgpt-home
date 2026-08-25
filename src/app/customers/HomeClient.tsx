@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { type Solution } from '@customers/components/SolutionCard';
 import Hero from '@customers/components/Hero';
 import TrustedBy from '@/components/home/TrustedBy';
@@ -8,6 +9,7 @@ import SolutionsSection from '@customers/components/home/SolutionsSection';
 import FadeIn from '@/components/home/motion/FadeIn';
 import { openCtaModal, type CtaModalContext } from '@customers/lib/cta';
 import { useHomeSolutions } from '@customers/hooks/useHomeSolutions';
+import { useHomeSmartSearch } from '@customers/hooks/useHomeSmartSearch';
 
 interface SolutionsPagination {
   total: number;
@@ -31,11 +33,17 @@ export default function HomeClient({
   overviewStats,
   initialCategorySlug
 }: HomeClientProps) {
+  const [searchQuery, setSearchQuery] = useState('');
   const homeSolutions = useHomeSolutions({
     initialCategories,
     initialSolutions,
     initialPagination,
-    initialCategorySlug
+    initialCategorySlug,
+    searchQuery
+  });
+
+  const { isAiSearching, handleSmartSearch } = useHomeSmartSearch({
+    solutions: initialSolutions
   });
 
   const openModal = (context?: CtaModalContext) => {
@@ -69,6 +77,10 @@ export default function HomeClient({
             onCategoryPrefetch={homeSolutions.handleCategoryPrefetch}
             onLoadMore={homeSolutions.handleLoadMore}
             onOpenModal={(ctx) => openModal(ctx)}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onSmartSearch={handleSmartSearch}
+            isAiSearching={isAiSearching}
           />
 
           <TrustedBy t={{ caption: '深受行业领军团队信赖' }} />

@@ -25,6 +25,10 @@ interface SolutionsSectionProps {
   onCategoryPrefetch: (categoryId: string) => void;
   onLoadMore: () => void;
   onOpenModal: (context?: import('@customers/lib/cta').CtaModalContext) => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
+  onSmartSearch?: (query: string) => void;
+  isAiSearching?: boolean;
 }
 
 function SolutionsSkeleton() {
@@ -65,7 +69,11 @@ export default function SolutionsSection({
   onCategoryChange,
   onCategoryPrefetch,
   onLoadMore,
-  onOpenModal
+  onOpenModal,
+  searchQuery,
+  onSearchChange,
+  onSmartSearch,
+  isAiSearching
 }: SolutionsSectionProps) {
   return (
     <section id="customers" ref={sectionRef} className="scroll-mt-[84px]">
@@ -74,6 +82,10 @@ export default function SolutionsSection({
         currentCategory={currentCategory}
         onCategoryChange={onCategoryChange}
         onCategoryPrefetch={onCategoryPrefetch}
+        searchQuery={searchQuery}
+        onSearchChange={onSearchChange}
+        onSmartSearch={onSmartSearch}
+        isAiSearching={isAiSearching}
       />
 
       {isLoading ? (
