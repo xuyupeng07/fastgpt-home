@@ -64,6 +64,22 @@ function verifyRegistryIsOutsideInitialJavaScript(html, outDir, registryPath, ma
   );
 }
 
+function verifySearchProjection(searchIndexPath, registryPath) {
+  assert(
+    fs.existsSync(searchIndexPath),
+    `Missing Technical Center search projection ${searchIndexPath}`
+  );
+  const projection = JSON.parse(fs.readFileSync(searchIndexPath, 'utf8'));
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  assert(Array.isArray(projection), 'Technical Center search projection must be an array');
+  assert.equal(
+    projection.length,
+    registry.length,
+    `Technical Center search projection has ${projection.length} entries; expected ${registry.length}`
+  );
+  return projection.length;
+}
+
 function countInitialEntries(html) {
   return (html.match(/<article(?:\s|>)/g) || []).length;
 }
@@ -93,10 +109,15 @@ function verifyTechnicalCenter({
   maxInitialEntries = BUDGET.maxInitialEntries,
   baselineGzipBytes = BUDGET.baselineGzipBytes,
   maxIncreaseBytes = BUDGET.maxIncreaseBytes,
-  registryPath = path.join(ROOT, 'src/components/tech-center/entries.json')
+  registryPath = path.join(ROOT, 'src/components/tech-center/entries.json'),
+  searchIndexPath
 } = {}) {
   const htmlPath = resolveHtml(outDir, route);
   const html = fs.readFileSync(htmlPath, 'utf8');
+  const searchEntries = verifySearchProjection(
+    searchIndexPath || path.join(outDir, 'tech-center/search-index.json'),
+    registryPath
+  );
   const initialEntries = countInitialEntries(html);
   assert(initialEntries > 0, 'Technical Center HTML has no server-rendered entries');
   assert(
@@ -119,7 +140,15 @@ function verifyTechnicalCenter({
     ].join('')
   );
 
-  return { gzipBytes, htmlPath, initialEntries, maxGzipBytes, route, serverListingLinks };
+  return {
+    gzipBytes,
+    htmlPath,
+    initialEntries,
+    maxGzipBytes,
+    route,
+    searchEntries,
+    serverListingLinks
+  };
 }
 
 function parseArgs(argv) {
@@ -158,6 +187,7 @@ function main(argv = process.argv.slice(2)) {
     [
       `[verify-technical-center] passed: ${result.route}, `,
       `${result.initialEntries} server entries, `,
+      `${result.searchEntries} search entries, `,
       `${(result.gzipBytes / 1024).toFixed(1)} KiB initial JavaScript gzip`
     ].join('')
   );
@@ -179,5 +209,6 @@ module.exports = {
   getServerListingLinks,
   main,
   verifyTechnicalCenter,
-  verifyRegistryIsOutsideInitialJavaScript
+  verifyRegistryIsOutsideInitialJavaScript,
+  verifySearchProjection
 };

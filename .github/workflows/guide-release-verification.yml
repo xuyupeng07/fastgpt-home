@@ -1,7 +1,24 @@
 name: Guide Release Verification
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      solutions_preview_target:
+        description: 'Approved Solutions preview HTTPS target'
+        required: false
+        type: string
+      solutions_approved_target:
+        description: 'Trusted Solutions preview HTTPS target used by the release gate'
+        required: false
+        type: string
+      solutions_preview_contract:
+        description: 'Workspace path to the Solutions HTTP contract JSON'
+        required: false
+        type: string
+      solutions_evidence_path:
+        description: 'Workspace path to a runner-produced Solutions evidence JSON'
+        required: false
+        type: string
   pull_request:
     paths:
       - '.github/workflows/guide-release-verification.yml'
@@ -10,6 +27,7 @@ on:
       - 'content/competitors/**'
       - 'public/**'
       - 'scripts/**'
+      - 'docs/release/**'
       - 'scripts/verify-content-hygiene.js'
       - 'scripts/fix-html-lang.js'
       - 'Dockerfile.verify'
@@ -31,6 +49,10 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FASTGPT_SOLUTIONS_PREVIEW_TARGET: ${{ inputs.solutions_preview_target || vars.FASTGPT_SOLUTIONS_PREVIEW_TARGET }}
+  FASTGPT_SOLUTIONS_APPROVED_PREVIEW_TARGET: ${{ inputs.solutions_approved_target || vars.FASTGPT_SOLUTIONS_APPROVED_PREVIEW_TARGET }}
+  FASTGPT_SOLUTIONS_PREVIEW_CONTRACT: ${{ inputs.solutions_preview_contract || vars.FASTGPT_SOLUTIONS_PREVIEW_CONTRACT }}
+  FASTGPT_SOLUTIONS_PREVIEW_EVIDENCE: ${{ inputs.solutions_evidence_path || vars.FASTGPT_SOLUTIONS_PREVIEW_EVIDENCE }}
 
 jobs:
   verify:
@@ -49,7 +71,7 @@ jobs:
       - name: Verify three-variant release evidence
         run: |
           npm ci
-          npm run verify:release -- --keep-artifacts
+          npm run verify:release -- --keep-artifacts ${{ github.event_name == 'pull_request' && '--allow-missing-solutions-evidence' || '' }}
 
       - name: Upload release verification record and artifacts
         if: ${{ always() && hashFiles('.release-artifacts/**') != '' }}
@@ -57,9 +79,19 @@ jobs:
         with:
           name: technical-content-release-evidence
           path: .release-artifacts
-          retention-days: 7
+          retention-days: 90
           if-no-files-found: ignore
           include-hidden-files: true
+
+      - name: Link Week05 evidence to issue #247
+        if: always()
+        run: |
+          {
+            echo '## Week05 release evidence'
+            echo '- Issue: https://github.com/labring/fastgpt-home/issues/247'
+            echo '- Record: `.release-artifacts/release-verification.json`'
+            echo '- Uploaded artifact: `technical-content-release-evidence` (90-day retention)'
+          } >> "$GITHUB_STEP_SUMMARY"
 
   verify-runtime:
     name: Verify Docker runtime

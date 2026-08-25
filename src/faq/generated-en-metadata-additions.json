@@ -1,0 +1,2674 @@
+{
+  "version": 1,
+  "source": {
+    "authority": "generated-en-metadata-authority.json",
+    "recordCount": 205
+  },
+  "records": [
+    {
+      "contentId": "can-ai-intelligent-customer-service",
+      "sourceSlug": "can-ai-intelligent-customer-service",
+      "workbookRow": 2,
+      "title": "How AI Lowers Customer Service Labor Costs",
+      "description": "Discover how automating routine inquiries with NLP and ML reduces labor costs by handling order status and troubleshooting 24/7.",
+      "keywords": "GPT Integration, AI Knowledge Management, Smart Assistant, AI Platform, Task Automation AI",
+      "authoredDigests": {
+        "Question": "ecbd2e9a4f6826d52c11dc6bf5d4391be026f7b8fcf09a1f5f41796f62c617e9",
+        "Answers": "25ea2b19d73adc15fcd3a454fbf9dd7d0e638e7acc6af546afe69b1471b500d2",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "can-ai-platforms-make-customer",
+      "sourceSlug": "can-ai-platforms-make-customer",
+      "workbookRow": 5,
+      "title": "AI Platforms: Faster, More Accurate Customer",
+      "description": "Learn how NLP and ML power chatbots, intelligent routing, and real-time suggestions to enhance speed and accuracy in customer service.",
+      "keywords": "Smart Assistant, Open Source AI, API Integration, AI Platform, Document AI",
+      "authoredDigests": {
+        "Question": "ffd5ea9e9d73501bdf31eed187df6d1259a6ee19d8b638e5d6b54eccd15ae327",
+        "Answers": "7fc4f98c01ba23292fd53bbe7b3e900f177f8b38ee632b91ff6ed1193d39781d",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "will-ai-agents-replace-human",
+      "sourceSlug": "will-ai-agents-replace-human",
+      "workbookRow": 12,
+      "title": "AI Agents: Augmenting, Not Replacing, Human Agents",
+      "description": "Explore how AI agents handle routine inquiries, freeing human agents to focus on complex, emotionally nuanced customer interactions.",
+      "keywords": "Document AI, AI Automation, Enterprise AI, FastGPT, LLM Development",
+      "authoredDigests": {
+        "Question": "385c382f7f6c0359b1e842453bca9984be60ab568f9f5de6bb90b7c280c5fe93",
+        "Answers": "91b262214d941e1dc8ebe8a9fcf55d70908b0c64b59b7f4d4420ef9595bd08ba",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "what-are-the-main-costs",
+      "sourceSlug": "what-are-the-main-costs",
+      "workbookRow": 36,
+      "title": "Understanding the Main Costs of Enterprise AI",
+      "description": "Explore infrastructure, specialized talent, and data processing costs that make up the budget for deploying AI platforms in enterprises.",
+      "keywords": "Vector Search, AI Automation, Document AI, Intelligent Q&A, FastGPT",
+      "authoredDigests": {
+        "Question": "b26ba8cdef3583beb0934186a5dbd81c4a3eff488c45c8b5497532e710445bd8",
+        "Answers": "545d5b3afd55f508611835b1e05accf21f59308ac982d40cc259666ed98b5400",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "why-do-enterprises-need-to",
+      "sourceSlug": "why-do-enterprises-need-to",
+      "workbookRow": 39,
+      "title": "Benefits of Early AI Platform Deployment",
+      "description": "Understand how early AI platform adoption creates a scalable foundation, unifies data, and accelerates innovation, giving enterprises a competitive edge.",
+      "keywords": "AI Automation, AI Platform, GPT Integration, FastGPT, AI Chatbot",
+      "authoredDigests": {
+        "Question": "be7ab70c83cf22af4da183d5e27c9c353b1cfc97b28e70f2f83845d1d7f339be",
+        "Answers": "fbce576ff795904b4eaacf1cf1725a618f45632f830db4e25edf3cf09254b47b",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "will-employees-roles-change-after-enterprises-adopt-ai-platforms",
+      "sourceSlug": "will-employees-roles-change-after-enterprises-adopt-ai-platforms",
+      "workbookRow": 53,
+      "title": "Enterprise AI Platforms Reshape Employee Roles",
+      "description": "Learn how enterprise AI platforms shift employee focus from repetitive tasks to high-value work, and the new adaptive skills teams need.",
+      "keywords": "AI Chatbot, Enterprise AI, AI Workflow, Smart Assistant, GPT Integration",
+      "authoredDigests": {
+        "Question": "861576d809719874b2827e13d3a39698229fe0df92aa5239b159f8950da91903",
+        "Answers": "b92167692aedacbc39d3344fbd862db448909f3aee23936db9a3400e3bd48fab",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "what-conditions-are-required-for",
+      "sourceSlug": "what-conditions-are-required-for",
+      "workbookRow": 58,
+      "title": "Prerequisites for Deploying AI Platforms",
+      "description": "Discover the essential infrastructure, data, expertise, and resource requirements for successfully deploying an AI intelligent platform in enterprises.",
+      "keywords": "AI Automation, AI Workflow, LLM Development, Intelligent Q&A, Open Source AI",
+      "authoredDigests": {
+        "Question": "c59363840a51ce399128af06052c993c581eef708b03598c56077c964f93e7cb",
+        "Answers": "0045cd8232bb2775cf55ad2f0d65d5c74e257f1e095106491b32ab754b360a25",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-support-multilingual",
+      "sourceSlug": "how-ai-agents-support-multilingual",
+      "workbookRow": 63,
+      "title": "Enabling Multilingual Customer Service with AI",
+      "description": "Explore how AI agents use NLP and machine translation to provide real-time multilingual support, breaking language barriers for global customer service.",
+      "keywords": "FastGPT, Document AI, Task Automation AI, Enterprise AI, API Integration",
+      "authoredDigests": {
+        "Question": "e8d8a142d6bb2598c2bc75cc2e705f7d1d5aba004128582b34199c43ef6d6e96",
+        "Answers": "703918dbc74431f93373360a67fc0e67a78831f0d69f5938040013822a236aa6",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "can-ai-platforms-improve-a",
+      "sourceSlug": "can-ai-platforms-improve-a",
+      "workbookRow": 78,
+      "title": "AI Platforms Optimize Company Inventory Management",
+      "description": "Learn how AI platforms use analytics and ML to optimize stock levels, cut costs, and reduce overstock or stockouts through accurate demand forecasting.",
+      "keywords": "AI Chatbot, Open Source AI, Task Automation AI, LLM Development, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "8e4786536550f6955a39f8297b88ef6d36f4b10079e18ab348e8bafc51874954",
+        "Answers": "9b614ac666fac4efd84ecee3e7d9c385a6ecff4abbccf7658fce52b1de473dd5",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "what-are-the-main-difficulties",
+      "sourceSlug": "what-are-the-main-difficulties",
+      "workbookRow": 81,
+      "title": "Overcoming Key Hurdles in Enterprise AI Deployment",
+      "description": "Learn about integrating legacy systems, ensuring data quality, and addressing organizational adaptation for successful AI implementation.",
+      "keywords": "Open Source AI, Smart Assistant, LLM Development, AI Chatbot, Vector Search",
+      "authoredDigests": {
+        "Question": "7c217de9c31d8a7beab938f68b92f29b26a9d32baffcc6bdb91b31f4e2d75e85",
+        "Answers": "1b3d1bc953207ec4239aff1e926788f216148c351fd1402c16287496d20c68e0",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "can-ai-agent-be-integrated",
+      "sourceSlug": "can-ai-agent-be-integrated",
+      "workbookRow": 84,
+      "title": "How AI Agents Seamlessly Connect to Your CRM",
+      "description": "AI agents connect to CRMs via APIs, webhooks, and authentication, enabling efficient data mapping and boosting customer management workflows.",
+      "keywords": "Open Source AI, AI Platform, LLM Development, GPT Integration, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "de3b0d7f562feb25fc77531ee2beb958af8d5d0c9688fc280c744f904424978b",
+        "Answers": "53901e41420ce46c4c1fc4bb34e4d9e85f8e336df8dcbcafc002e179a3b58bf4",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-optimize-after-sales",
+      "sourceSlug": "how-ai-agents-optimize-after-sales",
+      "workbookRow": 99,
+      "title": "AI Agents Streamline and Enhance After-Sales",
+      "description": "Discover how AI agents use NLP and ML to streamline after-sales support, cut resolution times, and improve customer interaction quality.",
+      "keywords": "API Integration, AI Workflow, Enterprise AI, Document AI, GPT Integration",
+      "authoredDigests": {
+        "Question": "82671b6a3db6b710755a6dd396458f23ca5c03e6aa2872171aa829ca170e2a00",
+        "Answers": "a16a421de25efaea7d84da7f314ec3468a17636cd794a72241f324f7fba82178",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "do-ai-platforms-have-high-requirements-for-data-storage",
+      "sourceSlug": "do-ai-platforms-have-high-requirements-for-data-storage",
+      "workbookRow": 100,
+      "title": "Data Storage Demands for AI Platforms Explained",
+      "description": "AI platforms require scalable storage for massive training data and diverse types, driven by volume, velocity, and variety for model performance.",
+      "keywords": "Intelligent Q&A, Smart Assistant, API Integration, Open Source AI, AI Chatbot",
+      "authoredDigests": {
+        "Question": "2cbf7b5c74b579a9ff25c4739eee0bec8087ebd150f6f8c9548e6b588052b26f",
+        "Answers": "b4148795bef1cb4788c86c22caa4abb7a89c4c83cb00966612afb9f9a34ed4c8",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "why-are-ai-agents-suitable",
+      "sourceSlug": "why-are-ai-agents-suitable",
+      "workbookRow": 101,
+      "title": "AI Agents Enable Instant Response in Critical",
+      "description": "AI agents deliver near real-time reactions through continuous operation and real-time data processing, surpassing human speed in time-sensitive sectors.",
+      "keywords": "AI Knowledge Management, Enterprise AI, API Integration, Open Source AI, LLM Development",
+      "authoredDigests": {
+        "Question": "3845a7c0cfa186de9d937036b3888ee77487fb1cc054dbd108bc3464cd07bd80",
+        "Answers": "8e9ca74cd92fb76554aae40f81c3ab13478a29ec90e7d26dfd011a46a8a63249",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-much-will-an-enterprise-s-competitiveness-improve-after-using-an-ai-platform",
+      "sourceSlug": "how-much-will-an-enterprise-s-competitiveness-improve-after-using-an-ai-platform",
+      "workbookRow": 104,
+      "title": "Factors Impacting AI Platform Competitiveness",
+      "description": "Learn that AI platform-driven competitiveness gains vary by enterprise, depending on data quality, strategic alignment, and successful workflow",
+      "keywords": "AI Platform, Document AI, FastGPT, Task Automation AI, Open Source AI",
+      "authoredDigests": {
+        "Question": "96d2005b85bdc6119ca8c14641f5e9dead031face858c479bbaeb7ee31752463",
+        "Answers": "7229bf519433230356968f50ea32e06f96840b4ae88561004cf2aa3b9f95f0e9",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "what-level-of-protection-do",
+      "sourceSlug": "what-level-of-protection-do",
+      "workbookRow": 105,
+      "title": "Privacy Protections in AI Platforms",
+      "description": "AI platforms implement data encryption, access controls, and varying privacy levels to safeguard customer information, from basic to advanced protections.",
+      "keywords": "Task Automation AI, AI Workflow, GPT Integration, LLM Development, FastGPT",
+      "authoredDigests": {
+        "Question": "b8437bffd61d4160e3e505e116744dfb529d689d4e929cb68ed5684412d55f8d",
+        "Answers": "4e29d52cabf397a15c28888eed30c4d28fdf588f739093aa182f553c021c6cc9",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "why-are-ai-agents-developing",
+      "sourceSlug": "why-are-ai-agents-developing",
+      "workbookRow": 121,
+      "title": "Key Drivers of AI Agent Adoption in Fintech",
+      "description": "AI agents handle complex financial data, automate intricate tasks, and improve decision-making in fintech's data-rich, precision-focused environment.",
+      "keywords": "Intelligent Q&A, AI Knowledge Management, AI Platform, API Integration, LLM Development",
+      "authoredDigests": {
+        "Question": "1b27301a35e2695b57ef98907d7e4a7d6a562fc33a5770a07fd6c33db4a49b12",
+        "Answers": "f3546afbef823c2e4b4d91679080ffc8e3eab3de11da3b9569c9fdd3d32a25fb",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-enhance-a-company-s-data-mining-capabilities",
+      "sourceSlug": "how-ai-agents-enhance-a-company-s-data-mining-capabilities",
+      "workbookRow": 125,
+      "title": "AI Agents Boost Corporate Data Mining Capabilities",
+      "description": "Discover how AI agents enhance data mining by automating tasks, uncovering patterns at scale, and delivering faster actionable insights than traditional",
+      "keywords": "Intelligent Q&A, Open Source AI, AI Platform, Smart Assistant, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "32dd17848819def89613c89cbf722198766cc237ed217c4ac63339dd322073e0",
+        "Answers": "fe1888819534c140af9a51eb28854f8f0b32c510b0e2dd89e7df32cec5c1cbe9",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "can-ai-platforms-improve-after-sales",
+      "sourceSlug": "can-ai-platforms-improve-after-sales",
+      "workbookRow": 129,
+      "title": "AI Platforms Boost After-Sales Maintenance",
+      "description": "Learn how AI platforms improve after-sales maintenance through automated tasks, predictive maintenance, and reduced downtime via failure prediction.",
+      "keywords": "Document AI, API Integration, Enterprise AI, AI Platform, AI Chatbot",
+      "authoredDigests": {
+        "Question": "316cd664163cbe944a9c574f22f60d16f36d8550c55157500337191f0f21cb32",
+        "Answers": "bd5be5e2016482bedc9cbbe68b49787202beeaf172c03bb6433cec4c57376295",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "why-ai-agents-are-suitable",
+      "sourceSlug": "why-ai-agents-are-suitable",
+      "workbookRow": 140,
+      "title": "Accelerating Enterprise Innovation with AI Agents",
+      "description": "AI agents speed innovation by automating tasks, enabling rapid testing, and processing data continuously to uncover opportunities faster than human teams.",
+      "keywords": "Intelligent Q&A, Task Automation AI, AI Platform, Document AI, AI Chatbot",
+      "authoredDigests": {
+        "Question": "10b31c0552556e68cd3717f8150370c6437633e6338d98b9d44f55b1d84810a2",
+        "Answers": "9cf71b780a4e0d4530f9e286df194519dfef1d47614464691f71e4d581561810",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-enhance-cross-departmental-collaboration",
+      "sourceSlug": "how-ai-agents-enhance-cross-departmental-collaboration",
+      "workbookRow": 153,
+      "title": "AI Agents Improve Cross-Departmental Team",
+      "description": "Discover how AI agents break departmental silos by automating information flow and coordinating tasks to streamline cross-team collaboration.",
+      "keywords": "AI Chatbot, API Integration, Enterprise AI, Smart Assistant, AI Automation",
+      "authoredDigests": {
+        "Question": "dc76a8d8eebee89391bd9d679f5f3750ea7394f879bdc88e9aa9aa6a3b95765a",
+        "Answers": "65c34189c09bc3d8cd80ef3e0eaa1ae253f8b8c1cc044d8bedcb5d3980cbb919",
+        "Category": "fec93648f357a62c86c82f642bfe97eee87d08d8d72cf75bdeabd55a68067b74"
+      }
+    },
+    {
+      "contentId": "how-can-enterprises-use-ai",
+      "sourceSlug": "how-can-enterprises-use-ai",
+      "workbookRow": 190,
+      "title": "Automating Contract Compliance Checks with AI",
+      "description": "Discover how AI automates contract review to flag non-standard clauses and compliance risks using data, legal rules, and trained models.",
+      "keywords": "GPT Integration, Smart Assistant, Task Automation AI, Document AI, AI Chatbot",
+      "authoredDigests": {
+        "Question": "6cccae4c3f3d5ac15beefc10928bece8140f192a2634dab4a810cea1bf142864",
+        "Answers": "c850f852bf3752c6d287ece20feb936c46eddfc90760979b8c25da9132cfb5b2",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-generate-real-time-market",
+      "sourceSlug": "can-ai-generate-real-time-market",
+      "workbookRow": 200,
+      "title": "Create Real-Time Market Analysis Reports Using AI",
+      "description": "Learn how AI generates real-time market analysis reports, using live data feeds, pattern recognition and NLG to deliver instant structured insights.",
+      "keywords": "FastGPT, AI Knowledge Management, Smart Assistant, AI Platform, LLM Development",
+      "authoredDigests": {
+        "Question": "13edf1ad0b8eef6ea24934689e957edd57d54a4bd51f54d57e583e7367f4f88b",
+        "Answers": "9815a945664b12dea94c2c4f91c27152deca46688e89fb9a2f7e4d2ea884f407",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-platforms-integrate-multi-source",
+      "sourceSlug": "can-ai-platforms-integrate-multi-source",
+      "workbookRow": 212,
+      "title": "AI-Powered Integration of Multi-Source Financial",
+      "description": "Discover how AI connects market feeds, internal databases, and APIs via secure protocols to integrate financial data with machine learning.",
+      "keywords": "AI Chatbot, Intelligent Q&A, Enterprise AI, Vector Search, Task Automation AI",
+      "authoredDigests": {
+        "Question": "86fb6935092872aa02c39fd48b3b34a435f17b0a7b418729c2737ea0ccb2b7db",
+        "Answers": "6d76968b4b75a78d9043ec67ce8ef6e38233b9b58c0a8f37e7acd4978ddba90a",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-identifies-high-value-customer",
+      "sourceSlug": "how-ai-identifies-high-value-customer",
+      "workbookRow": 239,
+      "title": "Identify High-Value Customer Groups Using AI",
+      "description": "Learn how AI uses machine learning and customer data analysis to spot high-value segments tied to revenue, loyalty and long-term profitability.",
+      "keywords": "Enterprise AI, Task Automation AI, API Integration, LLM Development, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "2386ef6841879652352c0b54079fcc5e5d5243661f098058adea7401e5192ce4",
+        "Answers": "dc48048897d96c5c501cefeb82c0057ae2abf12acf029293ca8b6fe97c5e1d59",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-help-analyze-competitors-movements",
+      "sourceSlug": "can-ai-help-analyze-competitors-movements",
+      "workbookRow": 241,
+      "title": "Analyze Competitor Movements Efficiently with AI",
+      "description": "Discover how AI processes extensive market data from public and proprietary sources to track competitors' activities and gain key insights.",
+      "keywords": "AI Knowledge Management, AI Platform, AI Workflow, Intelligent Q&A, Open Source AI",
+      "authoredDigests": {
+        "Question": "4ae15699cd735c9fd92acd3127ca6060283f5360bb96a4e40da60fbf93e3a17c",
+        "Answers": "0fd2f8243a8011262b778e8821c082104b375656150931592e276f16ad23405d",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-can-e-commerce-use-ai",
+      "sourceSlug": "how-can-e-commerce-use-ai",
+      "workbookRow": 242,
+      "title": "Boost E-Commerce Logistics Delivery Speed with AI",
+      "description": "Learn how e-commerce businesses use AI across supply chains to optimize routes, forecast demand and improve logistics delivery speeds.",
+      "keywords": "Task Automation AI, Intelligent Q&A, API Integration, AI Chatbot, AI Automation",
+      "authoredDigests": {
+        "Question": "b8f5255c0958409f54ad87028a0451ce6ec7a2ef48ecb31325ba4bafc075be41",
+        "Answers": "a267144440967b5ac44ef26df67dbf0f0f57a98ea537e2c30bc77c797ec17728",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-platforms-improve-customer-service-response-efficiency",
+      "sourceSlug": "how-ai-platforms-improve-customer-service-response-efficiency",
+      "workbookRow": 243,
+      "title": "AI-Enabled Faster Customer Service Responses",
+      "description": "Learn how AI cuts wait times and handling durations via automated interactions, workflow optimization, and NLP for fast query resolution.",
+      "keywords": "Document AI, API Integration, AI Chatbot, AI Workflow, GPT Integration",
+      "authoredDigests": {
+        "Question": "cfda75f7e46f7c8fffc0d367071a89141ae2fa416af9d644ba205603f888cb54",
+        "Answers": "c4db50427c8a8f9c965a3d2ecb9627a1e968d449def3fc287b271681e12b7352",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-discover-potential-best-selling",
+      "sourceSlug": "can-ai-discover-potential-best-selling",
+      "workbookRow": 247,
+      "title": "Discover Potential Best-Selling Products with AI",
+      "description": "Learn how AI uses machine learning and datasets including sales history, search trends and social sentiment to predict top-selling products.",
+      "keywords": "Smart Assistant, AI Automation, API Integration, FastGPT, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "4e8a169d33e55a97e38a1fcf1a465ad53a8c3d2c14f0470d9143f81c018f93b9",
+        "Answers": "41c66a60dfbbf219b4a8e612d659408f3fe4ea0003943b9d1dee0ce196e63efe",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-helps-manage-multi-channel",
+      "sourceSlug": "how-ai-helps-manage-multi-channel",
+      "workbookRow": 248,
+      "title": "Unify and Analyze Multi-Channel Sales Data with AI",
+      "description": "Learn how AI unifies, cleans and analyzes multi-channel sales data to turn scattered online and offline info into actionable insights.",
+      "keywords": "AI Chatbot, AI Knowledge Management, API Integration, Intelligent Q&A, Open Source AI",
+      "authoredDigests": {
+        "Question": "6292a5294903e678430141679de611337985df22e880c6c6734963ca10b76e99",
+        "Answers": "6662e60ec91351701852a016dc25c8acf78ff43f9802bedba69e36cb02beb061",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-does-ai-track-students-learning-progress",
+      "sourceSlug": "how-does-ai-track-students-learning-progress",
+      "workbookRow": 256,
+      "title": "AI-Powered Tracking of Student Learning Progress",
+      "description": "Discover how AI systems analyze educational data, assignment scores and participation patterns to track student learning progress over time.",
+      "keywords": "LLM Development, Open Source AI, Task Automation AI, Vector Search, GPT Integration",
+      "authoredDigests": {
+        "Question": "3ad48e2b1951fcf657fd520c0f1d192e1cbf3f73b2c4983bd72fcaba50722022",
+        "Answers": "ac29b1b687ac237a3d2c992d672d2de4fa5e5585702c2ff738ed6d1ff2eb9d5a",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-provide-real-time-question",
+      "sourceSlug": "can-ai-provide-real-time-question",
+      "workbookRow": 258,
+      "title": "Real-Time AI Question Answering: Key Capabilities",
+      "description": "Learn how AI delivers real-time question answering using NLP and ML, plus necessary infrastructure and data training for effective service.",
+      "keywords": "AI Automation, AI Knowledge Management, AI Workflow, Enterprise AI, LLM Development",
+      "authoredDigests": {
+        "Question": "1ef38720e35c66e9862887064d406f564dcdada4f25d42572cb32dc113837b96",
+        "Answers": "f51c6c90865d4ddd968a44339e18050b72a77faf2a247f03c3ec13f5c13e1fff",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-identify-students-potential-strengths",
+      "sourceSlug": "can-ai-identify-students-potential-strengths",
+      "workbookRow": 267,
+      "title": "AI for Identifying Student Potential Strengths",
+      "description": "Discover how AI uses data analysis and machine learning to detect student potential strengths, along with required data and validation steps.",
+      "keywords": "Task Automation AI, AI Chatbot, AI Workflow, AI Knowledge Management, Enterprise AI",
+      "authoredDigests": {
+        "Question": "3edc1f7a88e7e52e94055f42636116eb90c164865f5b4850ba837feafb44dc5a",
+        "Answers": "5163b42a5d6a32806f4655461123ba3ce66e66f715f936a6361be3a7149e0f35",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-improves-teachers-teaching-experience",
+      "sourceSlug": "how-ai-improves-teachers-teaching-experience",
+      "workbookRow": 268,
+      "title": "How AI Enhances Teachers' Daily Teaching Workflows",
+      "description": "Learn how AI automates grading and administrative tasks, provides personalized insights, and helps teachers focus more on student interaction and impactful",
+      "keywords": "AI Platform, Enterprise AI, Smart Assistant, GPT Integration, LLM Development",
+      "authoredDigests": {
+        "Question": "2ae6544edb41290c6a40a5ac148d9c2044e7706576b050f2f581535e85d06c4a",
+        "Answers": "0efb56b4fdfbbca0d7b9d4e748c7d32f65fab804a573be323b16490dc1704b4f",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-monitor-patients-rehabilitation-progress",
+      "sourceSlug": "can-ai-monitor-patients-rehabilitation-progress",
+      "workbookRow": 278,
+      "title": "AI Monitoring of Patient Rehabilitation Progress",
+      "description": "Learn how AI uses sensors, wearables and movement analysis to monitor patient rehabilitation progress and track functional recovery over time.",
+      "keywords": "AI Knowledge Management, AI Chatbot, AI Platform, LLM Development, Vector Search",
+      "authoredDigests": {
+        "Question": "8cd7290e47d2e7653d2c5e60029b734568378a726e634192b000a2632240ccf3",
+        "Answers": "a13c416a1a555c1500d30b4d658efea7622b6288b95fdfd0bc05fc3fe924bcff",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-do-ai-platforms-protect",
+      "sourceSlug": "how-do-ai-platforms-protect",
+      "workbookRow": 280,
+      "title": "AI-Driven Protection for Patient Privacy Data",
+      "description": "Learn how AI ensures patient data privacy using encryption, access controls, and audit trails in compliance with HIPAA and GDPR.",
+      "keywords": "Open Source AI, Smart Assistant, API Integration, Enterprise AI, AI Automation",
+      "authoredDigests": {
+        "Question": "3131f05d28574b1e656388652b01dff111e9b42983a7c60d968e2c8aee98282d",
+        "Answers": "eca5fcbc900fd4de79f2b7ff6bed61631146d5a446e6c6f09f0c59f600b29ae5",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-improves-doctors-research-efficiency",
+      "sourceSlug": "how-ai-improves-doctors-research-efficiency",
+      "workbookRow": 282,
+      "title": "AI Tools to Boost Doctors' Research Efficiency",
+      "description": "Learn how AI automates data-intensive tasks and speeds up medical research by analyzing literature, records and imaging data faster than manual methods.",
+      "keywords": "Vector Search, Intelligent Q&A, Enterprise AI, AI Platform, Smart Assistant",
+      "authoredDigests": {
+        "Question": "eee2ee5188e32e531418a9a409df296becf15fe5c2890f17eda43069005a92c9",
+        "Answers": "b8979d1f1a8ac2de5f1775d2a8adc0f758b43afb6be4ee59e1a4f02790abcb8a",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-platforms-integrate-data",
+      "sourceSlug": "can-ai-platforms-integrate-data",
+      "workbookRow": 285,
+      "title": "Seamless Hospital Data Integration via AI",
+      "description": "Learn how AI integrates hospital data using standards like HL7 and FHIR, addressing governance and privacy challenges for semantic interoperability.",
+      "keywords": "Document AI, AI Workflow, Intelligent Q&A, Smart Assistant, Vector Search",
+      "authoredDigests": {
+        "Question": "4aa6b119cbf187cf6d32430ec6829e87d657923b714b770c0a19473cbc6d2644",
+        "Answers": "37d304a9f5a38d9f981cc1cd9eb6f354074f2beef53958bbeb989d820995b32c",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-reduces-doctors-paperwork",
+      "sourceSlug": "how-ai-reduces-doctors-paperwork",
+      "workbookRow": 287,
+      "title": "AI Reduces Doctors' Paperwork via Automated Tasks",
+      "description": "Discover how AI automates note-taking and data entry to reduce doctors' administrative paperwork, allowing more time for direct patient care.",
+      "keywords": "Vector Search, AI Chatbot, AI Knowledge Management, Task Automation AI, GPT Integration",
+      "authoredDigests": {
+        "Question": "290bbdd3431b3a8f549f004b045ee106e02c47a0020caa3d6a82e499d5b57b8e",
+        "Answers": "57602a84137087856d648fdc68ab88db1522747c839999f71d76c358b8cb9229",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-identify-high-risk-road-sections",
+      "sourceSlug": "can-ai-identify-high-risk-road-sections",
+      "workbookRow": 293,
+      "title": "AI-Powered Detection of High-Risk Road Sections",
+      "description": "Learn how AI uses machine learning to analyze datasets including accident reports, traffic data and road details to detect high-risk road sections.",
+      "keywords": "GPT Integration, Vector Search, FastGPT, Intelligent Q&A, Open Source AI",
+      "authoredDigests": {
+        "Question": "5dd9d51b5eaadd4a22f64af22197c1c7b110dc3df60b37843b448f62a61060cb",
+        "Answers": "2e6bff8df9991865cc3ba60dcfce8c5a45a35467c23b8d48412027751833d386",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-reduce-sales-follow-up",
+      "sourceSlug": "can-ai-reduce-sales-follow-up",
+      "workbookRow": 316,
+      "title": "AI Tools to Reduce Sales Follow-Up Time",
+      "description": "Understand how AI automates outreach, prioritizes leads and centralizes communication to cut down sales follow-up time for teams.",
+      "keywords": "AI Workflow, Vector Search, LLM Development, AI Platform, Task Automation AI",
+      "authoredDigests": {
+        "Question": "37ee88b1f64d0cb438574bfc08e62de4f241b0306907e4ac6860045a87a6a657",
+        "Answers": "a7f5f383a537d3434947a8d78eb906bc87e8af6a85d0c6082693b040e853b1b8",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-does-ai-integrate-second-hand",
+      "sourceSlug": "how-does-ai-integrate-second-hand",
+      "workbookRow": 323,
+      "title": "Unifying Second-Hand Housing Data with AI",
+      "description": "Learn how AI collects and processes second-hand housing data, using NLP to extract key details and generate insights on valuations, trends, and pricing.",
+      "keywords": "FastGPT, AI Platform, AI Knowledge Management, AI Workflow, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "fe68cf6a3b20bf8e9fadd69dd3aaf88cba111a12fbea6e740bc378aae534d451",
+        "Answers": "44287f3fd31e99b03ce9ee9b23899cc81a69378064f44ed1b20ab417f9e79fe2",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "can-ai-optimize-the-operation-of-energy-storage-systems",
+      "sourceSlug": "can-ai-optimize-the-operation-of-energy-storage-systems",
+      "workbookRow": 340,
+      "title": "Enhancing Energy Storage Performance with AI",
+      "description": "Learn how AI forecasts energy supply and prices to schedule charging and discharging, boosting storage system efficiency and economic returns.",
+      "keywords": "Task Automation AI, Open Source AI, AI Automation, AI Platform, Document AI",
+      "authoredDigests": {
+        "Question": "be47b4642efcd0aa7a108771339e79a5294ad2cb43495e1ac7676713fe4c2228",
+        "Answers": "12c1932d6bd3acee03553979cc050d7aed4a82b0731d19cfdba139aeeace8b0a",
+        "Category": "cd76339ae8845b8b7aade2a70f5dcb5687d42541c2dba45544521ea1b6f072f5"
+      }
+    },
+    {
+      "contentId": "how-ai-helps-cross-departmental-access",
+      "sourceSlug": "how-ai-helps-cross-departmental-access",
+      "workbookRow": 353,
+      "title": "AI Tools for Secure Cross-Departmental File Access",
+      "description": "Learn how AI automates permissions, enhances search with NLP and maintains governance for secure cross-departmental file access.",
+      "keywords": "AI Platform, Document AI, Task Automation AI, AI Chatbot, FastGPT",
+      "authoredDigests": {
+        "Question": "e3cf89e99cfbd796aaff348053bbc0f9cc1839891f0a1f9876f4d17f84757928",
+        "Answers": "cc2f52e24c4114476731e0efea2f7f8783ffbad9d0b6974cbd47a64627d4c0a1",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-organize-project-related",
+      "sourceSlug": "can-ai-automatically-organize-project-related",
+      "workbookRow": 355,
+      "title": "AI Automatic Organization of Project Materials",
+      "description": "Discover how AI uses machine learning for document classification to organize project materials, requiring digital files and sufficient data.",
+      "keywords": "Enterprise AI, Smart Assistant, AI Workflow, AI Chatbot, Task Automation AI",
+      "authoredDigests": {
+        "Question": "dd8f8d2a108dbecf9a4cb4a741763db2e033bad2f9afb70143a6f7da65b636cf",
+        "Answers": "91fe7fb2fb6bd0d939f54d019e1844ece332a60ae2f12bcd4b991e18ab36d175",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-integrate-customer-chat",
+      "sourceSlug": "can-ai-integrate-customer-chat",
+      "workbookRow": 380,
+      "title": "How AI Integrates and Analyzes Customer Chat",
+      "description": "AI consolidates chat histories across platforms, analyzing sentiment, themes, and intent to improve support insights while ensuring data security.",
+      "keywords": "Document AI, Vector Search, LLM Development, AI Automation, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "4100828d038605e634504279befdca3ae78dd7e83dc2e8cbad17206b32d3cf8d",
+        "Answers": "67a24007c7cab5b8cc24d0ac3c4bf60f32eb7699ca921bb76172c07afc54950c",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-analyze-the-input-output-ratio-of-different-activities",
+      "sourceSlug": "can-ai-analyze-the-input-output-ratio-of-different-activities",
+      "workbookRow": 396,
+      "title": "AI Analysis of Activity Input-Output Ratios",
+      "description": "Learn how AI uses data-driven models to quantify efficiency ratios for activities, using consistent input and output data like costs and revenue.",
+      "keywords": "AI Chatbot, Enterprise AI, FastGPT, Smart Assistant, GPT Integration",
+      "authoredDigests": {
+        "Question": "7ab453cbdbffc78712535352990800133d9712f24c572732fedff7c49b6b8525",
+        "Answers": "dc7852f17bb7a78fd0fec8a37fe7a2b90338daf89aa168404235b11baec9e210",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "how-to-improve-customer-service",
+      "sourceSlug": "how-to-improve-customer-service",
+      "workbookRow": 415,
+      "title": "Boosting Service Efficiency Through AI-Driven",
+      "description": "AI automates routine service tasks and provides insights, using chatbots for common queries and sentiment analysis to let agents focus on complex issues.",
+      "keywords": "Intelligent Q&A, GPT Integration, Smart Assistant, Vector Search, Enterprise AI",
+      "authoredDigests": {
+        "Question": "95f48a799f8a2a65114d4eaf28035880c5b6c53ea3442d3848aa6eebd6a64546",
+        "Answers": "7a93376f81a3e4220d787c6736a8677482a07f9dbd02660f0b09987c4eea95f6",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "how-to-generate-a-customer",
+      "sourceSlug": "how-to-generate-a-customer",
+      "workbookRow": 417,
+      "title": "Automating Knowledge Base Generation with AI",
+      "description": "AI turns unstructured data like tickets and manuals into searchable knowledge base articles, automating a manual process for self-service.",
+      "keywords": "Enterprise AI, GPT Integration, Vector Search, AI Workflow, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "e4892e73d8410a386a1e69b94126da8fc0a6addc21250e8b5a7d868ade683b72",
+        "Answers": "5ce14649f525c05b06a861dc06d919a02333f8fec6f52aa886d1d5f10b3ade1e",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "how-ai-automatically-recommends-customer-service-response-content",
+      "sourceSlug": "how-ai-automatically-recommends-customer-service-response-content",
+      "workbookRow": 418,
+      "title": "AI-Powered Response Recommendations for Customer",
+      "description": "AI uses NLP and ML trained on historical interactions to recommend real-time responses based on customer intent, sentiment, and entities.",
+      "keywords": "API Integration, LLM Development, Enterprise AI, Open Source AI, FastGPT",
+      "authoredDigests": {
+        "Question": "55f8357e8dd0dcb5f4e920201ad649324a7ac200e108df9097ebbac99f897add",
+        "Answers": "0da9563e6f116534e4499cf674487a4fbe13fcffe0ffb90b9dde87ecb02755f6",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-identify-high-frequency",
+      "sourceSlug": "can-ai-automatically-identify-high-frequency",
+      "workbookRow": 419,
+      "title": "AI Detection of High-Frequency Customer Complaints",
+      "description": "Discover how AI uses NLP and ML to analyze customer feedback like chats and social media to detect recurring complaint themes.",
+      "keywords": "API Integration, AI Platform, Vector Search, AI Automation, LLM Development",
+      "authoredDigests": {
+        "Question": "aac3a82fe6d601b92e72152f98c965e23b8337fb5945859f08ab2d1b6adf1308",
+        "Answers": "4751f8630b0c149a3b6e3afacdcd967f5152da71f677dadf1379a798abf8ae83",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "how-to-improve-after-sales-service-efficiency-with-ai",
+      "sourceSlug": "how-to-improve-after-sales-service-efficiency-with-ai",
+      "workbookRow": 420,
+      "title": "Boost After-Sales Efficiency With AI-Powered Tools",
+      "description": "Learn how AI boosts after-sales efficiency via automated tasks, instant support, chatbots and smarter ticket routing for scalable support.",
+      "keywords": "AI Workflow, Enterprise AI, Intelligent Q&A, AI Automation, API Integration",
+      "authoredDigests": {
+        "Question": "3fbf76992c0c0524ec2f3716ec880f2c5491ffd7b967907ec8bd3568a9cb2c4f",
+        "Answers": "fa6949f1ac9a26427bda229e5c024398db0b954bec312c79cd5ef4559561b961",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "how-to-make-ai-reduce-duplicate-file-storage",
+      "sourceSlug": "how-to-make-ai-reduce-duplicate-file-storage",
+      "workbookRow": 441,
+      "title": "Eliminating File Redundancy Through AI",
+      "description": "AI uses digital fingerprints and similarity algorithms to detect and eliminate duplicate files by analyzing content and metadata, optimizing storage usage.",
+      "keywords": "AI Knowledge Management, Enterprise AI, Smart Assistant, LLM Development, Vector Search",
+      "authoredDigests": {
+        "Question": "e8a7fa96b17ca1f2cc04e71f4cb9b86e475b6d9448274735f800ae7743de870e",
+        "Answers": "90b3494bea6c5eb1dd3b5db9835900bf7e99cd1809f8f7f1151d0e068ba06e45",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-enable-real-time-document",
+      "sourceSlug": "can-ai-enable-real-time-document",
+      "workbookRow": 442,
+      "title": "AI-Powered Real-Time Cross-Departmental Document",
+      "description": "Discover how AI supports secure real-time cross-departmental document sharing with version tracking, conflict resolution and cloud access controls.",
+      "keywords": "AI Platform, Vector Search, Open Source AI, Intelligent Q&A, LLM Development",
+      "authoredDigests": {
+        "Question": "2d301c09bbe1bb1e9ad41fb1300f69112985047e406c9e4bd62ba5fec5af5d78",
+        "Answers": "ac226265ad545ccc4f7bef6456bf51463bc964131c081f94aaf9c7332e4c9423",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-generate-data-access",
+      "sourceSlug": "can-ai-generate-data-access",
+      "workbookRow": 444,
+      "title": "Streamline Permission Audits via AI-Generated",
+      "description": "Discover how AI integrates with identity providers to analyze access control lists, producing reports that map user rights across systems.",
+      "keywords": "AI Chatbot, FastGPT, Document AI, AI Automation, API Integration",
+      "authoredDigests": {
+        "Question": "fe2bc48f10e3808f2cdd5b56c75b939d8c2f74b21b76059ef1efbc2c89c2c114",
+        "Answers": "ffee1e325a72ac5a3b26ed3ca9fe160028bcdf476ae0af37cf732e65998e857b",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-record-employees-task-completion-status",
+      "sourceSlug": "can-ai-automatically-record-employees-task-completion-status",
+      "workbookRow": 446,
+      "title": "AI-Powered Employee Task Completion Status",
+      "description": "Learn how AI automatically records employee task completion via integration with task tools, calendars and clear defined completion criteria.",
+      "keywords": "GPT Integration, AI Platform, Vector Search, Document AI, Open Source AI",
+      "authoredDigests": {
+        "Question": "274ad004713f38f84a41f0f12dfe5cb368732eb9eb2809bf0943dabf517182cc",
+        "Answers": "df8a52acd7f647e3a1d77f3ec46e634d9318eef709a3d9254297b7031ecfa9be",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-integrate-data",
+      "sourceSlug": "can-ai-automatically-integrate-data",
+      "workbookRow": 460,
+      "title": "Cross-Department Data Unification with AI",
+      "description": "Explore how AI integrates departmental data via ML and NLP, understanding semantics, with API access required for effective unification.",
+      "keywords": "Intelligent Q&A, Enterprise AI, Smart Assistant, AI Chatbot, AI Platform",
+      "authoredDigests": {
+        "Question": "5afccd40f27afad9add6fdc3c63bc17b5f4c991b7193a5e100d15544ad8d2f4d",
+        "Answers": "0d31a471a68ed2a7046e34712917b2a945720fae1cf94ac22c69ae500568cb0c",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "can-ai-provide-real-time-reminders-for-upcoming-tasks-that-are-about-to-expire",
+      "sourceSlug": "can-ai-provide-real-time-reminders-for-upcoming-tasks-that-are-about-to-expire",
+      "workbookRow": 461,
+      "title": "AI-Powered Real-Time Task Expiration Reminders",
+      "description": "Discover how AI delivers real-time task expiration reminders using predefined deadlines, alert rules and secure platform integrations.",
+      "keywords": "FastGPT, AI Chatbot, Smart Assistant, Document AI, AI Automation",
+      "authoredDigests": {
+        "Question": "760db4913d6866dd8f5727306ea179832177a7640d7725b8e496b6e4df721cfe",
+        "Answers": "c337d34b8b993dcf4421e8c9bb639526d830292cf1bd1fbbf582f221dd9cf8c2",
+        "Category": "22ac21bec9438800302aabaacf9051fd4d026f8ffff9d59629873b9f6aee891c"
+      }
+    },
+    {
+      "contentId": "what-is-an-enterprise-knowledge-base",
+      "sourceSlug": "what-is-an-enterprise-knowledge-base",
+      "workbookRow": 465,
+      "title": "Leverage a Central Repository for Knowledge Access",
+      "description": "Understand how a digital repository organizes company expertise into a searchable hub for efficient access to documents, FAQs, and best practices.",
+      "keywords": "LLM Development, AI Workflow, AI Chatbot, Document AI, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "759d5897b49a6707aa08b5c7ff4f3214669e58785830074ffcc9223a9fe9eb2d",
+        "Answers": "b27be7ade7534f7d44335a62cd7e1b1c8b9bdd1215b5b885a1ce4d933df2bbe1",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "why-do-companies-need-to",
+      "sourceSlug": "why-do-companies-need-to",
+      "workbookRow": 466,
+      "title": "Centralize Know-How to Boost Decision-Making",
+      "description": "Discover why centralized knowledge bases reduce redundant queries, retain expertise during turnover, and support informed decision-making.",
+      "keywords": "Open Source AI, GPT Integration, AI Workflow, Vector Search, Document AI",
+      "authoredDigests": {
+        "Question": "6361b5a783c4ff7c105bc6631d265ec88ef6f7e1a0ee83ade04c15303d93d6ca",
+        "Answers": "992e67ea25fbf04eaa0d8452d84b144d580f0d1c067ea34841e20b684eed4b53",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-problems-can-the-company-s-internal-knowledge-base-solve",
+      "sourceSlug": "what-problems-can-the-company-s-internal-knowledge-base-solve",
+      "workbookRow": 467,
+      "title": "Solve Fragmented Info & Onboarding Gaps",
+      "description": "Learn how an internal KB resolves fragmented knowledge, repetitive queries, and slow onboarding while safeguarding expert knowledge from staff turnover.",
+      "keywords": "AI Knowledge Management, AI Chatbot, Open Source AI, Document AI, FastGPT",
+      "authoredDigests": {
+        "Question": "692b5a4c885a12b0d57aa3e9299922770e9492236161cb0912a4f45c287b3801",
+        "Answers": "a50314277bca469ab59acc8f918736ed6d497d506be2313919f1c0e8ef44d39d",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-keep-the-content-of-the-knowledge-base-updated-in-real-time",
+      "sourceSlug": "how-to-keep-the-content-of-the-knowledge-base-updated-in-real-time",
+      "workbookRow": 469,
+      "title": "Ensure Instant KB Updates Through API and Webhook",
+      "description": "Learn how continuous synchronization with source systems via APIs and webhooks keeps knowledge base content instantly updated as data changes.",
+      "keywords": "Task Automation AI, API Integration, Open Source AI, Intelligent Q&A, Vector Search",
+      "authoredDigests": {
+        "Question": "b0319d448dfa49c934ecbdba5e88b0c5b54b018fb8cc6d33636e620c995253a1",
+        "Answers": "a416507153a6c86838bfb223dc9add5938dc0233d3ffbd5ebbec0eef28ce30f7",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-can-an-enterprise-knowledge-base-ensure-data-security",
+      "sourceSlug": "how-can-an-enterprise-knowledge-base-ensure-data-security",
+      "workbookRow": 470,
+      "title": "Enterprise KB Security: Access Control &",
+      "description": "Implement data security in enterprise KBs using RBAC, encryption, and policies for authentication, authorization, and protection.",
+      "keywords": "Smart Assistant, AI Automation, Enterprise AI, FastGPT, AI Platform",
+      "authoredDigests": {
+        "Question": "e53d5932bb69a640f3f6abd6e92515ae0803fc658da91a6cade0bf7507504d87",
+        "Answers": "ee9436389da08086e5870ad6b12b91a06ef7394ce4f2cdd75f086b631bfd7746",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-improve-the-retrieval",
+      "sourceSlug": "how-to-improve-the-retrieval",
+      "workbookRow": 471,
+      "title": "Accelerate KB Retrieval: Indexing & Caching Tips",
+      "description": "Learn to speed up knowledge base searches using efficient indexing, query optimization, and caching strategies to maintain result accuracy.",
+      "keywords": "AI Automation, Vector Search, Task Automation AI, Open Source AI, Document AI",
+      "authoredDigests": {
+        "Question": "e025788588fc7d293fcc1ec294e6162d1a4543c7f393f53b9f65f55ae619955c",
+        "Answers": "e1f0f43b89bda5d35d5929e02fefcbcf9f20466d1063c54937b1c3458ac7d657",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-types-of-materials-are",
+      "sourceSlug": "what-types-of-materials-are",
+      "workbookRow": 472,
+      "title": "Essential Materials for Your Company's Knowledge",
+      "description": "Discover which materials to include in a company knowledge base, such as SOPs, product specs, and troubleshooting guides, to boost employee efficiency.",
+      "keywords": "AI Knowledge Management, AI Platform, AI Workflow, AI Chatbot, Document AI",
+      "authoredDigests": {
+        "Question": "9e7ec0fde4de592c18759ae9f186d7abbd26ecaa64168175218c37765f98f5f2",
+        "Answers": "2941e05fbaf313a6ea90146f33dac79f9a7005eec76ae0c28b95479c2d3331cb",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-quickly-import-existing",
+      "sourceSlug": "how-to-quickly-import-existing",
+      "workbookRow": 473,
+      "title": "AI-Powered File Import for Knowledge Bases",
+      "description": "Use AI ingestion tools to extract text and metadata from files, rapidly populating your knowledge base while maintaining accuracy.",
+      "keywords": "Intelligent Q&A, LLM Development, GPT Integration, AI Platform, Document AI",
+      "authoredDigests": {
+        "Question": "3454f076ac810bd84a9c7459af1bc51eee7ddb8ff3808c8c73dcf92c82cfe37b",
+        "Answers": "630624ff37e0557b0960809861aeae1da1387f3d7ec82d1692c9fa817d00967a",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-the",
+      "sourceSlug": "can-ai-automatically-generate-the",
+      "workbookRow": 474,
+      "title": "AI-Generated Directory Structures for KBs",
+      "description": "Learn how AI uses topic modeling and clustering to automatically organize knowledge base content into logical directory structures for better navigation.",
+      "keywords": "AI Automation, GPT Integration, Enterprise AI, Document AI, Open Source AI",
+      "authoredDigests": {
+        "Question": "b3e7a73d8a8976f978b655662f4bf1f7299813bd9f0db05cc47d484d9a08391d",
+        "Answers": "289ad3b1b340e2b5ca267323f8eb9e5f1237c8aeace863b147d0dcad156b3d4b",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-knowledge-bases-help-new-employees-get-up-to-speed-quickly",
+      "sourceSlug": "how-knowledge-bases-help-new-employees-get-up-to-speed-quickly",
+      "workbookRow": 475,
+      "title": "Onboard New Hires Faster with a Knowledge Base",
+      "description": "Discover how a well-organized knowledge base accelerates new hire onboarding with instant access to policies, procedures, and role-specific information.",
+      "keywords": "AI Platform, Enterprise AI, Vector Search, AI Workflow, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "e6a96b3d0e1dc13ed64cd8d8c9429ed1dbac063dd2162bcf40971badd99e6068",
+        "Answers": "1996194c67c960ddc7179cd98e00dbcb9aece9b402d9a5493963531c4815493c",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-integrate-the-enterprise",
+      "sourceSlug": "how-to-integrate-the-enterprise",
+      "workbookRow": 476,
+      "title": "Connect Your Knowledge Base with Other Systems",
+      "description": "Learn how APIs and connectors enable data sharing between your knowledge base and other systems, plus key requirements for success.",
+      "keywords": "AI Workflow, Open Source AI, AI Knowledge Management, AI Platform, Smart Assistant",
+      "authoredDigests": {
+        "Question": "8460f7d972c49062e7d08f1a0e8af733033160ea4d4a62053cdc1703ac2dddcb",
+        "Answers": "0771913b8cfc2223d1d64e630fee279192262cf6a2bc085d5346591c1cd6849c",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-detect-duplicate-content-in-a-knowledge-base",
+      "sourceSlug": "can-ai-automatically-detect-duplicate-content-in-a-knowledge-base",
+      "workbookRow": 477,
+      "title": "How AI Identifies Duplicate Content in Your",
+      "description": "Understand how NLP and ML algorithms go beyond word matching to analyze content semantically, calculating similarity scores to pinpoint duplicates.",
+      "keywords": "Open Source AI, Task Automation AI, Vector Search, AI Platform, AI Workflow",
+      "authoredDigests": {
+        "Question": "edbb0a268e78edc2d19b473baf4152381459507a10d471504ad8997e3e953830",
+        "Answers": "5f2e1404113d9abf3dd150d6e29f6e50b72754226e7d093b0f97563a4ca12cc1",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-improve-the-user",
+      "sourceSlug": "how-to-improve-the-user",
+      "workbookRow": 478,
+      "title": "Enhance Your Knowledge Base User Experience",
+      "description": "Learn to enhance your knowledge base UX with robust search, clear information architecture, and content updates for improved accessibility.",
+      "keywords": "LLM Development, Task Automation AI, AI Automation, Smart Assistant, Open Source AI",
+      "authoredDigests": {
+        "Question": "40d5f91e80c5167e90bb5fa667a263e073881430ea575743e6e0e903a82369cb",
+        "Answers": "94b0b49a83f9781d533b406a6eb4f28bb2498cf1763f46506ff8dfcf27cf6bc6",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-can-a-knowledge-base-help-teams-reduce-communication-costs",
+      "sourceSlug": "how-can-a-knowledge-base-help-teams-reduce-communication-costs",
+      "workbookRow": 479,
+      "title": "Cut Team Communication Costs with a Central",
+      "description": "See how a knowledge base cuts repetitive questions, provides documented procedures, and enables independent answer access to reduce communication overhead.",
+      "keywords": "AI Chatbot, Vector Search, Smart Assistant, Intelligent Q&A, AI Workflow",
+      "authoredDigests": {
+        "Question": "535baf1bc7e7ca4a53d3c439537a342874e481b8ed52e8d5adccc3e60ec4ba4a",
+        "Answers": "db33f1b71abac0212a8c3659aa2a5c3d527cf274618a76fce8244c357edbdbf3",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-does-rag-retrieval-augmented-generation",
+      "sourceSlug": "what-does-rag-retrieval-augmented-generation",
+      "workbookRow": 480,
+      "title": "Understand RAG: AI with External Knowledge",
+      "description": "Learn how RAG blends retrieval with generation to produce more accurate, up-to-date AI responses grounded in relevant external information.",
+      "keywords": "GPT Integration, Task Automation AI, Document AI, AI Knowledge Management, LLM Development",
+      "authoredDigests": {
+        "Question": "0083dad7b65820914a63dc94da713d45b526950fe931bb2cc14d67c7f8dab1d6",
+        "Answers": "a2116629de18815de0392195d8e6a3f0cf762cf6dc6e4be1198edcbdb066b67e",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "why-is-rag-important-for",
+      "sourceSlug": "why-is-rag-important-for",
+      "workbookRow": 481,
+      "title": "Why RAG Matters for Accurate AI Question Answering",
+      "description": "Discover why RAG is key for AI question answering, as it retrieves information chunks from sources to deliver more accurate and trustworthy responses.",
+      "keywords": "Task Automation AI, Smart Assistant, Document AI, Open Source AI, AI Workflow",
+      "authoredDigests": {
+        "Question": "7c76c5b622465a4534015427b47c76928a1771c5abbd4036bf7c49ec4a31bb28",
+        "Answers": "4c326b03d3beef84a1677c1c494209c5b3b3a32b295e9bbf190183ce4249012b",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-does-ai-use-rag-to-understand-long-documents",
+      "sourceSlug": "how-does-ai-use-rag-to-understand-long-documents",
+      "workbookRow": 482,
+      "title": "Extract Insights from Lengthy Texts Using RAG",
+      "description": "Learn how RAG chunks long documents, retrieves snippets via embeddings, and generates informed responses using retrieved context.",
+      "keywords": "Vector Search, GPT Integration, FastGPT, AI Automation, LLM Development",
+      "authoredDigests": {
+        "Question": "39f88a863e57c08828878652b94441af1c4b69737174908d0df5c49334d15af2",
+        "Answers": "1e8a730e334385d036180e06bbcc9835a9b3181fa41cb8ec5f193db4af3464c4",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "which-data-intensive-scenarios-is-rag",
+      "sourceSlug": "which-data-intensive-scenarios-is-rag",
+      "workbookRow": 483,
+      "title": "Data-Heavy Environments Where RAG AI Excels",
+      "description": "Explore how RAG suits data-intensive tasks by retrieving from large sources to synthesize grounded, informed responses from specific datasets.",
+      "keywords": "Enterprise AI, AI Workflow, AI Knowledge Management, Intelligent Q&A, LLM Development",
+      "authoredDigests": {
+        "Question": "f3d33c7b089b39f6d8a8797fb1b414aa2409a8f6b3b6b6423ce03aef6b82e0b8",
+        "Answers": "ea55d493c5ae52bdb8e05bd1403676ef5c899aae149a51186907410bf50c264e",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-make-rag-retrieve-the-latest-information-in-real-time",
+      "sourceSlug": "how-to-make-rag-retrieve-the-latest-information-in-real-time",
+      "workbookRow": 484,
+      "title": "Keep RAG Current with Real-Time Data Ingestion",
+      "description": "Learn how dynamic data pipelines and indexing strategies enable RAG to ingest and process new information almost immediately for real-time retrieval.",
+      "keywords": "Enterprise AI, LLM Development, AI Chatbot, AI Workflow, Document AI",
+      "authoredDigests": {
+        "Question": "bfd9065e57f624b5344462ba3065f13ab23a5c82006ed23f3592e45f23324cb5",
+        "Answers": "ee87257f10fae15d4e908c7b91ca8162d1d978eb48c30c7b7149148cdf1bb445",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-underlying-technical-support-does",
+      "sourceSlug": "what-underlying-technical-support-does",
+      "workbookRow": 485,
+      "title": "Building RAG: Key Technical Components You Need",
+      "description": "Discover the three key technical pillars—embedding models, vector databases, and integration pipelines—alongside LLMs required for RAG systems.",
+      "keywords": "GPT Integration, API Integration, AI Chatbot, Open Source AI, AI Automation",
+      "authoredDigests": {
+        "Question": "c34b36a38220d86abe5f117c93f8124bd5192618b47959d5645c76bd0573a93b",
+        "Answers": "d4e6df1abd7636fc75d2bf0f28f56db0009d4ac37826a02c0b36ec7ddf7e669a",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-determine-if-a",
+      "sourceSlug": "how-to-determine-if-a",
+      "workbookRow": 486,
+      "title": "Identify RAG Systems by These Telltale Signs",
+      "description": "Learn to recognize RAG systems by checking documentation, looking for separate retrieval components, and observing query phases in the architecture.",
+      "keywords": "Open Source AI, AI Workflow, FastGPT, AI Chatbot, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "fb6f3f8f2f7f7071a19dbf070d6242ece8ca6ee633f5201bb7c725a86e600803",
+        "Answers": "dc830a9e3d784b529fbf8a347b0f477d04154bec0305bbe20fcfef8e8cbc06bd",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-are-the-advantages-of-rag-in-enterprise-knowledge-management",
+      "sourceSlug": "what-are-the-advantages-of-rag-in-enterprise-knowledge-management",
+      "workbookRow": 487,
+      "title": "Why RAG Is Key for Enterprise Knowledge Accuracy",
+      "description": "Learn how RAG grounds answers in authoritative docs to reduce factual errors, improving accuracy and reliability for enterprise knowledge management.",
+      "keywords": "AI Workflow, Document AI, Task Automation AI, Intelligent Q&A, AI Automation",
+      "authoredDigests": {
+        "Question": "bcdc36719ba0bd6bc4d4aaedbd7c36f4fba6aee16d97a7e2ca7a737d230deeb5",
+        "Answers": "1d5008f21782aaf9dadd032b9da763127737c30b7fd451ddc7fbff7f8e41bd82",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-reduce-the-computational",
+      "sourceSlug": "how-to-reduce-the-computational",
+      "workbookRow": 488,
+      "title": "Lower RAG Compute Costs Through Strategic",
+      "description": "Explore practical techniques like metadata filtering, lightweight rerankers, hybrid search, and model quantization to reduce RAG computation costs.",
+      "keywords": "GPT Integration, LLM Development, Intelligent Q&A, AI Knowledge Management, AI Chatbot",
+      "authoredDigests": {
+        "Question": "b45f39967c698118fb6cbc2111d1f00df9cc508732baf6c1198a681d8ad108bb",
+        "Answers": "01194b9b1edf15c39b21995308302b5b48145f50a78878c1d5307d41bc9f7f62",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-rag-handle-unstructured-data",
+      "sourceSlug": "can-rag-handle-unstructured-data",
+      "workbookRow": 489,
+      "title": "How RAG Processes Unstructured Data Like PDFs",
+      "description": "Learn how RAG manages unstructured data by chunking documents, creating embeddings, and retrieving relevant pieces from PDFs, emails, and more.",
+      "keywords": "AI Knowledge Management, AI Workflow, FastGPT, GPT Integration, Document AI",
+      "authoredDigests": {
+        "Question": "bdc60317c83e045f04e0985f17ccd96e9fbf0e5e2aeec2fa9ad1bfc13bd64d6e",
+        "Answers": "061378051b8c994d539ab8ef4016fad3162f905a95bcd7244f2a2442266f443a",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-does-rag-ensure-the",
+      "sourceSlug": "how-does-rag-ensure-the",
+      "workbookRow": 490,
+      "title": "Keep RAG Responses Timely With Up-to-Date Data",
+      "description": "Learn how RAG achieves content timeliness by dynamically pulling from updatable external data stores and performing regular data refreshes.",
+      "keywords": "Open Source AI, Task Automation AI, LLM Development, AI Automation, Document AI",
+      "authoredDigests": {
+        "Question": "a9aae7f2d83de4578f56f128a7ba4c36df7d92d18f9d44ae3d7243d5a1d67270",
+        "Answers": "cf09962cbb357885455f9bae700e9302540292fee6b23d6ab319d27e9a6772e0",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "why-are-enterprises-paying-more-and-more-attention-to-rag-solutions",
+      "sourceSlug": "why-are-enterprises-paying-more-and-more-attention-to-rag-solutions",
+      "workbookRow": 491,
+      "title": "Key Enterprise Benefits of RAG: Accuracy & Cost",
+      "description": "See how RAG improves enterprise AI with verified data grounding, boosting accuracy, domain specificity, and data security while cutting costs.",
+      "keywords": "API Integration, Intelligent Q&A, GPT Integration, Smart Assistant, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "576fe0bbd510b3f3ae76b7419ed9a74533bd3a1d58e47ba4fabbc5705cc6b2e6",
+        "Answers": "5728db06c687c1dae4e79ccf15165d1e1afd01b31010f48d1c1d6555a54af7c9",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-much-does-rag-help",
+      "sourceSlug": "how-much-does-rag-help",
+      "workbookRow": 492,
+      "title": "Boosting Search Precision: RAG’s Role in Accurate",
+      "description": "Learn how RAG improves search accuracy via semantic document retrieval and authoritative data grounding, going beyond built-in model knowledge.",
+      "keywords": "AI Platform, Enterprise AI, API Integration, Smart Assistant, AI Workflow",
+      "authoredDigests": {
+        "Question": "290a285cb51b6b8d78d34d630efa91d72a0134b2dec5176ec5276fb37ee1aa7b",
+        "Answers": "85089db482410b2014f57164702c3d4faa46127fece0f1fd8200ae13215a0429",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-train-rag-to-make-results-more-in-line-with-requirements",
+      "sourceSlug": "how-to-train-rag-to-make-results-more-in-line-with-requirements",
+      "workbookRow": 493,
+      "title": "Achieve Precise RAG Outputs Through Targeted",
+      "description": "Discover how to tailor RAG to your requirements by preparing domain-specific data and optimizing retrieval and generation components.",
+      "keywords": "Open Source AI, API Integration, AI Automation, AI Knowledge Management, Task Automation AI",
+      "authoredDigests": {
+        "Question": "fc69302aadeda9fa8c50251d2cd6d3260d9cd5e506237f7f01ce3f255b7c275a",
+        "Answers": "aaddf58f81849c17198ce47860b071375bae9075ebf74abcfdb07f178263912c",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-rag-be-combined-with-speech-recognition",
+      "sourceSlug": "can-rag-be-combined-with-speech-recognition",
+      "workbookRow": 494,
+      "title": "Combining RAG and Speech Recognition",
+      "description": "Learn how RAG and ASR combine by converting speech to text, and discover why managing recognition accuracy is key to avoiding error propagation.",
+      "keywords": "GPT Integration, API Integration, AI Chatbot, FastGPT, AI Workflow",
+      "authoredDigests": {
+        "Question": "97af99ebfb679cd35a2f6d5838cbe22e2469c47c2910eac40fc9a8677786ff19",
+        "Answers": "aa89f69d163df3ecd07a4d1f3852abcd3ac3ccd98bf6c4ad38f4083611050e3d",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "is-rag-suitable-for-mobile-applications",
+      "sourceSlug": "is-rag-suitable-for-mobile-applications",
+      "workbookRow": 495,
+      "title": "Mobile RAG: Choosing Between On-Device and Cloud",
+      "description": "Explore mobile RAG implementation strategies by weighing on-device vs cloud trade-offs for latency, storage, and connectivity.",
+      "keywords": "API Integration, FastGPT, Document AI, Vector Search, AI Workflow",
+      "authoredDigests": {
+        "Question": "c5fd687cb5a42533aafbbae51340817f034f1bffd3c9d5e9b419f0770829fa09",
+        "Answers": "800585b3cfed376082b8a2125ebefa91fa2764d466653cc7e4b5206b4d26125a",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-evaluate-the-value",
+      "sourceSlug": "how-to-evaluate-the-value",
+      "workbookRow": 496,
+      "title": "Key Metrics for Measuring RAG's Business Impact",
+      "description": "Metrics quantifying RAG's impact on accuracy, relevance, and efficiency, evaluating value through KPIs like answer correctness and operational gains.",
+      "keywords": "Task Automation AI, AI Knowledge Management, AI Platform, Open Source AI, LLM Development",
+      "authoredDigests": {
+        "Question": "2f12f36da03b01782ad62997b7e280b9623a3d0961e5399a874d9771278f3566",
+        "Answers": "1d01cb8535c5ca543e32d90bd9552e85317ce3b8a2903cddfe570e808c778800",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-much-storage-space-is-required-for-ai-to-access-company-documents",
+      "sourceSlug": "how-much-storage-space-is-required-for-ai-to-access-company-documents",
+      "workbookRow": 503,
+      "title": "Storage Requirements for AI Access to Company",
+      "description": "Learn typical storage needs from 1 GB to 100+ TB, with key factors like document volume, type, and AI format influencing requirements.",
+      "keywords": "GPT Integration, Enterprise AI, Open Source AI, AI Chatbot, AI Platform",
+      "authoredDigests": {
+        "Question": "c105f36900f054a4d66c89132f4d52edf4f01e824b76e335b8e3c3b904b108f9",
+        "Answers": "1bf50caa31e7a012cc9284c2d73aca83f3045cf5193d0503ffba4b9aa0f16eab",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-update-the-index-information-of-documents",
+      "sourceSlug": "can-ai-automatically-update-the-index-information-of-documents",
+      "workbookRow": 504,
+      "title": "Automate Document Index Updates with NLU",
+      "description": "AI applies NLP and ML to auto-extract entities and topics, updating index metadata like keywords and categories with minimal manual work.",
+      "keywords": "FastGPT, Open Source AI, API Integration, Enterprise AI, LLM Development",
+      "authoredDigests": {
+        "Question": "1a8d8146addadc4a18d309dd0681bd0bc7761eb4404b84ddf6b52c21674d52a2",
+        "Answers": "f96260069771981884e9aabb77d8ad9755d75d49f1556630abb1e48447afcd03",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-can-ai-quickly-retrieve",
+      "sourceSlug": "how-can-ai-quickly-retrieve",
+      "workbookRow": 508,
+      "title": "Fast AI-Powered Historical Contract Retrieval",
+      "description": "AI uses OCR, NLP, and semantic search with vector databases to digitize and quickly find contract content through concept-level similarity matching.",
+      "keywords": "Smart Assistant, Document AI, Vector Search, AI Automation, Open Source AI",
+      "authoredDigests": {
+        "Question": "4db80ae480bb84b15a3e156a3992b912a8a5049a2cc5b12b86eb5a7c1e285b34",
+        "Answers": "930ec66dd5212a3462b64debf8a9afd91b7d4bdc03c3d8ba1c1c03f9d4bf2fa3",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-keep-the-knowledge-base-content-fresh",
+      "sourceSlug": "how-to-keep-the-knowledge-base-content-fresh",
+      "workbookRow": 511,
+      "title": "Systematic Processes to Keep Knowledge Base",
+      "description": "Learn to establish regular review cycles like quarterly audits and event-triggered updates to continuously refine content for accuracy and relevance.",
+      "keywords": "FastGPT, AI Platform, GPT Integration, Intelligent Q&A, Smart Assistant",
+      "authoredDigests": {
+        "Question": "745f95829dc81b75dce12f93ed4a953e117eef97b94a7b20e38787d1edc64894",
+        "Answers": "7971a2e3a501ef71d2cc4b461148c91a189821f16039b8df4bfee8498027eeb7",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-enable-multi-person-collaborative-editing-in-a-knowledge-base",
+      "sourceSlug": "how-to-enable-multi-person-collaborative-editing-in-a-knowledge-base",
+      "workbookRow": 514,
+      "title": "Enable Real-Time Collaborative Knowledge Base",
+      "description": "Discover how to set up multi-person editing with user access control, real-time synchronization, and version history tracking for effective collaboration.",
+      "keywords": "AI Chatbot, Vector Search, Smart Assistant, AI Workflow, Open Source AI",
+      "authoredDigests": {
+        "Question": "b122fb604a06035b3a0a0af91eaf981bccfc3f5fd0cb3793023a2136aed512e7",
+        "Answers": "e5cd03e4c0fbd54ce81f5b2b10a45e9bce67fad6f9da30e1aae05265f70d7e39",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-improve-the-long-term-maintainability-of-a-knowledge-base",
+      "sourceSlug": "how-to-improve-the-long-term-maintainability-of-a-knowledge-base",
+      "workbookRow": 517,
+      "title": "Ensure Long-Term Knowledge Base Maintainability",
+      "description": "Strategies for long-term knowledge base maintenance through standardized workflows, governance policies, and clear accountability for content updates.",
+      "keywords": "AI Workflow, Intelligent Q&A, Task Automation AI, AI Chatbot, Open Source AI",
+      "authoredDigests": {
+        "Question": "01a6e138f609ad02d25361137f4b966af047c256358976ade203ed5f97779f83",
+        "Answers": "ab9334cfe3cf881d4d97d24d75e177266529bbcc713f6e54cc2ee2e7c47ba835",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-avoid-information-redundancy",
+      "sourceSlug": "how-to-avoid-information-redundancy",
+      "workbookRow": 518,
+      "title": "Reduce Knowledge Base Redundancy Through Better",
+      "description": "Learn to prevent knowledge base redundancy with single-sourcing, clear ownership, and stakeholder review cycles for content consolidation.",
+      "keywords": "Open Source AI, Enterprise AI, Vector Search, Smart Assistant, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "2d38d3a7a67637c247dc6e86237f870fdd1429f759046e75d64f57c07a621625",
+        "Answers": "b08166872d9ef94b6f52f97125d59822c56a502ac7b47559de86ee843565f72c",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-enable-instant-comments",
+      "sourceSlug": "how-to-enable-instant-comments",
+      "workbookRow": 520,
+      "title": "Add Instant Feedback Comments to Knowledge Base",
+      "description": "Learn how to set up instant feedback comments on knowledge base articles using content management system features or dedicated plugins.",
+      "keywords": "Smart Assistant, Open Source AI, AI Knowledge Management, Task Automation AI, GPT Integration",
+      "authoredDigests": {
+        "Question": "703a1dcdadbdf0173305e56ac846a5baa114fe51c295ee5e8836261b3407a1a1",
+        "Answers": "1d44bcf274b3a5f88dc893248b67ad4423061fa2a2f492461d569e7b1edebc8e",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-synchronize-the-knowledge",
+      "sourceSlug": "how-to-synchronize-the-knowledge",
+      "workbookRow": 524,
+      "title": "Sync Knowledge Base with Real-Time Data",
+      "description": "Discover methods to synchronize knowledge base data in real time via APIs, webhooks, or integration platforms and event triggers.",
+      "keywords": "FastGPT, Document AI, AI Chatbot, API Integration, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "9a126543e37fa6e7c5599288fea20f5d442a2e34c190283416ff27cd57aee42c",
+        "Answers": "5265b9d279f630897d533079b7465544820204d21205c8db5b07945022284ac3",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-the-knowledge-base-automatically-recommend-relevant-materials",
+      "sourceSlug": "can-the-knowledge-base-automatically-recommend-relevant-materials",
+      "workbookRow": 527,
+      "title": "Enable Auto-Recommendations for Knowledge Base",
+      "description": "Set up AI-driven auto-recommendations in your knowledge base by analyzing content, user intent, and patterns to suggest relevant materials.",
+      "keywords": "AI Platform, Vector Search, Open Source AI, Intelligent Q&A, Document AI",
+      "authoredDigests": {
+        "Question": "467ae5f6a5d7d1fb49bc74a2dac31324167e745bf8f3155a26d39efa62189919",
+        "Answers": "ac16d6accf72005dced581d6c24d2788bfbccad7548caa9e2f008399861342b0",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-update-materials-by-integrating-external-news",
+      "sourceSlug": "can-ai-automatically-update-materials-by-integrating-external-news",
+      "workbookRow": 529,
+      "title": "Automate Content Updates Using AI and News Feeds",
+      "description": "Learn how AI leverages APIs, web scraping, and NLP to automatically refresh materials from news sources, requiring reliable feeds and analysis.",
+      "keywords": "AI Platform, FastGPT, API Integration, Intelligent Q&A, AI Automation",
+      "authoredDigests": {
+        "Question": "554b76d1b53b95bf1df9099dacd66bff583b112c008c5e079b52a4e5eaaaedd8",
+        "Answers": "7cd3a99557eab9d0793f33da1dc782574d314e89c96edab9191be3af9a03895a",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-ai-automatically-expands-the",
+      "sourceSlug": "how-ai-automatically-expands-the",
+      "workbookRow": 533,
+      "title": "Auto-Expand Knowledge Base Content with AI and NLP",
+      "description": "Learn how AI uses NLP and machine learning to semantically analyze existing data and automatically generate or retrieve new knowledge base content.",
+      "keywords": "Vector Search, AI Workflow, Smart Assistant, LLM Development, AI Automation",
+      "authoredDigests": {
+        "Question": "06daf65da8a954829c25961f92a8870055e2d0f6d7d20a8740c6270bbc13c5e2",
+        "Answers": "22ff266f49644e8717b064fc4d27bc7c9b422b656f0ea20296cd4913a65a905b",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "does-the-knowledge-base-support",
+      "sourceSlug": "does-the-knowledge-base-support",
+      "workbookRow": 534,
+      "title": "Achieve Cross-Department Data Sharing",
+      "description": "Learn how permission controls, standardized taxonomies, and metadata enable knowledge bases to share data across departments and eliminate silos.",
+      "keywords": "Open Source AI, Enterprise AI, API Integration, Document AI, AI Workflow",
+      "authoredDigests": {
+        "Question": "0ebef99b7e0a71da54cd6ec50ad8d4d28d1b8d3a957edfd621d2f0cdac97ac52",
+        "Answers": "414eccf8170f43c5b7bce49d8bb64dee80a95540155ec5063204496eb20bfba6",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-export-important-data-from-the-knowledge-base-with-one-click",
+      "sourceSlug": "can-ai-export-important-data-from-the-knowledge-base-with-one-click",
+      "workbookRow": 535,
+      "title": "Efficiently Export Knowledge Base Data with AI",
+      "description": "Learn how AI can assist in exporting knowledge base data, covering platform features, permissions, and the need for secure API access or built-in tools.",
+      "keywords": "Open Source AI, Document AI, GPT Integration, LLM Development, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "7bb75a70e5d5b354022a020e4813198ad6c704ecb54db893575a8b98e501ff47",
+        "Answers": "0da0f9dee34038f27d5d0e73b79dc0132a4a3c7f3e40036bc4fea9f01d6893a7",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-enable-multi-dimensional-search",
+      "sourceSlug": "how-to-enable-multi-dimensional-search",
+      "workbookRow": 536,
+      "title": "Achieve Multi-Dimensional Search for Your",
+      "description": "Discover how to implement multi-dimensional search, letting users filter by category, author, date, and tags to enhance findability via metadata.",
+      "keywords": "FastGPT, Enterprise AI, LLM Development, API Integration, Task Automation AI",
+      "authoredDigests": {
+        "Question": "7d95257c716b020613582562bb565623abcd6385b9ad78d46b0fae87afa6dad7",
+        "Answers": "176057873c393eb07e4102e2a7a53f2785f84f04c9748cf48665efbb09d60286",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-ensure-the-stability-of-the-knowledge-base-during-access-peaks",
+      "sourceSlug": "how-to-ensure-the-stability-of-the-knowledge-base-during-access-peaks",
+      "workbookRow": 537,
+      "title": "Strategies for Stable Knowledge Base Under Peak",
+      "description": "Learn how to maintain knowledge base stability during traffic spikes by scaling infrastructure and using load balancing to evenly distribute user requests.",
+      "keywords": "AI Chatbot, Intelligent Q&A, AI Automation, Open Source AI, Document AI",
+      "authoredDigests": {
+        "Question": "cd08a045d24a698ca6eb34f03cd790c42048b343a8a9ce16260b3223e069dd94",
+        "Answers": "7905eee5d3293b355f4d5ec355011b6b39c79e087c17ef56d4e3f8d136dcabd4",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "can-ai-adjust-its-retrieval",
+      "sourceSlug": "can-ai-adjust-its-retrieval",
+      "workbookRow": 538,
+      "title": "Adaptive AI Retrieval Using Historical Access Data",
+      "description": "Discover how AI adapts retrieval strategies using access records, leveraging reinforcement learning to analyze patterns and refine search results.",
+      "keywords": "Task Automation AI, Smart Assistant, GPT Integration, AI Platform, API Integration",
+      "authoredDigests": {
+        "Question": "f0eae65d9b52c7ad498f67d498e0fa7d3772a31941bce83e621a6587d387cf4a",
+        "Answers": "f89f7144f9a7151e747288b1daf5bb2ce66b64eb857d47ae901ce6f993879278",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-achieve-fast-full-text",
+      "sourceSlug": "how-to-achieve-fast-full-text",
+      "workbookRow": 582,
+      "title": "Optimize Knowledge Base Fast Full-Text Search",
+      "description": "Learn how to achieve fast full-text search in a knowledge base using efficient indexing, dedicated tools and scalable resource setup.",
+      "keywords": "Intelligent Q&A, Smart Assistant, AI Automation, AI Platform, Enterprise AI",
+      "authoredDigests": {
+        "Question": "67e5777472012467102b2e082c82de8cbceea6e62e28e9b8c3b7265d46e2d40e",
+        "Answers": "085252f4e026256cd1f4c2e9b3105d229c0273b40eab40f7498f0f5dec91df64",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-enable-real-time-multi-person",
+      "sourceSlug": "how-to-enable-real-time-multi-person",
+      "workbookRow": 587,
+      "title": "Set Up Real-Time Multi-Person KB Collaboration",
+      "description": "Learn how to set up real-time multi-person collaboration for your knowledge base, including backend tech for seamless concurrent edit syncing.",
+      "keywords": "Vector Search, Smart Assistant, AI Workflow, AI Chatbot, Enterprise AI",
+      "authoredDigests": {
+        "Question": "166a80e306b4f0b64b0d714b8cbbdac4dd952627915555d2ce4f7e2eb677f40e",
+        "Answers": "f575fdff9a363fd502eca260c457d44aa5c4b7fa5b82c7264c2f84d31ac2944d",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "how-to-enable-cross-department-sharing-and-search-support-in-the-knowledge-base",
+      "sourceSlug": "how-to-enable-cross-department-sharing-and-search-support-in-the-knowledge-base",
+      "workbookRow": 591,
+      "title": "Configure Cross-Department KB Sharing and Search",
+      "description": "Discover how to set up cross-department sharing and search with granular user group permissions and content metadata tagging for your knowledge base.",
+      "keywords": "AI Automation, AI Knowledge Management, LLM Development, Enterprise AI, Task Automation AI",
+      "authoredDigests": {
+        "Question": "7a10aae129b7db095b10af46eab1b1bd6b5ebc9ca4c34d3a4f2ad4231ada6e8a",
+        "Answers": "6454672d7a72d24017785550d1bc24168ec51cb78b49767d9a8eabc3a978f8e2",
+        "Category": "95c722528823ca95c4acf44b59c17ce78b5810d749767ab83e4c9188d338dc92"
+      }
+    },
+    {
+      "contentId": "what-is-a-large-model",
+      "sourceSlug": "what-is-a-large-model",
+      "workbookRow": 602,
+      "title": "Understand What Large AI Models Are and Their",
+      "description": "Large AI models are deep learning systems trained on massive datasets, with billions to trillions of parameters for complex text and code tasks.",
+      "keywords": "Open Source AI, AI Platform, GPT Integration, LLM Development, AI Chatbot",
+      "authoredDigests": {
+        "Question": "7a12df5d820b46f8f519f0c7d133fc57c86c2ec9c8c9133126161a1913f029e2",
+        "Answers": "5d200b34ceb7d4b1e35ac202c973a7d48ecc127aeec024653226452349599f22",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-llm-mean",
+      "sourceSlug": "what-does-llm-mean",
+      "workbookRow": 603,
+      "title": "Learn What the Acronym LLM Stands For",
+      "description": "LLM stands for Large Language Model, an AI program that generates and understands human-like text using patterns from massive text datasets.",
+      "keywords": "FastGPT, Intelligent Q&A, AI Platform, Smart Assistant, Enterprise AI",
+      "authoredDigests": {
+        "Question": "e3a88341e2c841cc18aaaba5af21ee8b6d58244a8d7ae30462ebd9552ae63ea4",
+        "Answers": "ec29d5c5c0d65277373c3a54bb7747e06cf94ea6dbfe532f8113ab3da4dfc7f6",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "how-are-large-models-trained",
+      "sourceSlug": "how-are-large-models-trained",
+      "workbookRow": 605,
+      "title": "Understand the Process of Training Large AI Models",
+      "description": "Learn how large AI models are trained using massive datasets, supervised and self-supervised learning, and transformer neural network architecture.",
+      "keywords": "Task Automation AI, Enterprise AI, API Integration, Intelligent Q&A, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "06c8ee5d79576a6a00d394b451f5f92e6f2336be77fbd5aa420466b775f4a4fb",
+        "Answers": "0f0d712f533a0b2d027698e2c6e360b0e1bd75ef8c96ca8c1951605c29bf79e5",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "are-larger-language-models-smarter",
+      "sourceSlug": "are-larger-language-models-smarter",
+      "workbookRow": 607,
+      "title": "Discover How LLM Scale Impacts AI Performance",
+      "description": "Understand that larger language models often show enhanced benchmark performance, though intelligence is task-specific and tied to parameter and data",
+      "keywords": "AI Workflow, Task Automation AI, API Integration, Open Source AI, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "cdddf98c246265920c1903b1f7a5536969f19c15776383fd7a543f2f764a5c89",
+        "Answers": "b4b043f9e88f55b51858eaabca5c5ffb9b8c3feb2b8cb2bbe1da4319b551492a",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-is-a-vector-database",
+      "sourceSlug": "what-is-a-vector-database",
+      "workbookRow": 619,
+      "title": "Vector Databases for Embedding Storage and Fast",
+      "description": "Learn about vector databases, their purpose storing vector embeddings, and how they enable fast similarity searches via indexing algorithms.",
+      "keywords": "AI Workflow, Document AI, LLM Development, AI Knowledge Management, Vector Search",
+      "authoredDigests": {
+        "Question": "2e5e2a4d57ca81ecfcf17f83b5296dbdf74a7e29212992a689d3bfe4c805abc5",
+        "Answers": "33874281be0e437348d74840ee7113e5e7e62912379df80370ab80ce65b25b39",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-embeddings-improve-search-accuracy",
+      "sourceSlug": "can-embeddings-improve-search-accuracy",
+      "workbookRow": 626,
+      "title": "How Embeddings Boost Search Accuracy",
+      "description": "Discover how text embeddings create numerical vectors to improve search accuracy by matching conceptual similarity instead of just keywords.",
+      "keywords": "AI Knowledge Management, Task Automation AI, Intelligent Q&A, Document AI, AI Platform",
+      "authoredDigests": {
+        "Question": "ae6bfca66d0bcc530fcd0d607b0a1605b095558bc36ca3d8ba21b97fc2e71bae",
+        "Answers": "9f4da5a1220fdd9f34f59a661577d8eb06f16837d6bfb2d31ec9f954dabd3ae5",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-context-window-mean",
+      "sourceSlug": "what-does-context-window-mean",
+      "workbookRow": 645,
+      "title": "Language Model Context Window and Token Processing",
+      "description": "Learn about language model context windows, their token-based limits, and how they define a model’s short-term processing scope for prompts.",
+      "keywords": "AI Chatbot, AI Workflow, Task Automation AI, Open Source AI, Vector Search",
+      "authoredDigests": {
+        "Question": "f317435c2d8392e145e9b66b205a952e0a5549602a6bfd233aa83b2d095464f3",
+        "Answers": "63775cacbdc6435111bc002eb212f61202f0af19f5110e0b4b4aaa008ebf8a2d",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-transformer-mean",
+      "sourceSlug": "what-does-transformer-mean",
+      "workbookRow": 663,
+      "title": "Deep Learning Model Architecture Using",
+      "description": "Discover transformer models, their 2017 debut, self-attention design, and how they transformed sequential data processing for natural language tasks.",
+      "keywords": "AI Chatbot, FastGPT, Open Source AI, Enterprise AI, Smart Assistant",
+      "authoredDigests": {
+        "Question": "9298d6790c4b5531349814f010244133c2b59c201f0c047edf54c1b7fa27f7ac",
+        "Answers": "0f7389da568bacc64dd75d69736a39782f7041755d92faf0a045a5146052e4fa",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-transformers-process-images",
+      "sourceSlug": "can-transformers-process-images",
+      "workbookRow": 668,
+      "title": "How Transformers Process Images Using Patch",
+      "description": "Learn how transformers process image data by splitting visuals into patches and converting them into embedding vectors for tasks.",
+      "keywords": "AI Chatbot, Task Automation AI, Enterprise AI, Vector Search, API Integration",
+      "authoredDigests": {
+        "Question": "b09400cbb7b17abccd15204e08e686ceb28f54cc87944747e92058cc3d1f62f6",
+        "Answers": "740681f52a5061e71b517ce15d0e2f31a816dab81d00d2ce61b07d94c5ec1b61",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-ai-model-fine-tuning-mean",
+      "sourceSlug": "what-does-ai-model-fine-tuning-mean",
+      "workbookRow": 671,
+      "title": "AI Model Fine-Tuning for Targeted Task Adaptation",
+      "description": "Discover AI model fine-tuning, adapting pre-trained models to specific tasks using targeted datasets and optimized hyperparameters.",
+      "keywords": "AI Automation, AI Knowledge Management, Enterprise AI, Task Automation AI, FastGPT",
+      "authoredDigests": {
+        "Question": "57f025cd04001aaf0f63d7e47132ab5cf4111f3a8e9ec29b6e519aee49e7d001",
+        "Answers": "d73151de13b3fd680305c6d39ae70293d7f0eadcf7efd9117ac68357bd75d2c0",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-model-fine-tuning-improve-accuracy",
+      "sourceSlug": "can-model-fine-tuning-improve-accuracy",
+      "workbookRow": 673,
+      "title": "How Fine-Tuning Boosts AI Model Accuracy",
+      "description": "Learn how fine-tuning improves AI model accuracy for specific tasks, including required datasets and hyperparameter best practices.",
+      "keywords": "Enterprise AI, GPT Integration, Intelligent Q&A, AI Platform, Task Automation AI",
+      "authoredDigests": {
+        "Question": "e54b75796015937fb52d847bde2a21e988cd298ad17ef8510586d27325cac87a",
+        "Answers": "70b9b146713aebff58647407a7fe7a2ef42da6d41340c8a7ddd2eaa7881467b5",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-is-parameter-efficient-fine-tuning",
+      "sourceSlug": "what-is-parameter-efficient-fine-tuning",
+      "workbookRow": 674,
+      "title": "Parameter-Efficient Fine-Tuning: Low-Compute",
+      "description": "Learn how parameter-efficient fine-tuning adapts large pre-trained models by updating only a small subset of parameters to reduce computational costs for",
+      "keywords": "Vector Search, Task Automation AI, Intelligent Q&A, API Integration, GPT Integration",
+      "authoredDigests": {
+        "Question": "1bdb40b77bfa683d06c6ea3bd971b8bb604ca7bef4a3e8a252e9a4f2ce24efe4",
+        "Answers": "01d5dce0aec883295207d759fe40cf4ffc49ff8faccf28393ae81fe1e4095243",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "does-fine-tuning-necessarily-require-big",
+      "sourceSlug": "does-fine-tuning-necessarily-require-big",
+      "workbookRow": 675,
+      "title": "Fine-Tuning Data Requirements: Debunk Big Data",
+      "description": "Learn that fine-tuning doesn’t require big data universally, as it can work with small task-specific datasets aligned to a model’s pre-trained domain.",
+      "keywords": "AI Automation, Task Automation AI, Document AI, Enterprise AI, Smart Assistant",
+      "authoredDigests": {
+        "Question": "ffd984373dc781f76ec2547f221059496b2f87462f9bf592bbed79fe8b4951ea",
+        "Answers": "2143141e0bb0f4880997bed55e24c711b9af66ab9c29895a520c5839532e093c",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-fine-tuning-change-the-model-style",
+      "sourceSlug": "can-fine-tuning-change-the-model-style",
+      "workbookRow": 677,
+      "title": "Fine-Tuning: Adjusting Model Output Style",
+      "description": "Learn how fine-tuning can adjust a model’s output style by training on custom, style-aligned datasets that match desired tonal preferences.",
+      "keywords": "AI Chatbot, Task Automation AI, Intelligent Q&A, Smart Assistant, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "bfb58576bde2b732ff5425b9a1092f6a4e6e0aca17b63d16ce02b58529d8ee77",
+        "Answers": "59e378209526d85722cfc021a558fd95c19a0784efb44f6b7e8ad26e0347f99b",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-zero-shot-learning-mean",
+      "sourceSlug": "what-does-zero-shot-learning-mean",
+      "workbookRow": 680,
+      "title": "Zero-Shot Learning: ML Method for Unseen Task",
+      "description": "Understand the core of zero-shot learning, an ML approach that lets models handle unseen tasks or classes without specialized labeled training data.",
+      "keywords": "Open Source AI, AI Automation, AI Knowledge Management, LLM Development, Enterprise AI",
+      "authoredDigests": {
+        "Question": "8ed5f0a3a865af2a431cd4db62f5ed03447ef8d198ab3528e2fcdb3390afdd1e",
+        "Answers": "5c4af7b8ae1adf75eaebec287f1394cc38772d797edbd670333fe8721b4c62ac",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "why-can-ai-achieve-zero-shot-learning",
+      "sourceSlug": "why-can-ai-achieve-zero-shot-learning",
+      "workbookRow": 681,
+      "title": "Why Zero-Shot Learning Works for AI Systems",
+      "description": "Learn that zero-shot learning capability for AI comes from broad semantic representations built during large-scale pre-training across diverse datasets.",
+      "keywords": "AI Chatbot, Document AI, AI Automation, LLM Development, Smart Assistant",
+      "authoredDigests": {
+        "Question": "6023ebe843eb867b12d5ddf763aaab77a3d4e554280edfd18ea20b0692d922fb",
+        "Answers": "31422846f49ea7780afa94dc34d738a4a35f54a38a004e0ac46054b5d33f1efe",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "in-which-tasks-does-zero-shot-learning-perform-well",
+      "sourceSlug": "in-which-tasks-does-zero-shot-learning-perform-well",
+      "workbookRow": 683,
+      "title": "Zero-Shot Learning: Effective Task Categories",
+      "description": "Discover the types of tasks where zero-shot learning performs best, including recognition work tied to shared semantic attributes between known and new",
+      "keywords": "AI Automation, AI Chatbot, Task Automation AI, Vector Search, Enterprise AI",
+      "authoredDigests": {
+        "Question": "7e009c999d091ae8ea723bf45580b84c40694aa1f888bd2e0f3e0cea28a3a798",
+        "Answers": "4568768ce7cec407eed48b30ee3c9dc34d101cec9c68f9b8af85ea8d6c03f1bd",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "is-zero-shot-learning-a-manifestation-of-greater-intelligence",
+      "sourceSlug": "is-zero-shot-learning-a-manifestation-of-greater-intelligence",
+      "workbookRow": 684,
+      "title": "Zero-Shot Learning and Generalization Capabilities",
+      "description": "Learn that zero-shot learning is a robust generalization tool, not a definitive indicator of greater intrinsic AI intelligence.",
+      "keywords": "Open Source AI, AI Platform, Enterprise AI, Task Automation AI, API Integration",
+      "authoredDigests": {
+        "Question": "ae516a3dca6bd870692731a6886c1acf7b805593e7edbf5b3d76c1aa5c338f90",
+        "Answers": "11c691f453d0d1031ad4de2080d8f696d702e822bd68472288aaf698ea20ff26",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-zero-shot-learning-reduce-annotation",
+      "sourceSlug": "can-zero-shot-learning-reduce-annotation",
+      "workbookRow": 685,
+      "title": "Zero-Shot Learning: Cutting Annotation Costs",
+      "description": "Understand how zero-shot learning lowers annotation costs by using existing semantic knowledge to identify new classes without specialized labeled data.",
+      "keywords": "Open Source AI, AI Platform, Vector Search, AI Chatbot, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "e6ed36beb4d504e550faff8f58d8e5d097ec451cc45cef8c3c47b604fd6af776",
+        "Answers": "af1542f02bcdeb5b050ffd201cce41390b1a2d73b555fccbfb9347ac628a7575",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "does-zero-shot-learning-have-an",
+      "sourceSlug": "does-zero-shot-learning-have-an",
+      "workbookRow": 686,
+      "title": "Zero-Shot Learning Has an Inherent Error Rate",
+      "description": "Learn about inherent error rates in zero-shot learning, their typical causes, and key factors like auxiliary information quality.",
+      "keywords": "AI Chatbot, FastGPT, Open Source AI, AI Workflow, Task Automation AI",
+      "authoredDigests": {
+        "Question": "6fcbd3061631597803cb2a00a500028a078febe2a63cbfb636ee7b18b0bbea18",
+        "Answers": "3bc1b39d709fea17e034c09c72655ba162fbec373c5379cb7a7224fee50c914a",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "is-zero-shot-learning-highly-dependent-on-large-models",
+      "sourceSlug": "is-zero-shot-learning-highly-dependent-on-large-models",
+      "workbookRow": 688,
+      "title": "Zero-Shot Learning Does Not Need Large Models",
+      "description": "Understand zero-shot learning’s model requirements, traditional methods, and how foundation models boost its overall effectiveness.",
+      "keywords": "GPT Integration, AI Workflow, AI Chatbot, FastGPT, Enterprise AI",
+      "authoredDigests": {
+        "Question": "80ccd73b33ad92725424a701abfd334bdfc5981c90c7706c0881a5dd67c3a6b2",
+        "Answers": "605b5e79cd2d39d0b0e727b8b9a5678316a7062edd3dcb43f443eadd346d4d38",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-few-shot-learning-mean",
+      "sourceSlug": "what-does-few-shot-learning-mean",
+      "workbookRow": 690,
+      "title": "Few-Shot Learning: A Machine Learning Paradigm",
+      "description": "Learn the definition of few-shot learning, including how it uses limited labeled examples and prior knowledge to adapt to new tasks.",
+      "keywords": "Smart Assistant, LLM Development, Document AI, API Integration, FastGPT",
+      "authoredDigests": {
+        "Question": "a87b1b49bec7a6d869f854ce31f960d95a0a8c83f774420380ddf4a486b088e6",
+        "Answers": "e618e3f7d25b13d522f43a8b89981f292636794774d1a075338f76ad08051d37",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "why-is-few-shot-learning-useful",
+      "sourceSlug": "why-is-few-shot-learning-useful",
+      "workbookRow": 691,
+      "title": "Key Benefits of Few-Shot Learning for ML Tasks",
+      "description": "Discover why few-shot learning is useful, as it addresses data scarcity and reduces reliance on large labeled training datasets.",
+      "keywords": "API Integration, AI Knowledge Management, Intelligent Q&A, AI Chatbot, Open Source AI",
+      "authoredDigests": {
+        "Question": "8baa9308e93b3e37546211a65485c46ff24bc950aae73dd3c5863d694ace5915",
+        "Answers": "38481c90a6b34227838f7ef764ee1b896092e2b28a8d0d979e32bf02e1773ecc",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "does-few-shot-learning-reduce-training-costs",
+      "sourceSlug": "does-few-shot-learning-reduce-training-costs",
+      "workbookRow": 694,
+      "title": "Few-Shot Learning Can Reduce ML Training Costs",
+      "description": "Learn how few-shot learning can lower training costs by cutting need for large labeled datasets and extensive computational work.",
+      "keywords": "Task Automation AI, Enterprise AI, AI Automation, LLM Development, GPT Integration",
+      "authoredDigests": {
+        "Question": "1791a8361481e480303b16fd370eccb033d2caf81591bf1ff8ad965100bec08f",
+        "Answers": "57e0b891b747dcab048a07ce52afb10d00b4f6726105f34fdd11d32d339fbaf7",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "is-the-few-shot-learning-effect",
+      "sourceSlug": "is-the-few-shot-learning-effect",
+      "workbookRow": 695,
+      "title": "Factors Impacting Few-Shot Learning Stability",
+      "description": "Learn that few-shot learning result stability varies, and depends on model architecture, pre-training quality and example representativeness.",
+      "keywords": "Enterprise AI, Smart Assistant, Intelligent Q&A, Task Automation AI, FastGPT",
+      "authoredDigests": {
+        "Question": "b0b8c665a99349d460d83dcb0b993f97a342b6b3943a59c54513362eca0bd9a2",
+        "Answers": "b8a38bae985f7414c4ce86c93bbaefea349ae925589ed875a4ccea4186cc027e",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-few-shot-learning-and-fine-tuning",
+      "sourceSlug": "can-few-shot-learning-and-fine-tuning",
+      "workbookRow": 696,
+      "title": "Effective Combination of Few-Shot Learning",
+      "description": "Learn how combining few-shot learning and fine-tuning enhances model adaptation, especially when labeled task data is scarce.",
+      "keywords": "Vector Search, AI Chatbot, AI Workflow, Intelligent Q&A, Task Automation AI",
+      "authoredDigests": {
+        "Question": "3078b2fdd4c1f161624aad2de06549b787654862d2148afba47716cf1c0a0bcf",
+        "Answers": "50e1867a5c4ed542f0ba7e126cca2c4d69b509ec8d9b9eff591c98b1d334272e",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-rlhf-mean",
+      "sourceSlug": "what-does-rlhf-mean",
+      "workbookRow": 699,
+      "title": "RLHF Definition and Core Machine Learning Purpose",
+      "description": "Learn that RLHF refers to reinforcement learning from human feedback, a machine learning technique that aligns AI systems with human preferences via",
+      "keywords": "AI Automation, LLM Development, Task Automation AI, Smart Assistant, Document AI",
+      "authoredDigests": {
+        "Question": "a5fd2d557333fcfb46b3644c1e98766d163af8e996712eeb5829dd5aa2da5673",
+        "Answers": "ea00b623ca67ee456ca5506cfacdd1a323d96d18bfd52d6b8a3686b8cb876827",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-rlhf-improve-model-safety",
+      "sourceSlug": "can-rlhf-improve-model-safety",
+      "workbookRow": 702,
+      "title": "How RLHF Boosts AI Model Safety and Ethical",
+      "description": "Discover how RLHF aligns AI outputs with ethical guidelines and user expectations by steering models away from harmful, biased, untruthful or unsafe",
+      "keywords": "AI Workflow, Intelligent Q&A, Task Automation AI, GPT Integration, Enterprise AI",
+      "authoredDigests": {
+        "Question": "a821c335dc1d04171e69b59315a5ca1f9c2d2824c3faf6bd1841adfb274b0f82",
+        "Answers": "7db8fdb83989bea14f81d7a32d37678043b7c081b1aaf20676f0ccf9cc6ee067",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-rlhf-reduce-ai-bias",
+      "sourceSlug": "can-rlhf-reduce-ai-bias",
+      "workbookRow": 704,
+      "title": "RLHF’s Role in Mitigating AI Model Bias",
+      "description": "Learn how RLHF uses human oversight to align AI models with ethical standards, though its effectiveness depends on diverse, representative human input and",
+      "keywords": "API Integration, Intelligent Q&A, FastGPT, AI Knowledge Management, LLM Development",
+      "authoredDigests": {
+        "Question": "1f9f2a1ea9ad8dfb6532f5005ef30cd76588b1566e0cc602e794b9c5991a4ab1",
+        "Answers": "e6ba39d8bb0d2285bed455bc6921b520d2f48eef0cf35376a8660413c5889ad2",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "will-rlhf-increase-training-costs",
+      "sourceSlug": "will-rlhf-increase-training-costs",
+      "workbookRow": 706,
+      "title": "RLHF’s Impact on AI Model Training Costs",
+      "description": "Understand that RLHF raises AI model training costs significantly, primarily due to the extensive human effort needed to generate high-quality preference",
+      "keywords": "AI Automation, AI Platform, Vector Search, AI Knowledge Management, GPT Integration",
+      "authoredDigests": {
+        "Question": "762747feda2850a62f1a0cea2a9a9f28eece8f789a11bf24cdc9e1c7e4fc49b4",
+        "Answers": "a4d032525a355bc12da90ad2964717a361f3cfb2a98580538ba3ccae7caa9fd0",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-is-the-parameter-count",
+      "sourceSlug": "what-is-the-parameter-count",
+      "workbookRow": 707,
+      "title": "Definition and Importance of AI Model Parameter",
+      "description": "Learn that parameter count measures total learned weights in AI models, quantifying their complexity and capacity, while higher counts demand more",
+      "keywords": "Smart Assistant, Intelligent Q&A, AI Platform, LLM Development, AI Automation",
+      "authoredDigests": {
+        "Question": "d730b7ab29eb0c2c67c48f4b94a963fa24a40c9f6e0350d3ede91805e145e4b4",
+        "Answers": "c212e9077989a997067a5addbb9ed996771cda276321dd6c61bc9b9d32d27092",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-knowledge-distillation-mean",
+      "sourceSlug": "what-does-knowledge-distillation-mean",
+      "workbookRow": 725,
+      "title": "Knowledge Distillation as an AI Compression",
+      "description": "Learn that knowledge distillation is an AI compression technique that trains a smaller student model to replicate a larger teacher model’s performance for",
+      "keywords": "Task Automation AI, Enterprise AI, AI Knowledge Management, AI Platform, Document AI",
+      "authoredDigests": {
+        "Question": "671444818c4ecb884483457e7ef9be07d95496cc6f60161d47794ccabe9eef61",
+        "Answers": "7a7bf6d6c28af1e03d978a6746d45c3efe439383adef81d190bb654b10f8b753",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "why-do-knowledge-distillation",
+      "sourceSlug": "why-do-knowledge-distillation",
+      "workbookRow": 726,
+      "title": "Knowledge Distillation for Efficient Model",
+      "description": "Learn how knowledge distillation transfers model capabilities, enabling efficient deployment under computational or latency constraints.",
+      "keywords": "Intelligent Q&A, FastGPT, Document AI, AI Automation, AI Workflow",
+      "authoredDigests": {
+        "Question": "ddca674e86c620fbe2e0b3a60926d1c0e57954c0fa38188bb7c624bb1839e568",
+        "Answers": "ad96a4b0a0e6270940b08c45ebe372e630a062e7517185867d0fae507d4c05f6",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-perplexity-reflect-a-model-s-language-ability",
+      "sourceSlug": "can-perplexity-reflect-a-model-s-language-ability",
+      "workbookRow": 738,
+      "title": "Perplexity’s Role in Evaluating Language Model",
+      "description": "Understand that perplexity measures next-token accuracy, correlates with basic competence but cannot fully capture overall language ability.",
+      "keywords": "Smart Assistant, AI Chatbot, AI Knowledge Management, AI Platform, AI Workflow",
+      "authoredDigests": {
+        "Question": "93935846b1fbe9265255ae1bf71fc2693744d6e180decc4abd1dec0793a32872",
+        "Answers": "836a16d00756948064c9b96d66a6d7adb7ece348136cfafc363991097685a3e4",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "is-a-smaller-perplexity-better",
+      "sourceSlug": "is-a-smaller-perplexity-better",
+      "workbookRow": 740,
+      "title": "Smaller Perplexity Values and What They Mean",
+      "description": "Understand that smaller perplexity values indicate a language model is more confident and accurate, with less uncertainty over test data.",
+      "keywords": "AI Workflow, LLM Development, AI Chatbot, AI Platform, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "c513c823d8fa2acaf0976608340f21fce81f7c54bfe581b7745cfacba161e35c",
+        "Answers": "20bf031ac01413b82c836e80b9804f472f6bf10158defdeac74dfe92375e62ae",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-bleu-mean",
+      "sourceSlug": "what-does-bleu-mean",
+      "workbookRow": 745,
+      "title": "BLEU: A Machine Translation Quality Metric",
+      "description": "Understand what BLEU is, its full name, and how it calculates machine translation quality scores using n-gram overlap comparisons with human references.",
+      "keywords": "API Integration, Intelligent Q&A, GPT Integration, LLM Development, AI Workflow",
+      "authoredDigests": {
+        "Question": "b680af4ad966daef19e0deb45b9b4cdc96acbe9e0fb88a4ad9a52ce0faf12947",
+        "Answers": "5511839147a0acfd8b90c5f3cacd26e7f5cd50541a1234d752365af8ca2ef53b",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-bleu-replace-human-evaluation",
+      "sourceSlug": "can-bleu-replace-human-evaluation",
+      "workbookRow": 753,
+      "title": "BLEU’s Limitations vs Human Translation Evaluation",
+      "description": "Learn that BLEU only evaluates surface-level n-gram overlap, so it cannot fully replace human evaluation that accounts for semantic accuracy and fluency.",
+      "keywords": "AI Workflow, GPT Integration, Intelligent Q&A, AI Platform, Vector Search",
+      "authoredDigests": {
+        "Question": "ce8400d88c784531d7f8797e07a7fb0ccf8f4781c0c8f4951f4164eb9a2f4b36",
+        "Answers": "ae053e7134426c56b1f16dd5cfccc1f68267d81de9959b943762771378b02486",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-does-prompt-engineering-mean",
+      "sourceSlug": "what-does-prompt-engineering-mean",
+      "workbookRow": 759,
+      "title": "Prompt Engineering: Crafting Effective AI Prompts",
+      "description": "Understand the core practice of prompt engineering, including how it refines instructions to get accurate, relevant outputs from generative AI systems.",
+      "keywords": "AI Automation, AI Knowledge Management, GPT Integration, LLM Development, API Integration",
+      "authoredDigests": {
+        "Question": "a56aeb48aa66394070880d62b852af9b5728d47b9f345f3b00934e708c738bb7",
+        "Answers": "07b3d27a9984ced233023a23109d2199a8feb35bee04e39fb996e645b84a3439",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "how-to-write-high-quality-prompts-for-ai",
+      "sourceSlug": "how-to-write-high-quality-prompts-for-ai",
+      "workbookRow": 760,
+      "title": "Key Principles for Writing High-Quality AI Prompts",
+      "description": "Learn the essential principles for crafting effective AI prompts, including specificity, context, clear formatting and examples to guide model responses.",
+      "keywords": "Enterprise AI, API Integration, AI Automation, GPT Integration, Task Automation AI",
+      "authoredDigests": {
+        "Question": "7c867776748edf5613010ef83078ab751e1152a7ee7e8f225b239a3b4486614d",
+        "Answers": "e9fb86787c2966557bd7864d2ee33d4e02ff9147686e207ac479a6f8bc55f501",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "is-zero-shot-learning-easy-to",
+      "sourceSlug": "is-zero-shot-learning-easy-to",
+      "workbookRow": 771,
+      "title": "Zero-Shot Learning’s Steep Initial Learning Curve",
+      "description": "Understand that zero-shot learning has a steep initial learning curve, requiring foundational ML knowledge to grasp its core classification concept.",
+      "keywords": "Intelligent Q&A, Smart Assistant, GPT Integration, AI Platform, AI Workflow",
+      "authoredDigests": {
+        "Question": "e686147880a4f7a79759d64570efac4bef0266ee72e06be8badab5819645b071",
+        "Answers": "238b7758fe44854e478b9895e24dc51b67bc3c19bd2128d54e39019f6b64e0c6",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "what-is-rlhf-reinforcement-learning-from-human-feedback-training",
+      "sourceSlug": "what-is-rlhf-reinforcement-learning-from-human-feedback-training",
+      "workbookRow": 773,
+      "title": "RLHF: A Machine Learning Technique Using Human",
+      "description": "Learn how RLHF uses human evaluator feedback to refine AI model outputs and align them more closely with human values and desired behaviors.",
+      "keywords": "AI Chatbot, AI Automation, AI Knowledge Management, Vector Search, LLM Development",
+      "authoredDigests": {
+        "Question": "cd541cf3ae8636482d00d2b3f0e4e8e94b58d2a77c7c1bb9f418017bc4a63e25",
+        "Answers": "3f74127097576acf614a12339942550f61915a092ca261f0e80d0caa9448835d",
+        "Category": "cbb1c7db6ec7f20293790bc15141e4a84a112db172b754a79acaa2f0a386de98"
+      }
+    },
+    {
+      "contentId": "can-ai-answer-customers-frequently-asked-questions-around-the-clock",
+      "sourceSlug": "can-ai-answer-customers-frequently-asked-questions-around-the-clock",
+      "workbookRow": 781,
+      "title": "AI Can Answer Customer FAQs Around the Clock",
+      "description": "Understand how modern AI systems can reliably answer customer FAQs around the clock with continuous, automated NLP-powered operation.",
+      "keywords": "Task Automation AI, LLM Development, GPT Integration, AI Automation, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "16649910cf3c1ad55ea2aa980853eae9160499b917a06f60108d14f959039dba",
+        "Answers": "b083b22e8a67bf77834b4df5153be39855a90fae643c430ce5ef160d07ba8fd4",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-analyze-customers-purchasing-habits",
+      "sourceSlug": "can-ai-analyze-customers-purchasing-habits",
+      "workbookRow": 793,
+      "title": "How AI Analyzes Customer Purchasing Habit Patterns",
+      "description": "Learn how AI uses machine learning to analyze customer transactional and behavioral data, identifying key shopping patterns like purchase frequency and",
+      "keywords": "Intelligent Q&A, Task Automation AI, AI Automation, AI Chatbot, GPT Integration",
+      "authoredDigests": {
+        "Question": "9fe0b8f772ba8ccb18c6054baba72dc320b117dc800f7432077ff4ee2d95a8e8",
+        "Answers": "92d3b2d340e2d30ca6c5a2d92c6830cb079466d1f9c477010c437ddb754289d6",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-identify-customers-potential-interest-points",
+      "sourceSlug": "can-ai-identify-customers-potential-interest-points",
+      "workbookRow": 795,
+      "title": "How AI Identifies Customer Interest Point Patterns",
+      "description": "Understand how AI leverages machine learning and pattern recognition on diverse customer data to uncover subtle potential interest patterns and",
+      "keywords": "AI Chatbot, AI Workflow, AI Automation, GPT Integration, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "47509e775380858e9559a314eeb3614eef48e4495eea62757f6cc0eaac1df7fa",
+        "Answers": "26f896c5c4fc57d6c36e62598ae86c75dbd2591f188ac0b3f04e17ff4249a069",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "how-to-optimize-cross-selling-strategies",
+      "sourceSlug": "how-to-optimize-cross-selling-strategies",
+      "workbookRow": 801,
+      "title": "AI-Powered Optimization of Cross-Selling",
+      "description": "Learn how AI uses machine learning models on customer data to identify complementary product recommendations and personalize cross-selling offers.",
+      "keywords": "Enterprise AI, Document AI, Task Automation AI, AI Knowledge Management, Intelligent Q&A",
+      "authoredDigests": {
+        "Question": "ab346a6e7e6083595af67d184d7fa726457fc9ceb2ae5c1d832870e4f9aa99e6",
+        "Answers": "e30656514baf53e9a718942debde1256db831973d4b51cf72ee04c5f2d43d2ef",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-predict-future-best-selling",
+      "sourceSlug": "can-ai-predict-future-best-selling",
+      "workbookRow": 803,
+      "title": "AI Predicting Future Best-Selling Product Trends",
+      "description": "Discover how AI leverages advanced data analysis and pattern recognition on diverse datasets to predict future best-selling products.",
+      "keywords": "Enterprise AI, Document AI, AI Chatbot, Smart Assistant, Vector Search",
+      "authoredDigests": {
+        "Question": "07c812a98b3b89b2c3db8243a277582c61c910c46817808f09d2e7bf7a6ff499",
+        "Answers": "24544aac68b66a3fe8eb1d8ba8537a621c0e55cdc6432283dc7d8d0c53561082",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-eye-catching",
+      "sourceSlug": "can-ai-automatically-generate-eye-catching",
+      "workbookRow": 811,
+      "title": "AI Generation of Eye-Catching Headlines and Titles",
+      "description": "Understand how AI uses NLP and ML to analyze successful headline datasets, identifying patterns to generate eye-catching titles with human oversight.",
+      "keywords": "GPT Integration, AI Automation, Intelligent Q&A, Document AI, Vector Search",
+      "authoredDigests": {
+        "Question": "b21468f5e043e2ae39323a195d0f6587c22d9d4e3941e46a6a6d6b7b517e8dc1",
+        "Answers": "a3aa5a03f34a4bbdc90254a23cd250840b07121093e03bc93e8b7d49b8205a46",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-track-competitors-social-media-dynamics",
+      "sourceSlug": "can-ai-track-competitors-social-media-dynamics",
+      "workbookRow": 817,
+      "title": "AI Tracking of Competitors’ Social Media Dynamics",
+      "description": "Learn how AI tracks competitors’ public social media data, analyzing posting frequency, content themes and engagement metrics to monitor dynamics.",
+      "keywords": "Intelligent Q&A, Task Automation AI, Enterprise AI, Document AI, Vector Search",
+      "authoredDigests": {
+        "Question": "4ffe8cb7dca2c74cbb6db4fb206a9a1313512b748587bf7deffe914d1658e53c",
+        "Answers": "b66c47905d445e777986ff4540d8df9574e19e4d732790fcc393003c5d6eef11",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-generate-after-sales-data",
+      "sourceSlug": "can-ai-generate-after-sales-data",
+      "workbookRow": 832,
+      "title": "AI Generation of After-Sales Data Analysis Reports",
+      "description": "Understand how AI processes after-sales data to generate structured analysis reports, requiring clean historical data and clear objectives.",
+      "keywords": "AI Chatbot, AI Platform, Document AI, API Integration, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "6a7fd1c270ac0ace0701adef7c7d833d003a50d523b9a1bc372a23cea5b84850",
+        "Answers": "3106bf8c9848a0c0653de7237a44a609afa31f15e6a3e21e81b219470bb66d67",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-record-customers-after-sales-history",
+      "sourceSlug": "can-ai-automatically-record-customers-after-sales-history",
+      "workbookRow": 833,
+      "title": "How AI Automatically Records After-Sales History",
+      "description": "Understand how AI uses NLP to identify after-sales interactions across channels, automatically recording key customer history details.",
+      "keywords": "Document AI, Intelligent Q&A, AI Platform, AI Chatbot, Smart Assistant",
+      "authoredDigests": {
+        "Question": "832a5c54c38cbb8e9e2011542e82bb20d9b2073e9d406bf1c8fbac32e84be0f5",
+        "Answers": "e8a28066d0c9689ab76ad134eeeacb7eeaa6a2745b4352df8757070917bd1579",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-help-build-self-service",
+      "sourceSlug": "can-ai-help-build-self-service",
+      "workbookRow": 835,
+      "title": "AI Powers Effective Self-Service Customer Service",
+      "description": "Discover how AI uses NLP and machine learning to automate routine queries, build self-service systems with historical interaction and knowledge base data.",
+      "keywords": "AI Workflow, Task Automation AI, Document AI, API Integration, FastGPT",
+      "authoredDigests": {
+        "Question": "8aca56dd19997f8a491c97e4d398f6a2aa3b8b5516d83e37873d6086ec0e1127",
+        "Answers": "2779872ea98ea2a607029bd2838c9e098ded9dc5ede42f456e2c9bbdfabad9e9",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-recommend-suitable-value-added",
+      "sourceSlug": "can-ai-recommend-suitable-value-added",
+      "workbookRow": 837,
+      "title": "AI Uses Customer Data to Recommend Tailored",
+      "description": "Learn how AI uses machine learning models to analyze customer data to predict relevant additional offerings aligned with individual needs.",
+      "keywords": "Vector Search, AI Automation, AI Chatbot, API Integration, Open Source AI",
+      "authoredDigests": {
+        "Question": "9f098ba82d9fb177761980cd710bbf546057e8c6bc3896adc17ac2f19adfe522",
+        "Answers": "c2e8d19aa8a8f40c283f96455ec56ee1c8d86930a3048db208113f73792a5808",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-identify-customer-unfriendly",
+      "sourceSlug": "can-ai-automatically-identify-customer-unfriendly",
+      "workbookRow": 858,
+      "title": "AI Detects Customer-Unfriendly Digital Product",
+      "description": "Understand how AI analyzes customer feedback and usage data, using NLP to spot negative sentiment and complaints across support channels.",
+      "keywords": "AI Automation, Intelligent Q&A, Smart Assistant, AI Workflow, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "01312a22ce9fe56433379c4a442aec6b404280be08c21d5de5b503e40530238a",
+        "Answers": "4539207457060c165f3c5e184331c33d91cd9779dd68a90f17b179a94f66771d",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-analyze-the-click-through",
+      "sourceSlug": "can-ai-analyze-the-click-through",
+      "workbookRow": 874,
+      "title": "AI Analyzes Ad Material Click-Through Rates Using",
+      "description": "Learn how AI uses ML algorithms to process ad performance data, leveraging historical CTR metrics and analytics integrations.",
+      "keywords": "AI Automation, Vector Search, Enterprise AI, FastGPT, LLM Development",
+      "authoredDigests": {
+        "Question": "2a955b60546350f11dbce353e0b6891c864bc747efe4c594707110d861b33d5b",
+        "Answers": "e35296ab371c83d490f810c6bca58aa6706f8a77d360ca772e9b34d02b90ed1f",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-discover-potential-partners",
+      "sourceSlug": "can-ai-discover-potential-partners",
+      "workbookRow": 878,
+      "title": "AI Identifies Compatible Potential Partners",
+      "description": "Discover how AI uses ML and NLP to analyze diverse datasets, spotting potential partners with aligned goals and complementary capabilities.",
+      "keywords": "AI Knowledge Management, GPT Integration, AI Workflow, Task Automation AI, Vector Search",
+      "authoredDigests": {
+        "Question": "14b06a353878720246cba9866785f166242ee3af8f7e55927ab9494a9911874d",
+        "Answers": "3b3d488cc59793c22fa84e0390e404bf0ca8bf6309a321b432a51fcf4add9b23",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-analyze-competitors-marketing-strategies",
+      "sourceSlug": "can-ai-analyze-competitors-marketing-strategies",
+      "workbookRow": 881,
+      "title": "AI Analyzes Competitors’ Digital Marketing",
+      "description": "Learn how AI collects public competitor data via scraping and NLP, identifying marketing campaigns, keywords and audience engagement trends.",
+      "keywords": "Vector Search, AI Workflow, AI Platform, Task Automation AI, AI Automation",
+      "authoredDigests": {
+        "Question": "ae095662e7bcd34f259a7371c5d4b90b8dd2699612c50f7a7ce3368ab5eded56",
+        "Answers": "49a347fd0a5aa5d2e67072f618cb50e812770012bab5c045019e319e39b32b40",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-answer-common-after-sales-questions-around-the-clock",
+      "sourceSlug": "can-ai-answer-common-after-sales-questions-around-the-clock",
+      "workbookRow": 884,
+      "title": "AI Provides 24/7 Support for Common After-Sales",
+      "description": "Understand how AI-powered after-sales support uses NLP models trained on historical data to deliver instant round-the-clock help.",
+      "keywords": "Vector Search, Smart Assistant, AI Chatbot, Task Automation AI, Enterprise AI",
+      "authoredDigests": {
+        "Question": "e09c40abdb92c5dfa91f9bc72c2b58f9c1464cd69c7d8a36b860729fd659c277",
+        "Answers": "0253357f51e9946e19694c5d78237b0f365f90e2fdb0924bc1ebd980162ef4f6",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-help-e-commerce-identify",
+      "sourceSlug": "can-ai-help-e-commerce-identify",
+      "workbookRow": 890,
+      "title": "AI Supports E-Commerce Hot Trend Identification",
+      "description": "Learn how AI aids e-commerce teams to spot hot-selling trends by analyzing large datasets and multiple real-time market and consumer sources.",
+      "keywords": "Task Automation AI, FastGPT, API Integration, AI Knowledge Management, AI Workflow",
+      "authoredDigests": {
+        "Question": "1fa42e5806699cb3e90ffed67cd961a048d80a189997416e6f31376981956875",
+        "Answers": "c07d58e303afc57d6178c5615a8db56e9eb1b33faf30606d2ffe7f503ff5b9da",
+        "Category": "35ca6c1b6e8f626535f614f4932477b19cd76deaa219bbad11bc8e99e99c9524"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-children-s-stories",
+      "sourceSlug": "can-ai-automatically-generate-children-s-stories",
+      "workbookRow": 908,
+      "title": "AI Tools for Generating Age-Appropriate Children’s",
+      "description": "Learn how generative AI creates original children’s stories, and understand the key factors that influence the quality of the generated content.",
+      "keywords": "AI Workflow, AI Platform, GPT Integration, AI Knowledge Management, Enterprise AI",
+      "authoredDigests": {
+        "Question": "0140180833dc4bd5e0663c74c9fb46cf79558da16dd2f7851e8061055fc1e8b0",
+        "Answers": "28c39bccc484e1694b930816a244c9fe5704cd601487273ca750cf68695c85b4",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "how-to-create-a-knowledge",
+      "sourceSlug": "how-to-create-a-knowledge",
+      "workbookRow": 909,
+      "title": "Step-by-Step Guide to Building AI-Powered Q&A",
+      "description": "Learn the core steps to build an AI-powered knowledge Q&A database, including defining scope, sourcing data and preprocessing information for",
+      "keywords": "Enterprise AI, Task Automation AI, FastGPT, Document AI, API Integration",
+      "authoredDigests": {
+        "Question": "6d44fdb605822cd4dfb3e9ec74f412ef6bdba70b50ba40f50dc2a6da74cd47de",
+        "Answers": "77af5237d457a1b59a035cbbf16951e5dd4f748aaea72cb34f27bb8dad1cdc07",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-quickly-generate-flashcards",
+      "sourceSlug": "can-ai-quickly-generate-flashcards",
+      "workbookRow": 915,
+      "title": "AI-Powered Fast Generation of Custom Flashcards",
+      "description": "Learn how AI uses natural language processing to extract key details from source material and create custom question-and-answer flashcards quickly.",
+      "keywords": "Smart Assistant, Document AI, Intelligent Q&A, Enterprise AI, AI Automation",
+      "authoredDigests": {
+        "Question": "51b5b5f25d706309a117e2cd0ef2847ab41c423f6c0b901a55f6d0d38c7249fb",
+        "Answers": "ed10d10ad57ea2a0353f874292d5a39716212e9e159a20656b3c4364298ab5e6",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-organize-q-a-tags",
+      "sourceSlug": "can-ai-automatically-organize-q-a-tags",
+      "workbookRow": 916,
+      "title": "AI-Powered Automation of Q&A Tag Organization",
+      "description": "Understand how AI uses natural language processing and machine learning to analyze Q&A content and automate tag organization for streamlined content",
+      "keywords": "API Integration, Open Source AI, GPT Integration, FastGPT, Smart Assistant",
+      "authoredDigests": {
+        "Question": "af46fd0c9bcd1949ff19c6bdc00004aa3f5e50578a482d6820a9e7daf5125706",
+        "Answers": "5c8cfd48c8eac1ae4ab1ac07a3f842639892418498fc69d1fccbc247b290a6c1",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "how-to-make-knowledge-q-a-more-interesting-with-ai",
+      "sourceSlug": "how-to-make-knowledge-q-a-more-interesting-with-ai",
+      "workbookRow": 918,
+      "title": "Enhancing Knowledge Q&A Engagement with AI Tools",
+      "description": "Discover how to use AI to boost knowledge Q&A engagement, with conversational responses, gamification features and tailored lighthearted content.",
+      "keywords": "AI Automation, Vector Search, LLM Development, AI Knowledge Management, AI Workflow",
+      "authoredDigests": {
+        "Question": "90eaf440c0bb3e7879b7cb9eb95db046e236b38b350b938130f89ffd6d47b3b9",
+        "Answers": "962523942b9f39b7265a4d961399679c8cc96ac6813f67caa3a66e35f8aa597b",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-output-chinese-english-comparisons",
+      "sourceSlug": "can-ai-output-chinese-english-comparisons",
+      "workbookRow": 922,
+      "title": "Simultaneous Chinese-English Content Comparison",
+      "description": "Discover how modern AI can produce simultaneous Chinese-English comparisons, and learn the key factors that support this bilingual content functionality.",
+      "keywords": "AI Platform, Vector Search, AI Automation, GPT Integration, Document AI",
+      "authoredDigests": {
+        "Question": "d78b5c0a8f72915d70677b9e5bd707456139e3acbdd0304ebde87c76ec9dea45",
+        "Answers": "5bd01256d213ed3cc7ae96ffb244dbde44f1ae03f9168e83214c327152eca617",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-festival-themed",
+      "sourceSlug": "can-ai-automatically-generate-festival-themed",
+      "workbookRow": 934,
+      "title": "AI’s Festival-Themed Content Generation",
+      "description": "Discover that AI can generate festival-themed content like greetings, promotions and social posts using trained large language models.",
+      "keywords": "Enterprise AI, GPT Integration, Smart Assistant, FastGPT, Vector Search",
+      "authoredDigests": {
+        "Question": "ffabd82f704b3449271441a2a2ac015ce24c404c7c573c20066fb654e716f5d7",
+        "Answers": "c8bb70f99ac31ec98d18bb1006077f2cbfa25c3cc94e9538b94eb4d5da6f1c7d",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-create-parent-child",
+      "sourceSlug": "can-ai-automatically-create-parent-child",
+      "workbookRow": 962,
+      "title": "AI’s Ability to Create Parent-Child Interactive",
+      "description": "Learn how AI generates parent-child interactive games using trained models, requiring age-appropriate and child development-focused content.",
+      "keywords": "Intelligent Q&A, FastGPT, AI Chatbot, AI Platform, AI Knowledge Management",
+      "authoredDigests": {
+        "Question": "68bb9dc224d665cd30a862a2ae8bf6b818229af2ada4e15fa866995a42f2758d",
+        "Answers": "6759ef88822d96a08770caa86af6860927896d88e87c99168c31ea3cc06d5ea5",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-translate-children-s-stories-into-multiple-languages",
+      "sourceSlug": "can-ai-automatically-translate-children-s-stories-into-multiple-languages",
+      "workbookRow": 963,
+      "title": "AI translates children’s stories into multiple",
+      "description": "Learn how neural machine translation can translate children’s stories across languages, with notes on handling rhymes and cultural references.",
+      "keywords": "AI Chatbot, LLM Development, AI Platform, AI Knowledge Management, Open Source AI",
+      "authoredDigests": {
+        "Question": "e620bee500c5223cb17d42011be9ab956856c9f893c08dede7e9d4515dd2eece",
+        "Answers": "81422f5da8ef04fd946d540c7b48f05b25321fc992af7202ae6b7f137f6c4597",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "how-to-make-ai-write-q-a-articles-suitable-for-zhihu",
+      "sourceSlug": "how-to-make-ai-write-q-a-articles-suitable-for-zhihu",
+      "workbookRow": 972,
+      "title": "Make Zhihu-suitable Q&A articles with AI guidance",
+      "description": "Learn how to craft AI prompts to generate Q&A articles tailored to Zhihu’s style, using audience context for substantive, well-reasoned content.",
+      "keywords": "Smart Assistant, AI Platform, Vector Search, Task Automation AI, AI Workflow",
+      "authoredDigests": {
+        "Question": "92d06a0d629f35a65e8daeab670a90e93ad447103ab224c31916d63a879eedc7",
+        "Answers": "e001e7c9fcb2726d818d74c1783f51c98148de91b663f6c99683351203aad33e",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "can-ai-generate-interactive-question-and-answer-articles",
+      "sourceSlug": "can-ai-generate-interactive-question-and-answer-articles",
+      "workbookRow": 1001,
+      "title": "How AI Develops Interactive Q&A Content",
+      "description": "Discover how AI can build interactive Q&A articles, plus the core technical components needed for dynamic, user-responsive content.",
+      "keywords": "Open Source AI, AI Workflow, AI Automation, GPT Integration, AI Platform",
+      "authoredDigests": {
+        "Question": "1ced7822ab5458e719d89db388b6b96383e38a61a3bd1076ee4702b8fc43a24d",
+        "Answers": "d8e6e1f85b7bc51c2c4a4595f09fc059c9601e56d44a0d8953485469d1c984a9",
+        "Category": "e57a6b54eb05ad602ed3e9fc53b72e5992950a20e5b66b089e64443c39b38cd1"
+      }
+    },
+    {
+      "contentId": "how-can-cross-border-e-commerce-use",
+      "sourceSlug": "how-can-cross-border-e-commerce-use",
+      "workbookRow": 1026,
+      "title": "AI Localized Recommendations for Cross-Border",
+      "description": "Learn how cross-border e-commerce uses AI to deliver personalized product suggestions based on regional customer data and preferences.",
+      "keywords": "Open Source AI, AI Automation, AI Chatbot, AI Platform, LLM Development",
+      "authoredDigests": {
+        "Question": "a88e2f6933aefd9a4b3039ef64c36fc8d57ebeb739d371bea2098a9a8b8ffd39",
+        "Answers": "3e425eb75bdd3b1cffd8a5fbf6c13d4095997e7ecbec715d8626008b6e99a222",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "what-cross-departmental-collaboration-is-required",
+      "sourceSlug": "what-cross-departmental-collaboration-is-required",
+      "workbookRow": 1053,
+      "title": "Cross-Departmental Teams for AI Deployment",
+      "description": "Learn the key departments involved in AI deployment collaboration, including IT, data science and business units across the full AI lifecycle.",
+      "keywords": "AI Automation, AI Chatbot, Task Automation AI, AI Workflow, Document AI",
+      "authoredDigests": {
+        "Question": "50b5137605089a8c1a547c38d6ad78afdcd8c72edc0c64682224007f7999d15c",
+        "Answers": "c1fda639cfff1abee12152996f3475e68d1a8674be244ef20d842c0b4e110496",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "what-are-the-common-reasons-for-ai-implementation-failures",
+      "sourceSlug": "what-are-the-common-reasons-for-ai-implementation-failures",
+      "workbookRow": 1057,
+      "title": "Key Factors Leading to AI Implementation Failures",
+      "description": "Explore the top causes of AI implementation setbacks, plus key guidelines for successful adoption with quality data, aligned goals and skilled teams.",
+      "keywords": "Open Source AI, AI Workflow, AI Platform, Vector Search, API Integration",
+      "authoredDigests": {
+        "Question": "a33d86ef5b5e6620db05ebbf4c9decb2ebb7e5c41b73ff065e2f327817e26e31",
+        "Answers": "9a9c6f39bce0540e0fd90f4ab192d36d5dcd1cbe87a891d9dcd7b46863f0d5c2",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "is-there-a-no-code-way-to-quickly-build-ai",
+      "sourceSlug": "is-there-a-no-code-way-to-quickly-build-ai",
+      "workbookRow": 1069,
+      "title": "No-code tools for rapid AI application development",
+      "description": "Find out how to build AI apps quickly with no-code tools, including visual interfaces, prebuilt components and drag-and-drop workflows for success.",
+      "keywords": "Smart Assistant, FastGPT, AI Knowledge Management, AI Workflow, Open Source AI",
+      "authoredDigests": {
+        "Question": "9f73204c8f9776206b5df9a265768b3d4d438f87a3aa24736cf44cc3d5f8519a",
+        "Answers": "cbf38099439053adef4cd05a3f7de042d4bdf4201fe6d4cbd477edebfca52adc",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "are-there-any-ready-to-use-templates-for-ai",
+      "sourceSlug": "are-there-any-ready-to-use-templates-for-ai",
+      "workbookRow": 1075,
+      "title": "Pre-built AI templates for faster AI model",
+      "description": "Discover pre-built AI templates for common tasks including image recognition, chatbots and forecasting, plus guidance for selecting the right option.",
+      "keywords": "AI Platform, Open Source AI, GPT Integration, AI Chatbot, Smart Assistant",
+      "authoredDigests": {
+        "Question": "ed233955bb40c8cc06a518d88a8c83502765d1488cae17c5e8b1d0c92cc2e5cc",
+        "Answers": "09d71bb736bac20ed69a0b54b136a6b16d2bac2d1126a842274bad5e6fcbeafe",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "how-to-rent-cloud-based-ai-services-at-low-cost",
+      "sourceSlug": "how-to-rent-cloud-based-ai-services-at-low-cost",
+      "workbookRow": 1076,
+      "title": "Low-cost ways to rent cloud-based AI services",
+      "description": "Learn affordable ways to rent cloud-based AI services, using pay-as-you-go plans, free tiers, spot instances and serverless options for cost savings.",
+      "keywords": "AI Knowledge Management, Task Automation AI, Enterprise AI, AI Platform, AI Chatbot",
+      "authoredDigests": {
+        "Question": "a0d9052432b3076e67273c884486d0a373f1a13a9bd1d83abdb5980221dd9297",
+        "Answers": "f6bbc277c710710d913d8d229d42db3123c709e89f679725984a7828920ed48f",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "how-e-commerce-uses-ai-to",
+      "sourceSlug": "how-e-commerce-uses-ai-to",
+      "workbookRow": 1084,
+      "title": "E-commerce uses AI to build immersive shopping",
+      "description": "Learn how e-commerce uses AI like AR, VR, recommendation tools and chatbots to create personalized, immersive online shopping experiences.",
+      "keywords": "Document AI, Task Automation AI, FastGPT, Smart Assistant, Enterprise AI",
+      "authoredDigests": {
+        "Question": "01c10cabd4863b79644e398a1b564cec5d6f9f5086a2493e31dd7066cf83ecc8",
+        "Answers": "8f05cc0fe35e4e5e0781876387928e6fb216b65e5733e35be39a1cb710f272cb",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-summarize-customers-common-complaints",
+      "sourceSlug": "can-ai-automatically-summarize-customers-common-complaints",
+      "workbookRow": 1115,
+      "title": "Automated AI summarization of customer common",
+      "description": "Discover how AI uses NLP and topic modeling to analyze customer feedback, extract key complaint themes and sentiment, plus implementation requirements.",
+      "keywords": "FastGPT, AI Platform, Intelligent Q&A, Smart Assistant, GPT Integration",
+      "authoredDigests": {
+        "Question": "fc82dad7785e18936ff198645c2b6df67587836726ae3d74c97166598c1bb051",
+        "Answers": "255a331d383af0e92033460129b2f80377624f60693e2dffe38128820c3a1f0a",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "can-ai-predict-customers-interest-in-new-products",
+      "sourceSlug": "can-ai-predict-customers-interest-in-new-products",
+      "workbookRow": 1131,
+      "title": "Predict Customer Interest in New Products with AI",
+      "description": "Find out how AI can predict customer interest in new products, using analysis of customer data and market trends to identify patterns.",
+      "keywords": "Intelligent Q&A, AI Platform, Vector Search, API Integration, Enterprise AI",
+      "authoredDigests": {
+        "Question": "83ac0d840a5aec780e10c39957af6c899ab4260ab91d4519ffbbf5856e6e006b",
+        "Answers": "d22e9ddaf7de5e2838d4d37d02d2417eebe9ba79c3c8c1f20896e0c5449a1ec0",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "can-ai-transform-customer-suggestions-into-r-d-tasks",
+      "sourceSlug": "can-ai-transform-customer-suggestions-into-r-d-tasks",
+      "workbookRow": 1138,
+      "title": "AI to turn customer suggestions into R&D tasks",
+      "description": "Discover how AI uses NLP and ML to analyze customer feedback, classify suggestions into actionable R&D tasks based on themes and urgency.",
+      "keywords": "LLM Development, GPT Integration, AI Workflow, AI Platform, API Integration",
+      "authoredDigests": {
+        "Question": "3594acf67b0cea4ae862effe9a0df4f9f2b9770e3bdfd062e5d6a5096e3e56b8",
+        "Answers": "58b8d9cb5ba2dd7fe14990069f40936cf1ff0083458a15f9200fdaaa34264205",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-cross-industry",
+      "sourceSlug": "can-ai-automatically-generate-cross-industry",
+      "workbookRow": 1153,
+      "title": "Create Cross-Industry Creative Combos with AI",
+      "description": "Learn how AI can create cross-industry creative combinations, using multi-industry training data to identify unique domain connections.",
+      "keywords": "AI Chatbot, Vector Search, AI Platform, AI Automation, Enterprise AI",
+      "authoredDigests": {
+        "Question": "6c713de3224d4015e655b4c95f0892e9918f396d98af8bdf529eec8b3f4844e8",
+        "Answers": "e55a1989ce87d7430c814b1f6e0c7a16f3b4a10c074ec4b8ee049c7a81408d77",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "can-ai-automatically-generate-easy-to-follow-operation-guides",
+      "sourceSlug": "can-ai-automatically-generate-easy-to-follow-operation-guides",
+      "workbookRow": 1163,
+      "title": "AI Creates Clear Step-by-Step Operational Guides",
+      "description": "Learn how AI leverages natural language generation and machine learning to create clear operational guides using structured procedural datasets.",
+      "keywords": "AI Knowledge Management, Smart Assistant, Enterprise AI, Intelligent Q&A, LLM Development",
+      "authoredDigests": {
+        "Question": "9b4f57d84db9fdef7b5c2180d15566a1ef065cfd7b68d2f5ab69bf2bbf6eb1c7",
+        "Answers": "10ef06134510417d68765ba84dc58a386c3a3f46ef604956ca44b1896c47884b",
+        "Category": "fa6260f31825ab0147f6288b0ff645265eeda4cf8302aad4479dbd734498c048"
+      }
+    },
+    {
+      "contentId": "what-back-end-operation-and-maintenance-personnel-are-required-for-ai-agent",
+      "sourceSlug": "what-back-end-operation-and-maintenance-personnel-are-required-for-ai-agent",
+      "workbookRow": 1190,
+      "title": "Skilled IT Staff for AI Agent Backend Operations",
+      "description": "Learn the specific skilled IT and DevOps staff needed to manage AI Agent backend infrastructure, including containerization and cloud resources.",
+      "keywords": "Document AI, Enterprise AI, Task Automation AI, Vector Search, AI Chatbot",
+      "authoredDigests": {
+        "Question": "45eb05d2199547ca85e5c2dc44e40ea3c7abac1a20c9c8bcce6eca61879580a7",
+        "Answers": "cf0f0311d659d7961a57be88a8fa6ff2ea8efc4898bc734ca1c2c3e2017223c1",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-prepare-high-quality-training-data-for-ai-agents",
+      "sourceSlug": "how-to-prepare-high-quality-training-data-for-ai-agents",
+      "workbookRow": 1193,
+      "title": "Create Effective Training Data for AI Agent Use",
+      "description": "Understand the core principles for preparing high-quality AI agent training data, including clean, relevant labeled data and real-world scenario coverage.",
+      "keywords": "Document AI, API Integration, Open Source AI, AI Knowledge Management, AI Automation",
+      "authoredDigests": {
+        "Question": "c6a293acf84611198a557b8cb2de822b39c866cc15a942bbbba4ad9eccbeebdf",
+        "Answers": "f8d10db3093fac8e3d7c0b4c47d635a0d2539dc71902edfdf303a6637e5e1223",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-ensure-the-long-term",
+      "sourceSlug": "how-to-ensure-the-long-term",
+      "workbookRow": 1223,
+      "title": "Boost Long-Term AI Agent Maintainability",
+      "description": "Understand key practices to sustain long-term AI agent maintainability, including modular design, clear docs and regularly updated testing pipelines.",
+      "keywords": "GPT Integration, Vector Search, FastGPT, AI Chatbot, AI Workflow",
+      "authoredDigests": {
+        "Question": "3e9cfd3f970db9f2234b759100f099000147078cc074fe9cf7a0127de7e2397a",
+        "Answers": "ac86bf07b4b34eec5d80d40b888b4b5a0a9fc7d2f71c0a5d39f09832b5cc2ebc",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-handle-multi-task-parallel-requests",
+      "sourceSlug": "how-ai-agents-handle-multi-task-parallel-requests",
+      "workbookRow": 1240,
+      "title": "Manage Multi-Task Parallel Requests With AI Agents",
+      "description": "Discover how AI agents manage multi-task parallel requests using specialized architectures and optimized resource allocation to avoid bottlenecks.",
+      "keywords": "API Integration, Enterprise AI, AI Automation, Smart Assistant, Task Automation AI",
+      "authoredDigests": {
+        "Question": "1d69d1025f7f81ed2058c88cab7f3a63aa48c4b61e45e98722c9a05d881c49a5",
+        "Answers": "9f5d7ab73ca93c40981ec56a7084441ddae30b3ecf667de665b7dd454af5471c",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-ensure-cross-border-data",
+      "sourceSlug": "how-to-ensure-cross-border-data",
+      "workbookRow": 1247,
+      "title": "Ensure Cross-Border Data Compliance for AI Systems",
+      "description": "Understand how to maintain cross-border data compliance for AI agents, including mapping data flows and minimizing sensitive data collection practices.",
+      "keywords": "Document AI, AI Automation, Intelligent Q&A, Vector Search, Task Automation AI",
+      "authoredDigests": {
+        "Question": "1fd3384e7bc524de884ff0ee03d3913850b1cccfc5116fc7e96d61f3e3512ed4",
+        "Answers": "50a4b5396d72a39d36a4c6a432b5f560b4a3eb6f6d397912de545cfa92c91382",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-improve-cross-departmental-collaboration-efficiency-of-ai-agent",
+      "sourceSlug": "how-to-improve-cross-departmental-collaboration-efficiency-of-ai-agent",
+      "workbookRow": 1265,
+      "title": "Boost Cross-Departmental AI Agent Collaboration",
+      "description": "Discover how to improve cross-departmental AI agent collaboration with standardized APIs, unified data protocols and streamlined workflows.",
+      "keywords": "AI Platform, Intelligent Q&A, GPT Integration, Vector Search, Document AI",
+      "authoredDigests": {
+        "Question": "a6f4e0afd550ee9807726c85112a7d3c5d9f9663d0f5cf12baa4f8695352e23d",
+        "Answers": "b6b2bec9cde6352f83e363e55f29533025d1c8d03033607362ae8d3f8e20c6b0",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-implement-end-to-end-encryption",
+      "sourceSlug": "how-to-implement-end-to-end-encryption",
+      "workbookRow": 1266,
+      "title": "Secure end-to-end encryption setup for AI agents",
+      "description": "Discover how to set up end-to-end encryption for AI agents, using cryptographic protocols and robust key management for secure communication channels.",
+      "keywords": "Document AI, Smart Assistant, Open Source AI, FastGPT, GPT Integration",
+      "authoredDigests": {
+        "Question": "da4670386548e3e4356bda9e379afc78e7c598484570083fd20e701c8edd9f8d",
+        "Answers": "7eb4590cb5f308eeac19c8c2ed53b3620e7c80976b61003bd817a3323fe5ad2b",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-implement-multi-dimensional-data",
+      "sourceSlug": "how-to-implement-multi-dimensional-data",
+      "workbookRow": 1268,
+      "title": "AI Agent Multi-Dimensional Data Indexing Guide",
+      "description": "Discover steps to set up multi-dimensional data indexing for AI agents, including specialized databases and tailored retrieval strategies.",
+      "keywords": "Open Source AI, Enterprise AI, GPT Integration, Intelligent Q&A, Vector Search",
+      "authoredDigests": {
+        "Question": "067bb27c5791f5788bd473ab9a267f7c0de1a92332becc9168efb5b28eb30f43",
+        "Answers": "9277e77446bf8c826813b60d226e65c6c607571fd3cc2631ac4f65fbfb901bf6",
+        "Category": "0fad606c779a7a7550cc4f1021cd84bedde35239e16be0e9db5cfcd747381932"
+      }
+    },
+    {
+      "contentId": "how-to-enable-multi-factor-authentication",
+      "sourceSlug": "how-to-enable-multi-factor-authentication",
+      "workbookRow": 1319,
+      "title": "Set Up MFA for Secure AI Agent Platform Access",
+      "description": "Learn to enable multi-factor authentication for your AI Agent, adding a critical security layer via platform settings and administrative access privileges.",
+      "keywords": "GPT Integration, LLM Development, API Integration, FastGPT, AI Chatbot",
+      "authoredDigests": {
+        "Question": "10f253903a09b98c7cd6732ba737182b5880fa85a3cd4d6a96c56de441ea4190",
+        "Answers": "20e9354409516bf35e0e6764110fde7a24666c266fdb9ed78ca2492e74c1b65e",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-implement-real-time",
+      "sourceSlug": "how-ai-agents-implement-real-time",
+      "workbookRow": 1356,
+      "title": "AI Agents Real-Time Security Policy Update",
+      "description": "Discover how AI agents use ML and automation to apply real-time security policy updates with network monitoring and anomaly detection.",
+      "keywords": "Intelligent Q&A, Vector Search, Document AI, Task Automation AI, Open Source AI",
+      "authoredDigests": {
+        "Question": "85072415a7126160bcfce0f18fb0223e5dd8e4255d820e1510a7a07987fdfbeb",
+        "Answers": "3b8b02a3a396fe79bb2bdac80a083806e5c6a4ac5f05134c4c97d69af675f0cd",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "how-to-isolate-development-testing-and-production-environments-for-ai-agents",
+      "sourceSlug": "how-to-isolate-development-testing-and-production-environments-for-ai-agents",
+      "workbookRow": 1359,
+      "title": "Isolate AI Agent Environments for Dev Test Prod",
+      "description": "Learn to set up isolated AI agent environments using dedicated infrastructure and RBAC across dev, test and production stages.",
+      "keywords": "Open Source AI, Intelligent Q&A, FastGPT, AI Workflow, AI Chatbot",
+      "authoredDigests": {
+        "Question": "94c177d036398ec9e8495e9dd3800bef8a207e49188220628d05e68014e4d79b",
+        "Answers": "ce4a6419067529f4fe9e7918e9cb47b01a6129c0214d39eb4daca07d91ab6ebf",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "how-enterprises-obtain-third-party-security-certification-through-ai-agent",
+      "sourceSlug": "how-enterprises-obtain-third-party-security-certification-through-ai-agent",
+      "workbookRow": 1364,
+      "title": "Third-Party Security Certification with AI Agents",
+      "description": "Learn how enterprises can use AI agents to streamline security certification, including automated evidence gathering and oversight.",
+      "keywords": "Task Automation AI, AI Automation, AI Chatbot, AI Platform, FastGPT",
+      "authoredDigests": {
+        "Question": "0cdec3feab0dfc10eeb83d7dea07372c51bf5540b86ff4c454bfac68141d54e0",
+        "Answers": "fe8132195ef179512939da62404d63c8582398bc854cb77966b4348a87903c37",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-handle-multi-region-data-synchronization-risks",
+      "sourceSlug": "how-ai-agents-handle-multi-region-data-synchronization-risks",
+      "workbookRow": 1365,
+      "title": "AI Agent Strategies for Multi-region Data Sync",
+      "description": "Learn how AI agents mitigate multi-region data synchronization risks using specialized frameworks, conflict resolution and compliance safeguards.",
+      "keywords": "LLM Development, AI Automation, Smart Assistant, Document AI, Vector Search",
+      "authoredDigests": {
+        "Question": "b7f4b1f66325c1c46f7fb57b63dfe289c4c3a243f0a764d18a6680d0690fb41e",
+        "Answers": "583c107aad1ce2552d46d028c1b21af3cbb1725e6f96591584503fbbd42a47a6",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "how-ai-agents-prevent-cross-site-scripting-attacks",
+      "sourceSlug": "how-ai-agents-prevent-cross-site-scripting-attacks",
+      "workbookRow": 1371,
+      "title": "AI Agent Security Tools to Block Cross-Site",
+      "description": "Discover how AI agents act as an automated security layer to detect and block Cross-Site Scripting attacks via pattern recognition and sanitization.",
+      "keywords": "AI Workflow, Vector Search, Open Source AI, AI Chatbot, AI Platform",
+      "authoredDigests": {
+        "Question": "2808656183bfc60f1d2bb79e5c57921e8fd39bc2dc28abf35be7002d4598b1e2",
+        "Answers": "1c8844cbfbe21ed23657cde6b155e939ed2caba9aea3b09ec68ed46902726a17",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    },
+    {
+      "contentId": "do-ai-agents-comply-with-children-s-privacy-protection-regulations",
+      "sourceSlug": "do-ai-agents-comply-with-children-s-privacy-protection-regulations",
+      "workbookRow": 1384,
+      "title": "AI Agent Compliance with Children’s Privacy",
+      "description": "Understand how AI agents can comply with children’s privacy regulations like COPPA and GDPR child provisions using required safeguards.",
+      "keywords": "Enterprise AI, AI Platform, FastGPT, API Integration, AI Automation",
+      "authoredDigests": {
+        "Question": "b56a8fd04469a9d7a3b0243650b062680d68307ace477293e9194ca96337b506",
+        "Answers": "c7a0999e0352fe3535aa4c1ddfc93ae176933567ae8c15622eb93820898fe16b",
+        "Category": "f9ce8e73f9651bfa7128df8b13b3f459e4edf284ceefb90a8fc3488619ffc3d8"
+      }
+    }
+  ]
+}

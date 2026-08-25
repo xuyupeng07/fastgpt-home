@@ -1753,9 +1753,15 @@ function structuredEntries(relativePath, source) {
       JSON.parse(source);
       const entries = collectJsonEntries(source);
       // The runtime renders approved metadata from records; source is workbook provenance.
-      return relativePath.replaceAll(path.sep, '/') === 'src/faq/generated-en-metadata.json'
-        ? entries.filter((entry) => entry.path?.[0] === 'records')
-        : entries;
+      const normalizedPath = relativePath.replaceAll(path.sep, '/');
+      if (
+        normalizedPath === 'src/faq/generated-en-metadata.json' ||
+        normalizedPath === 'src/faq/generated-en-metadata-additions.json'
+      ) {
+        return entries.filter((entry) => entry.path?.[0] === 'records');
+      }
+      if (normalizedPath === 'src/faq/generated-en-metadata-authority.json') return [];
+      return entries;
     } catch (error) {
       return [{ error: error.message, line: 1 }];
     }

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Financial research retrieval workflow</title>
+  <desc id="desc">Reports move through ingestion, structured retrieval, analyst review, and a reusable knowledge base.</desc>
+  <rect width="1200" height="630" fill="#101827" rx="28"/>
+  <text x="72" y="92" fill="#f8fafc" font-family="Arial, sans-serif" font-size="38" font-weight="700">Financial research retrieval</text>
+  <text x="72" y="132" fill="#a7f3d0" font-family="Arial, sans-serif" font-size="22">Evidence-aware workflow for enterprise research teams</text>
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+    <rect x="72" y="240" width="220" height="150" rx="18" fill="#1e3a5f" stroke="#60a5fa" stroke-width="3"/>
+    <text x="182" y="305" fill="#dbeafe">Report</text><text x="182" y="337" fill="#dbeafe">ingestion</text>
+    <rect x="344" y="240" width="220" height="150" rx="18" fill="#164e63" stroke="#67e8f9" stroke-width="3"/>
+    <text x="454" y="305" fill="#cffafe">Structured</text><text x="454" y="337" fill="#cffafe">retrieval</text>
+    <rect x="616" y="240" width="220" height="150" rx="18" fill="#365314" stroke="#bef264" stroke-width="3"/>
+    <text x="726" y="305" fill="#ecfccb">Analyst</text><text x="726" y="337" fill="#ecfccb">review</text>
+    <rect x="888" y="240" width="240" height="150" rx="18" fill="#4c1d95" stroke="#c4b5fd" stroke-width="3"/>
+    <text x="1008" y="305" fill="#ede9fe">Reusable</text><text x="1008" y="337" fill="#ede9fe">knowledge base</text>
+  </g>
+  <g stroke="#f8fafc" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 315h38m226 0h38m226 0h38"/>
+    <path d="m327 300 18 15-18 15m264-15 18 15-18 15m264-15 18 15-18 15"/>
+  </g>
+  <text x="72" y="520" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="22">Keep source permissions, structured checks, and human approval visible at every stage.</text>
+</svg>

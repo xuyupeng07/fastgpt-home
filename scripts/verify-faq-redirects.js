@@ -10,8 +10,18 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { getFaqRedirectProjection, parseNginxRedirectMap } = require('./lib/redirects');
-const { resolveSiteVariant } = require('./lib/site-variant');
+const {
+  URL_ALIAS_CONTRACT,
+  buildUrlAliasProjection,
+  getUrlAliasAuthoritySummary,
+  readUrlAliasAuthority
+} = require('./lib/url-alias-authority');
+const {
+  getFaqRedirectProjection,
+  getPublishedFaqIds,
+  parseNginxRedirectMap
+} = require('./lib/redirects');
+const { getProductionBaseUrls, resolveSiteVariant } = require('./lib/site-variant');
 
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'out');
@@ -20,6 +30,7 @@ const IO_BASE_URL = 'https://fastgpt.io';
 const EXPECTED_ELIGIBLE = 0;
 const EXPECTED_DENIED_REPAIRS = 0;
 const EXPECTED_LEDGER_DENIES = 0;
+const EXPECTED_ALIAS_COUNTS = { 'fastgpt.cn': 37, 'fastgpt.io': 1251 };
 
 function fail(message, entry) {
   const context = entry
@@ -108,6 +119,36 @@ function verifySourceProjection() {
   return projection;
 }
 
+function verifyAuthorityProjection() {
+  const authority = readUrlAliasAuthority(ROOT);
+  const summary = getUrlAliasAuthoritySummary(authority);
+  assert.equal(summary.sources, 1288, 'Unexpected URL Alias Authority source count');
+  assert.deepEqual(summary.sourceHosts, EXPECTED_ALIAS_COUNTS, 'Unexpected alias host partition');
+  assert.equal(summary.targets, 1274, 'Unexpected URL Alias Authority target count');
+  assert.equal(summary.manyToOneTargets, 8, 'Unexpected many-to-one target count');
+  assert.deepEqual(summary.sourceHosts, URL_ALIAS_CONTRACT.sourceHosts);
+  assert.deepEqual(summary.reasons, { 'case-only': 743, 'cross-host': 14, 'slug-rebuild': 531 });
+
+  const published = getPublishedFaqIds(ROOT);
+  const terminalPaths = {
+    'fastgpt.cn': new Set(published.chinese.map((slug) => `/faq/${slug}`)),
+    'fastgpt.io': new Set(published.english.map((slug) => `/faq/${slug}`))
+  };
+  for (const record of authority.records) {
+    assert(!terminalPaths[record.sourceHost].has(record.sourcePath), `Alias source entered canonical graph: ${record.sourcePath}`);
+    assert(terminalPaths[record.targetHost].has(record.targetPath), `Alias target left canonical graph: ${record.targetPath}`);
+  }
+
+  const baseUrls = getProductionBaseUrls();
+  for (const sourceHost of Object.keys(EXPECTED_ALIAS_COUNTS)) {
+    const first = [...buildUrlAliasProjection(authority, sourceHost, baseUrls)];
+    const second = [...buildUrlAliasProjection(authority, sourceHost, baseUrls)];
+    assert.deepEqual(first, second, `Non-deterministic ${sourceHost} alias projection`);
+    assert.equal(first.length, EXPECTED_ALIAS_COUNTS[sourceHost]);
+  }
+  return authority;
+}
+
 function parseWorkerRedirects() {
   const workerPath = path.join(OUT_DIR, '_worker.js');
   assert(fs.existsSync(workerPath), `Missing Cloudflare Worker: ${workerPath}`);
@@ -123,11 +164,23 @@ function parseNginxRedirects() {
   return parseNginxRedirectMap(fs.readFileSync(mapPath, 'utf8'));
 }
 
-function verifyArtifacts(projection) {
+function verifyArtifacts(projection, authority) {
   const variant = resolveSiteVariant();
   assert(['io', 'cn'].includes(variant), `Redirect artifact mode requires io or cn, received ${variant}`);
   const redirects = variant === 'io' ? parseWorkerRedirects() : parseNginxRedirects();
   const prefixes = variant === 'io' ? ['/faq'] : [];
+
+  const authorityHost = variant === 'io' ? 'fastgpt.io' : 'fastgpt.cn';
+  const authorityProjection = buildUrlAliasProjection(
+    authority,
+    authorityHost,
+    getProductionBaseUrls()
+  );
+  for (const [sourcePath, target] of authorityProjection) {
+    for (const pathVariant of [sourcePath, sourcePath.endsWith('/') ? sourcePath : `${sourcePath}/`]) {
+      assert.equal(redirects.get(pathVariant), target, `Missing authority alias ${pathVariant}`);
+    }
+  }
 
   for (const entry of projection.eligible) {
     for (const prefix of prefixes) {
@@ -160,9 +213,10 @@ function verifyArtifacts(projection) {
 function main() {
   const sourceOnly = process.argv.includes('--source');
   const projection = verifySourceProjection();
-  if (!sourceOnly) verifyArtifacts(projection);
+  const authority = verifyAuthorityProjection();
+  if (!sourceOnly) verifyArtifacts(projection, authority);
   console.log(
-    `[verify-faq-redirects] passed (eligible=${projection.eligible.length}, denied=${projection.deniedSources.size}, ledger=${projection.registry.collisionLedger.length}${sourceOnly ? ', source-only' : ''})`,
+    `[verify-faq-redirects] passed (eligible=${projection.eligible.length}, authority=${authority.records.length}, denied=${projection.deniedSources.size}, ledger=${projection.registry.collisionLedger.length}${sourceOnly ? ', source-only' : ''})`,
   );
 }
 

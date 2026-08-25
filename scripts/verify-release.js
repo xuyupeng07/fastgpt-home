@@ -10,31 +10,45 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
-const TECHNICAL_CONTENT_POLICY = require('../src/lib/technical-content-policy.json');
+const { URL_ALIAS_CONTRACT } = require('./lib/url-alias-authority');
+const {
+  verifyUrlAliasArtifactBundle,
+  writeUrlAliasArtifactBundle
+} = require('./lib/url-alias-artifacts');
 const { siteVariants } = require('./lib/site-variant');
+const {
+  GENERATED_PUBLIC_PATHS,
+  addRollbackFile,
+  commandLabel,
+  createFailure,
+  loadSolutionsEvidence
+} = require('./lib/release-cross-project');
+const {
+  assertCaseSensitiveFilesystem,
+  clearBuildArtifacts,
+  recordVariantArtifactInventory,
+  recordVariantExportRollbackInventory,
+  recordVariantRollbackInventory,
+  restoreGeneratedPublicFiles,
+  retainFailureArtifacts,
+  retainSuccessArtifacts,
+  snapshotGeneratedPublicFiles,
+  variantEnvironment,
+  verifyExportCardinality
+} = require('./lib/release-artifacts');
+const {
+  createReleaseRecord,
+  finalizeReleaseRecord,
+  formatTechnicalAuthoritySuccess,
+  recordStep,
+  recordVariantOutcome,
+  writeReleaseRecord
+} = require('./lib/release-record');
 
 const ROOT = path.resolve(__dirname, '..');
-const NEXT_DIR = path.join(ROOT, '.next');
-const OUT_DIR = path.join(ROOT, 'out');
 const RETAIN_DIR = path.join(ROOT, '.release-artifacts');
-const EXPECTED_FAQ_COUNTS = { io: 1400, cn: 1490, preview: 1400 };
-const EXPECTED_TECHNICAL_PAGE_COUNT = TECHNICAL_CONTENT_POLICY.expectedPageCount;
 const P1_BASELINE_KIB = 266.9;
 const P1_BUDGET_KIB = 260;
-const RELEASE_RECORD_FILENAME = 'release-verification.json';
-const GENERATED_PUBLIC_PATHS = [
-  'public/llms.txt',
-  'public/robots.txt',
-  'public/ar/llms.txt',
-  'public/en/llms.txt',
-  'public/id/llms.txt',
-  'public/ja/llms.txt',
-  'public/ms/llms.txt',
-  'public/th/llms.txt',
-  'public/vi/llms.txt',
-  'public/zh-hant/llms.txt',
-  'public/zh/llms.txt'
-];
 
 function parseArgs(argv) {
   const options = {
@@ -47,7 +61,9 @@ function parseArgs(argv) {
     const token = argv[index];
     if (token === '--source-only') options.sourceOnly = true;
     else if (token === '--keep-artifacts') options.keepArtifacts = true;
-    else if (token === '--live') options.live = true;
+    else if (token === '--allow-missing-solutions-evidence') {
+      options.allowMissingSolutionsEvidence = true;
+    } else if (token === '--live') options.live = true;
     else if (token === '--retain-success-artifacts') {
       const retainDir = argv[++index];
       if (!retainDir || retainDir.startsWith('--'))
@@ -59,161 +75,45 @@ function parseArgs(argv) {
         throw new Error(`--variant requires one of: ${siteVariants.join(', ')}`);
       }
       options.variant = variant;
+    } else if (token === '--solutions-evidence' || token === '--solutions-preview-evidence') {
+      const evidencePath = argv[++index];
+      if (!evidencePath || evidencePath.startsWith('--')) {
+        throw new Error(`${token} requires a JSON file path`);
+      }
+      options.solutionsEvidence = evidencePath;
+    } else if (token === '--solutions-http-target') {
+      const target = argv[++index];
+      if (!target || target.startsWith('--')) throw new Error(`${token} requires an HTTPS URL`);
+      options.solutionsHttpTarget = target;
+    } else if (token === '--solutions-http-contract') {
+      const contractPath = argv[++index];
+      if (!contractPath || contractPath.startsWith('--')) {
+        throw new Error(`${token} requires a JSON file path`);
+      }
+      options.solutionsHttpContract = contractPath;
+    } else if (token === '--solutions-approved-target') {
+      const target = argv[++index];
+      if (!target || target.startsWith('--')) throw new Error(`${token} requires an HTTPS URL`);
+      options.solutionsApprovedTarget = target;
     } else {
       throw new Error(`Unknown argument: ${token}`);
     }
   }
+  if (options.solutionsEvidence && (options.solutionsHttpTarget || options.solutionsHttpContract)) {
+    throw new Error(
+      '--solutions-evidence cannot be combined with --solutions-http-target or --solutions-http-contract'
+    );
+  }
+  if (options.solutionsHttpTarget !== undefined && options.solutionsHttpContract === undefined) {
+    throw new Error('--solutions-http-target requires --solutions-http-contract');
+  }
+  if (options.solutionsHttpContract !== undefined && options.solutionsHttpTarget === undefined) {
+    throw new Error('--solutions-http-contract requires --solutions-http-target');
+  }
   return options;
 }
 
-function commandLabel(command, args) {
-  return [command, ...args].join(' ');
-}
-
-function createFailure(label, command, args, output, variant) {
-  return {
-    label,
-    variant,
-    command: commandLabel(command, args),
-    output: output.trim().slice(-8000) || '<no command output>'
-  };
-}
-
-function createReleaseRecord(options) {
-  return {
-    schemaVersion: 1,
-    startedAt: new Date().toISOString(),
-    options,
-    commands: [],
-    counts: {
-      expectedImportedPages: TECHNICAL_CONTENT_POLICY.expectedAcceptedCount,
-      expectedDeniedPages: TECHNICAL_CONTENT_POLICY.expectedDeniedCount,
-      expectedTechnicalPages: EXPECTED_TECHNICAL_PAGE_COUNT,
-      variants: {}
-    },
-    variants: [],
-    evidence: {
-      releaseEligible: false,
-      exportVerified: [],
-      publishedTechnicalPages: { status: 'not-verified', claim: false }
-    },
-    blockers: []
-  };
-}
-
-function collectCountEvidence(record, output) {
-  const imported = output.match(/Technical content authority verified: (\d+) imported pages/);
-  if (imported) record.counts.importedPages = Number(imported[1]);
-}
-
-function writeReleaseRecord(record) {
-  const recordPath = path.join(RETAIN_DIR, RELEASE_RECORD_FILENAME);
-  fs.mkdirSync(RETAIN_DIR, { recursive: true });
-  fs.writeFileSync(recordPath, `${JSON.stringify(record, null, 2)}\n`);
-  return recordPath;
-}
-
-function finalizeReleaseRecord(record, failures, options) {
-  record.finishedAt = new Date().toISOString();
-  record.failureCount = failures.length;
-  record.blockers = failures.map((failure) => ({
-    type: /filesystem|environment|docker/i.test(failure.label) ? 'environment' : 'verification',
-    label: failure.label,
-    variant: failure.variant,
-    command: failure.command,
-    detail: failure.output
-  }));
-  record.evidence.releaseEligible =
-    !options.sourceOnly && !options.variant && failures.length === 0;
-  record.status = record.evidence.releaseEligible
-    ? 'release-eligible'
-    : record.blockers.some((blocker) => blocker.type === 'environment')
-    ? 'environment-blocked'
-    : failures.length
-    ? 'failed'
-    : options.sourceOnly
-    ? 'source-verified'
-    : 'export-verified';
-  record.evidence.exportVerified = record.variants
-    .filter((variant) => variant.outcome === 'export-verified')
-    .map((variant) => variant.variant);
-  return record;
-}
-
-function recordStep(record, label, command, variant, status, output, evidence) {
-  if (!record) return;
-  const step = { label, variant, command, status };
-  if (evidence) step.evidence = evidence;
-  step.output = output.trim().slice(status === 'failed' ? -4000 : -1200) || '<no command output>';
-  record.commands.push(step);
-  collectCountEvidence(record, output);
-}
-
-function recordVariantOutcome(record, variant, failures, commandStart) {
-  if (!record) return;
-  const commands = record.commands.slice(commandStart);
-  const findStep = (label) => commands.find((step) => step.label === label);
-  const technicalExportStep = commands.find(
-    (step) => step.label === `technical export artifact verification (${variant})`
-  );
-  const technicalCenterStep = commands.find(
-    (step) => step.label === `technical center artifact verification (${variant})`
-  );
-  const guideStep = findStep(`Guide export artifact verification (${variant})`);
-  const p1Step = findStep(`P1 HTML verification (${variant})`);
-  const exportedCount = technicalExportStep?.output.match(
-    /Export-verified Technical Pages: (\d+) \(/
-  );
-  const centerMeasurement = technicalCenterStep?.output.match(
-    /(?:passed: .*?, )?(\d+) server entries, ([0-9.]+) KiB initial JavaScript gzip/
-  );
-  const p1Measurement = p1Step?.output.match(
-    /P1 verification passed for .*?:\s*([0-9.]+ KiB initial JavaScript gzip)/
-  );
-  const variantCounts = {
-    faqPages: EXPECTED_FAQ_COUNTS[variant],
-    technicalPages: exportedCount ? Number(exportedCount[1]) : EXPECTED_TECHNICAL_PAGE_COUNT,
-    ...(centerMeasurement
-      ? {
-          technicalCenterServerEntries: Number(centerMeasurement[1]),
-          technicalCenterInitialJavaScriptGzipKiB: Number(centerMeasurement[2])
-        }
-      : {}),
-    ...(p1Measurement ? { initialJavaScriptGzip: p1Measurement[1] } : {})
-  };
-  const artifactStatus = (step) => {
-    if (!step) return 'skipped';
-    return step.output.includes('skipped') ? 'skipped' : step.status;
-  };
-  record.variants.push({
-    variant,
-    outcome:
-      !failures.some((failure) => failure.variant === variant) &&
-      technicalExportStep?.status === 'passed'
-        ? 'export-verified'
-        : 'failed',
-    technicalCenter: technicalCenterStep?.output.includes('skipped')
-      ? 'skipped'
-      : technicalCenterStep?.status === 'passed'
-      ? 'passed'
-      : 'failed',
-    technicalExport: technicalExportStep?.status === 'passed',
-    technicalPageCount: EXPECTED_TECHNICAL_PAGE_COUNT,
-    counts: variantCounts,
-    artifacts: {
-      build: artifactStatus(findStep(`build ${variant}`)),
-      htmlHygiene: artifactStatus(findStep(`Complete HTML hygiene (${variant})`)),
-      technicalCenter: artifactStatus(technicalCenterStep),
-      technicalExport: artifactStatus(technicalExportStep),
-      guide: artifactStatus(guideStep)
-    }
-  });
-  record.counts.variants = Object.fromEntries(
-    record.variants.map((entry) => [entry.variant, entry.counts])
-  );
-}
-
-function runStep(failures, label, command, args, env, variant, formatSuccess, record) {
+function runStep(failures, stepId, label, command, args, env, variant, formatSuccess, record) {
   const result = spawnSync(command, args, {
     cwd: ROOT,
     env,
@@ -223,14 +123,23 @@ function runStep(failures, label, command, args, env, variant, formatSuccess, re
   const output = `${result.stdout || ''}${result.stderr || ''}`;
   if (result.error || result.status !== 0) {
     const failureOutput = result.error ? `${output}\n${result.error.message}` : output;
-    recordStep(record, label, commandLabel(command, args), variant, 'failed', failureOutput);
-    failures.push(createFailure(label, command, args, failureOutput, variant));
+    recordStep(
+      record,
+      stepId,
+      label,
+      commandLabel(command, args),
+      variant,
+      'failed',
+      failureOutput
+    );
+    failures.push(createFailure(stepId, label, command, args, failureOutput, variant));
     console.error(`[verify-release] ${label} failed`);
     return false;
   }
   const successEvidence = formatSuccess ? formatSuccess(output) : undefined;
   recordStep(
     record,
+    stepId,
     label,
     commandLabel(command, args),
     variant,
@@ -242,213 +151,205 @@ function runStep(failures, label, command, args, env, variant, formatSuccess, re
   return true;
 }
 
-function nodeStep(failures, label, script, args, env, variant, record) {
+function nodeStep(failures, stepId, label, script, args, env, variant, record, formatSuccess) {
   return runStep(
     failures,
+    stepId,
     label,
     process.execPath,
     [script, ...args],
     env,
     variant,
-    undefined,
+    formatSuccess,
     record
   );
 }
 
-function npmStep(failures, label, args, env, variant, formatSuccess, record) {
+function npmStep(failures, stepId, label, args, env, variant, formatSuccess, record) {
   const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-  return runStep(failures, label, npm, ['run', ...args], env, variant, formatSuccess, record);
-}
-
-function clearBuildArtifacts() {
-  fs.rmSync(NEXT_DIR, { recursive: true, force: true });
-  fs.rmSync(OUT_DIR, { recursive: true, force: true });
-}
-
-function snapshotGeneratedPublicFiles() {
-  return new Map(
-    GENERATED_PUBLIC_PATHS.map((relativePath) => {
-      const filePath = path.join(ROOT, relativePath);
-      return [relativePath, fs.existsSync(filePath) ? fs.readFileSync(filePath) : null];
-    })
+  return runStep(
+    failures,
+    stepId,
+    label,
+    npm,
+    ['run', ...args],
+    env,
+    variant,
+    formatSuccess,
+    record
   );
 }
 
-function restoreGeneratedPublicFiles(snapshot) {
-  for (const [relativePath, contents] of snapshot) {
-    const filePath = path.join(ROOT, relativePath);
-    if (contents === null) {
-      fs.rmSync(filePath, { force: true });
-      continue;
-    }
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, contents);
-  }
-}
-
-function findCaseFoldCollisionPair() {
-  const registry = JSON.parse(
-    fs.readFileSync(path.join(ROOT, 'src/faq/generated-en-route-registry.json'), 'utf8')
-  );
-  const byFoldedSlug = new Map();
-  for (const record of registry.records) {
-    const folded = record.canonicalSlug.toLocaleLowerCase('en-US');
-    const candidates = byFoldedSlug.get(folded) || [];
-    candidates.push(record.canonicalSlug);
-    byFoldedSlug.set(folded, candidates);
-  }
-  for (const candidates of byFoldedSlug.values()) {
-    if (new Set(candidates).size > 1) return candidates.slice(0, 2);
-  }
-  return ['How-AI-helps-in-planning', 'How-AI-Helps-in-Planning'];
-}
-
-function assertCaseSensitiveFilesystem() {
-  const probeDir = fs.mkdtempSync(path.join(ROOT, '.release-case-probe-'));
-  const upperPath = path.join(probeDir, 'CaseProbe');
-  const lowerPath = path.join(probeDir, 'caseprobe');
-  try {
-    fs.writeFileSync(upperPath, 'case-sensitive probe');
-    const caseSensitive = !fs.existsSync(lowerPath);
-    if (!caseSensitive) {
-      const [first, second] = findCaseFoldCollisionPair();
-      throw new Error(
-        `case-insensitive filesystem detected for published FAQ routes ${first} and ${second}; run the Guide Release Verification workflow, docker build --file Dockerfile.verify --tag fastgpt-guide-release-verify ., or use a case-sensitive APFS workspace (source-only remains available)`
-      );
-    }
-  } finally {
-    fs.rmSync(probeDir, { recursive: true, force: true });
-  }
-}
-
-function variantEnvironment(variant) {
-  const baseUrl = variant === 'cn' ? 'https://fastgpt.cn' : 'https://fastgpt.io';
-  return {
-    ...process.env,
-    CI: process.env.CI || '1',
-    NODE_ENV: 'production',
-    NEXT_PUBLIC_SITE_VARIANT: variant,
-    NEXT_PUBLIC_HOME_URL: baseUrl,
-    NEXT_PUBLIC_CN_HOME_URL: 'https://fastgpt.cn',
-    NEXT_PUBLIC_IO_HOME_URL: 'https://fastgpt.io',
-    NEXT_PUBLIC_LANGUAGE_REGION: variant === 'cn' ? 'zh-CN' : 'en-US'
-  };
-}
-
-function walkFiles(dir) {
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    const filePath = path.join(dir, entry.name);
-    return entry.isDirectory() ? walkFiles(filePath) : [filePath];
-  });
-}
-
-function faqRouteKey(filePath) {
-  const relativePath = path.relative(OUT_DIR, filePath).replaceAll(path.sep, '/');
-  if (!relativePath.startsWith('faq/')) return undefined;
-  const route = relativePath.slice('faq/'.length);
-  if (route.endsWith('/index.html')) return route.slice(0, -'/index.html'.length);
-  if (route.endsWith('.html')) return route.slice(0, -'.html'.length);
-  return undefined;
-}
-
-function verifyExportCardinality(variant) {
-  const expected = EXPECTED_FAQ_COUNTS[variant];
-  const routeKeys = new Set(
-    walkFiles(path.join(OUT_DIR, 'faq'))
-      .filter((filePath) => filePath.endsWith('.html'))
-      .map(faqRouteKey)
-      .filter(Boolean)
-  );
-  if (routeKeys.size !== expected) {
-    throw new Error(
-      `variant=${variant} FAQ HTML route cardinality mismatch: expected ${expected}, found ${routeKeys.size}`
-    );
-  }
-
-  if (variant !== 'preview') {
-    const sitemapPath = path.join(OUT_DIR, 'sitemap.xml');
-    if (!fs.existsSync(sitemapPath))
-      throw new Error(`variant=${variant} is missing out/sitemap.xml`);
-    const sitemapUrls = [
-      ...fs.readFileSync(sitemapPath, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)
-    ].map((match) => match[1]);
-    const faqUrls = sitemapUrls.filter((url) => {
-      try {
-        const parsed = new URL(url);
-        return (
-          parsed.pathname.startsWith('/faq/') &&
-          parsed.pathname.split('/').filter(Boolean).length === 2
-        );
-      } catch {
-        return false;
-      }
-    });
-    if (faqUrls.length !== expected || new Set(faqUrls).size !== expected) {
-      throw new Error(
-        `variant=${variant} FAQ sitemap cardinality mismatch: expected ${expected}, found ${faqUrls.length}`
-      );
-    }
-  }
-}
-
-function retainFailureArtifacts(variant) {
-  const retainedPath = path.join(RETAIN_DIR, variant);
-  fs.rmSync(retainedPath, { recursive: true, force: true });
-  fs.mkdirSync(RETAIN_DIR, { recursive: true });
-  fs.mkdirSync(retainedPath, { recursive: true });
-  if (fs.existsSync(NEXT_DIR))
-    fs.cpSync(NEXT_DIR, path.join(retainedPath, '.next'), { recursive: true });
-  if (fs.existsSync(OUT_DIR))
-    fs.cpSync(OUT_DIR, path.join(retainedPath, 'out'), { recursive: true });
-  return retainedPath;
-}
-
-function retainSuccessArtifacts(variant, retainDir) {
-  const retainedPath = path.join(retainDir, variant);
-  fs.rmSync(retainedPath, { recursive: true, force: true });
-  fs.mkdirSync(retainedPath, { recursive: true });
-  const retainedOut = path.join(retainedPath, 'out');
-  const redirectMap = path.join(NEXT_DIR, 'nginx-redirects.conf');
-  if (!fs.existsSync(redirectMap)) {
-    throw new Error(`Missing generated redirect map: ${redirectMap}`);
-  }
-  fs.cpSync(OUT_DIR, retainedOut, { recursive: true });
-  fs.mkdirSync(path.join(retainedOut, '__release'), { recursive: true });
-  fs.copyFileSync(redirectMap, path.join(retainedOut, '__release', 'nginx-redirects.conf'));
-  return retainedPath;
-}
-
-function runSourceChecks(failures, env, record) {
-  const checks = [
-    ['SEO basics regression', 'scripts/verify-seo-basics.test.js', []],
+function getSourceNodeSteps() {
+  return [
     [
+      'solutions-preview.regression',
+      'Solutions preview runner regression',
+      'scripts/lib/solutions-preview-http.test.js',
+      []
+    ],
+    ['seo-basics.regression', 'SEO basics regression', 'scripts/verify-seo-basics.test.js', []],
+    [
+      'content-hygiene.source',
       'content hygiene source verification',
       'scripts/verify-content-hygiene.js',
       ['--mode', 'source']
     ],
-    ['route registry check', 'scripts/generate-faq-route-registry.js', ['--check']],
-    ['metadata snapshot check', 'scripts/generate-faq-metadata.js', ['--check']],
-    ['FAQ route source verification', 'scripts/verify-faq-routes.js', []],
-    ['FAQ metadata source verification', 'scripts/verify-faq-metadata.js', []],
-    ['FAQ SEO graph source verification', 'scripts/verify-faq-seo-graph.js', []],
-    ['FAQ redirect source verification', 'scripts/verify-faq-redirects.js', ['--source']]
+    [
+      'faq-route-registry.source',
+      'route registry check',
+      'scripts/generate-faq-route-registry.js',
+      ['--check']
+    ],
+    [
+      'faq-metadata-snapshot.source',
+      'metadata snapshot check',
+      'scripts/generate-faq-metadata.js',
+      ['--check']
+    ],
+    ['faq-routes.source', 'FAQ route source verification', 'scripts/verify-faq-routes.js', []],
+    [
+      'faq-metadata-legacy.source',
+      'FAQ metadata source verification',
+      'scripts/verify-faq-metadata.js',
+      []
+    ],
+    [
+      'faq-metadata.source',
+      'FAQ metadata normalization source verification',
+      'scripts/verify-faq-metadata-authority.js',
+      []
+    ],
+    [
+      'faq-seo-graph.source',
+      'FAQ SEO graph source verification',
+      'scripts/verify-faq-seo-graph.js',
+      []
+    ],
+    [
+      'url-alias.source',
+      'URL Alias Authority source verification',
+      'scripts/verify-url-alias-authority.js',
+      []
+    ],
+    [
+      'case-only.source',
+      'case-only authority and projection source verification',
+      'scripts/verify-case-only-aliases.js',
+      []
+    ],
+    [
+      'url-alias.rebuilt-source',
+      'URL Alias rebuilt-slug authority and projection source verification',
+      'scripts/verify-rebuilt-slug-aliases.js',
+      []
+    ],
+    [
+      'faq-redirects.source',
+      'FAQ redirect source verification',
+      'scripts/verify-faq-redirects.js',
+      ['--source']
+    ],
+    [
+      'technical-authority.source',
+      'technical authority source verification',
+      'scripts/verify-technical-authority.js',
+      []
+    ],
+    [
+      'technical-wave.source',
+      'technical wave source verification',
+      'scripts/verify-technical-wave.js',
+      []
+    ]
   ];
-  for (const [label, script, args] of checks)
-    nodeStep(failures, label, script, args, env, undefined, record);
+}
 
-  const technicalChecks = [
-    ['technical content authority verification', ['verify:technical-content']],
-    ['technical content regression', ['verify:technical-content-regression']],
-    ['technical center regression', ['verify:technical-center-regression']],
-    ['technical export regression', ['verify:technical-export-regression']]
+function getSourceNpmSteps() {
+  return [
+    [
+      'technical-content.source',
+      'technical content authority verification',
+      ['verify:technical-content']
+    ],
+    [
+      'technical-authority.regression',
+      'technical authority regression',
+      ['verify:technical-authority-regression']
+    ],
+    [
+      'technical-wave.regression',
+      'technical wave regression',
+      ['verify:technical-wave-regression']
+    ],
+    [
+      'technical-content.regression',
+      'technical content regression',
+      ['verify:technical-content-regression']
+    ],
+    [
+      'technical-center.regression',
+      'technical center regression',
+      ['verify:technical-center-regression']
+    ],
+    [
+      'technical-export.regression',
+      'technical export regression',
+      ['verify:technical-export-regression']
+    ],
+    ['url-alias.regression', 'URL Alias Authority regression', ['verify:url-alias-regression']],
+    ['case-only.regression', 'case-only slice regression', ['verify:case-only-regression']],
+    [
+      'url-alias.rebuilt-regression',
+      'URL Alias rebuilt-slug slice regression',
+      ['verify:rebuilt-slug-regression']
+    ],
+    [
+      'faq-metadata.regression',
+      'FAQ metadata normalization regression',
+      ['verify:faq-metadata-authority-regression']
+    ],
+    ['release-readiness.regression', 'release readiness regression', ['verify:release-readiness']]
   ];
-  for (const [label, args] of technicalChecks) {
-    npmStep(failures, label, args, env, undefined, undefined, record);
+}
+
+function getSourceExecutionOrder() {
+  return [
+    ...getSourceNodeSteps().map(([stepId]) => stepId),
+    ...getSourceNpmSteps().map(([stepId]) => stepId),
+    'lint.source',
+    'typescript.source',
+    'guide-authorization.source',
+    'guide-authorization.regression',
+    'guide-content.source'
+  ];
+}
+
+function runSourceChecks(failures, env, record) {
+  for (const [stepId, label, script, args] of getSourceNodeSteps()) {
+    const formatSuccess =
+      stepId === 'technical-authority.source' ? formatTechnicalAuthoritySuccess : undefined;
+    nodeStep(failures, stepId, label, script, args, env, undefined, record, formatSuccess);
   }
-  npmStep(failures, 'Lint source verification', ['lint'], env, undefined, undefined, record);
+
+  for (const [stepId, label, args] of getSourceNpmSteps()) {
+    const formatSuccess =
+      stepId === 'technical-authority.regression' ? formatTechnicalAuthoritySuccess : undefined;
+    npmStep(failures, stepId, label, args, env, undefined, formatSuccess, record);
+  }
+  npmStep(
+    failures,
+    'lint.source',
+    'Lint source verification',
+    ['lint'],
+    env,
+    undefined,
+    undefined,
+    record
+  );
   runStep(
     failures,
+    'typescript.source',
     'TypeScript source verification',
     'npx',
     ['--no-install', 'tsc', '--noEmit', '--incremental', 'false'],
@@ -457,12 +358,42 @@ function runSourceChecks(failures, env, record) {
     undefined,
     record
   );
+  const technicalAuthority = record?.evidence.technicalAuthority;
+  if (
+    technicalAuthority?.observed?.governanceStatus === 'governance-complete' &&
+    technicalAuthority.observed.publicationCount === 0
+  ) {
+    console.log('[verify-release] Wave 0 governance-complete; publication-count=0');
+  }
 }
 
 function runGuideSourceChecks(failures, env, variant, record) {
   const suffix = variant ? ` (${variant})` : '';
+  if (!variant) {
+    nodeStep(
+      failures,
+      'guide-authorization.source',
+      'Guide authorization source verification',
+      'scripts/verify-guide-authorization.js',
+      [],
+      env,
+      undefined,
+      record
+    );
+    npmStep(
+      failures,
+      'guide-authorization.regression',
+      'Guide authorization regression',
+      ['verify:guide-authorization-regression'],
+      env,
+      undefined,
+      undefined,
+      record
+    );
+  }
   nodeStep(
     failures,
+    'guide-content.source',
     `Guide content source verification${suffix}`,
     'scripts/verify-guide-content.js',
     [],
@@ -478,10 +409,122 @@ function extractP1SuccessMeasurement(output) {
   )?.[1];
 }
 
+function getVariantSteps(variant) {
+  const steps = [
+    {
+      runner: 'node',
+      id: 'content-hygiene.html',
+      label: `Complete HTML hygiene (${variant})`,
+      command: 'scripts/verify-content-hygiene.js',
+      args: ['--mode', 'html', '--root', 'out', '--variant', variant]
+    },
+    {
+      runner: 'npm',
+      id: 'technical-center.export',
+      label: `technical center artifact verification (${variant})`,
+      args: ['verify:technical-center']
+    },
+    {
+      runner: 'npm',
+      id: 'technical-export.export',
+      label: `technical export artifact verification (${variant})`,
+      args: ['verify:technical-export']
+    },
+    {
+      runner: 'npm',
+      id: 'technical-wave.export',
+      label: `technical wave export verification (${variant})`,
+      args: ['verify:technical-wave', '--', '--export', '--variant', variant, '--out-dir', 'out']
+    },
+    ...(variant === 'preview'
+      ? []
+      : [
+          {
+            runner: 'node',
+            id: 'url-alias.blackbox',
+            label: `URL Alias black-box verification (${variant})`,
+            command: 'scripts/verify-url-alias-blackbox.js',
+            args: ['--variant', variant]
+          },
+          {
+            runner: 'node',
+            id: 'case-only.http',
+            label: `Case-only HTTP verification (${variant})`,
+            command: 'scripts/verify-url-alias-blackbox.js',
+            args: ['--variant', variant, '--slice', 'case-only']
+          }
+        ]),
+    {
+      runner: 'npm',
+      id: 'p0.export',
+      label: `P0 HTML verification (${variant})`,
+      args: ['verify:p0']
+    },
+    {
+      runner: 'npm',
+      id: 'p1.export',
+      label: `P1 HTML verification (${variant})`,
+      args: ['verify:p1'],
+      formatSuccess: extractP1SuccessMeasurement
+    },
+    {
+      runner: 'npm',
+      id: 'p2.export',
+      label: `P2 HTML verification (${variant})`,
+      args: ['verify:p2']
+    },
+    {
+      runner: 'npm',
+      id: 'i18n-seo.export',
+      label: `i18n SEO HTML verification (${variant})`,
+      args: ['verify:i18n-seo']
+    },
+    ...(variant === 'preview'
+      ? []
+      : [
+          {
+            runner: 'npm',
+            id: 'faq-metadata-legacy.html',
+            label: `FAQ metadata HTML verification (${variant})`,
+            args: ['verify:faq-metadata', '--', '--html', '--variant', variant]
+          },
+          {
+            runner: 'npm',
+            id: 'faq-metadata.html',
+            label: `FAQ metadata normalization HTML verification (${variant})`,
+            args: ['verify:faq-metadata-authority', '--', '--html', '--variant', variant]
+          },
+          {
+            runner: 'npm',
+            id: 'faq-seo-graph.html',
+            label: `FAQ SEO graph HTML verification (${variant})`,
+            args: ['verify:faq-seo-graph', '--', '--html', '--out-dir', 'out', '--variant', variant]
+          },
+          {
+            runner: 'npm',
+            id: 'faq-redirects.export',
+            label: `FAQ redirect artifact verification (${variant})`,
+            args: ['verify:faq-redirects']
+          }
+        ])
+  ];
+  return steps;
+}
+
+function getVariantExecutionOrder(variant) {
+  return [
+    'variant.build',
+    ...getVariantSteps(variant).map((step) => step.id),
+    'faq.export-cardinality',
+    'guide.export'
+  ];
+}
+
 function runVariantChecks(failures, variant, env, record) {
   const commandStart = record?.commands.length || 0;
   const buildPassed = npmStep(
     failures,
+    'variant.build',
     `build ${variant}`,
     ['build'],
     env,
@@ -494,62 +537,29 @@ function runVariantChecks(failures, variant, env, record) {
     return false;
   }
 
-  nodeStep(
-    failures,
-    `Complete HTML hygiene (${variant})`,
-    'scripts/verify-content-hygiene.js',
-    ['--mode', 'html', '--root', 'out', '--variant', variant],
-    env,
-    variant,
-    record
-  );
-
-  npmStep(
-    failures,
-    `technical center artifact verification (${variant})`,
-    ['verify:technical-center'],
-    env,
-    variant,
-    undefined,
-    record
-  );
-  npmStep(
-    failures,
-    `technical export artifact verification (${variant})`,
-    ['verify:technical-export'],
-    env,
-    variant,
-    undefined,
-    record
-  );
-
-  const checks = [
-    ['P0 HTML verification', ['verify:p0']],
-    ['P1 HTML verification', ['verify:p1'], extractP1SuccessMeasurement],
-    ['P2 HTML verification', ['verify:p2']],
-    ['i18n SEO HTML verification', ['verify:i18n-seo']]
-  ];
-  if (variant !== 'preview') {
-    checks.push(
-      [
-        'FAQ metadata HTML verification',
-        ['verify:faq-metadata', '--', '--html', '--variant', variant]
-      ],
-      [
-        'FAQ SEO graph HTML verification',
-        ['verify:faq-seo-graph', '--', '--html', '--out-dir', 'out', '--variant', variant]
-      ],
-      ['FAQ redirect artifact verification', ['verify:faq-redirects']]
-    );
-  }
-  for (const [label, args, formatSuccess] of checks) {
-    npmStep(failures, `${label} (${variant})`, args, env, variant, formatSuccess, record);
+  for (const step of getVariantSteps(variant)) {
+    if (step.runner === 'node') {
+      nodeStep(
+        failures,
+        step.id,
+        step.label,
+        step.command,
+        step.args,
+        env,
+        variant,
+        record,
+        step.formatSuccess
+      );
+      continue;
+    }
+    npmStep(failures, step.id, step.label, step.args, env, variant, step.formatSuccess, record);
   }
 
   try {
     verifyExportCardinality(variant);
     recordStep(
       record,
+      'faq.export-cardinality',
       `export cardinality (${variant})`,
       'in-process static export cardinality check',
       variant,
@@ -559,6 +569,7 @@ function runVariantChecks(failures, variant, env, record) {
     console.log(`[verify-release] export cardinality (${variant}) passed`);
   } catch (error) {
     failures.push({
+      id: 'faq.export-cardinality',
       label: `export cardinality (${variant})`,
       variant,
       command: 'in-process static export cardinality check',
@@ -566,6 +577,7 @@ function runVariantChecks(failures, variant, env, record) {
     });
     recordStep(
       record,
+      'faq.export-cardinality',
       `export cardinality (${variant})`,
       'in-process static export cardinality check',
       variant,
@@ -576,24 +588,32 @@ function runVariantChecks(failures, variant, env, record) {
   }
 
   if (variant === 'preview') {
-    recordStep(
-      record,
+    nodeStep(
+      failures,
+      'guide.export',
       `Guide export artifact verification (${variant})`,
-      'preview Guide export verification is covered by i18n and static artifact gates',
+      'scripts/verify-guide-preview.js',
+      ['--out-dir', 'out'],
+      env,
       variant,
-      'passed',
-      'skipped for preview: production Guide sitemap and locale-owner contract do not apply'
+      record
     );
-    console.log(`[verify-release] Guide export artifact verification (${variant}) skipped`);
   } else {
     nodeStep(
       failures,
+      'guide.export',
       `Guide export artifact verification (${variant})`,
       'scripts/verify-guide-export.js',
       ['--out-dir', 'out', '--variant', variant],
       env,
       variant,
-      record
+      record,
+      (output) => {
+        const match = output.match(
+          /Guide HTML verified: (\d+) pages, (\d+) sitemap URLs \(tracer=([^)]+)\)/
+        );
+        return match ? `tracer=${match[3]} pages=${match[1]} sitemapUrls=${match[2]}` : undefined;
+      }
     );
   }
   recordVariantOutcome(record, variant, failures, commandStart);
@@ -605,7 +625,7 @@ function appendP1HistoricalBaselineAdvisories(failures, startIndex, advisories) 
     const budgetMatch = failure.output.match(
       /Initial JavaScript is ([0-9.]+) KiB gzip, budget is 260 KiB/
     );
-    if (!failure.label.startsWith('P1 HTML verification') || !budgetMatch) continue;
+    if (failure.id !== 'p1.export' || !budgetMatch) continue;
     const currentKib = Number.parseFloat(budgetMatch[1]);
     const deltaKib = currentKib - P1_BASELINE_KIB;
     advisories.push({
@@ -655,6 +675,7 @@ function reportFailures(failures, advisories, retainedPaths) {
 function runReleaseRegressionChecks(failures, env, record) {
   npmStep(
     failures,
+    'release.regression',
     'release coordinator regression',
     ['verify:release-regression'],
     env,
@@ -664,13 +685,47 @@ function runReleaseRegressionChecks(failures, env, record) {
   );
 }
 
+function isReleaseGateBlocked(failures, solutionsEvidence, options = {}) {
+  if (failures.length) return true;
+  if (solutionsEvidence.claim === true) return false;
+  return !(
+    options.allowMissingSolutionsEvidence === true && solutionsEvidence.status === 'not-provided'
+  );
+}
+
 function main() {
   const options = parseArgs(process.argv.slice(2));
   const failures = [];
   const advisories = [];
   const retainedPaths = [];
   const record = createReleaseRecord(options);
-  if (!options.keepArtifacts) fs.rmSync(RETAIN_DIR, { recursive: true, force: true });
+  // Source-only checks run inside release regressions; preserve any full release record they inspect.
+  if (!options.keepArtifacts && !options.sourceOnly) {
+    fs.rmSync(RETAIN_DIR, { recursive: true, force: true });
+  }
+  loadSolutionsEvidence(record, options);
+  addRollbackFile(
+    record,
+    'src/content/tech-center/authority/week05-wave1-release-manifest.json',
+    'technical-wave-release-manifest',
+    record.startedAt
+  );
+  addRollbackFile(
+    record,
+    'src/content/tech-center/authority/week05-wave1-rollback.json',
+    'technical-wave-rollback',
+    record.startedAt
+  );
+  for (const [relativePath, role] of [
+    ['src/faq/generated-en-route-registry.json', 'faq-route-registry'],
+    ['src/faq/generated-en-metadata.json', 'faq-metadata-projection'],
+    ['src/faq/generated-en-metadata-authority.json', 'faq-metadata-authority'],
+    ['src/content/guides/registry.json', 'guide-registry'],
+    ['src/content/guides/policy.json', 'guide-release-policy'],
+    ['src/content/guides/authorization.json', 'guide-authorization']
+  ]) {
+    addRollbackFile(record, relativePath, role, record.startedAt);
+  }
   const snapshot = snapshotGeneratedPublicFiles();
   const sourceEnv = {
     ...process.env,
@@ -706,6 +761,7 @@ function main() {
       assertCaseSensitiveFilesystem();
       recordStep(
         record,
+        'filesystem.case-sensitive',
         'case-sensitive filesystem policy',
         'in-process case-sensitive filesystem probe',
         undefined,
@@ -716,6 +772,7 @@ function main() {
     } catch (error) {
       recordStep(
         record,
+        'filesystem.case-sensitive',
         'case-sensitive filesystem policy',
         'in-process case-sensitive filesystem probe',
         undefined,
@@ -723,6 +780,7 @@ function main() {
         error.message
       );
       failures.push({
+        id: 'filesystem.case-sensitive',
         label: 'case-sensitive filesystem policy',
         command: 'in-process case-sensitive filesystem probe',
         output: error.message
@@ -740,13 +798,43 @@ function main() {
       const beforeFailures = failures.length;
       runGuideSourceChecks(failures, env, variant, record);
       runVariantChecks(failures, variant, env, record);
+      recordVariantArtifactInventory(record, variant);
       appendP1HistoricalBaselineAdvisories(failures, beforeFailures, advisories);
       const variantFailed = failures.length > beforeFailures;
+      if (!variantFailed && ['cn', 'io'].includes(variant)) {
+        try {
+          const bundle = writeUrlAliasArtifactBundle(ROOT, RETAIN_DIR, variant);
+          verifyUrlAliasArtifactBundle(path.join(RETAIN_DIR, 'url-alias'), [variant]);
+          record.evidence.aliasContract.artifacts[variant] = {
+            status: 'passed',
+            path: path.relative(ROOT, bundle.root),
+            authorityDigest: bundle.releaseManifest.authority.digest,
+            authoritySha256: bundle.authoritySha256,
+            projectionSha256: bundle.projectionSha256
+          };
+          recordVariantRollbackInventory(record, variant);
+          console.log(`[verify-release] URL Alias ${variant} release/rollback artifacts passed`);
+        } catch (error) {
+          failures.push({
+            id: 'url-alias.artifacts',
+            label: `URL Alias release artifacts (${variant})`,
+            variant,
+            command: 'in-process URL Alias release artifact generation',
+            output: error.message
+          });
+          record.evidence.aliasContract.artifacts[variant] = {
+            status: 'failed',
+            detail: error.message
+          };
+        }
+      }
+      if (!variantFailed) recordVariantExportRollbackInventory(record, variant);
       if (variantFailed && options.keepArtifacts) {
         try {
           retainedPaths.push(retainFailureArtifacts(variant));
         } catch (error) {
           failures.push({
+            id: 'artifacts.retain-failure',
             label: `failure artifact retention (${variant})`,
             variant,
             command: 'in-process failure artifact copy',
@@ -756,14 +844,21 @@ function main() {
       }
       if (!variantFailed && options.retainSuccessArtifacts) {
         try {
-          console.log(
-            `[verify-release] retained verified ${variant} output: ${retainSuccessArtifacts(
-              variant,
-              options.retainSuccessArtifacts
-            )}`
-          );
+          const retainedPath = retainSuccessArtifacts(variant, options.retainSuccessArtifacts);
+          record.evidence.aliasContract.artifacts[variant] = {
+            status: 'passed',
+            path: path.relative(ROOT, path.join(retainedPath, 'url-alias', variant)),
+            authorityDigest: JSON.parse(
+              fs.readFileSync(
+                path.join(retainedPath, 'url-alias', variant, 'release', 'manifest.json'),
+                'utf8'
+              )
+            ).authority.digest
+          };
+          console.log(`[verify-release] retained verified ${variant} output: ${retainedPath}`);
         } catch (error) {
           failures.push({
+            id: 'artifacts.retain-success',
             label: `success artifact retention (${variant})`,
             variant,
             command: 'in-process verified output copy',
@@ -775,17 +870,27 @@ function main() {
     }
 
     reportFailures(failures, advisories, retainedPaths);
-    if (!failures.length) {
+    const solutionsEvidence = record.crossProjectInputs.solutionsPreviewHttp;
+    const solutionsBlocked = solutionsEvidence.claim !== true;
+    const missingSolutionsAllowed =
+      options.allowMissingSolutionsEvidence === true && solutionsEvidence.status === 'not-provided';
+    if (!failures.length && !solutionsBlocked) {
       console.log(
         `[verify-release] release gate passed for source, redirects, ${siteVariants.join(
           ', '
         )}, HTML, and sitemap evidence`
       );
+    } else if (!failures.length && missingSolutionsAllowed) {
+      console.log(
+        '[verify-release] pull-request source and export gates passed; production release eligibility awaits Solutions preview HTTP evidence'
+      );
+    } else if (!failures.length && solutionsBlocked) {
+      console.error('[verify-release] release gate blocked by Solutions preview HTTP evidence');
     }
-    process.exitCode = failures.length ? 1 : 0;
+    process.exitCode = isReleaseGateBlocked(failures, solutionsEvidence, options) ? 1 : 0;
   } finally {
     finalizeReleaseRecord(record, failures, options);
-    if (options.keepArtifacts || options.retainSuccessArtifacts || process.env.CI) {
+    if (!options.sourceOnly) {
       const recordPath = writeReleaseRecord(record);
       console.log(`[verify-release] verification record: ${recordPath}`);
     }
@@ -805,4 +910,17 @@ if (require.main === module) {
   }
 }
 
-module.exports = { parseArgs, appendP1HistoricalBaselineAdvisories, extractP1SuccessMeasurement };
+module.exports = {
+  appendP1HistoricalBaselineAdvisories,
+  createReleaseRecord,
+  extractP1SuccessMeasurement,
+  finalizeReleaseRecord,
+  getSourceNodeSteps,
+  getSourceNpmSteps,
+  getSourceExecutionOrder,
+  getVariantExecutionOrder,
+  getVariantSteps,
+  isReleaseGateBlocked,
+  loadSolutionsEvidence,
+  parseArgs
+};

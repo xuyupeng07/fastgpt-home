@@ -126,7 +126,7 @@ function writeFixture(outDir, variant, { entries = registry.entries, style = 'fl
         ? `<img src="${source.assetPolicy.path}" alt="${escapeHtml(source.assetPolicy.alt)}">`
         : '';
     const related = source.configuredInternalLinks
-      .map((link) => `<a href="${link.target}">${escapeHtml(link.label)}</a>`)
+      .map((link) => `<a href="${link.target}">${escapeHtml(link.label)}<span aria-hidden="true">↗</span></a>`)
       .join('');
     const schema = [
       {
@@ -192,8 +192,8 @@ test('tracer accepts exact io Guide inventory', () => {
     writeFixture(outDir, 'io');
     assert.deepEqual(verifyGuideExport({ outDir, variant: 'io' }), {
       variant: 'io',
-      pages: 9,
-      sitemapUrls: 9
+      pages: 14,
+      sitemapUrls: 14
     });
   } finally {
     fs.rmSync(outDir, { recursive: true, force: true });
@@ -207,11 +207,14 @@ test('happy artifact matrix accepts exact io and cn Guide inventories', () => {
       writeFixture(outDir, variant);
       assert.deepEqual(verifyGuideExport({ outDir, variant }), {
         variant,
-        pages: 9,
-        sitemapUrls: 9
+        pages: 14,
+        sitemapUrls: 14
       });
       assert.equal(fs.existsSync(path.join(outDir, 'guide.html')), true);
-      assert.equal(fs.readdirSync(path.join(outDir, 'guide')).filter((name) => name.endsWith('.html')).length, 8);
+      assert.equal(
+        fs.readdirSync(path.join(outDir, 'guide')).filter((name) => name.endsWith('.html')).length,
+        13
+      );
     } finally {
       fs.rmSync(outDir, { recursive: true, force: true });
     }
@@ -236,7 +239,8 @@ test('CLI reports the selected variant and exact Guide counts', () => {
       [path.join(__dirname, 'verify-guide-export.js'), '--out-dir', outDir, '--variant', 'cn'],
       { encoding: 'utf8' }
     );
-    assert.match(output, /variant=cn Guide HTML verified: 9 pages, 9 sitemap URLs/);
+    assert.match(output, /variant=cn Guide HTML verified: 14 pages, 14 sitemap URLs/);
+    assert.match(output, /tracer=poc-30-day-design/);
   } finally {
     fs.rmSync(outDir, { recursive: true, force: true });
   }
@@ -417,7 +421,9 @@ test('Guide export surface mutations reject localized hub and article drift with
       const assetPath = mutateRoute(outDir, `guide/${entries[0].slug}`, (html) => html.replace('/guide-asset.png', '/wrong-asset.png'));
       assertScopedFailure(() => verifyGuideExport({ outDir, variant, entries }), { variant, slug: entries[0].slug, filePath: assetPath, surface: 'asset', reason: /required asset/ });
       writeFixture(outDir, variant, { entries });
-      const linkPath = mutateRoute(outDir, `guide/${entries[0].slug}`, (html) => html.replace(`>${activated.configuredInternalLinks[0].label}</a>`, '>Wrong link</a>'));
+      const linkPath = mutateRoute(outDir, `guide/${entries[0].slug}`, (html) =>
+        html.replace(activated.configuredInternalLinks[0].label, 'Wrong link')
+      );
       assertScopedFailure(() => verifyGuideExport({ outDir, variant, entries }), { variant, slug: entries[0].slug, filePath: linkPath, surface: 'configured-link', reason: /configured link/ });
       writeFixture(outDir, variant);
       const malformedPath = mutateRoute(outDir, `guide/${howTo.slug}`, (html) => html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">{</script>'));
@@ -438,7 +444,7 @@ test('Guide export inventory and CLI regressions reject route, sitemap, and argu
     const outDir = fs.mkdtempSync(path.join(os.tmpdir(), `verify-guide-export-inventory-${variant}-`));
     try {
       writeFixture(outDir, variant, { style: 'nested' });
-      assert.deepEqual(verifyGuideExport({ outDir, variant }), { variant, pages: 9, sitemapUrls: 9 });
+      assert.deepEqual(verifyGuideExport({ outDir, variant }), { variant, pages: 14, sitemapUrls: 14 });
       fs.rmSync(outDir, { recursive: true, force: true });
       fs.mkdirSync(outDir);
 
@@ -481,7 +487,7 @@ test('Guide export inventory and CLI regressions reject route, sitemap, and argu
       writeFixture(outDir, variant);
       writeRoute(outDir, 'en/guide', '<html><body>adapter</body></html>');
       writeRoute(outDir, 'zh/guide', '<html><body>adapter</body></html>');
-      assert.deepEqual(verifyGuideExport({ outDir, variant }), { variant, pages: 9, sitemapUrls: 9 });
+      assert.deepEqual(verifyGuideExport({ outDir, variant }), { variant, pages: 14, sitemapUrls: 14 });
 
       const sitemapCases = [
         ['wrong owner', (xml) => xml.replace(host, variant === 'cn' ? 'https://fastgpt.io' : 'https://fastgpt.cn'), /expected exact Guide sitemap URLs/],
@@ -516,7 +522,7 @@ test('Guide export inventory and CLI regressions reject route, sitemap, and argu
       }
       const success = spawnSync(process.execPath, [script, '--out-dir', outDir, '--variant', variant], { encoding: 'utf8' });
       assert.equal(success.status, 0);
-      assert.match(success.stdout, new RegExp(`variant=${variant} Guide HTML verified: 9 pages, 9 sitemap URLs`));
+      assert.match(success.stdout, new RegExp(`variant=${variant} Guide HTML verified: 14 pages, 14 sitemap URLs`));
       fs.rmSync(path.join(outDir, 'guide', `${registry.entries[0].slug}.html`));
       const failed = spawnSync(process.execPath, [script, '--out-dir', outDir, '--variant', variant], { encoding: 'utf8' });
       assert.notEqual(failed.status, 0);

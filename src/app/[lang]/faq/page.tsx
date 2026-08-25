@@ -1,6 +1,7 @@
 import { faqContentLocaleCodes, getFaqData, resolveFaqLocale } from '@/faq';
 import { defaultLocale, getDictionary } from '@/lib/i18n';
-import { getFaqAlternates, getRobotsPolicy, localeMap } from '@/lib/seo';
+import { getFaqAlternates } from '@/lib/faqSeo';
+import { getRobotsPolicy, localeMap } from '@/lib/seo';
 import {
   currentSiteBaseUrl,
   getBuildLocaleCodes,

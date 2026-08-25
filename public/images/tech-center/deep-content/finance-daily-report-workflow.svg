@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Financial daily report automation workflow</title>
+  <desc id="desc">Daily financial data moves through scheduled ingestion, cleansing, calculation, drafting, and human review.</desc>
+  <rect width="1200" height="630" fill="#111827" rx="28"/>
+  <text x="72" y="92" fill="#f9fafb" font-family="Arial, sans-serif" font-size="38" font-weight="700">Financial daily report automation</text>
+  <text x="72" y="132" fill="#bfdbfe" font-family="Arial, sans-serif" font-size="22">Scheduled data processing with human approval</text>
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+    <rect x="72" y="246" width="185" height="140" rx="16" fill="#1e40af" stroke="#93c5fd" stroke-width="3"/><text x="164" y="306" fill="#dbeafe">Scheduled</text><text x="164" y="336" fill="#dbeafe">ingestion</text>
+    <rect x="296" y="246" width="185" height="140" rx="16" fill="#155e75" stroke="#67e8f9" stroke-width="3"/><text x="388" y="306" fill="#cffafe">Cleanse</text><text x="388" y="336" fill="#cffafe">and check</text>
+    <rect x="520" y="246" width="185" height="140" rx="16" fill="#166534" stroke="#86efac" stroke-width="3"/><text x="612" y="306" fill="#dcfce7">Calculate</text><text x="612" y="336" fill="#dcfce7">indicators</text>
+    <rect x="744" y="246" width="185" height="140" rx="16" fill="#854d0e" stroke="#fde047" stroke-width="3"/><text x="836" y="306" fill="#fef9c3">Draft</text><text x="836" y="336" fill="#fef9c3">report</text>
+    <rect x="968" y="246" width="160" height="140" rx="16" fill="#581c87" stroke="#d8b4fe" stroke-width="3"/><text x="1048" y="306" fill="#f3e8ff">Human</text><text x="1048" y="336" fill="#f3e8ff">review</text>
+  </g>
+  <g stroke="#f8fafc" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M265 316h31m185 0h31m185 0h31m185 0h31"/>
+    <path d="m283 301 18 15-18 15m224-15 18 15-18 15m224-15 18 15-18 15m224-15 18 15-18 15"/>
+  </g>
+  <text x="72" y="520" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="22">Keep alerting, traceability, and the final business decision with named owners.</text>
+</svg>

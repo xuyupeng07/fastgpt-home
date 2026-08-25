@@ -10,7 +10,8 @@ import {
 } from '@/faq';
 import { notFound } from 'next/navigation';
 import { defaultLocale, getDictionary } from '@/lib/i18n';
-import { getFaqAlternates, getRobotsPolicy, localeMap } from '@/lib/seo';
+import { getFaqAlternates } from '@/lib/faqSeo';
+import { getRobotsPolicy, localeMap } from '@/lib/seo';
 import { normalizeFaqMetadata } from '@/lib/faqMetadata';
 import {
   currentSiteBaseUrl,

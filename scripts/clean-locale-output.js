@@ -9,6 +9,11 @@ const {
   writeNginxRedirectMap
 } = require('./lib/redirects');
 const {
+  getUrlAliasAuthorityDigest,
+  getUrlAliasAuthoritySummary,
+  readUrlAliasAuthority
+} = require('./lib/url-alias-authority');
+const {
   getDefaultLocale,
   getPublishedLocaleCodes,
   localeCodes,
@@ -22,6 +27,15 @@ const variant = resolveSiteVariant();
 const defaultLocale = getDefaultLocale(variant);
 const allowedLocales = new Set(getPublishedLocaleCodes(variant));
 const techIdentities = getTechIdentities(rootDir);
+const aliasAuthority = readUrlAliasAuthority(rootDir);
+const aliasAuthoritySummary = getUrlAliasAuthoritySummary(aliasAuthority);
+const aliasAuthorityMetadata = {
+  authorityDigest: getUrlAliasAuthorityDigest(aliasAuthority),
+  authoritySourceCount: aliasAuthority.records.length,
+  authorityTargetCount: aliasAuthoritySummary.targets,
+  authoritySourceHosts: aliasAuthoritySummary.sourceHosts,
+  authorityManyToOneTargets: aliasAuthoritySummary.manyToOneTargets
+};
 
 function removePath(targetPath) {
   if (!fs.existsSync(targetPath)) return 0;
@@ -29,14 +43,19 @@ function removePath(targetPath) {
   return 1;
 }
 
-function removeRoute(route) {
+function removeRouteDocuments(route) {
   const relativeRoute = route.replace(/^\/+|\/+$/g, '');
   if (!relativeRoute) return 0;
   return [
     path.join(outDir, `${relativeRoute}.html`),
-    path.join(outDir, `${relativeRoute}.txt`),
-    path.join(outDir, relativeRoute)
+    path.join(outDir, `${relativeRoute}.txt`)
   ].reduce((count, targetPath) => count + removePath(targetPath), 0);
+}
+
+function removeRoute(route) {
+  const relativeRoute = route.replace(/^\/+|\/+$/g, '');
+  if (!relativeRoute) return 0;
+  return removeRouteDocuments(route) + removePath(path.join(outDir, relativeRoute));
 }
 
 function walkHtmlFiles(dir) {
@@ -74,13 +93,17 @@ for (const locale of localeCodes) {
 }
 
 // The technical center currently publishes complete content only in Simplified Chinese.
-if (defaultLocale !== 'zh') removed += removeRoute('/tech-center');
+if (defaultLocale !== 'zh') {
+  // Preview keeps the shared search projection consumed by /zh/tech-center.
+  const removeTechCenterRoute = variant === 'preview' ? removeRouteDocuments : removeRoute;
+  removed += removeTechCenterRoute('/tech-center');
+}
 for (const identity of techIdentities) {
   removed += removeRoute(variant === 'cn' ? identity.sourcePath : identity.canonicalPath);
 }
 
 const { cnRedirects, ioRedirects } = buildRedirects(rootDir);
-writeNginxRedirectMap(nextDir, variant === 'cn' ? cnRedirects : new Map());
+writeNginxRedirectMap(nextDir, variant === 'cn' ? cnRedirects : new Map(), aliasAuthorityMetadata);
 removePath(path.join(outDir, '_redirects'));
 
 let previewHtmlPatched = 0;
@@ -89,9 +112,9 @@ if (variant === 'preview') {
     if (entry.startsWith('sitemap')) removed += removePath(path.join(outDir, entry));
   }
   previewHtmlPatched = patchPreviewRobots();
-  writeCloudflareWorker(outDir, new Map(), true);
+  writeCloudflareWorker(outDir, new Map(), true, aliasAuthorityMetadata);
 } else if (variant === 'io') {
-  writeCloudflareWorker(outDir, ioRedirects, false);
+  writeCloudflareWorker(outDir, ioRedirects, false, aliasAuthorityMetadata);
 }
 
 console.log(

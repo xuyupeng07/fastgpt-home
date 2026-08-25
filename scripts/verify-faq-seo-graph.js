@@ -11,6 +11,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const ts = require('typescript');
+const { buildUrlAliasProjection, readUrlAliasAuthority } = require('./lib/url-alias-authority');
+const { getProductionBaseUrls } = require('./lib/site-variant');
 
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY_PATH = path.join(ROOT, 'src/faq/generated-en-route-registry.json');
@@ -153,6 +155,36 @@ function routeUrl(locale, routeKey) {
   return `${baseUrl}/faq/${encodeURIComponent(routeKey)}`;
 }
 
+function aliasSourcePaths(variant) {
+  const authority = readUrlAliasAuthority(ROOT);
+  const host = variant === 'cn' ? 'fastgpt.cn' : 'fastgpt.io';
+  const projection = buildUrlAliasProjection(authority, host, getProductionBaseUrls());
+  return new Set(
+    [...projection.keys()].flatMap((sourcePath) => [
+      sourcePath,
+      sourcePath.endsWith('/') ? sourcePath.slice(0, -1) : `${sourcePath}/`
+    ])
+  );
+}
+
+function assertAliasIdentitySeparation(identity) {
+  const authority = readUrlAliasAuthority(ROOT);
+  const canonicalPaths = {
+    'fastgpt.io': new Set(identity.registry.records.map((record) => `/faq/${record.canonicalSlug}`)),
+    'fastgpt.cn': new Set([...identity.chinese.keys()].map((contentId) => `/faq/${contentId}`))
+  };
+  for (const record of authority.records) {
+    assert(
+      !canonicalPaths[record.sourceHost].has(record.sourcePath),
+      `Alias source entered canonical identity: ${record.sourceHost}${record.sourcePath}`
+    );
+    assert(
+      canonicalPaths[record.targetHost].has(record.targetPath),
+      `Alias target is outside canonical identity: ${record.targetHost}${record.targetPath}`
+    );
+  }
+}
+
 function normalizeAnswer(value) {
   return value.replace(/\s+/g, ' ').trim();
 }
@@ -160,7 +192,7 @@ function normalizeAnswer(value) {
 function assertSourceWiring() {
   const sourceChecks = [
     ['src/faq/index.ts', ['resolveFaqContentId', 'getFaqRouteKey', 'getFaqIds(']],
-    ['src/lib/seo.ts', ['getFaqRouteKey', 'getFaqAlternates', "languages['x-default']"]],
+    ['src/lib/faqSeo.ts', ['getFaqRouteKey', 'getFaqAlternates', "languages['x-default']"]],
     ['src/lib/localizedRoutes.ts', ['resolveFaqContentId', 'getFaqRouteKey', 'Unknown FAQ route identity']],
     ['src/app/[lang]/faq/[id]/page.tsx', ['resolveFaqContentId', 'FAQJsonLd', 'getFaqAlternates', 'dynamicParams = false']],
     ['src/app/sitemap.ts', ['getFaqIds(', 'seenUrls', 'getOwnedFaqUrl']],
@@ -195,6 +227,7 @@ function verifySourceGraph() {
   assert.equal(english.size, EXPECTED_ENGLISH_COUNT, `Expected ${EXPECTED_ENGLISH_COUNT} English source records`);
   assert.equal(byContentId.size, EXPECTED_ENGLISH_COUNT, 'English registry identity cardinality mismatch');
   assert.equal(byCanonicalSlug.size, EXPECTED_ENGLISH_COUNT, 'English canonical slug cardinality mismatch');
+  assertAliasIdentitySeparation({ registry, chinese });
 
   for (const record of registry.records) {
     assert(english.has(record.contentId), `Registry contentId missing from English source: ${record.contentId}`);
@@ -340,6 +373,14 @@ function verifyHtmlGraph(outDir, variant, identity) {
   const seenRoutes = new Set();
   const foldedPaths = new Map();
   const baseUrl = variant === 'cn' ? CN_BASE_URL : IO_BASE_URL;
+  const sourcePaths = aliasSourcePaths(variant);
+  const ownerOrigin = new URL(baseUrl).origin;
+
+  const assertPublishedPath = (value, label) => {
+    const parsed = new URL(value, baseUrl);
+    if (parsed.origin !== ownerOrigin) return;
+    assert(!sourcePaths.has(parsed.pathname), `${label} points to a redirect source: ${parsed.pathname}`);
+  };
 
   for (const filePath of files) {
     const routeKey = routeKeyFromHtmlPath(filePath, outDir);
@@ -360,13 +401,19 @@ function verifyHtmlGraph(outDir, variant, identity) {
     assert(expectedRoute, `Unknown or legacy FAQ HTML route: ${routeKey}`);
     const html = fs.readFileSync(filePath, 'utf8');
     const expectedCanonical = routeUrl(expectedRoute.locale, routeKey);
+    assertPublishedPath(expectedCanonical, `${routeKey} canonical`);
     assert.equal(new URL(getCanonical(html)).href, new URL(expectedCanonical).href, `${routeKey} canonical mismatch`);
 
     const alternates = getAlternateLinks(html);
     const expectedAlternates = expectedAlternateMap(expectedRoute.locale, expectedRoute.record.contentId, identity.byContentId, identity.chinese);
     assert.deepEqual(Object.keys(alternates).sort(), Object.keys(expectedAlternates).sort(), `${routeKey} alternate set mismatch`);
     for (const [language, url] of Object.entries(expectedAlternates)) {
+      assertPublishedPath(url, `${routeKey} ${language} alternate`);
       assert.equal(new URL(alternates[language]).href, new URL(url).href, `${routeKey} ${language} alternate mismatch`);
+    }
+
+    for (const href of [...html.matchAll(/\bhref=["']([^"']+)["']/gi)].map((match) => match[1])) {
+      assertPublishedPath(href, `${routeKey} internal link`);
     }
 
     const headings = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)].map((match) => stripHtml(match[1]));
@@ -396,6 +443,7 @@ function verifyHtmlGraph(outDir, variant, identity) {
     const parsed = new URL(url);
     assert.equal(parsed.origin, baseUrl, `Sitemap FAQ URL has wrong owner host: ${url}`);
     assert(!parsed.pathname.startsWith('/en/faq/') && !parsed.pathname.startsWith('/zh/faq/'), `Sitemap contains prefixed alias: ${url}`);
+    assert(!sourcePaths.has(parsed.pathname), `Sitemap contains redirect source: ${url}`);
   }
 
   console.log(`[verify-faq-seo-graph] HTML checks passed (${variant}, ${seenRoutes.size} FAQ pages, ${faqSitemapUrls.length} sitemap FAQ URLs; case-sensitive filesystem required)`);

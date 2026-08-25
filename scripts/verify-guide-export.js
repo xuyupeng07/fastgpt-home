@@ -9,6 +9,9 @@ const path = require('node:path');
 
 const ROOT = path.resolve(__dirname, '..');
 const REGISTRY_PATH = path.join(ROOT, 'src/content/guides/registry.json');
+const POLICY_PATH = path.join(ROOT, 'src/content/guides/policy.json');
+const GUIDE_ENTRY_COUNT = JSON.parse(fs.readFileSync(POLICY_PATH, 'utf8')).entryCount;
+const GUIDE_TRACER_SLUG = 'poc-30-day-design';
 const GUIDE_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const VARIANTS = {
   io: { locale: 'en', host: 'https://fastgpt.io' },
@@ -66,6 +69,13 @@ function getAttribute(tag, attribute) {
   );
 }
 
+function stripAriaHiddenContent(value) {
+  return value.replace(
+    /<([a-z][\w:-]*)\b[^>]*\baria-hidden=["']true["'][^>]*>[\s\S]*?<\/\1>/gi,
+    ''
+  );
+}
+
 function getSingleTagContent(html, tagName, context) {
   const matches = [...html.matchAll(new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}>`, 'gi'))];
   if (matches.length !== 1) fail(context, `expected exactly one <${tagName}> element`);
@@ -112,7 +122,7 @@ function getAlternates(html, context) {
 function getAnchors(html) {
   return [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)].map((match) => ({
     href: getAttribute(`<a ${match[1]}>`, 'href'),
-    text: stripHtml(match[2])
+    text: stripHtml(stripAriaHiddenContent(match[2]))
   }));
 }
 
@@ -231,8 +241,9 @@ function loadRegistry(variant, entries) {
       fail(context, `unable to read registry: ${error.message}`);
     }
   }
-  if (!Array.isArray(resolvedEntries) || resolvedEntries.length !== 8) {
-    fail(context, 'registry must contain exactly eight Guide entries');
+  const expectedEntryCount = entries ? entries.length : GUIDE_ENTRY_COUNT;
+  if (!Array.isArray(resolvedEntries) || resolvedEntries.length !== expectedEntryCount) {
+    fail(context, `registry must contain exactly ${expectedEntryCount} Guide entries`);
   }
   const slugs = new Set();
   for (const entry of resolvedEntries) {
@@ -561,7 +572,14 @@ function parseArgs(argv) {
 
 function main(argv = process.argv.slice(2)) {
   const result = verifyGuideExport(parseArgs(argv));
-  console.log(`[verify-guide-export] variant=${result.variant} Guide HTML verified: ${result.pages} pages, ${result.sitemapUrls} sitemap URLs`);
+  const tracer = buildGuideExpectation(result.variant).entries.some(
+    (entry) => entry.slug === GUIDE_TRACER_SLUG
+  )
+    ? GUIDE_TRACER_SLUG
+    : 'missing';
+  console.log(
+    `[verify-guide-export] variant=${result.variant} Guide HTML verified: ${result.pages} pages, ${result.sitemapUrls} sitemap URLs (tracer=${tracer})`
+  );
   return result;
 }
 

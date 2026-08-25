@@ -348,6 +348,44 @@ function deriveSummary(title, body) {
   return `${summary.slice(0, 154).trim()}…`;
 }
 
+function buildNormalizedTechnicalPage({ metadata, identity, body, wordCount, sourceCount, label }) {
+  normalizePublicHttpsUrl(metadata.source, `${label} source`);
+  const sanitized = sanitizeBody(body);
+  const citations = normalizeCitations(sanitized.body);
+  const lineEndings = normalizeStructuralEscapedLineEndings(citations.body);
+  validateBodyIntegrity(lineEndings.body, { wordCount, sourceCount }, label);
+  const normalized = normalizeDocument(
+    metadata,
+    identity.locale,
+    identity.canonicalPath,
+    lineEndings.body
+  );
+  const category = identity.canonicalPath.split('/')[1];
+  const categoryLabel = CATEGORY_LABELS[category];
+  if (!categoryLabel) {
+    throw new Error(`Schema drift in ${label}: unsupported category ${category}`);
+  }
+  return {
+    body: normalized.body,
+    document: normalized.document,
+    projection: {
+      title: metadata.title,
+      slug: `/${identity.locale}${identity.canonicalPath}`,
+      category,
+      categoryLabel,
+      ...(metadata.source ? { source: metadata.source } : {}),
+      sourceType: normalizeSourceType(metadata.source_type, `${label} source_type`),
+      summary: deriveSummary(metadata.title, normalized.body),
+      minutes: Math.max(1, Math.ceil(normalized.body.length / 500))
+    },
+    replacements: {
+      body: sanitized.replacements,
+      citations: citations.replacements,
+      lineEndings: lineEndings.replacements
+    }
+  };
+}
+
 function normalizeSourceType(value, label) {
   const normalized = SOURCE_TYPES.get(requireText(value, label));
   if (!normalized) throw new Error(`Schema drift in ${label}: unsupported source type ${value}`);
@@ -704,7 +742,6 @@ function buildImportPlan({ repoRoot = REPOSITORY_ROOT, sourcePath }) {
       throw new Error(`Schema drift in ${record.file}: title differs from delivery row`);
     if (metadata.source !== record.source)
       throw new Error(`Schema drift in ${record.file}: source differs from delivery row`);
-    normalizePublicHttpsUrl(metadata.source, `${record.file} source`);
     const routeIdentity = parseIdentityFromSlug(metadata.slug, `${record.file} front matter slug`);
     const canonicalPath = normalizeCanonicalPath(
       `/${record.file.slice(0, -3)}`,
@@ -712,33 +749,17 @@ function buildImportPlan({ repoRoot = REPOSITORY_ROOT, sourcePath }) {
     );
     const identity = { locale: routeIdentity.locale, canonicalPath };
     sourceIdentities.push(identity);
-    const sanitized = sanitizeBody(parsed.body);
-    const citations = normalizeCitations(sanitized.body);
-    const lineEndings = normalizeStructuralEscapedLineEndings(citations.body);
-    validateBodyIntegrity(lineEndings.body, record, record.file);
-    const normalized = normalizeDocument(
+    const normalized = buildNormalizedTechnicalPage({
       metadata,
-      identity.locale,
-      identity.canonicalPath,
-      lineEndings.body
-    );
+      identity,
+      body: parsed.body,
+      wordCount: record.wordCount,
+      sourceCount: record.sourceCount,
+      label: record.file
+    });
     const normalizedBodySha256 = sha256(normalized.body);
     const sourceHash = sha256(Buffer.from(rawSource));
-    const projection = {
-      title: metadata.title,
-      slug: `/${identity.locale}${identity.canonicalPath}`,
-      category: identity.canonicalPath.split('/')[1],
-      categoryLabel: CATEGORY_LABELS[identity.canonicalPath.split('/')[1]],
-      ...(metadata.source ? { source: metadata.source } : {}),
-      sourceType: normalizeSourceType(metadata.source_type, `${record.file} source_type`),
-      summary: deriveSummary(metadata.title, normalized.body),
-      minutes: Math.max(1, Math.ceil(normalized.body.length / 500))
-    };
-    if (!projection.categoryLabel) {
-      throw new Error(
-        `Schema drift in ${record.file}: unsupported category ${projection.category}`
-      );
-    }
+    const projection = normalized.projection;
     const key = foldIdentity(identity);
     const prior = priorPages.get(key);
     const existing = existingByIdentity.get(key);
@@ -787,31 +808,31 @@ function buildImportPlan({ repoRoot = REPOSITORY_ROOT, sourcePath }) {
           'Use the page type declared by the normalized Markdown front matter and retain the delivery value as provenance.'
       });
     }
-    if (sanitized.replacements) {
+    if (normalized.replacements.body) {
       corrections.push({
         identity,
         field: 'body',
         from: 'synthetic secret-shaped value',
         to: 'YOUR_API_KEY',
-        reason: `Replace ${sanitized.replacements} synthetic secret-shaped example value(s) before publication.`
+        reason: `Replace ${normalized.replacements.body} synthetic secret-shaped example value(s) before publication.`
       });
     }
-    if (citations.replacements) {
+    if (normalized.replacements.citations) {
       corrections.push({
         identity,
         field: 'citations',
         from: 'bare HTTPS citation URL(s)',
         to: 'descriptive Markdown link(s)',
-        reason: `Normalize ${citations.replacements} source citation URL(s) into reader-facing Markdown links.`
+        reason: `Normalize ${normalized.replacements.citations} source citation URL(s) into reader-facing Markdown links.`
       });
     }
-    if (lineEndings.replacements) {
+    if (normalized.replacements.lineEndings) {
       corrections.push({
         identity,
         field: 'lineEndings',
         from: 'escaped structural Markdown line ending(s)',
         to: 'literal Markdown line ending(s)',
-        reason: `Decode ${lineEndings.replacements} structural Markdown line ending escape(s) before publication.`
+        reason: `Decode ${normalized.replacements.lineEndings} structural Markdown line ending escape(s) before publication.`
       });
     }
     return {
@@ -1501,6 +1522,7 @@ if (require.main === module) {
 
 module.exports = {
   buildImportPlan,
+  buildNormalizedTechnicalPage,
   buildSearchProjection,
   foldIdentity,
   main,

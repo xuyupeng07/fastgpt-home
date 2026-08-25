@@ -22,6 +22,9 @@ function writeArtifact(
     slug: `/zh/technical-entry-${index}`
   }));
   fs.writeFileSync(registryPath, JSON.stringify(registry));
+  const searchIndexPath = path.join(outDir, 'tech-center/search-index.json');
+  fs.mkdirSync(path.dirname(searchIndexPath), { recursive: true });
+  fs.writeFileSync(searchIndexPath, JSON.stringify(Array(registrySize).fill(null)));
   for (let index = 0; index < articleCount; index += 1) {
     const targetPath = path.join(outDir, 'zh', `technical-entry-${index}`, 'index.html');
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
@@ -34,7 +37,7 @@ function writeArtifact(
       (_, index) => `<article><a href="/zh/technical-entry-${index}">Entry ${index}</a></article>`
     ).join('')}</main><script src="/_next/static/chunks/app.js"></script>`
   );
-  return { outDir, registryPath };
+  return { outDir, registryPath, searchIndexPath };
 }
 
 test('large registries keep the server listing and initial JavaScript bounded', () => {
@@ -73,6 +76,30 @@ test('technical-center verifier rejects an unbounded server listing', () => {
     assert.throws(
       () => verifyTechnicalCenter({ outDir, registryPath }),
       /initial listing has 13 entries; maximum is 12/
+    );
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+});
+
+test('technical-center verifier rejects a missing or stale search projection', () => {
+  const registrySize = budget.maxInitialEntries + 1;
+  const { outDir, registryPath, searchIndexPath } = writeArtifact(
+    budget.maxInitialEntries,
+    undefined,
+    registrySize
+  );
+  try {
+    fs.rmSync(searchIndexPath);
+    assert.throws(
+      () => verifyTechnicalCenter({ outDir, registryPath }),
+      /Missing Technical Center search projection/
+    );
+
+    fs.writeFileSync(searchIndexPath, '[]');
+    assert.throws(
+      () => verifyTechnicalCenter({ outDir, registryPath }),
+      new RegExp(`search projection has 0 entries; expected ${registrySize}`)
     );
   } finally {
     fs.rmSync(outDir, { recursive: true, force: true });

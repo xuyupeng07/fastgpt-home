@@ -122,6 +122,18 @@ _Avoid_: Git 提交, 构建产物, 已验证导出技术页
 按批次发布的中文 FAQ 集合（首批 60 条、第二批 61–90 条），源数据为客户交付物仓库中的 xlsx，站点内为逐批转录的运行时快照，slug 手工维护。
 _Avoid_: 存量 FAQ, legacy FAQ
 
+**FAQ Meta Candidate**:
+供应方提供并等待映射到现有 FAQ 内容身份的 metadata 建议记录。
+_Avoid_: FAQ 页面, FAQ 内容身份
+
+**URL Alias Authority**:
+记录历史 `source host + path` 到 Terminal Target 的版本化、带证据裁决集合。
+_Avoid_: FAQ 路由注册表, 重定向脚本
+
+**Terminal Target**:
+直接返回 canonical 内容与 HTTP 200 的最终 URL。
+_Avoid_: Alias URL, 重定向链终点猜测
+
 **FAQ 分类体系**:
 跨批次稳定的中文 FAQ 分类（私有化部署、企业知识库、选型对比、智能客服、开发集成、开源与商业版、Agent 与工作流、POC 与实施、安全合规、行业场景、成本与用量等），站点筛选与内容审计共用。
 _Avoid_: 栏目, 编辑体裁
@@ -133,3 +145,8 @@ _Avoid_: 指南首页, 资源中心
 **指南文章**:
 `/guide/{slug}` 下的单篇企业 AI 决策或实施内容，包含标题摘要、更新时间、正文与相关资源。
 _Avoid_: 博客文章, 技术文章
+
+**Deferred Technical Candidate**:
+因证据、人工改写或版本验证尚待完成而保持未发布状态的临时技术内容候选；批次 authority
+关闭前必须转成 accepted 或 denied。
+_Avoid_: Denied Technical Candidate, Published Technical Page

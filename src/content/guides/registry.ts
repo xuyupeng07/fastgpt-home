@@ -1,5 +1,9 @@
 import policy from './policy.json';
 import registry from './registry.json';
+import {
+  guideAuthorizationDecisions,
+  projectGuideEntries
+} from './authorization';
 
 export const GUIDE_LOCALES = policy.locales as unknown as readonly ['zh', 'en'];
 export type GuideLocale = (typeof GUIDE_LOCALES)[number];
@@ -199,7 +203,8 @@ function validateRegistry(value: unknown): asserts value is { entries: GuideEntr
 
 validateRegistry(registry);
 
-export const guideEntries = registry.entries as GuideEntry[];
+export const guideRegistryEntries = registry.entries as GuideEntry[];
+export const guideEntries = projectGuideEntries(guideRegistryEntries, guideAuthorizationDecisions);
 export const guideSlugs = guideEntries.map((entry) => entry.slug);
 
 export function getGuideEntry(slug: string): GuideEntry | undefined {

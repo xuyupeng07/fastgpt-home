@@ -3,7 +3,11 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { getPublishedFaqIds, parseNginxRedirectMap } = require('./lib/redirects');
+const {
+  buildRedirects,
+  getPublishedFaqIds,
+  parseNginxRedirectMap
+} = require('./lib/redirects');
 const {
   getCanonicalBaseUrl,
   getDefaultLocale,
@@ -189,20 +193,32 @@ function parseNginxRedirects() {
   return parseNginxRedirectMap(read('.next/nginx-redirects.conf'));
 }
 
+function verifyRedirectProjection(actual, expected, label) {
+  assert.equal(actual.size, expected.size, `${label} has an unexpected redirect count`);
+  for (const [source, target] of expected) {
+    assert.equal(actual.get(source), target, `${label} has an unexpected target for ${source}`);
+  }
+}
+
 function verifyRedirects() {
   assert(!fs.existsSync(path.join(outDir, '_redirects')), 'Legacy Cloudflare redirects were exported');
 
+  const projection = buildRedirects(rootDir);
   const nginxRedirects = parseNginxRedirects();
   if (variant === 'cn') {
-    assert.equal(nginxRedirects.size, 0, 'CN build contains cross-domain locale redirects');
+    verifyRedirectProjection(nginxRedirects, projection.cnRedirects, 'CN Nginx export');
     return;
   }
 
-  assert.equal(nginxRedirects.size, 0, `${variant} build contains Nginx redirects`);
+  verifyRedirectProjection(nginxRedirects, new Map(), `${variant} Nginx export`);
   const { redirects, worker } = parseWorkerRedirects();
+  verifyRedirectProjection(
+    redirects,
+    variant === 'io' ? projection.ioRedirects : new Map(),
+    `${variant} Worker export`
+  );
 
   if (variant === 'preview') {
-    assert.equal(redirects.size, 0, 'Preview worker contains production redirects');
     assert(worker.includes("X-Robots-Tag', 'noindex, nofollow"));
     return;
   }

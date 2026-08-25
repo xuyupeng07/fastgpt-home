@@ -117,7 +117,7 @@ function isKnownOwnedTarget(target, entries = registry.entries, rootDir = root) 
   const localPath = `/${segments
     .filter((segment) => !locales.includes(segment))
     .join('/')}`.replace(/\/$/, '');
-  if (['', '/', '/faq', '/price', '/compare'].includes(localPath || '/')) return true;
+  if (['', '/', '/faq', '/price', '/compare', '/guide'].includes(localPath || '/')) return true;
   if (segments.includes('compare')) {
     const slug = segments.at(-1);
     return fs.existsSync(path.join(rootDir, 'content/competitors', `${slug}.md`));

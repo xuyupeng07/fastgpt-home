@@ -1,5 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { getProductionBaseUrls } = require('./site-variant');
+
 const EN_ROUTE_REGISTRY = path.join('src', 'faq', 'generated-en-route-registry.json');
 
 function readObjectKeys(rootDir, relativePath, variableName) {
@@ -202,30 +204,37 @@ function addRedirect(redirects, source, target) {
   if (source !== '/' && !source.endsWith('/')) setRedirect(`${source}/`);
 }
 
-function addFaqAliasRedirect(redirects, prefix, entry) {
-  const target = `https://fastgpt.io/faq/${encodeURIComponent(entry.canonicalSlug)}`;
-  const encodedSource = encodeURIComponent(entry.sourceSlug);
-  const sourceVariants = new Set([encodedSource, entry.sourceSlug]);
-  for (const sourceSlug of sourceVariants) {
-    addRedirect(redirects, `${prefix}/${sourceSlug}`, target);
-  }
+function compareRedirectEntries([left], [right]) {
+  return left < right ? -1 : left > right ? 1 : 0;
 }
 
-function buildRedirects(rootDir) {
-  const faqProjection = getFaqRedirectProjection(rootDir);
+function buildRedirects(rootDir, env = process.env) {
+  const { buildUrlAliasProjection, readUrlAliasAuthority } = require('./url-alias-authority');
+  const { cn: cnUrl, io: ioUrl } = getProductionBaseUrls(env);
+  const aliasAuthority = readUrlAliasAuthority(rootDir);
   const ioRedirects = new Map();
   const cnRedirects = new Map();
 
-  for (const entry of faqProjection.eligible) {
-    addFaqAliasRedirect(ioRedirects, '/faq', entry);
+  for (const [sourceHost, redirects] of [
+    ['fastgpt.cn', cnRedirects],
+    ['fastgpt.io', ioRedirects]
+  ]) {
+    const projection = buildUrlAliasProjection(aliasAuthority, sourceHost, {
+      'fastgpt.cn': cnUrl,
+      'fastgpt.io': ioUrl
+    });
+    for (const [source, target] of projection) addRedirect(redirects, source, target);
   }
 
   return { cnRedirects, ioRedirects };
 }
 
-function writeCloudflareWorker(outDir, redirects, noindex) {
-  const redirectEntries = JSON.stringify([...redirects]);
-  const worker = `const redirects = new Map(${redirectEntries});
+function writeCloudflareWorker(outDir, redirects, noindex, metadata = {}) {
+  const redirectEntries = JSON.stringify(
+    [...redirects].sort(compareRedirectEntries)
+  );
+  const worker = `const redirectAuthority = ${JSON.stringify(metadata)};
+const redirects = new Map(${redirectEntries});
 
 export default {
   async fetch(request, env) {
@@ -262,11 +271,20 @@ export default {
   }
 };
 `;
+  fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, '_worker.js'), worker);
 }
 
-function writeNginxRedirectMap(nextDir, redirects) {
-  const lines = ['map $uri $locale_redirect_target {', '  default "";'];
+function writeNginxRedirectMap(nextDir, redirects, metadata = {}) {
+  const lines = [
+    `# URL Alias Authority: ${metadata.authorityDigest || 'untracked'}; sources=${
+      metadata.authoritySourceCount || 0
+    }; targets=${metadata.authorityTargetCount || 0}; many-to-one=${
+      metadata.authorityManyToOneTargets || 0
+    }`,
+    'map $uri $locale_redirect_target {',
+    '  default "";'
+  ];
   const sourceGroups = new Map();
   for (const [source] of redirects) {
     const key = source.toLowerCase();
@@ -279,9 +297,22 @@ function writeNginxRedirectMap(nextDir, redirects) {
       .filter((sources) => new Set(sources).size > 1)
       .flat(),
   );
+  const targetPaths = new Set();
+  for (const target of redirects.values()) {
+    try {
+      targetPaths.add(new URL(target).pathname.toLowerCase());
+    } catch {
+      // Existing non-URL map values are rejected by the edge configuration itself.
+    }
+  }
+  for (const [source] of redirects) {
+    if (/[A-Z]/.test(source) || targetPaths.has(source.toLowerCase())) {
+      caseSensitiveSources.add(source);
+    }
+  }
   const escapeRegex = (value) => value.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&');
 
-  for (const [source, target] of redirects) {
+  for (const [source, target] of [...redirects].sort(compareRedirectEntries)) {
     const key = caseSensitiveSources.has(source)
       ? `~^${escapeRegex(source)}$`
       : `"${source}"`;

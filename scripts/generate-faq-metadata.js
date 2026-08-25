@@ -562,6 +562,7 @@ module.exports = {
   buildArtifactFromWorkbook,
   loadRouteIdentity,
   normalizeFaqMetadataPolicy,
+  readWorkbookSheets,
   readEnglishFaq,
   serializeArtifact,
   validateArtifact

@@ -3,7 +3,11 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const sharp = require('sharp');
-const { getPublishedFaqIds } = require('./lib/redirects');
+const {
+  buildRedirects,
+  getPublishedFaqIds,
+  parseNginxRedirectMap
+} = require('./lib/redirects');
 const { getCanonicalBaseUrl, resolveSiteVariant } = require('./lib/site-variant');
 
 const rootDir = path.join(__dirname, '..');
@@ -16,6 +20,13 @@ const faqId = getPublishedFaqIds(rootDir).english.find(
 );
 if (!faqId) throw new Error('Missing stable bilingual FAQ fixture in the route registry');
 const maxSocialImageBytes = 200_000;
+
+function verifyRedirectProjection(actual, expected, label) {
+  assert.equal(actual.size, expected.size, `${label} has an unexpected redirect count`);
+  for (const [source, target] of expected) {
+    assert.equal(actual.get(source), target, `${label} has an unexpected target for ${source}`);
+  }
+}
 
 function resolveHtml(route) {
   const relativeRoute = route.replace(/^\//, '');
@@ -181,12 +192,11 @@ function verifyNginxHeaders() {
     'Release runtime must copy and validate the generated Nginx redirect map'
   );
 
-  const redirectMap = fs.readFileSync(path.join(rootDir, '.next', 'nginx-redirects.conf'), 'utf8');
-  if (variant === 'cn') {
-    assert(!redirectMap.includes('"https://'), 'CN build contains cross-domain locale redirects');
-  } else {
-    assert(!redirectMap.includes('"https://'), `${variant} build contains Nginx redirects`);
-  }
+  const redirectMap = parseNginxRedirectMap(
+    fs.readFileSync(path.join(rootDir, '.next', 'nginx-redirects.conf'), 'utf8')
+  );
+  const expected = variant === 'cn' ? buildRedirects(rootDir).cnRedirects : new Map();
+  verifyRedirectProjection(redirectMap, expected, `${variant} Nginx export`);
 }
 
 async function verifyCloudflareRedirects() {
@@ -194,11 +204,16 @@ async function verifyCloudflareRedirects() {
   if (variant === 'cn') return;
 
   const worker = fs.readFileSync(path.join(outDir, '_worker.js'), 'utf8');
+  const encoded = worker.match(/const redirects = new Map\((\[[\s\S]*?\])\);/)?.[1];
+  assert(encoded, 'Cloudflare Worker has no redirect map');
+  const redirects = new Map(JSON.parse(encoded));
+  const expected = variant === 'io' ? buildRedirects(rootDir).ioRedirects : new Map();
+  verifyRedirectProjection(redirects, expected, `${variant} Worker export`);
   if (variant === 'preview') {
-    assert(worker.includes('new Map([])'), 'Preview worker contains redirect rules');
     assert(worker.includes("X-Robots-Tag', 'noindex, nofollow"));
   } else {
-    assert(!worker.includes(`https://fastgpt.cn/faq/${faqId}`));
+    assert(!redirects.has('/zh'), 'Worker redirects /zh to another domain');
+    assert(!redirects.has('/en'), 'Worker redirects /en to another domain');
     assert(worker.includes("fallbackUrl.pathname = match[1] || '/';"));
   }
 

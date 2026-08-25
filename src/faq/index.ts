@@ -5,6 +5,7 @@ import { applyLegacyCategoryOverlay } from './legacyCategories';
 import { faqPublishedLocaleCodes } from '@/lib/publishedLocales';
 import englishRouteRegistry from './generated-en-route-registry.json';
 import approvedEnglishFaqMetadata from './generated-en-metadata.json';
+import approvedEnglishFaqMetadataAdditions from './generated-en-metadata-additions.json';
 
 export type { FaqItem };
 export type FaqData = Record<string, FaqItem>;
@@ -21,8 +22,12 @@ const englishRouteBySlug = new Map(
 const englishRouteByContentId = new Map(
   englishRouteRecords.map((record) => [record.contentId, record]),
 );
+const approvedEnglishFaqMetadataRecords = [
+  ...approvedEnglishFaqMetadata.records,
+  ...approvedEnglishFaqMetadataAdditions.records
+];
 const approvedEnglishFaqMetadataByContentId = new Map(
-  approvedEnglishFaqMetadata.records.map((record) => [record.contentId, record]),
+  approvedEnglishFaqMetadataRecords.map((record) => [record.contentId, record]),
 );
 
 const faqEnWithLegacyMeta: Record<string, FaqItem> = Object.fromEntries(

@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const test = require('node:test');
 const {
+  buildRedirects,
   getTechIdentities,
   parseNginxRedirectMap,
   writeCloudflareWorker,
@@ -47,7 +48,13 @@ test('technical export verifier accepts a complete China projection', () => {
 
     fs.writeFileSync(path.join(outDir, 'sitemap.xml'), `<urlset>${sitemap.join('')}</urlset>`);
     writeCloudflareWorker(outDir, new Map(), false);
-    writeNginxRedirectMap(nextDir, new Map());
+    writeNginxRedirectMap(
+      nextDir,
+      buildRedirects(root, {
+        NEXT_PUBLIC_CN_HOME_URL: baseUrls.cn,
+        NEXT_PUBLIC_IO_HOME_URL: baseUrls.io
+      }).cnRedirects
+    );
 
     assert.deepEqual(
       verifyTechnicalExport({

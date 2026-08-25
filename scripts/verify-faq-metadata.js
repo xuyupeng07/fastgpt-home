@@ -21,6 +21,7 @@ const {
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'out');
 const FAQ_INDEX_SOURCE = path.join(ROOT, 'src/faq/index.ts');
+const ADDITIONS_OUTPUT = path.join(ROOT, 'src/faq/generated-en-metadata-additions.json');
 const ZH_SOURCES = [
   path.join(ROOT, 'src/faq/zh.ts'),
   path.join(ROOT, 'src/faq/w2.ts'),
@@ -36,23 +37,45 @@ function readArtifact() {
   }
 }
 
+function readAdditions() {
+  try {
+    const artifact = JSON.parse(fs.readFileSync(ADDITIONS_OUTPUT, 'utf8'));
+    assert(Array.isArray(artifact.records), 'Metadata additions artifact must contain records');
+    return artifact.records;
+  } catch (error) {
+    throw new Error(`[faq-metadata] Unable to read ${ADDITIONS_OUTPUT}: ${error.message}`);
+  }
+}
+
 function loadSourceContext() {
   const faqRecords = readEnglishFaq();
   const routeIdentity = loadRouteIdentity();
   const artifact = readArtifact();
+  const additions = readAdditions();
   validateArtifact(artifact, faqRecords, routeIdentity);
-  return { artifact, faqRecords, routeIdentity };
+  assert.equal(
+    additions.length,
+    EXPECTED_FAQ_COUNT - EXPECTED_RECORD_COUNT,
+    'Metadata additions must complete the approved FAQ identity set',
+  );
+  const approvedRecords = [...artifact.records, ...additions];
+  const approvedIds = new Set(approvedRecords.map((record) => record.contentId));
+  assert.equal(approvedRecords.length, EXPECTED_FAQ_COUNT, 'Approved metadata count mismatch');
+  assert.equal(approvedIds.size, EXPECTED_FAQ_COUNT, 'Approved metadata identities must be unique');
+  return { artifact, additions, approvedRecords, faqRecords, routeIdentity };
 }
 
-function verifyCatalogOverlay(artifact, faqRecords) {
+function verifyCatalogOverlay(sourceContext) {
+  const { artifact, additions, approvedRecords, faqRecords } = sourceContext;
   assert.equal(faqRecords.length, EXPECTED_FAQ_COUNT, `Expected ${EXPECTED_FAQ_COUNT} English FAQ records`);
   assert.equal(artifact.records.length, EXPECTED_RECORD_COUNT, `Expected ${EXPECTED_RECORD_COUNT} metadata records`);
-  const artifactIds = new Set(artifact.records.map((record) => record.contentId));
-  const fallbackRecords = faqRecords.filter((record) => !artifactIds.has(record.contentId));
+  assert.equal(additions.length, EXPECTED_FAQ_COUNT - EXPECTED_RECORD_COUNT);
+  const approvedIds = new Set(approvedRecords.map((record) => record.contentId));
+  const fallbackRecords = faqRecords.filter((record) => !approvedIds.has(record.contentId));
   assert.equal(
     fallbackRecords.length,
-    EXPECTED_FAQ_COUNT - EXPECTED_RECORD_COUNT,
-    'The out-of-batch FAQ fallback count must remain 205',
+    0,
+    'Approved metadata fallback count must be zero',
   );
 
   const source = fs.readFileSync(FAQ_INDEX_SOURCE, 'utf8');
@@ -70,7 +93,7 @@ function verifyCatalogOverlay(artifact, faqRecords) {
   }
 
   const authoredIds = new Set(faqRecords.map((record) => record.contentId));
-  for (const record of artifact.records) {
+  for (const record of approvedRecords) {
     assert(authoredIds.has(record.contentId), `${record.contentId} is missing from authored FAQ source`);
     assert(record.title && record.description && record.keywords, `${record.contentId} has incomplete approved metadata`);
   }
@@ -275,10 +298,10 @@ function readChineseFaqRecords(sourcePath) {
 
 function buildOwnerExpectationSet(variant, sourceContext) {
   assert(['io', 'cn'].includes(variant), `Unsupported owner variant: ${variant}`);
-  const { artifact, faqRecords, routeIdentity } = sourceContext ?? loadSourceContext();
+  const { approvedRecords, faqRecords, routeIdentity } = sourceContext ?? loadSourceContext();
   if (variant === 'io') {
     const authoredById = new Map(faqRecords.map((record) => [record.contentId, record]));
-    return artifact.records.map((record) => {
+    return approvedRecords.map((record) => {
       const route = routeIdentity.byContentId.get(record.contentId);
       const authored = authoredById.get(record.contentId);
       assert(route, `io contentId=${record.contentId} is missing from the route registry`);
@@ -395,17 +418,17 @@ function main(argv = process.argv.slice(2), env = process.env) {
   const options = parseArgs(argv, env);
   const sourceContext = loadSourceContext();
   const { artifact, faqRecords, routeIdentity } = sourceContext;
-  const fallbackRecords = verifyCatalogOverlay(artifact, faqRecords);
+  const fallbackRecords = verifyCatalogOverlay(sourceContext);
   verifyFailureDiagnostics(artifact, faqRecords, routeIdentity);
   if (options.html) {
     const checked = verifyHtmlExport(options.variant, sourceContext);
     console.log(
-      `[verify-faq-metadata] passed source + HTML checks (${options.variant}, ${checked} FAQ pages; ${artifact.records.length} mapped, ${fallbackRecords.length} fallback)`,
+      `[verify-faq-metadata] passed source + HTML checks (${options.variant}, ${checked} FAQ pages; ${artifact.records.length} baseline + ${sourceContext.additions.length} additions, ${fallbackRecords.length} fallback)`,
     );
     return;
   }
   console.log(
-    `[verify-faq-metadata] passed source checks (${artifact.records.length} mapped, ${fallbackRecords.length} fallback, ${faqRecords.length} total)`,
+    `[verify-faq-metadata] passed source checks (${artifact.records.length} baseline + ${sourceContext.additions.length} additions, ${fallbackRecords.length} fallback, ${faqRecords.length} total)`,
   );
 }
 

@@ -32,6 +32,16 @@ function withGuideRoot(slug, mutate, verify) {
   const sources = [];
 
   try {
+    for (const registeredEntry of entries) {
+      for (const locale of ['zh', 'en']) {
+        const asset = registeredEntry[locale].assetPolicy;
+        if (asset.status !== 'required') continue;
+        const sourceAsset = path.join(ROOT, 'public', asset.path);
+        const fixtureAsset = path.join(temporaryRoot, 'public', asset.path);
+        fs.mkdirSync(path.dirname(fixtureAsset), { recursive: true });
+        fs.copyFileSync(sourceAsset, fixtureAsset);
+      }
+    }
     for (const locale of ['zh', 'en']) {
       const sourcePath = path.join(ROOT, 'src/content/guides', locale, entry[locale].sourceName);
       const source = fs.readFileSync(sourcePath, 'utf8');
@@ -54,15 +64,95 @@ function withGuideRoot(slug, mutate, verify) {
   }
 }
 
-test('approved Guide corpus reports the complete 8x2 contract', () => {
+test('approved Guide corpus reports the complete 13x2 contract', () => {
   const result = spawnSync(process.execPath, ['scripts/verify-guide-content.js'], {
     cwd: ROOT,
     encoding: 'utf8'
   });
 
   assert.equal(result.status, 0, result.stderr);
-  assert.equal(result.stdout, 'Guide content verified: 8 slugs, 16 documents\n');
+  assert.equal(result.stdout, 'Guide content verified: 13 slugs, 26 documents\n');
   assert.equal(result.stderr, '');
+});
+
+test('Finance Research and Daily Report pairs are complete authorized industry Guides', () => {
+  for (const [slug, topic] of [
+    ['finance-research-retrieval', /financial research|研报检索/i],
+    ['finance-daily-report-automation', /financial|财报|数据播报/i]
+  ]) {
+    const entry = findEntry(registry.entries, slug);
+    assert(entry, `${slug} must be registered`);
+    assert.equal(entry.group, 'industry');
+    assert.deepEqual(entry.en.schemaTokens, ['Article', 'BreadcrumbList']);
+    assert.deepEqual(entry.zh.schemaTokens, ['Article', 'BreadcrumbList']);
+    for (const locale of ['zh', 'en']) {
+      assert.equal(entry[locale].assetPolicy.status, 'required');
+      assert.equal(entry[locale].assetPolicy.width, 1200);
+      assert.equal(entry[locale].assetPolicy.height, 630);
+      assert.equal(entry[locale].configuredInternalLinks.length, 3);
+      const sourcePath = path.join(ROOT, 'src/content/guides', locale, entry[locale].sourceName);
+      const { body } = parseDeliverySource(
+        fs.readFileSync(sourcePath, 'utf8'),
+        { ...entry[locale], slug: entry.slug }
+      );
+      assert.match(body, topic);
+      assert.match(body, /## References/);
+      assert.match(body, /\[[^\]]+\]\(https:\/\/[^)]+\)/);
+      assert.doesNotMatch(body, /KB|核验日|verified on|```mermaid/i);
+    }
+  }
+});
+
+test('POC tracer is a complete bilingual decision Guide with a real step contract', () => {
+  const entry = findEntry(registry.entries, 'poc-30-day-design');
+  assert(entry, 'poc-30-day-design must be registered');
+  assert.equal(entry.group, 'decision');
+  assert.deepEqual(entry.en.schemaTokens, ['HowTo', 'Article', 'BreadcrumbList']);
+  assert.deepEqual(entry.zh.schemaTokens, ['HowTo', 'Article', 'BreadcrumbList']);
+
+  for (const locale of ['zh', 'en']) {
+    assert.equal(entry[locale].assetPolicy.status, 'requested-unapproved');
+    assert.equal(entry[locale].configuredInternalLinks.length, 3);
+    const sourcePath = path.join(ROOT, 'src/content/guides', locale, entry[locale].sourceName);
+    const source = fs.readFileSync(sourcePath, 'utf8');
+    const { body } = parseDeliverySource(source, { ...entry[locale], slug: entry.slug });
+
+    assert.match(body, /\n1\.\s+/);
+    assert.match(body, /## References/);
+    assert.match(body, /\[[^\]]+\]\(https:\/\/[^)]+\)/);
+    assert.doesNotMatch(body, /KB 5\.1|核验日|verified on \*\*2026-07-20\*\*/i);
+    assert.doesNotMatch(body, /```mermaid/);
+  }
+});
+
+test('Database and Human Review pairs are complete bilingual implementation Guides', () => {
+  const expected = [
+    ['database-qa-integration-guide', /database|数据库/i],
+    ['scheduled-report-automation', /human review|人工审核/i]
+  ];
+
+  for (const [slug, topic] of expected) {
+    const entry = findEntry(registry.entries, slug);
+    assert(entry, `${slug} must be registered`);
+    assert.equal(entry.group, 'implementation');
+    assert.deepEqual(entry.en.schemaTokens, ['HowTo', 'Article', 'BreadcrumbList']);
+    assert.deepEqual(entry.zh.schemaTokens, ['HowTo', 'Article', 'BreadcrumbList']);
+
+    for (const locale of ['zh', 'en']) {
+      assert.equal(entry[locale].assetPolicy.status, 'none');
+      assert.equal(entry[locale].configuredInternalLinks.length, 3);
+      const sourcePath = path.join(ROOT, 'src/content/guides', locale, entry[locale].sourceName);
+      const { body } = parseDeliverySource(
+        fs.readFileSync(sourcePath, 'utf8'),
+        { ...entry[locale], slug: entry.slug }
+      );
+
+      assert.match(body, topic);
+      assert.match(body, /## References/);
+      assert.match(body, /\[[^\]]+\]\(https:\/\/[^)]+\)/);
+      assert.doesNotMatch(body, /```mermaid|KB 2\.3|核验日|verified on \*\*2026-07-20\*\*/i);
+    }
+  }
 });
 
 test('verifier imports are silent and side-effect free', () => {
