@@ -16,44 +16,11 @@ interface SolutionsSectionProps {
   categories: CategoryOption[];
   currentCategory: string;
   solutions: Solution[];
-  isLoading: boolean;
-  isShowingStaleSolutions: boolean;
   hasMoreSolutions: boolean;
-  isLoadingMore: boolean;
-  isSolutionsLoading: boolean;
   onCategoryChange: (categoryId: string) => void;
-  onCategoryPrefetch: (categoryId: string) => void;
   onLoadMore: () => void;
-  onOpenModal: (context?: import('@customers/lib/cta').CtaModalContext) => void;
-  searchQuery?: string;
-  onSearchChange?: (query: string) => void;
-  onSmartSearch?: (query: string) => void;
-  isAiSearching?: boolean;
-}
-
-function SolutionsSkeleton() {
-  return (
-    <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3" aria-busy="true">
-      {Array.from({ length: 6 }).map((_, index) => (
-        <div
-          key={index}
-          className="h-[284px] animate-pulse rounded-2xl border border-surface-200 bg-white/80 shadow-[0_1px_2px_rgba(31,35,41,0.04)]  "
-        >
-          <div className="h-36 rounded-t-2xl bg-surface-100 " />
-          <div className="space-y-3 p-4">
-            <div className="h-5 w-2/3 rounded bg-surface-200 " />
-            <div className="h-3 w-full rounded bg-surface-200 " />
-            <div className="h-3 w-5/6 rounded bg-surface-200 " />
-            <div className="mt-6 h-px bg-surface-200 " />
-            <div className="flex justify-between">
-              <div className="h-4 w-20 rounded bg-surface-200 " />
-              <div className="h-4 w-16 rounded bg-surface-200 " />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }
 
 export default function SolutionsSection({
@@ -61,19 +28,11 @@ export default function SolutionsSection({
   categories,
   currentCategory,
   solutions,
-  isLoading,
-  isShowingStaleSolutions,
   hasMoreSolutions,
-  isLoadingMore,
-  isSolutionsLoading,
   onCategoryChange,
-  onCategoryPrefetch,
   onLoadMore,
-  onOpenModal,
   searchQuery,
-  onSearchChange,
-  onSmartSearch,
-  isAiSearching
+  onSearchChange
 }: SolutionsSectionProps) {
   return (
     <section id="customers" ref={sectionRef} className="scroll-mt-[84px]">
@@ -81,45 +40,26 @@ export default function SolutionsSection({
         categories={categories}
         currentCategory={currentCategory}
         onCategoryChange={onCategoryChange}
-        onCategoryPrefetch={onCategoryPrefetch}
         searchQuery={searchQuery}
         onSearchChange={onSearchChange}
-        onSmartSearch={onSmartSearch}
-        isAiSearching={isAiSearching}
       />
 
-      {isLoading ? (
-        <SolutionsSkeleton />
-      ) : solutions.length === 0 ? (
-        <EmptyState onOpenModal={onOpenModal} />
+      {solutions.length === 0 ? (
+        <EmptyState />
       ) : (
         <>
-          <div className="relative">
-            <div
-              className={`absolute left-0 right-0 -top-3 z-10 h-0.5 overflow-hidden rounded-full bg-brand-100 transition-opacity duration-200  ${
-                isShowingStaleSolutions ? 'opacity-100' : 'opacity-0'
-              }`}
-              aria-hidden="true"
-            >
-              <div className="h-full w-1/3 animate-[shimmer_1.2s_infinite] rounded-full bg-brand-500 " />
-            </div>
-            <div
-              className={`grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 transition-opacity duration-200 ${
-                isShowingStaleSolutions ? 'opacity-70' : 'opacity-100'
-              }`}
-              aria-busy={isShowingStaleSolutions}
-            >
-              {solutions.map((solution, index) => (
-                <SolutionCard
-                  key={solution.id}
-                  solution={solution}
-                  index={index}
-                  // 首屏卡片做交错淡入；「加载更多」追加的卡片不再播放入场动画，即时渲染。
-                  revealDelay={index < PUBLIC_SOLUTIONS_PAGE_SIZE ? Math.min(index, 5) * 0.05 : undefined}
-                  onCategoryClick={onCategoryChange}
-                />
-              ))}
-            </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+            {solutions.map((solution, index) => (
+              <SolutionCard
+                key={solution.id}
+                solution={solution}
+                index={index}
+                revealDelay={
+                  index < PUBLIC_SOLUTIONS_PAGE_SIZE ? Math.min(index, 5) * 0.05 : undefined
+                }
+                onCategoryClick={onCategoryChange}
+              />
+            ))}
           </div>
 
           {hasMoreSolutions && (
@@ -127,22 +67,14 @@ export default function SolutionsSection({
               <button
                 type="button"
                 onClick={onLoadMore}
-                disabled={isLoadingMore || isSolutionsLoading}
-                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-bold text-[#1f2329] shadow-[0_1px_2px_rgba(31,35,41,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 hover:shadow-[0_8px_20px_rgba(31,35,41,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-100 disabled:pointer-events-none disabled:opacity-70         "
+                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-bold text-[#1f2329] shadow-[0_1px_2px_rgba(31,35,41,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 hover:shadow-[0_8px_20px_rgba(31,35,41,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-100"
               >
-                {isLoadingMore ? (
-                  <span
-                    className="h-4 w-4 rounded-full border-2 border-current border-t-transparent animate-spin"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <ArrowDownIcon
-                    weight="bold"
-                    className="text-base transition-transform duration-300 group-hover:translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                )}
-                <span>{isLoadingMore ? '加载中...' : '加载更多案例'}</span>
+                <ArrowDownIcon
+                  weight="bold"
+                  className="text-base transition-transform duration-300 group-hover:translate-y-0.5"
+                  aria-hidden="true"
+                />
+                <span>加载更多案例</span>
               </button>
             </div>
           )}

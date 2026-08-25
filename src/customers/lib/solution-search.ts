@@ -7,26 +7,6 @@ export interface CategoryOption {
   color?: string;
 }
 
-export function normalizeCategoryOptions(
-  rawCategories: Array<{ id?: string; _id?: string; name: string; slug?: string; color?: string }> | undefined,
-  fallbackCategories: CategoryOption[]
-): CategoryOption[] {
-  let normalizedList: CategoryOption[] = [];
-
-  if (rawCategories && rawCategories.length > 0) {
-    normalizedList = rawCategories.map((category) => ({
-      id: category.id || category._id || '',
-      name: category.name,
-      slug: category.slug,
-      color: category.color
-    }));
-  } else {
-    normalizedList = fallbackCategories;
-  }
-
-  return [{ id: 'all', name: '全部' }, ...normalizedList];
-}
-
 /**
  * 关键词匹配：命中标题 / 描述 / 分类名 / 分类 slug 任一即视为匹配。
  * 大小写不敏感；空查询恒为匹配。
@@ -67,5 +47,7 @@ export function filterPublicSolutions(
 
       return matchesCategory && matchesSearch;
     })
-    .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime());
+    .sort(
+      (left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime()
+    );
 }

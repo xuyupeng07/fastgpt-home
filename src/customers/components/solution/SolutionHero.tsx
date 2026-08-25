@@ -1,10 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowLeftIcon, CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react/dist/ssr';
 import CategoryBadge from '@customers/components/CategoryBadge';
 import SolutionCoverImage from '@customers/components/solution/SolutionCoverImage';
 import { FreeUseHeroButton } from '@customers/components/solution/FreeUseAction';
 import { getSafeFreeUseUrl } from '@customers/lib/free-use-url';
-import type { CtaModalContext } from '@customers/lib/cta';
+import { openCtaModal } from '@customers/lib/cta';
 type SolutionHeroData = {
   id: string | number;
   slug?: string;
@@ -20,24 +22,20 @@ type SolutionHeroData = {
   createdAt?: string;
 };
 
-type NavSolution = { id: string | number; title: string } | null;
+type NavSolution = { title: string; href: string } | null;
 
 export default function SolutionHero({
   solution,
   prevSolution,
   nextSolution,
-  getNavHref,
-  openModal,
-  onCategoryClick,
-  onBack
+  categoryHref,
+  backHref
 }: {
   solution: SolutionHeroData;
   prevSolution?: NavSolution;
   nextSolution?: NavSolution;
-  getNavHref?: (id: string | number) => string;
-  openModal: (context?: CtaModalContext) => void;
-  onCategoryClick?: (categoryId: string) => void;
-  onBack?: () => void;
+  categoryHref: string;
+  backHref: string;
 }) {
   const safeFreeUseUrl = getSafeFreeUseUrl(solution.freeUseUrl);
 
@@ -46,7 +44,7 @@ export default function SolutionHero({
       {/* 上一篇导航按钮 */}
       {prevSolution && (
         <Link
-          href={getNavHref ? getNavHref(prevSolution.id) : `/solution/${prevSolution.id}`}
+          href={prevSolution.href}
           className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-white/90  backdrop-blur-sm shadow-md border border-surface-300  text-ink-sub  hover:text-brand-600  hover:scale-110 hover:shadow-lg transition-all group"
           aria-label={`上一篇：${prevSolution.title}`}
         >
@@ -60,7 +58,7 @@ export default function SolutionHero({
       {/* 下一篇导航按钮 */}
       {nextSolution && (
         <Link
-          href={getNavHref ? getNavHref(nextSolution.id) : `/solution/${nextSolution.id}`}
+          href={nextSolution.href}
           className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-white/90  backdrop-blur-sm shadow-md border border-surface-300  text-ink-sub  hover:text-brand-600  hover:scale-110 hover:shadow-lg transition-all group"
           aria-label={`下一篇：${nextSolution.title}`}
         >
@@ -92,18 +90,17 @@ export default function SolutionHero({
         <div className="relative flex flex-col md:flex-row items-center md:min-h-[360px] lg:pl-4">
           <div className="flex-1 space-y-5 z-10 md:max-w-[48%] md:pr-12 lg:pr-10">
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={onBack}
+              <Link
+                href={backHref}
                 className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-surface-300 bg-white/80 text-ink-sub shadow-[0_1px_2px_rgba(31,35,41,0.04)] backdrop-blur-sm transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600       md:hidden"
-                aria-label="返回上一页"
+                aria-label="返回案例中心"
               >
                 <ArrowLeftIcon weight="bold" className="h-4 w-4" />
-              </button>
+              </Link>
               <CategoryBadge
                 label={solution.categoryName}
                 color={solution.categoryColor}
-                onClick={() => onCategoryClick?.(solution.categoryId)}
+                href={categoryHref}
                 className="font-semibold shadow-sm transform-gpu"
               />
             </div>
@@ -138,7 +135,7 @@ export default function SolutionHero({
               <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
                 <button
                   onClick={() =>
-                    openModal({
+                    openCtaModal({
                       source: 'customers_hero',
                       title: '评估该方案的 POC 可行性',
                       subtitle:

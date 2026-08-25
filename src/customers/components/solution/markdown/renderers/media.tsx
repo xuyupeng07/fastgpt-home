@@ -1,5 +1,3 @@
-import Zoom from 'react-medium-image-zoom';
-import 'react-medium-image-zoom/dist/styles.css';
 import type { Components } from 'react-markdown';
 import type { MarkdownRendererProps } from '../types';
 import { withBasePath } from '@customers/lib/base-path';
@@ -129,9 +127,9 @@ export const mediaMarkdownRenderers: Components & Record<string, unknown> = {
       (typeof rawWidth === 'string' && !rawWidth.endsWith('%')) || typeof rawWidth === 'number';
     const hasCustomWidth = isPercentWidth || isPixelWidth;
     const spanClass = isPercentWidth
-      ? 'block relative overflow-hidden rounded-2xl bg-transparent w-full max-w-3xl [&>div]:!block [&>div]:!w-full'
+      ? 'block relative overflow-hidden rounded-2xl bg-transparent w-full max-w-3xl'
       : isPixelWidth
-      ? 'block relative overflow-hidden rounded-2xl bg-transparent mx-auto [&>div]:!block [&>div]:!w-full'
+      ? 'block relative overflow-hidden rounded-2xl bg-transparent mx-auto'
       : 'block relative overflow-hidden rounded-2xl bg-transparent w-full max-w-3xl';
     const imgClass = 'm-0! my-0! h-auto object-contain bg-transparent w-full';
 
@@ -141,10 +139,8 @@ export const mediaMarkdownRenderers: Components & Record<string, unknown> = {
           className={spanClass}
           style={hasCustomWidth ? { width: rawWidth as string } : undefined}
         >
-          <Zoom>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className={imgClass} {...props} src={imageSrc} alt={imageAlt} />
-          </Zoom>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className={imgClass} {...props} src={imageSrc} alt={imageAlt} loading="lazy" />
         </span>
         {imageAlt && (
           <span className="mt-2 text-[13px] sm:text-sm text-gray-500  font-medium text-center">
@@ -164,22 +160,6 @@ export const mediaMarkdownRenderers: Components & Record<string, unknown> = {
         />
       </span>
       {props.title && (
-        <span className="mt-2 text-[13px] sm:text-sm text-gray-500  font-medium text-center">
-          {props.title}
-        </span>
-      )}
-    </span>
-  ),
-  iframe: (props) => (
-    <span className="flex flex-col items-center justify-center my-0! w-full bg-transparent">
-      <span className="block relative overflow-hidden w-full max-w-3xl aspect-video rounded-2xl bg-transparent">
-        <iframe
-          className="m-0! my-0! w-full h-full border-0 bg-transparent"
-          {...props}
-          title={props.title || 'Embedded content'}
-        />
-      </span>
-      {props.title && props.title !== 'Embedded content' && (
         <span className="mt-2 text-[13px] sm:text-sm text-gray-500  font-medium text-center">
           {props.title}
         </span>

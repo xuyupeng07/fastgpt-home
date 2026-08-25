@@ -1,11 +1,9 @@
-import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr';
-import type { CtaModalContext } from '@customers/lib/cta';
+'use client';
 
-export default function EmptyState({
-  onOpenModal
-}: {
-  onOpenModal: (context?: CtaModalContext) => void;
-}) {
+import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr';
+import { openCtaModal } from '@customers/lib/cta';
+
+export default function EmptyState() {
   return (
     <div className="py-20 sm:py-32 flex flex-col items-center justify-center text-center bg-[#f7f8fa]  rounded-2xl border-2 border-[#dee0e3]  border-dashed transition-all duration-300 hover:border-brand-200  hover:bg-[#e8f3ff]/30 ">
       <div className="w-20 h-20 bg-white  rounded-full flex items-center justify-center mb-8 shadow-sm border border-brand-100  ring-12px ring-[#e8f3ff]/50 ">
@@ -22,7 +20,7 @@ export default function EmptyState({
       </p>
       <button
         onClick={() =>
-          onOpenModal({
+          openCtaModal({
             source: 'empty_state',
             title: '提交需求，让专家匹配方案',
             subtitle:

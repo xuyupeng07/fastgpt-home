@@ -1,16 +1,7 @@
 'use client';
 
+import { useCallback, type MouseEvent, type RefObject, useEffect, useState, useRef } from 'react';
 import {
-  useCallback,
-  type MouseEvent,
-  type RefObject,
-  useEffect,
-  useMemo,
-  useState,
-  useRef
-} from 'react';
-import {
-  buildMarkdownTocItems,
   extractRenderedTocItems,
   getActiveRenderedTocId,
   TOC_SCROLL_OFFSET_TOP,
@@ -19,13 +10,13 @@ import {
 
 interface UseSyncedTocOptions {
   containerRef: RefObject<HTMLElement | null>;
-  markdownContent: string;
+  fallbackTocItems: TocItem[];
   enabled?: boolean;
 }
 
 export function useSyncedToc({
   containerRef,
-  markdownContent,
+  fallbackTocItems,
   enabled = true,
   scrollContainerSelector
 }: UseSyncedTocOptions & { scrollContainerSelector?: string }) {
@@ -33,8 +24,6 @@ export function useSyncedToc({
   const [trackedActiveId, setTrackedActiveId] = useState('');
   const isClickScrollingRef = useRef(false);
   const clickScrollTimeoutRef = useRef<number | undefined>(undefined);
-  const fallbackTocItems = useMemo(() => buildMarkdownTocItems(markdownContent), [markdownContent]);
-
   useEffect(() => {
     if (!enabled) {
       return;
@@ -51,7 +40,7 @@ export function useSyncedToc({
     });
 
     return () => window.cancelAnimationFrame(frameId);
-  }, [containerRef, enabled, markdownContent]);
+  }, [containerRef, enabled]);
 
   // 滚动同步高亮：scroll 监听（可靠、任何滚动都更新）+ rAF 节流 + MutationObserver
   // 处理客户端正文（ReactMarkdown）异步渲染完成后的重算。

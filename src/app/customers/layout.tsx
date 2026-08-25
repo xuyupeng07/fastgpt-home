@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Toaster } from 'sonner';
 import CustomersNavbar from './CustomersNavbar';
 import Footer from '@/components/home/Footer';
 import HomeThemeFix from '@/components/home/HomeThemeFix';
@@ -57,13 +56,6 @@ export default async function CustomersLayout({
       <main className="flex-1">{children}</main>
       <FormModal />
       <Footer t={dict.Home.footer} locale="zh" />
-      <Toaster
-        position="top-center"
-        richColors
-        duration={2000}
-        closeButton
-        toastOptions={{ style: { marginTop: '64px' } }}
-      />
     </div>
   );
 }

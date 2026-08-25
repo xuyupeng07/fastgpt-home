@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "prebuild": "node scripts/verify-content-hygiene.js --mode source && node scripts/verify-technical-content.js && node scripts/verify-technical-authority.js && node scripts/verify-technical-wave.js && node scripts/verify-customers-data.js && node scripts/generate-robots.js && node scripts/generate-llms.js",
-    "build": "next build && node scripts/clean-locale-output.js && node scripts/clean-faq-rsc.js && node scripts/verify-technical-center.js && node scripts/fix-html-lang.js && node scripts/verify-technical-export.js && node scripts/verify-content-hygiene.js --mode html --root out",
+    "build": "next build && node scripts/clean-locale-output.js && node scripts/clean-faq-rsc.js && node scripts/verify-technical-center.js && node scripts/verify-customers-export.js && node scripts/fix-html-lang.js && node scripts/verify-technical-export.js && node scripts/verify-content-hygiene.js --mode html --root out",
     "start": "npx serve@latest out",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky",
@@ -64,7 +64,8 @@
     "verify:guide-export-regression": "node --test scripts/verify-guide-export.test.js",
     "sync:w3-faq": "python3 scripts/sync-w3-faq.py",
     "verify:contact": "node scripts/verify-contact-page.js",
-    "verify:customers-data": "node scripts/verify-customers-data.js"
+    "verify:customers-data": "node scripts/verify-customers-data.js",
+    "verify:customers-export": "node scripts/verify-customers-export.js"
   },
   "dependencies": {
     "@heroui/react": "^2.8.9",

@@ -1,56 +1,9 @@
+'use client';
+
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { normalizeMermaidSource } from '../utils';
 
 const ReactECharts = lazy(() => import('echarts-for-react'));
-
-const MERMAID_SINGLE_LINE_DECLARATIONS = [
-  /^(flowchart\s+(?:TB|TD|BT|RL|LR))(?=\S)/,
-  /^(graph\s+(?:TB|TD|BT|RL|LR))(?=\S)/,
-  /^(sequenceDiagram)(?=\S)/,
-  /^(classDiagram(?:-v2)?)(?=\S)/,
-  /^(stateDiagram(?:-v2)?)(?=\S)/,
-  /^(erDiagram)(?=\S)/,
-  /^(journey)(?=\S)/,
-  /^(gantt)(?=\S)/,
-  /^(mindmap)(?=\S)/,
-  /^(timeline)(?=\S)/,
-  /^(gitGraph)(?=\S)/,
-  /^(quadrantChart)(?=\S)/,
-  /^(requirementDiagram)(?=\S)/,
-  /^(xychart(?:-beta)?)(?=\S)/,
-  /^(block-beta)(?=\S)/,
-  /^(packet-beta)(?=\S)/,
-  /^(architecture-beta)(?=\S)/,
-  /^(sankey-beta)(?=\S)/
-];
-
-function trimTrailingWhitespaceByLine(source: string) {
-  return source
-    .split('\n')
-    .map((line) => line.replace(/[ \t]+$/g, ''))
-    .join('\n');
-}
-
-export function normalizeMermaidSource(source: string) {
-  const normalized = trimTrailingWhitespaceByLine(
-    source
-      .replace(/\uFEFF/g, '')
-      .replace(/\r\n?/g, '\n')
-      .replace(/\u00A0/g, ' ')
-      .trim()
-  );
-
-  if (!normalized || normalized.includes('\n')) {
-    return normalized;
-  }
-
-  for (const pattern of MERMAID_SINGLE_LINE_DECLARATIONS) {
-    if (pattern.test(normalized)) {
-      return normalized.replace(pattern, '$1\n');
-    }
-  }
-
-  return normalized;
-}
 
 const loadMermaid = () =>
   import('mermaid').then((m) => {
@@ -72,26 +25,13 @@ const loadMermaid = () =>
     return m.default;
   });
 
-// 仅允许纯对象/数组/原始值字面量构成的 ECharts 配置。拒绝任何函数、
-// 调用、成员访问、运算符与危险关键字，避免把 markdown 正文当代码执行
-// （new Function 与 eval 等价，属于存储型 XSS 面）。
-const ECHARTS_UNSAFE_TOKEN_RE =
-  /[()=+*/%`;&|<>!?~]|-(?!\d)|\bfunction\b|=>|\b(new|typeof|instanceof|import|require|eval|window|document|globalThis|process|Math|Date|JSON|constructor|prototype)\b|\.[a-zA-Z_$]/i;
-
 export function parseEChartsOptions(optionsStr: string) {
   const source = optionsStr.trim();
   if (!source) return null;
 
-  // 先把字符串字面量脱敏，避免字符串内的括号/关键字被误判。
-  const masked = source.replace(/'(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"/g, '"s"');
-  if (ECHARTS_UNSAFE_TOKEN_RE.test(masked)) {
-    return null;
-  }
-
   try {
-    // 已通过静态白名单校验，此处仅求值纯对象字面量表达式。
-    const getOptions = new Function(`return (${source});`) as () => unknown;
-    return getOptions();
+    const options = JSON.parse(source) as unknown;
+    return options && typeof options === 'object' && !Array.isArray(options) ? options : null;
   } catch {
     return null;
   }
@@ -269,7 +209,7 @@ export const EchartsComponent = ({ optionsStr }: { optionsStr: string }) => {
   if (!option) {
     return (
       <div className="p-4 bg-red-50 text-red-500 rounded-xl my-4 text-sm border border-red-100">
-        ECharts 配置解析失败，请确保返回的是一个合法的 JavaScript 对象。
+        ECharts 配置解析失败，请确保内容是合法 JSON。
       </div>
     );
   }

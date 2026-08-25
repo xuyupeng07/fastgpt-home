@@ -1,10 +1,10 @@
 import { getSolutionByIdPublic, getAllPublishedSolutions } from '@customers/lib/data';
-import SolutionPageClient from '@customers/components/solution/SolutionPageClient';
-import SolutionReadableArticle from '@customers/components/solution/SolutionReadableArticle';
+import SolutionPage from '@customers/components/solution/SolutionPage';
 import { absoluteUrl } from '@customers/lib/site-url';
 import { getSolutionPublicHref } from '@customers/lib/solution-url';
 import { buildSolutionJsonLd } from '@customers/lib/solution-json-ld';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export type SolutionRouteParams = { id: string; categorySlug?: string };
 
@@ -55,27 +55,22 @@ export async function generateSolutionMetadata(params: SolutionRouteParams): Pro
 
 export async function renderSolutionPage(params: SolutionRouteParams) {
   const { id } = params;
-  const initialSolution = await getSolutionByIdPublic(id);
+  const solution = await getSolutionByIdPublic(id);
   const allSolutionsData = getAllPublishedSolutions();
+
+  if (!solution) {
+    notFound();
+  }
 
   return (
     <>
-      {initialSolution && (
-        <>
-          <SolutionReadableArticle solution={initialSolution} />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(buildSolutionJsonLd(initialSolution)).replace(/</g, '\\u003c')
-            }}
-          />
-        </>
-      )}
-      <SolutionPageClient
-        id={id}
-        initialSolution={initialSolution}
-        initialAllSolutions={allSolutionsData}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildSolutionJsonLd(solution)).replace(/</g, '\\u003c')
+        }}
       />
+      <SolutionPage solution={solution} allSolutions={allSolutionsData} />
     </>
   );
 }

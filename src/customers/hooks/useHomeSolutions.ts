@@ -3,35 +3,27 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Solution } from '@customers/components/SolutionCard';
 import { PUBLIC_SOLUTIONS_PAGE_SIZE } from '@customers/lib/solution-pagination';
-import {
-  filterPublicSolutions,
-  normalizeCategoryOptions,
-  type CategoryOption
-} from '@customers/lib/solution-search';
+import { filterPublicSolutions, type CategoryOption } from '@customers/lib/solution-search';
 import { withBasePath } from '@customers/lib/base-path';
 import { scrollToElementWithNavbarOffset } from '@customers/lib/home-solutions-browser';
 
 interface UseHomeSolutionsInput {
   initialCategories: CategoryOption[];
   initialSolutions: Solution[];
-  initialPagination: { total: number; page: number; limit: number; totalPages: number };
   initialCategorySlug?: string;
-  /** 搜索关键词（来自 AI 搜索框输入），实时参与案例卡片过滤 */
-  searchQuery?: string;
 }
 
 export function useHomeSolutions({
   initialCategories,
   initialSolutions,
-  initialCategorySlug,
-  searchQuery = ''
+  initialCategorySlug
 }: UseHomeSolutionsInput) {
   const [currentCategory, setCurrentCategory] = useState(initialCategorySlug || 'all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const solutionsSectionRef = useRef<HTMLElement>(null);
-
   const categories = useMemo(
-    () => normalizeCategoryOptions(initialCategories, initialCategories),
+    () => [{ id: 'all', name: '全部' }, ...initialCategories],
     [initialCategories]
   );
 
@@ -48,10 +40,10 @@ export function useHomeSolutions({
     scrollToElementWithNavbarOffset(solutionsSectionRef.current);
   }, []);
 
-  // 搜索词变化时重置分页，确保首屏展示最新筛选结果
-  useEffect(() => {
+  const handleSearchChange = useCallback((query: string) => {
+    setSearchQuery(query);
     setPage(1);
-  }, [searchQuery]);
+  }, []);
 
   // 带 #customers 锚点进入（如从详情页分类徽章 / 首页「案例中心」跳转）时，
   // 滚动到案例列表区，并补偿导航栏高度，保证定位准确。
@@ -70,7 +62,11 @@ export function useHomeSolutions({
       setCurrentCategory(categorySlug);
       setPage(1);
       if (categorySlug !== 'all') {
-        window.history.pushState(window.history.state, '', withBasePath(`/categories/${categorySlug}#customers`));
+        window.history.pushState(
+          window.history.state,
+          '',
+          withBasePath(`/categories/${categorySlug}#customers`)
+        );
       } else {
         window.history.pushState(window.history.state, '', withBasePath('/#customers'));
       }
@@ -87,15 +83,11 @@ export function useHomeSolutions({
     currentCategory,
     categories,
     solutions,
-    isLoading: false,
-    isShowingStaleSolutions: false,
+    searchQuery,
     hasMoreSolutions,
-    isLoadingMore: false,
-    isSolutionsLoading: false,
     solutionsSectionRef,
     handleCategoryClick,
-    handleCategoryPrefetch: () => {},
-    handleLoadMore,
-    pinSolutionsHash: () => {}
+    handleSearchChange,
+    handleLoadMore
   };
 }

@@ -161,32 +161,6 @@ export function getSolutionByIdPublic(id: string) {
   return solution ? mapSolutionDetail(solution, categories) : null;
 }
 
-export function getRelatedSolutions(solution: {
-  id?: string;
-  slug?: string;
-  categorySlug?: string;
-  relatedSolutionIds?: string[];
-}) {
-  const all = getAllPublishedSolutions();
-  const related = (solution.relatedSolutionIds || [])
-    .filter((slug) => slug !== solution.id && slug !== solution.slug)
-    .map((slug) => all.find((s) => s.slug === slug || s.id === slug))
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
-
-  if (related.length > 0) return related;
-
-  if (solution.categorySlug) {
-    return all
-      .filter(
-        (s) =>
-          s.categorySlug === solution.categorySlug && s.id !== solution.id && s.slug !== solution.id
-      )
-      .slice(0, 6);
-  }
-
-  return [];
-}
-
 export function getAllPublishedSolutionDirectoryEntries(): AiDirectoryEntry[] {
   const categories = loadCategories();
   return loadSolutions().map((s) => {

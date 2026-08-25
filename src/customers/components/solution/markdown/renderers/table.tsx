@@ -1,12 +1,7 @@
 import React from 'react';
 import type { Components } from 'react-markdown';
 import type { MarkdownRendererProps } from '../types';
-import { filterWhitespaceChildren, getDomProps, joinClassNames } from '../utils';
-import {
-  getFeishuAlignClass,
-  getFeishuBackgroundColorClass,
-  getFeishuTableVerticalAlignClass
-} from './feishu';
+import { filterWhitespaceChildren, getDomProps, getTextAlignClass, joinClassNames } from '../utils';
 
 export const tableMarkdownRenderers: Components & Record<string, unknown> = {
   table: ({ children, ...props }) => {
@@ -49,9 +44,7 @@ export const tableMarkdownRenderers: Components & Record<string, unknown> = {
       <th
         className={joinClassNames(
           'min-w-24 border border-[#dee0e3] bg-[#f5f6f7] px-3 py-2 align-top font-semibold text-[#1f2329]   ',
-          getFeishuBackgroundColorClass(markdownProps['background-color']),
-          getFeishuTableVerticalAlignClass(markdownProps['vertical-align']),
-          getFeishuAlignClass(markdownProps.align),
+          getTextAlignClass(markdownProps.align),
           markdownProps.className
         )}
         {...getDomProps<React.ThHTMLAttributes<HTMLTableHeaderCellElement>>(markdownProps)}
@@ -76,9 +69,7 @@ export const tableMarkdownRenderers: Components & Record<string, unknown> = {
       <td
         className={joinClassNames(
           'min-w-24 border border-[#dee0e3] bg-white px-3 py-2 align-top text-[#1f2329]   ',
-          getFeishuBackgroundColorClass(markdownProps['background-color']),
-          getFeishuTableVerticalAlignClass(markdownProps['vertical-align']),
-          getFeishuAlignClass(markdownProps.align),
+          getTextAlignClass(markdownProps.align),
           markdownProps.className
         )}
         {...getDomProps<React.TdHTMLAttributes<HTMLTableDataCellElement>>(markdownProps)}

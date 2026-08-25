@@ -5,19 +5,11 @@ import {
   extractTextFromMarkdownAst,
   extractTextFromReactNode,
   getDomProps,
-  joinClassNames
-} from './markdown/utils';
-import {
-  EchartsComponent,
-  MermaidChart,
+  getTextAlignClass,
+  joinClassNames,
   normalizeMermaidSource
-} from './markdown/renderers/charts';
-import {
-  FEISHU_MARKER_CLASS,
-  feishuMarkdownRenderers,
-  getFeishuAlignClass
-} from './markdown/renderers/feishu';
-import { mathMarkdownRenderers } from './markdown/renderers/math';
+} from './markdown/utils';
+import { EchartsComponent, MermaidChart } from './markdown/renderers/charts';
 import { mediaMarkdownRenderers } from './markdown/renderers/media';
 import { tableMarkdownRenderers } from './markdown/renderers/table';
 
@@ -69,26 +61,7 @@ const highlightStyles = {
 
 type HighlightType = keyof typeof highlightStyles;
 
-const BLOCK_CHILD_TAGS = new Set([
-  'img',
-  'video',
-  'iframe',
-  'math-block',
-  'attachment-file',
-  'callout',
-  'checkbox',
-  'grid',
-  'whiteboard',
-  'base_ref',
-  'bitable',
-  'chat_card',
-  'okr',
-  'sheet',
-  'source',
-  'synced_reference',
-  'synced_source',
-  'task'
-]);
+const BLOCK_CHILD_TAGS = new Set(['img', 'video', 'attachment-file']);
 
 function extractHighlightData(children: React.ReactNode): {
   type: HighlightType | null;
@@ -204,7 +177,7 @@ export const markdownComponents: Components & Record<string, unknown> = {
       {...props}
       className={joinClassNames(
         'list-disc pl-6 text-slate-900  [&_ul]:list-disc',
-        FEISHU_MARKER_CLASS,
+        'marker:text-[#3370ff]',
         props.className
       )}
     >
@@ -216,7 +189,7 @@ export const markdownComponents: Components & Record<string, unknown> = {
       {...props}
       className={joinClassNames(
         'list-decimal pl-6 text-slate-900 ',
-        FEISHU_MARKER_CLASS,
+        'marker:text-[#3370ff]',
         props.className
       )}
     >
@@ -256,7 +229,7 @@ export const markdownComponents: Components & Record<string, unknown> = {
       <h1
         className={joinClassNames(
           'text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 ',
-          getFeishuAlignClass(markdownProps.align),
+          getTextAlignClass(markdownProps.align),
           markdownProps.className
         )}
       >
@@ -407,7 +380,6 @@ export const markdownComponents: Components & Record<string, unknown> = {
       {children}
     </u>
   ),
-  ...feishuMarkdownRenderers,
   ...mediaMarkdownRenderers,
   a: ({ children, ...props }) => (
     <a
@@ -463,6 +435,5 @@ export const markdownComponents: Components & Record<string, unknown> = {
         {children}
       </li>
     );
-  },
-  ...mathMarkdownRenderers
+  }
 };

@@ -6,7 +6,6 @@ import {
   type CtaSource
 } from '@customers/lib/cta-constants';
 import { trackRybbitEvent } from '@customers/lib/rybbit';
-import { withBasePath } from '@customers/lib/base-path';
 
 export type { CtaSource };
 
@@ -51,22 +50,6 @@ export function buildContactFormUrl(context: CtaModalContext): string {
 
 export function openCtaModal(context: CtaModalContext = DEFAULT_CTA_MODAL_CONTEXT) {
   window.dispatchEvent(new CustomEvent<CtaModalContext>('open-form-modal', { detail: context }));
-
-  // 上报点击数据到自建 MongoDB（非阻塞，静默失败）
-  fetch(withBasePath('/api/cta/click'), {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      source: context.source,
-      solutionId: context.solutionId != null ? String(context.solutionId) : undefined,
-      solutionTitle: context.solutionTitle,
-      categoryName: context.categoryName
-    })
-  }).catch(() => {
-    /* 静默失败，不影响用户体验 */
-  });
-
-  // 上报到 Rybbit 分析平台
   trackRybbitEvent('poc_click', {
     source: context.source,
     solution_id: context.solutionId != null ? String(context.solutionId) : undefined,

@@ -1,6 +1,27 @@
 import React from 'react';
 import type { MarkdownAstNode } from './types';
 
+const MERMAID_SINGLE_LINE_DECLARATIONS = [
+  /^(flowchart\s+(?:TB|TD|BT|RL|LR))(?=\S)/,
+  /^(graph\s+(?:TB|TD|BT|RL|LR))(?=\S)/,
+  /^(sequenceDiagram)(?=\S)/,
+  /^(classDiagram(?:-v2)?)(?=\S)/,
+  /^(stateDiagram(?:-v2)?)(?=\S)/,
+  /^(erDiagram)(?=\S)/,
+  /^(journey)(?=\S)/,
+  /^(gantt)(?=\S)/,
+  /^(mindmap)(?=\S)/,
+  /^(timeline)(?=\S)/,
+  /^(gitGraph)(?=\S)/,
+  /^(quadrantChart)(?=\S)/,
+  /^(requirementDiagram)(?=\S)/,
+  /^(xychart(?:-beta)?)(?=\S)/,
+  /^(block-beta)(?=\S)/,
+  /^(packet-beta)(?=\S)/,
+  /^(architecture-beta)(?=\S)/,
+  /^(sankey-beta)(?=\S)/
+];
+
 export function withoutMarkdownInternals(props: object) {
   const domProps: Record<string, unknown> = { ...props };
   delete domProps.node;
@@ -44,6 +65,40 @@ export function joinClassNames(...classNames: Array<string | undefined>) {
 
 export function getStringProp(value: unknown) {
   return typeof value === 'string' || typeof value === 'number' ? String(value).trim() : '';
+}
+
+export function getTextAlignClass(value: unknown) {
+  switch (getStringProp(value)) {
+    case 'center':
+      return 'text-center';
+    case 'right':
+      return 'text-right';
+    default:
+      return undefined;
+  }
+}
+
+export function normalizeMermaidSource(source: string) {
+  const normalized = source
+    .replace(/\uFEFF/g, '')
+    .replace(/\r\n?/g, '\n')
+    .replace(/\u00A0/g, ' ')
+    .trim()
+    .split('\n')
+    .map((line) => line.replace(/[ \t]+$/g, ''))
+    .join('\n');
+
+  if (!normalized || normalized.includes('\n')) {
+    return normalized;
+  }
+
+  for (const pattern of MERMAID_SINGLE_LINE_DECLARATIONS) {
+    if (pattern.test(normalized)) {
+      return normalized.replace(pattern, '$1\n');
+    }
+  }
+
+  return normalized;
 }
 
 export function extractTextFromMarkdownAst(node: MarkdownAstNode | undefined): string {
