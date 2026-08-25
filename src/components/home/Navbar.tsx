@@ -35,7 +35,8 @@ function getNavLinkRybbitAttrs(link: NavLink) {
     return rybbitClickAttrs(RYBBIT_EVENTS.learningCenterClick, 'home_nav_learning_center');
   }
 
-  if (link.href.includes('solutions.fastgpt.cn')) {
+  // 案例中心：customers 站（fastgpt.cn/customers，含站内相对路径 /customers）为唯一入口。
+  if (link.href.includes('/customers')) {
     return rybbitClickAttrs(RYBBIT_EVENTS.caseCenterClick, 'home_nav_case_center');
   }
 
@@ -47,13 +48,16 @@ export default function Navbar({
   t,
   locale,
   variant = 'default',
-  publishedLocales
+  publishedLocales,
+  onConsultClick
 }: {
   links?: NavLink[];
   t: NavCta;
   locale?: string;
   variant?: NavbarVariant;
   publishedLocales?: readonly LocaleCode[];
+  /** 传入后「商务咨询」由外链改为按钮回调（用于打开内嵌咨询表单弹窗等场景） */
+  onConsultClick?: () => void;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showMobileCta, setShowMobileCta] = useState(true);
@@ -213,14 +217,26 @@ export default function Navbar({
                 <LangSwitcher iconOnly locale={lang} publishedLocales={publishedLocales} />
               </div>
             )}
-            <a
-              href={contactUrl}
-              {...rybbitClickAttrs(RYBBIT_EVENTS.businessConsultClick, 'home_nav_consult')}
-              aria-label={t.consult}
-              className="px-4 py-1.5 rounded-full text-[12px] font-medium text-white bg-btn-dark hover:opacity-90 transition-opacity"
-            >
-              {t.consult}
-            </a>
+            {onConsultClick ? (
+              <button
+                type="button"
+                onClick={onConsultClick}
+                {...rybbitClickAttrs(RYBBIT_EVENTS.businessConsultClick, 'home_nav_consult')}
+                aria-label={t.consult}
+                className="px-4 py-1.5 rounded-full text-[12px] font-medium text-white bg-btn-dark hover:opacity-90 transition-opacity"
+              >
+                {t.consult}
+              </button>
+            ) : (
+              <a
+                href={contactUrl}
+                {...rybbitClickAttrs(RYBBIT_EVENTS.businessConsultClick, 'home_nav_consult')}
+                aria-label={t.consult}
+                className="px-4 py-1.5 rounded-full text-[12px] font-medium text-white bg-btn-dark hover:opacity-90 transition-opacity"
+              >
+                {t.consult}
+              </a>
+            )}
             <a
               href={desktopStartUrl}
               rel="noopener noreferrer nofollow"
@@ -343,17 +359,34 @@ export default function Navbar({
             </nav>
 
             <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-hairline-soft">
-              <a
-                href={contactUrl}
-                {...rybbitClickAttrs(
-                  RYBBIT_EVENTS.businessConsultClick,
-                  'home_nav_mobile_menu_consult'
-                )}
-                className="h-10 inline-flex items-center justify-center rounded-full text-[13px] font-medium text-white bg-btn-dark"
-                onClick={() => setMobileOpen(false)}
-              >
-                {t.consult}
-              </a>
+              {onConsultClick ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    onConsultClick();
+                  }}
+                  {...rybbitClickAttrs(
+                    RYBBIT_EVENTS.businessConsultClick,
+                    'home_nav_mobile_menu_consult'
+                  )}
+                  className="h-10 inline-flex items-center justify-center rounded-full text-[13px] font-medium text-white bg-btn-dark"
+                >
+                  {t.consult}
+                </button>
+              ) : (
+                <a
+                  href={contactUrl}
+                  {...rybbitClickAttrs(
+                    RYBBIT_EVENTS.businessConsultClick,
+                    'home_nav_mobile_menu_consult'
+                  )}
+                  className="h-10 inline-flex items-center justify-center rounded-full text-[13px] font-medium text-white bg-btn-dark"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {t.consult}
+                </a>
+              )}
               <a
                 href={mobileStartUrl}
                 rel="noopener noreferrer nofollow"

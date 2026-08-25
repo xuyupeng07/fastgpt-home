@@ -7,6 +7,7 @@ import { htmlLangScript } from '@/lib/htmlLang';
 import { contactLinkAttributionScript } from '@/lib/contactLinkAttribution';
 import { localeDirections, localeHtmlLangs } from '@/lib/locales';
 import '@/styles/globals.css';
+import '@/customers/styles/customers.css';
 import { Viewport } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import { IBM_Plex_Sans as FontDisplay } from 'next/font/google';
