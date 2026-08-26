@@ -3,8 +3,6 @@ export const PUBLIC_BASE_PATH = '/customers';
 /** Add the public mount prefix where Next.js does not apply basePath automatically. */
 export function withBasePath(path: string) {
   if (
-    // admin 门户构建下共享组件不挂 /customers 前缀（独立部署 /admin 的关键门控）
-    process.env.NEXT_PUBLIC_ADMIN_PORTAL === 'true' ||
     !path.startsWith('/') ||
     path.startsWith('//') ||
     path === PUBLIC_BASE_PATH ||

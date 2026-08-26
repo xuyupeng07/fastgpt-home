@@ -1,22 +1,17 @@
 export interface SolutionCardData {
-  id: string | number;
-  slug?: string;
+  id: string;
+  slug: string;
   categoryId: string;
   categoryName: string;
-  categorySlug?: string;
-  categoryColor?: string;
-  contentType?: 'solution' | 'case';
-  hasContent?: boolean;
+  categorySlug: string;
+  categoryColor: string;
+  contentType: 'solution' | 'case';
+  hasContent: boolean;
   title: string;
   description: string;
   imageUrl: string;
   thumbnailUrl: string;
-  freeUseUrl?: string;
-  likes: number;
-  usage: string;
-  rawUsageCount?: number;
-  isLiked?: boolean;
-  hasViewed?: boolean;
+  freeUseUrl: string;
   createdAt: string;
-  updatedAt?: string;
+  updatedAt: string;
 }

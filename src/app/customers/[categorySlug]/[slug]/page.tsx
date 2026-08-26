@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import {
-  generateSolutionMetadata,
-  renderSolutionPage,
-  type SolutionRouteParams
-} from '@customers/lib/solution-page';
-import { getAllPublishedSolutionDetails, getSolutionByIdPublic } from '@customers/lib/data';
+import { generateSolutionMetadata, renderSolutionPage } from '@customers/lib/solution-page';
+import { getAllPublishedSolutionDetails } from '@customers/lib/data';
 
 type SemanticSolutionPageProps = { params: Promise<{ categorySlug: string; slug: string }> };
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getAllPublishedSolutionDetails().map((solution) => ({
@@ -23,10 +20,5 @@ export async function generateMetadata({ params }: SemanticSolutionPageProps): P
 
 export default async function SemanticSolutionPage({ params }: SemanticSolutionPageProps) {
   const { slug } = await params;
-  const routeParams: SolutionRouteParams = { id: slug };
-  const solution = getSolutionByIdPublic(slug);
-
-  if (!solution) notFound();
-
-  return renderSolutionPage(routeParams);
+  return renderSolutionPage({ id: slug });
 }

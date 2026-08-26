@@ -10,10 +10,10 @@
   100% { transform: translateX(100%); }
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #c1c7d0; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #a5adba; }
+.customers-shell ::-webkit-scrollbar { width: 6px; }
+.customers-shell ::-webkit-scrollbar-track { background: transparent; }
+.customers-shell ::-webkit-scrollbar-thumb { background: #c1c7d0; border-radius: 3px; }
+.customers-shell ::-webkit-scrollbar-thumb:hover { background: #a5adba; }
 
 .scrollbar-hidden {
   -ms-overflow-style: none;
@@ -82,4 +82,4 @@
 .group:hover .public-case-ribbon { filter: brightness(1.05); }
 .group:hover .public-case-ribbon::before { animation: public-case-shine-hover 8s ease-in-out forwards; }
 
-button:not(:disabled):not(.cursor-default) { cursor: pointer; }
+.customers-shell button:not(:disabled):not(.cursor-default) { cursor: pointer; }

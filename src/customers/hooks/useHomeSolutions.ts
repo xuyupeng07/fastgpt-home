@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import type { Solution } from '@customers/components/SolutionCard';
 import { PUBLIC_SOLUTIONS_PAGE_SIZE } from '@customers/lib/solution-pagination';
 import { filterPublicSolutions, type CategoryOption } from '@customers/lib/solution-search';
@@ -18,7 +19,8 @@ export function useHomeSolutions({
   initialSolutions,
   initialCategorySlug
 }: UseHomeSolutionsInput) {
-  const [currentCategory, setCurrentCategory] = useState(initialCategorySlug || 'all');
+  const router = useRouter();
+  const currentCategory = initialCategorySlug || 'all';
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const solutionsSectionRef = useRef<HTMLElement>(null);
@@ -59,20 +61,15 @@ export function useHomeSolutions({
     (categoryId: string) => {
       const selectedCategory = categories.find((c) => c.id === categoryId);
       const categorySlug = selectedCategory?.slug || categoryId;
-      setCurrentCategory(categorySlug);
+      const href =
+        categorySlug === 'all'
+          ? withBasePath('/#customers')
+          : withBasePath(`/categories/${categorySlug}#customers`);
       setPage(1);
-      if (categorySlug !== 'all') {
-        window.history.pushState(
-          window.history.state,
-          '',
-          withBasePath(`/categories/${categorySlug}#customers`)
-        );
-      } else {
-        window.history.pushState(window.history.state, '', withBasePath('/#customers'));
-      }
+      router.push(href, { scroll: false });
       scrollToSolutionsSection();
     },
-    [categories, scrollToSolutionsSection]
+    [categories, router, scrollToSolutionsSection]
   );
 
   const handleLoadMore = useCallback(() => {

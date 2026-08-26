@@ -9,6 +9,8 @@ type CategoryPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
 // 静态导出：从 JSON 枚举全部分类落地页 /customers/categories/{slug}
 export function generateStaticParams() {
   return getCategories().map((category) => ({ slug: category.slug }));

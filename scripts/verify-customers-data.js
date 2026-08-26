@@ -83,8 +83,18 @@ for (const { file, data } of solutions) {
   } else if (!categorySlugs.has(data.categorySlug)) {
     errors.push(`方案分类不存在：${file} → ${data.categorySlug}`);
   }
-  if (!data.title || !data.description || typeof data.content !== 'string') {
-    errors.push(`方案缺少 title/description/content：${file}`);
+  if (
+    !data.title ||
+    !data.description ||
+    !data.imageUrl ||
+    !data.thumbnailUrl ||
+    !data.createdAt ||
+    !data.updatedAt ||
+    typeof data.content !== 'string' ||
+    typeof data.freeUseUrl !== 'string' ||
+    !['solution', 'case'].includes(data.contentType)
+  ) {
+    errors.push(`Solution is missing required public fields: ${file}`);
   }
 
   if (!data.id) {

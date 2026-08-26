@@ -16,7 +16,7 @@ import { getSolutionPublicHref } from '@customers/lib/solution-url';
 
 export type SolutionJsonLdSource = {
   id: string;
-  slug?: string;
+  slug: string;
   categorySlug: string;
   categoryName: string;
   title: string;

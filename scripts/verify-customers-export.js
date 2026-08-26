@@ -6,6 +6,10 @@ const path = require('path');
 const rootDir = process.cwd();
 const outDir = path.resolve(rootDir, process.argv[2] || 'out');
 const solutionsDir = path.join(rootDir, 'content', 'customers', 'solutions');
+const categoriesFile = path.join(rootDir, 'content', 'customers', 'categories.json');
+const customersOutDir = path.join(outDir, 'customers');
+const cnBaseUrl = (process.env.NEXT_PUBLIC_CN_HOME_URL || 'https://fastgpt.cn').replace(/\/+$/, '');
+const customersBaseUrl = `${cnBaseUrl}/customers`;
 const forbiddenContent = [
   'AI 可读解决方案正文',
   'FastGPT 客户案例中心 AI 可读目录',
@@ -18,6 +22,7 @@ const forbiddenBundleContent = [
   'NEXT_PUBLIC_AI_GATEWAY_KEY',
   'AI 智能匹配案例'
 ];
+const forbiddenPublicDataKeys = ['caseNo', 'caseOrg', 'clearanceLevel', 'citedNumbers'];
 
 function walkFiles(dir, extension) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -31,15 +36,30 @@ function countOccurrences(source, token) {
   return source.split(token).length - 1;
 }
 
+function assertCanonical(html, route, htmlFile) {
+  const expectedUrl = `${customersBaseUrl}${route.slice('/customers'.length)}`;
+  assert(
+    html.includes(`<link rel="canonical" href="${expectedUrl}"/>`),
+    `Customer canonical mismatch for ${route}: ${htmlFile}`
+  );
+}
+
 const solutionFiles = walkFiles(solutionsDir, '.json');
 assert(solutionFiles.length > 0, 'Customer export verification requires solution data');
+const solutions = solutionFiles.map((sourceFile) =>
+  JSON.parse(fs.readFileSync(sourceFile, 'utf8'))
+);
+const categories = JSON.parse(fs.readFileSync(categoriesFile, 'utf8'));
+const expectedRouteSet = new Set(['/customers']);
 
-for (const sourceFile of solutionFiles) {
-  const solution = JSON.parse(fs.readFileSync(sourceFile, 'utf8'));
+for (const solution of solutions) {
+  const route = `/customers/${solution.categorySlug}/${solution.slug}`;
   const htmlFile = path.join(outDir, 'customers', solution.categorySlug, `${solution.slug}.html`);
+  expectedRouteSet.add(route);
   assert(fs.existsSync(htmlFile), `Missing customer detail export: ${htmlFile}`);
 
   const html = fs.readFileSync(htmlFile, 'utf8');
+  assertCanonical(html, route, htmlFile);
   assert.equal(
     countOccurrences(html, 'id="solution-article"'),
     1,
@@ -53,11 +73,60 @@ for (const sourceFile of solutionFiles) {
   }
 }
 
+for (const category of categories) {
+  const route = `/customers/categories/${category.slug}`;
+  const htmlFile = path.join(customersOutDir, 'categories', `${category.slug}.html`);
+  expectedRouteSet.add(route);
+  assert(fs.existsSync(htmlFile), `Missing customer category export: ${htmlFile}`);
+  assertCanonical(fs.readFileSync(htmlFile, 'utf8'), route, htmlFile);
+}
+
 const homeFile = path.join(outDir, 'customers.html');
 assert(fs.existsSync(homeFile), `Missing customer home export: ${homeFile}`);
 const homeHtml = fs.readFileSync(homeFile, 'utf8');
+assertCanonical(homeHtml, '/customers', homeFile);
 for (const token of forbiddenContent) {
   assert(!homeHtml.includes(token), `Customer home contains forbidden content ${token}`);
+}
+
+const customerPayloadFiles = [
+  homeFile,
+  path.join(outDir, 'customers.txt'),
+  ...walkFiles(path.join(outDir, 'customers'), '.html'),
+  ...walkFiles(path.join(outDir, 'customers'), '.txt')
+].filter(fs.existsSync);
+for (const payloadFile of customerPayloadFiles) {
+  const payload = fs.readFileSync(payloadFile, 'utf8');
+  for (const key of forbiddenPublicDataKeys) {
+    assert(!payload.includes(key), `Customer export contains internal data key ${key}: ${payloadFile}`);
+  }
+}
+
+const actualRoutes = [
+  '/customers',
+  ...walkFiles(customersOutDir, '.html').map((htmlFile) => {
+    const relativePath = path.relative(outDir, htmlFile).split(path.sep).join('/');
+    return `/${relativePath.slice(0, -'.html'.length)}`;
+  })
+].sort();
+const expectedRoutes = [...expectedRouteSet].sort();
+assert.deepEqual(actualRoutes, expectedRoutes, 'Customer export route set mismatch');
+
+const configuredVariant = process.env.NEXT_PUBLIC_SITE_VARIANT;
+const inferredVariant = (process.env.NEXT_PUBLIC_HOME_URL || 'https://fastgpt.cn').includes('.cn')
+  ? 'cn'
+  : 'io';
+if ((configuredVariant || inferredVariant) === 'cn') {
+  const sitemapFile = path.join(outDir, 'sitemap.xml');
+  const sitemap = fs.readFileSync(sitemapFile, 'utf8');
+  const customerSitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map((match) => match[1])
+    .filter((url) => url === customersBaseUrl || url.startsWith(`${customersBaseUrl}/`))
+    .sort();
+  const expectedSitemapUrls = expectedRoutes
+    .map((route) => `${customersBaseUrl}${route.slice('/customers'.length)}`)
+    .sort();
+  assert.deepEqual(customerSitemapUrls, expectedSitemapUrls, 'Customer sitemap route set mismatch');
 }
 
 const chunksDir = path.join(outDir, '_next', 'static', 'chunks');
@@ -69,4 +138,6 @@ for (const chunkFile of walkFiles(chunksDir, '.js')) {
   }
 }
 
-console.log(`Customer export verification passed: ${solutionFiles.length} detail pages`);
+console.log(
+  `Customer export verification passed: ${expectedRoutes.length} routes (${solutions.length} details, ${categories.length} categories)`
+);

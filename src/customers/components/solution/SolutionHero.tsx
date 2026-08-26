@@ -18,7 +18,6 @@ type SolutionHeroData = {
   imageUrl: string;
   thumbnailUrl?: string;
   freeUseUrl?: string;
-  usage?: string;
   createdAt?: string;
 };
 

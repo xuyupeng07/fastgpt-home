@@ -4,11 +4,13 @@ import Footer from '@/components/home/Footer';
 import HomeThemeFix from '@/components/home/HomeThemeFix';
 import FormModal from '@customers/components/FormModal';
 import { getDictionary } from '@/lib/i18n';
+import { getSiteBaseUrl } from '@/lib/siteRouting';
 import { absoluteUrl } from '@customers/lib/site-url';
 import { buildSiteJsonLd } from '@customers/lib/site-json-ld';
+import '@customers/styles/customers.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fastgpt.cn'),
+  metadataBase: new URL(getSiteBaseUrl('cn')),
   title: 'FastGPT 客户案例中心',
   description:
     '探索企业级 AI 解决方案。依托 FastGPT 强大的工作流引擎与知识库检索能力，我们为不同业务场景抽象出标准化、开箱即用的解决方案模板，助力企业快速落地。',
@@ -44,7 +46,7 @@ export default async function CustomersLayout({
   );
 
   return (
-    <div className="home min-h-screen flex flex-col">
+    <div className="customers-shell home min-h-screen flex flex-col">
       <HomeThemeFix />
       <script
         type="application/ld+json"
