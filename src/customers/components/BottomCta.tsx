@@ -1,14 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import { ArrowRight as ArrowRightIcon } from 'lucide-react';
-import { openCtaModal, type CtaModalContext } from '@customers/lib/cta';
+import { getConsultationLinkProps, type ConsultationContext } from '@customers/lib/consultation';
 
 type BottomCtaProps = {
   title?: string;
   description?: string;
   buttonLabel?: string;
   showTopBorder?: boolean;
-  modalContext?: CtaModalContext;
+  consultationContext: ConsultationContext;
 };
 
 export default function BottomCta({
@@ -16,8 +17,10 @@ export default function BottomCta({
   description = '提交业务流程、数据现状和目标效果。商务顾问将在 1 天内联系你，确认需求后最快 3 天交付免费 POC 验证，助力后续生产级交付。',
   buttonLabel = '申请免费 POC',
   showTopBorder = true,
-  modalContext
+  consultationContext
 }: BottomCtaProps) {
+  const consultationLink = getConsultationLinkProps(consultationContext);
+
   return (
     <div
       className={`w-full bg-transparent py-14 mt-4 mb-0 ${
@@ -31,8 +34,8 @@ export default function BottomCta({
           </h2>
           <p className="text-base text-ink-sub  max-w-2xl leading-relaxed">{description}</p>
         </div>
-        <button
-          onClick={() => openCtaModal(modalContext)}
+        <Link
+          {...consultationLink}
           className="inline-flex shrink-0 items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold py-3 px-8 rounded-xl transition-all shadow-[0_4px_14px_rgba(37,99,235,0.18)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.28)] text-base group cursor-pointer"
         >
           {buttonLabel}
@@ -40,7 +43,7 @@ export default function BottomCta({
             strokeWidth={2.5}
             className="text-base transition-transform duration-300 group-hover:translate-x-1"
           />
-        </button>
+        </Link>
       </div>
     </div>
   );

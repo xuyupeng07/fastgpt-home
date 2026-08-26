@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight as ArrowRightIcon } from 'lucide-react';
-import type { CtaModalContext } from '@customers/lib/cta';
 import { withBasePath } from '@customers/lib/base-path';
+import { getConsultationLinkProps, type ConsultationContext } from '@customers/lib/consultation';
 
 // 使用站内静态资源，避免外部图片请求影响稳定性与首屏性能。
 const EXPERTS = [
@@ -33,23 +34,13 @@ const EXPERTS = [
 ] as const;
 
 interface CtaCardProps {
-  onOpenModal: (context?: CtaModalContext) => void;
+  consultationContext: ConsultationContext;
   variant?: 'mobile' | 'desktop';
-  solutionId?: string | number;
-  solutionTitle?: string;
-  categoryName?: string;
-  solutionSlug?: string;
 }
 
-const CtaCard = memo(function CtaCard({
-  onOpenModal,
-  variant = 'desktop',
-  solutionId,
-  solutionTitle,
-  categoryName,
-  solutionSlug
-}: CtaCardProps) {
+const CtaCard = memo(function CtaCard({ consultationContext, variant = 'desktop' }: CtaCardProps) {
   const isMobile = variant === 'mobile';
+  const consultationLink = getConsultationLinkProps(consultationContext);
 
   // 提取公共头像基础样式
   const avatarSize = isMobile ? 'w-10 h-10' : 'w-12 h-12';
@@ -103,20 +94,8 @@ const CtaCard = memo(function CtaCard({
         </p>
 
         {/* 操作按钮 */}
-        <button
-          type="button"
-          onClick={() =>
-            onOpenModal({
-              source: 'customers_sidebar',
-              title: '咨询 POC 验证路径',
-              subtitle:
-                '填写约 1 分钟。商务顾问将在 1 天内联系你，协助判断该方案如何接入你的业务并推进免费 POC 验证。',
-              solutionId,
-              solutionTitle,
-              categoryName,
-              solutionSlug
-            })
-          }
+        <Link
+          {...consultationLink}
           className={`flex items-center justify-center gap-2 w-full bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white font-semibold px-4 rounded-xl transition-all shadow-[0_4px_14px_rgba(37,99,235,0.25)] ${
             isMobile
               ? 'py-3'
@@ -128,7 +107,7 @@ const CtaCard = memo(function CtaCard({
             strokeWidth={2.5}
             className="text-sm transition-transform duration-300 group-hover:translate-x-1"
           />
-        </button>
+        </Link>
       </div>
     </div>
   );

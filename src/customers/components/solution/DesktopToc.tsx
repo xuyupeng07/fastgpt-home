@@ -4,18 +4,14 @@ import { useState, useEffect, useRef, useCallback, type MouseEvent } from 'react
 import { ChevronRight as CaretRightIcon } from 'lucide-react';
 import type { TocItem } from '@customers/lib/toc';
 import CtaCard from './CtaCard';
-import type { CtaModalContext } from '@customers/lib/cta';
+import type { ConsultationContext } from '@customers/lib/consultation';
 
 export default function DesktopToc({
   isCollapsed,
   onCollapse,
   tocItems,
   activeId,
-  openModal,
-  solutionId,
-  solutionTitle,
-  categoryName,
-  solutionSlug,
+  consultationContext,
   onItemClick,
   isEditor = false
 }: {
@@ -23,11 +19,7 @@ export default function DesktopToc({
   onCollapse: () => void;
   tocItems: TocItem[];
   activeId: string;
-  openModal: (context?: CtaModalContext) => void;
-  solutionId?: string | number;
-  solutionTitle?: string;
-  categoryName?: string;
-  solutionSlug?: string;
+  consultationContext: ConsultationContext;
   onItemClick?: (event: MouseEvent<HTMLAnchorElement>, id: string) => void;
   isEditor?: boolean;
 }) {
@@ -124,14 +116,7 @@ export default function DesktopToc({
         </div>
 
         {/* 行动号召 CTA */}
-        <CtaCard
-          variant="desktop"
-          onOpenModal={openModal}
-          solutionId={solutionId}
-          solutionTitle={solutionTitle}
-          categoryName={categoryName}
-          solutionSlug={solutionSlug}
-        />
+        <CtaCard variant="desktop" consultationContext={consultationContext} />
       </div>
     </aside>
   );

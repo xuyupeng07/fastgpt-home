@@ -10,7 +10,7 @@ import CategoryBadge from '@customers/components/CategoryBadge';
 import SolutionCoverImage from '@customers/components/solution/SolutionCoverImage';
 import { FreeUseHeroButton } from '@customers/components/solution/FreeUseAction';
 import { getSafeFreeUseUrl } from '@customers/lib/free-use-url';
-import { openCtaModal } from '@customers/lib/cta';
+import { getConsultationLinkProps } from '@customers/lib/consultation';
 type SolutionHeroData = {
   id: string | number;
   slug?: string;
@@ -41,6 +41,12 @@ export default function SolutionHero({
   backHref: string;
 }) {
   const safeFreeUseUrl = getSafeFreeUseUrl(solution.freeUseUrl);
+  const consultationLink = getConsultationLinkProps({
+    source: 'customers_hero',
+    solutionId: solution.id,
+    solutionTitle: solution.title,
+    solutionSlug: solution.slug
+  });
 
   return (
     <div className="w-full bg-surface-100  border-b border-surface-300  pt-10 pb-12 relative overflow-hidden">
@@ -136,23 +142,12 @@ export default function SolutionHero({
 
             <div className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-4 w-full sm:w-auto">
               <div className="flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center">
-                <button
-                  onClick={() =>
-                    openCtaModal({
-                      source: 'customers_hero',
-                      title: '评估该方案的 POC 可行性',
-                      subtitle:
-                        '填写约 1 分钟。商务顾问将在 1 天内联系你，确认需求后最快 3 天交付该方案的免费 POC 验证。',
-                      solutionId: solution.id,
-                      solutionTitle: solution.title,
-                      categoryName: solution.categoryName,
-                      solutionSlug: solution.slug
-                    })
-                  }
+                <Link
+                  {...consultationLink}
                   className="inline-flex h-14 w-full min-w-[9.25rem] items-center justify-center whitespace-nowrap rounded-xl bg-brand-600 px-8 text-center text-base font-bold text-white shadow-[0_4px_14px_rgba(37,99,235,0.3)] transition-all hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)] active:bg-brand-800 sm:w-auto cursor-pointer"
                 >
                   验证该方案
-                </button>
+                </Link>
                 <FreeUseHeroButton
                   href={safeFreeUseUrl}
                   title={solution.title}

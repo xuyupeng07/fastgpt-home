@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import CustomersNavbar from './CustomersNavbar';
 import Footer from '@/components/home/Footer';
 import HomeThemeFix from '@/components/home/HomeThemeFix';
-import FormModal from '@customers/components/FormModal';
 import { getDictionary } from '@/lib/i18n';
 import { getSiteBaseUrl } from '@/lib/siteRouting';
 import { absoluteUrl } from '@customers/lib/site-url';
@@ -56,7 +55,6 @@ export default async function CustomersLayout({
       />
       <CustomersNavbar links={navLinks} t={dict.Home.navCta} />
       <main className="flex-1">{children}</main>
-      <FormModal />
       <Footer t={dict.Home.footer} locale="zh" />
     </div>
   );

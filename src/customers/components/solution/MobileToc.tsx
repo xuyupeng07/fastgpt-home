@@ -5,7 +5,7 @@ import type { MouseEvent } from 'react';
 import { X as XIcon } from 'lucide-react';
 import type { TocItem } from '@customers/lib/toc';
 import CtaCard from './CtaCard';
-import type { CtaModalContext } from '@customers/lib/cta';
+import type { ConsultationContext } from '@customers/lib/consultation';
 
 /** 目录抽屉打开/关闭的过渡动画时长（ms），需与 CSS duration-500 保持一致 */
 const TRANSITION_MS = 500;
@@ -15,22 +15,14 @@ export default function MobileToc({
   onClose,
   tocItems,
   activeId,
-  openModal,
-  solutionId,
-  solutionTitle,
-  categoryName,
-  solutionSlug,
+  consultationContext,
   onItemClick
 }: {
   isOpen: boolean;
   onClose: () => void;
   tocItems: TocItem[];
   activeId: string;
-  openModal: (context?: CtaModalContext) => void;
-  solutionId?: string | number;
-  solutionTitle?: string;
-  categoryName?: string;
-  solutionSlug?: string;
+  consultationContext: ConsultationContext;
   onItemClick?: (event: MouseEvent<HTMLAnchorElement>, id: string) => void;
 }) {
   /**
@@ -132,17 +124,7 @@ export default function MobileToc({
             </nav>
 
             {/* 移动端侧边栏 CTA 卡片 */}
-            <CtaCard
-              variant="mobile"
-              onOpenModal={(context) => {
-                onClose();
-                openModal(context);
-              }}
-              solutionId={solutionId}
-              solutionTitle={solutionTitle}
-              categoryName={categoryName}
-              solutionSlug={solutionSlug}
-            />
+            <CtaCard variant="mobile" consultationContext={consultationContext} />
           </div>
         </div>
       </div>

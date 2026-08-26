@@ -1,23 +1,23 @@
 'use client';
 
-import { useCallback, useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import DesktopToc from '@customers/components/solution/DesktopToc';
 import MobileToc from '@customers/components/solution/MobileToc';
 import TocToggleButton from '@customers/components/solution/TocToggleButton';
 import { useSyncedToc } from '@customers/components/solution/useSyncedToc';
-import { openCtaModal, type CtaModalContext } from '@customers/lib/cta';
+import type { ConsultationContext } from '@customers/lib/consultation';
 import type { TocItem } from '@customers/lib/toc';
 
 interface SolutionArticleLayoutProps {
   children: ReactNode;
   tocItems: TocItem[];
-  modalContext: CtaModalContext;
+  consultationContext: ConsultationContext;
 }
 
 export default function SolutionArticleLayout({
   children,
   tocItems: fallbackTocItems,
-  modalContext
+  consultationContext
 }: SolutionArticleLayoutProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,10 +26,10 @@ export default function SolutionArticleLayout({
     containerRef: articleRef,
     fallbackTocItems
   });
-  const openModal = useCallback(
-    (context?: CtaModalContext) => openCtaModal(context ?? modalContext),
-    [modalContext]
-  );
+  const sidebarConsultationContext = {
+    ...consultationContext,
+    source: 'customers_sidebar' as const
+  };
 
   return (
     <>
@@ -43,11 +43,7 @@ export default function SolutionArticleLayout({
         onClose={() => setIsMobileMenuOpen(false)}
         tocItems={tocItems}
         activeId={activeId}
-        openModal={openModal}
-        solutionId={modalContext.solutionId}
-        solutionTitle={modalContext.solutionTitle}
-        categoryName={modalContext.categoryName}
-        solutionSlug={modalContext.solutionSlug}
+        consultationContext={sidebarConsultationContext}
         onItemClick={handleTocItemClick}
       />
       <TocToggleButton
@@ -64,11 +60,7 @@ export default function SolutionArticleLayout({
           onCollapse={() => setIsSidebarCollapsed(true)}
           tocItems={tocItems}
           activeId={activeId}
-          openModal={openModal}
-          solutionId={modalContext.solutionId}
-          solutionTitle={modalContext.solutionTitle}
-          categoryName={modalContext.categoryName}
-          solutionSlug={modalContext.solutionSlug}
+          consultationContext={sidebarConsultationContext}
           onItemClick={handleTocItemClick}
         />
       </div>

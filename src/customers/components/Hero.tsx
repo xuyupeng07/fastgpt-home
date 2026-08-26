@@ -6,7 +6,7 @@ import GradientBlobs from '@/components/home/GradientBlobs';
 import { StatItem } from '@/components/home/Stats';
 import { useStartUrl } from '@/components/home/hooks/useStartUrl';
 import { formatGitHubStars } from '@/lib/githubStarsDisplay';
-import { openCtaModal } from '@customers/lib/cta';
+import { getConsultationLinkProps } from '@customers/lib/consultation';
 
 const GITHUB_URL = 'https://github.com/labring/FastGPT';
 
@@ -29,6 +29,7 @@ export default function Hero({
   const startUrl = useStartUrl();
   const githubStarsLabel = formatGitHubStars(stars);
   const stats = overviewStats;
+  const consultationLink = getConsultationLinkProps({ source: 'home_hero' });
 
   return (
     <section className="relative pt-[120px] pb-[48px] md:pt-[160px] md:pb-[48px] bg-white overflow-hidden">
@@ -108,22 +109,14 @@ export default function Hero({
             className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center w-full sm:w-auto gap-[32px] sm:gap-8"
             data-hero-cta
           >
-            <m.button
-              type="button"
+            <m.a
+              {...consultationLink}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              onClick={() =>
-                openCtaModal({
-                  source: 'customers',
-                  title: '商务咨询',
-                  subtitle:
-                    '填写约 1 分钟。商务顾问将在 1 天内联系你，协助判断解决方案如何适配你的业务并推进免费 POC 验证。'
-                })
-              }
               className="inline-flex items-center justify-center h-11 w-full sm:w-auto sm:min-w-[128px] px-8 rounded-full text-[16px] font-medium text-white bg-btn-dark border border-transparent tracking-[0.5px]"
             >
               商务咨询
-            </m.button>
+            </m.a>
             <m.a
               href={startUrl}
               rel="noopener noreferrer nofollow"

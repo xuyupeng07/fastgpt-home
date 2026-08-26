@@ -52,6 +52,16 @@ _Avoid_: Thumbnail, banner
 A release-blocking website correction that restores a required security, discoverability, or social-preview outcome identified by the current audit.
 _Avoid_: General cleanup, redesign
 
+## Conversion
+
+**案例咨询入口**:
+案例中心中引导访客提交商务咨询、业务需求或 POC 评估的转化入口；导航、首页、空状态与案例详情中的同类入口属于同一概念。
+_Avoid_: CTA, 表单弹窗, POC 按钮
+
+**商务咨询页**:
+承载商务咨询与 POC 评估需求提交的统一页面。
+_Avoid_: 咨询弹窗, 内嵌表单
+
 ## Content
 
 **深度场景内容**:

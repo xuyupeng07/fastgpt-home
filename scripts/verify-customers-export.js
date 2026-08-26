@@ -22,13 +22,12 @@ const forbiddenContent = [
   '> **演示视频**',
   '> **系统截图**',
   '官方演示视频',
-  '脱敏案例材料'
+  '脱敏案例材料',
+  'https://fastgpt.cn/zh/contact/embed',
+  'open-form-modal',
+  '正在准备表单内容'
 ];
-const forbiddenBundleContent = [
-  '/api/cta/click',
-  'NEXT_PUBLIC_AI_GATEWAY_KEY',
-  'AI 智能匹配案例'
-];
+const forbiddenBundleContent = ['/api/cta/click', 'NEXT_PUBLIC_AI_GATEWAY_KEY', 'AI 智能匹配案例'];
 const forbiddenPublicDataKeys = ['caseNo', 'caseOrg', 'clearanceLevel', 'citedNumbers'];
 
 function walkFiles(dir, extension) {
@@ -48,6 +47,23 @@ function assertCanonical(html, route, htmlFile) {
   assert(
     html.includes(`<link rel="canonical" href="${expectedUrl}"/>`),
     `Customer canonical mismatch for ${route}: ${htmlFile}`
+  );
+}
+
+function assertConsultationLink(html, source, htmlFile, solutionSlug) {
+  const params = new URLSearchParams({
+    source: 'customers',
+    utm_source: 'customers',
+    utm_medium: 'referral',
+    utm_campaign: source === 'empty_state' ? 'requirement-match' : 'poc-application'
+  });
+  if (solutionSlug) params.set('utm_term', solutionSlug);
+  params.set('utm_content', source);
+
+  const href = `/contact?${params.toString()}`;
+  assert(
+    html.replaceAll('&amp;', '&').includes(`href="${href}"`),
+    `Missing customer consultation link for ${source}: ${htmlFile}`
   );
 }
 
@@ -77,6 +93,10 @@ for (const solution of solutions) {
 
   const html = fs.readFileSync(htmlFile, 'utf8');
   assertCanonical(html, route, htmlFile);
+  assertConsultationLink(html, 'navbar_poc', htmlFile);
+  assertConsultationLink(html, 'customers_hero', htmlFile, solution.slug);
+  assertConsultationLink(html, 'customers_sidebar', htmlFile, solution.slug);
+  assertConsultationLink(html, 'customers_bottom', htmlFile, solution.slug);
   assert.equal(
     countOccurrences(html, 'id="solution-article"'),
     1,
@@ -102,6 +122,9 @@ const homeFile = path.join(outDir, 'customers.html');
 assert(fs.existsSync(homeFile), `Missing customer home export: ${homeFile}`);
 const homeHtml = fs.readFileSync(homeFile, 'utf8');
 assertCanonical(homeHtml, '/customers', homeFile);
+assertConsultationLink(homeHtml, 'navbar_poc', homeFile);
+assertConsultationLink(homeHtml, 'home_hero', homeFile);
+assertConsultationLink(homeHtml, 'home_bottom', homeFile);
 for (const token of forbiddenContent) {
   assert(!homeHtml.includes(token), `Customer home contains forbidden content ${token}`);
 }
@@ -115,10 +138,16 @@ const customerPayloadFiles = [
 for (const payloadFile of customerPayloadFiles) {
   const payload = fs.readFileSync(payloadFile, 'utf8');
   for (const token of forbiddenContent) {
-    assert(!payload.includes(token), `Customer export contains forbidden content ${token}: ${payloadFile}`);
+    assert(
+      !payload.includes(token),
+      `Customer export contains forbidden content ${token}: ${payloadFile}`
+    );
   }
   for (const key of forbiddenPublicDataKeys) {
-    assert(!payload.includes(key), `Customer export contains internal data key ${key}: ${payloadFile}`);
+    assert(
+      !payload.includes(key),
+      `Customer export contains internal data key ${key}: ${payloadFile}`
+    );
   }
 }
 

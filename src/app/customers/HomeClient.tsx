@@ -52,15 +52,7 @@ export default function HomeClient({
 
         <div className="w-full bg-light-bg pb-0 relative">
           <FadeIn>
-            <BottomCta
-              showTopBorder={false}
-              modalContext={{
-                source: 'home_bottom',
-                title: '申请免费 POC 验证',
-                subtitle:
-                  '填写约 1 分钟。商务顾问将在 1 天内联系你，确认需求后最快 3 天交付 POC 验证，助力后续生产级交付。'
-              }}
-            />
+            <BottomCta showTopBorder={false} consultationContext={{ source: 'home_bottom' }} />
           </FadeIn>
         </div>
       </main>

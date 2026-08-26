@@ -41,14 +41,10 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
     .slice(0, 3);
   const categoryHref = withBasePath(`/categories/${solution.categorySlug}#customers`);
   const homeHref = withBasePath('/#customers');
-  const modalContext = {
+  const consultationContext = {
     source: 'customers_bottom' as const,
-    title: '申请免费 POC 验证',
-    subtitle:
-      '填写约 1 分钟。商务顾问将在 1 天内联系你，确认需求后最快 3 天交付该方案的免费 POC 验证。',
     solutionId: solution.id,
     solutionTitle: solution.title,
-    categoryName: solution.categoryName,
     solutionSlug: solution.slug
   };
 
@@ -95,7 +91,7 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SolutionArticleLayout
               tocItems={buildMarkdownTocItems(solution.content)}
-              modalContext={modalContext}
+              consultationContext={consultationContext}
             >
               <SolutionArticle content={solution.content} />
             </SolutionArticleLayout>
@@ -135,7 +131,7 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
           description="提交业务流程、数据现状和目标效果。商务顾问将在 1 天内联系你，确认需求后由 FastGPT 团队最快 3 天完成免费 POC 验证，帮助判断是否具备生产落地价值。"
           buttonLabel="申请免费 POC"
           showTopBorder={false}
-          modalContext={modalContext}
+          consultationContext={consultationContext}
         />
       </div>
     </div>
