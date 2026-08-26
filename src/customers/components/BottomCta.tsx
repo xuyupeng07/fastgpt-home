@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight as ArrowRightIcon } from 'lucide-react';
 import { openCtaModal, type CtaModalContext } from '@customers/lib/cta';
 
 type BottomCtaProps = {
@@ -37,7 +37,7 @@ export default function BottomCta({
         >
           {buttonLabel}
           <ArrowRightIcon
-            weight="bold"
+            strokeWidth={2.5}
             className="text-base transition-transform duration-300 group-hover:translate-x-1"
           />
         </button>

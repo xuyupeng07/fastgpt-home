@@ -10,12 +10,19 @@ const categoriesFile = path.join(rootDir, 'content', 'customers', 'categories.js
 const customersOutDir = path.join(outDir, 'customers');
 const cnBaseUrl = (process.env.NEXT_PUBLIC_CN_HOME_URL || 'https://fastgpt.cn').replace(/\/+$/, '');
 const customersBaseUrl = `${cnBaseUrl}/customers`;
+const EXPECTED_SOLUTION_COUNT = 89;
+const EXPECTED_CATEGORY_COUNT = 17;
+const EXPECTED_ROUTE_COUNT = 107;
 const forbiddenContent = [
   'AI 可读解决方案正文',
   'FastGPT 客户案例中心 AI 可读目录',
   '/api/cta/click',
   'NEXT_PUBLIC_AI_GATEWAY_KEY',
-  'AI 智能匹配案例'
+  'AI 智能匹配案例',
+  '> **演示视频**',
+  '> **系统截图**',
+  '官方演示视频',
+  '脱敏案例材料'
 ];
 const forbiddenBundleContent = [
   '/api/cta/click',
@@ -50,6 +57,16 @@ const solutions = solutionFiles.map((sourceFile) =>
   JSON.parse(fs.readFileSync(sourceFile, 'utf8'))
 );
 const categories = JSON.parse(fs.readFileSync(categoriesFile, 'utf8'));
+assert.equal(
+  solutions.length,
+  EXPECTED_SOLUTION_COUNT,
+  `Expected ${EXPECTED_SOLUTION_COUNT} customer solutions, found ${solutions.length}`
+);
+assert.equal(
+  categories.length,
+  EXPECTED_CATEGORY_COUNT,
+  `Expected ${EXPECTED_CATEGORY_COUNT} customer categories, found ${categories.length}`
+);
 const expectedRouteSet = new Set(['/customers']);
 
 for (const solution of solutions) {
@@ -97,6 +114,9 @@ const customerPayloadFiles = [
 ].filter(fs.existsSync);
 for (const payloadFile of customerPayloadFiles) {
   const payload = fs.readFileSync(payloadFile, 'utf8');
+  for (const token of forbiddenContent) {
+    assert(!payload.includes(token), `Customer export contains forbidden content ${token}: ${payloadFile}`);
+  }
   for (const key of forbiddenPublicDataKeys) {
     assert(!payload.includes(key), `Customer export contains internal data key ${key}: ${payloadFile}`);
   }
@@ -110,6 +130,11 @@ const actualRoutes = [
   })
 ].sort();
 const expectedRoutes = [...expectedRouteSet].sort();
+assert.equal(
+  expectedRoutes.length,
+  EXPECTED_ROUTE_COUNT,
+  `Expected ${EXPECTED_ROUTE_COUNT} customer routes, found ${expectedRoutes.length}`
+);
 assert.deepEqual(actualRoutes, expectedRoutes, 'Customer export route set mismatch');
 
 const configuredVariant = process.env.NEXT_PUBLIC_SITE_VARIANT;
@@ -133,7 +158,7 @@ const chunksDir = path.join(outDir, '_next', 'static', 'chunks');
 assert(fs.existsSync(chunksDir), `Missing customer JavaScript chunks: ${chunksDir}`);
 for (const chunkFile of walkFiles(chunksDir, '.js')) {
   const source = fs.readFileSync(chunkFile, 'utf8');
-  for (const token of forbiddenBundleContent) {
+  for (const token of [...forbiddenBundleContent, ...forbiddenPublicDataKeys]) {
     assert(!source.includes(token), `Customer JavaScript contains forbidden content ${token}`);
   }
 }

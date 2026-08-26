@@ -1,7 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeftIcon, CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react/dist/ssr';
+import {
+  ArrowLeft as ArrowLeftIcon,
+  ChevronLeft as CaretLeftIcon,
+  ChevronRight as CaretRightIcon
+} from 'lucide-react';
 import CategoryBadge from '@customers/components/CategoryBadge';
 import SolutionCoverImage from '@customers/components/solution/SolutionCoverImage';
 import { FreeUseHeroButton } from '@customers/components/solution/FreeUseAction';
@@ -47,7 +51,7 @@ export default function SolutionHero({
           className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-white/90  backdrop-blur-sm shadow-md border border-surface-300  text-ink-sub  hover:text-brand-600  hover:scale-110 hover:shadow-lg transition-all group"
           aria-label={`上一篇：${prevSolution.title}`}
         >
-          <CaretLeftIcon size={20} weight="bold" />
+          <CaretLeftIcon size={20} strokeWidth={2.5} />
           <span className="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-gray-900/85  text-white  text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
             {prevSolution.title}
           </span>
@@ -61,7 +65,7 @@ export default function SolutionHero({
           className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 items-center justify-center rounded-full bg-white/90  backdrop-blur-sm shadow-md border border-surface-300  text-ink-sub  hover:text-brand-600  hover:scale-110 hover:shadow-lg transition-all group"
           aria-label={`下一篇：${nextSolution.title}`}
         >
-          <CaretRightIcon size={20} weight="bold" />
+          <CaretRightIcon size={20} strokeWidth={2.5} />
           <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-gray-900/85  text-white  text-xs font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
             {nextSolution.title}
           </span>
@@ -94,7 +98,7 @@ export default function SolutionHero({
                 className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-surface-300 bg-white/80 text-ink-sub shadow-[0_1px_2px_rgba(31,35,41,0.04)] backdrop-blur-sm transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-600       md:hidden"
                 aria-label="返回案例中心"
               >
-                <ArrowLeftIcon weight="bold" className="h-4 w-4" />
+                <ArrowLeftIcon strokeWidth={2.5} className="h-4 w-4" />
               </Link>
               <CategoryBadge
                 label={solution.categoryName}

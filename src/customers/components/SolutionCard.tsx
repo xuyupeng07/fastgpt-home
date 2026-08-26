@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { ArrowRightIcon } from '@phosphor-icons/react';
+import { ArrowRight as ArrowRightIcon } from 'lucide-react';
 import { withBasePath } from '@customers/lib/base-path';
 import { getSolutionPublicHref } from '@customers/lib/solution-url';
 import type { SolutionCardData } from '@customers/types/solution';
@@ -29,34 +28,16 @@ const SolutionCard = React.memo(function SolutionCard({
   index = 0,
   revealDelay
 }: SolutionCardProps) {
-  const router = useRouter();
   const detailHref = withBasePath(getSolutionPublicHref(solution));
   // content 为空时不可点击、不显示「查看详情」。
   const hasContent = Boolean(solution.hasContent);
   const animated = typeof revealDelay === 'number';
 
-  const handleCardClick = () => {
-    if (hasContent) router.push(detailHref);
-  };
-  const handleCardKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      if (hasContent) router.push(detailHref);
-    }
-  };
-
   return (
     <div
-      onClick={handleCardClick}
-      onKeyDown={handleCardKeyDown}
-      role={hasContent ? 'link' : undefined}
-      tabIndex={hasContent ? 0 : undefined}
-      aria-label={hasContent ? `查看案例：${solution.title}` : undefined}
-      className={`solution-card flex flex-col h-full w-full ${
-        hasContent
-          ? 'group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60'
-          : ''
-      } ${animated ? 'animate-fade-in-up' : ''}`}
+      className={`solution-card flex flex-col h-full w-full ${hasContent ? 'group' : ''} ${
+        animated ? 'animate-fade-in-up' : ''
+      }`}
       style={animated ? { animationDelay: `${revealDelay}s` } : undefined}
     >
       <div className="card-inner relative flex flex-col h-full w-full overflow-hidden rounded-2xl border border-surface-300 bg-white shadow-[0_1px_2px_rgba(31,35,41,0.04)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-[#b8c0cc] group-hover:shadow-[0_14px_32px_rgba(31,35,41,0.10)] transform-gpu">
@@ -82,7 +63,6 @@ const SolutionCard = React.memo(function SolutionCard({
               {hasContent ? (
                 <Link
                   href={detailHref}
-                  onClick={(e) => e.stopPropagation()}
                   className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 rounded"
                 >
                   {solution.title}
@@ -116,22 +96,18 @@ const SolutionCard = React.memo(function SolutionCard({
             <CategoryBadge
               label={solution.categoryName}
               color={solution.categoryColor}
-              onClick={(e) => {
-                e.stopPropagation();
-                onCategoryClick(solution.categoryId);
-              }}
+              onClick={() => onCategoryClick(solution.categoryId)}
               className=""
             />
             {hasContent && (
               <div className="relative z-50">
                 <Link
                   href={detailHref}
-                  onClick={(e) => e.stopPropagation()}
                   className="group/btn flex items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-sm font-semibold text-brand-700 transition-all duration-300 hover:bg-brand-50 hover:text-brand-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white cursor-pointer"
                 >
                   查看详情
                   <ArrowRightIcon
-                    weight="bold"
+                    strokeWidth={2.5}
                     className="text-sm transition-transform duration-300 group-hover/btn:translate-x-0.5"
                   />
                 </Link>

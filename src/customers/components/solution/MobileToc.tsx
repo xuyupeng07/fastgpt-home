@@ -1,6 +1,8 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
 import type { MouseEvent } from 'react';
-import { XIcon } from '@phosphor-icons/react/dist/ssr';
+import { X as XIcon } from 'lucide-react';
 import type { TocItem } from '@customers/lib/toc';
 import CtaCard from './CtaCard';
 import type { CtaModalContext } from '@customers/lib/cta';
@@ -95,7 +97,7 @@ export default function MobileToc({
               onClick={onClose}
               className="p-2 -mr-2 text-gray-400 hover:text-gray-600   transition-colors"
             >
-              <XIcon className="w-6 h-6" weight="bold" />
+              <XIcon className="w-6 h-6" strokeWidth={2.5} />
             </button>
           </div>
 

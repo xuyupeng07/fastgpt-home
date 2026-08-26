@@ -12,29 +12,6 @@ export const CTA_SOURCES = [
 
 export type CtaSource = (typeof CTA_SOURCES)[number];
 
-export const SOURCE_LABELS: Record<string, string> = {
-  home_hero: '首页 Hero',
-  home_bottom: '首页底部',
-  navbar_poc: '导航栏',
-  customers_hero: '案例 Hero',
-  customers_sidebar: '案例侧边栏',
-  customers_bottom: '案例底部',
-  empty_state: '空状态引导',
-  footer_private_deploy: '页脚私有化'
-};
-
-/** 各入口位置对应的按钮文案 */
-export const SOURCE_BUTTON_LABELS: Record<string, string> = {
-  home_hero: '免费评估场景',
-  home_bottom: '申请免费 POC',
-  navbar_poc: '申请 POC',
-  customers_hero: '验证该案例',
-  customers_sidebar: '咨询 POC 路径',
-  customers_bottom: '申请免费 POC',
-  empty_state: '提交需求',
-  footer_private_deploy: '私有化与 POC 交付'
-};
-
 /** 主站独立商务咨询表单的 iframe 嵌入地址（专用 embed 路由，无站点导航/页脚） */
 export const CONTACT_FORM_BASE_URL = 'https://fastgpt.cn/zh/contact/embed';
 
@@ -60,11 +37,3 @@ export const SOURCE_UTM_CAMPAIGNS: Record<CtaSource, string> = {
   empty_state: 'requirement-match',
   footer_private_deploy: 'private-deploy'
 };
-
-/** 主站商务咨询表单的选项集（与 fastgpt.cn/contact 保持一致，保证数据口径一致） */
-export const CONTACT_FORM_OPTIONS = {
-  usedOpenSource: ['是', '否'],
-  consultationTopic: ['私有化部署', 'SaaS 版', '渠道合作', '其他'],
-  projectStage: ['调研阶段/竞品对比', '立项阶段/测试使用', '采购阶段/最终决策'],
-  budget: ['0-3 万元', '3-10 万元', '10-30 万元', '30-100 万元', '100 万元以上']
-} as const;

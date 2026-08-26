@@ -11,7 +11,8 @@ import { useHomeSolutions } from '@customers/hooks/useHomeSolutions';
 interface HomeClientProps {
   initialCategories: { id: string; name: string; slug?: string; color?: string }[];
   initialSolutions: Solution[];
-  overviewStats: { value: string; label: string; desc?: string; link?: string; live?: boolean }[];
+  overviewStats: { value: string; label: string; desc?: string }[];
+  stars: number;
   initialCategorySlug?: string;
 }
 
@@ -19,6 +20,7 @@ export default function HomeClient({
   initialCategories,
   initialSolutions,
   overviewStats,
+  stars,
   initialCategorySlug
 }: HomeClientProps) {
   const homeSolutions = useHomeSolutions({
@@ -29,7 +31,7 @@ export default function HomeClient({
 
   return (
     <>
-      <Hero overviewStats={overviewStats} />
+      <Hero overviewStats={overviewStats} stars={stars} />
 
       <main className="pb-0 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 relative z-10">

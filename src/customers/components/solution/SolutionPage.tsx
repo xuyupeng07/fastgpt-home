@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight as ArrowRightIcon } from 'lucide-react';
 import BottomCta from '@customers/components/BottomCta';
 import SolutionArticle from '@customers/components/solution/SolutionArticle';
 import SolutionArticleLayout from '@customers/components/solution/SolutionArticleLayout';
 import SolutionHero from '@customers/components/solution/SolutionHero';
 import RelatedSolutions from '@customers/components/solution/RelatedSolutions';
 import { withBasePath } from '@customers/lib/base-path';
-import { buildHomeHref } from '@customers/lib/home-routing';
 import { getSolutionPublicHref } from '@customers/lib/solution-url';
 import { buildMarkdownTocItems } from '@customers/lib/toc';
 import type { SolutionCardData } from '@customers/types/solution';
@@ -41,7 +40,7 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
     })
     .slice(0, 3);
   const categoryHref = withBasePath(`/categories/${solution.categorySlug}#customers`);
-  const homeHref = buildHomeHref({ section: 'customers' });
+  const homeHref = withBasePath('/#customers');
   const modalContext = {
     source: 'customers_bottom' as const,
     title: '申请免费 POC 验证',
@@ -121,7 +120,7 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
                 >
                   查看全部案例
                   <ArrowRightIcon
-                    weight="bold"
+                    strokeWidth={2.5}
                     className="text-xs transition-transform duration-300 group-hover:translate-x-0.5"
                   />
                 </Link>

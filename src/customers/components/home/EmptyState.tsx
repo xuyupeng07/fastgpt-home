@@ -1,6 +1,6 @@
 'use client';
 
-import { MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr';
+import { Search as MagnifyingGlassIcon } from 'lucide-react';
 import { openCtaModal } from '@customers/lib/cta';
 
 export default function EmptyState() {
@@ -9,7 +9,7 @@ export default function EmptyState() {
       <div className="w-20 h-20 bg-white  rounded-full flex items-center justify-center mb-8 shadow-sm border border-brand-100  ring-12px ring-[#e8f3ff]/50 ">
         <MagnifyingGlassIcon
           className="text-4xl text-brand-600  animate-pulse-slow"
-          weight="duotone"
+          strokeWidth={1.5}
         />
       </div>
       <h3 className="text-xl sm:text-2xl font-bold text-[#1f2329]  mb-3 font-display">

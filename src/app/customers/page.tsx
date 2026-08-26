@@ -6,6 +6,7 @@ import {
 } from '@customers/lib/data';
 import { getSolutionPublicHref } from '@customers/lib/solution-url';
 import { absoluteUrl } from '@customers/lib/site-url';
+import { getGitHubStars } from '@/lib/githubStars';
 import {
   buildHomeDirectoryJsonLd,
   splitDirectoryEntries
@@ -22,6 +23,7 @@ export async function HomePageContent({
   const initialCategories = getCategories();
   const allSolutions = getAllPublishedSolutions();
   const settings = getSiteSettings();
+  const stars = await getGitHubStars();
 
   const homeDirectoryJsonLd = renderHomeDirectoryJsonLd
     ? (() => {
@@ -51,6 +53,7 @@ export async function HomePageContent({
         initialCategories={initialCategories}
         initialSolutions={allSolutions}
         overviewStats={overviewStats}
+        stars={stars}
         initialCategorySlug={categorySlug}
       />
     </>

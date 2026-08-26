@@ -1,4 +1,4 @@
-import { ListIcon } from '@phosphor-icons/react/dist/ssr';
+import { List as ListIcon } from 'lucide-react';
 
 export default function TocToggleButton({
   onClick,
@@ -19,7 +19,7 @@ export default function TocToggleButton({
       } ${className}`}
       title="查看目录大纲"
     >
-      <ListIcon className="w-6 h-6 transition-transform group-hover:rotate-12" weight="bold" />
+      <ListIcon className="w-6 h-6 transition-transform group-hover:rotate-12" strokeWidth={2.5} />
     </button>
   );
 }

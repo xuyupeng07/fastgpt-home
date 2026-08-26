@@ -6,7 +6,6 @@ import type { Solution } from '@customers/components/SolutionCard';
 import { PUBLIC_SOLUTIONS_PAGE_SIZE } from '@customers/lib/solution-pagination';
 import { filterPublicSolutions, type CategoryOption } from '@customers/lib/solution-search';
 import { withBasePath } from '@customers/lib/base-path';
-import { scrollToElementWithNavbarOffset } from '@customers/lib/home-solutions-browser';
 
 interface UseHomeSolutionsInput {
   initialCategories: CategoryOption[];
@@ -39,7 +38,7 @@ export function useHomeSolutions({
   const hasMoreSolutions = page < totalPages;
 
   const scrollToSolutionsSection = useCallback(() => {
-    scrollToElementWithNavbarOffset(solutionsSectionRef.current);
+    solutionsSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   const handleSearchChange = useCallback((query: string) => {

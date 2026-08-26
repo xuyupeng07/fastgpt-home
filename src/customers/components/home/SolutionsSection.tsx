@@ -1,4 +1,4 @@
-import { ArrowDownIcon } from '@phosphor-icons/react';
+import { ArrowDown as ArrowDownIcon } from 'lucide-react';
 import SolutionCard, { type Solution } from '@customers/components/SolutionCard';
 import EmptyState from '@customers/components/home/EmptyState';
 import FilterBar from '@customers/components/home/FilterBar';
@@ -70,7 +70,7 @@ export default function SolutionsSection({
                 className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-surface-300 bg-white px-6 py-2.5 text-sm font-bold text-[#1f2329] shadow-[0_1px_2px_rgba(31,35,41,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 hover:shadow-[0_8px_20px_rgba(31,35,41,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-100"
               >
                 <ArrowDownIcon
-                  weight="bold"
+                  strokeWidth={2.5}
                   className="text-base transition-transform duration-300 group-hover:translate-y-0.5"
                   aria-hidden="true"
                 />

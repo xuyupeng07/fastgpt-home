@@ -1,6 +1,7 @@
 'use client';
 
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
 import { normalizeMermaidSource } from '../utils';
 
 const ReactECharts = lazy(() => import('echarts-for-react'));
@@ -166,17 +167,7 @@ export const MermaidChart = ({ chart }: { chart: string }) => {
               className="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100   transition-colors"
               title="关闭 (Esc)"
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              >
-                <path d="M5 5l10 10M15 5l-10 10" />
-              </svg>
+              <X size={20} strokeWidth={2} />
             </button>
           </div>
           <div

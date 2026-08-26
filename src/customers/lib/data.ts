@@ -34,7 +34,6 @@ export interface SolutionRecord {
   freeUseUrl: string;
   metaTitle?: string;
   metaDescription?: string;
-  relatedSolutionSlugs?: string[];
   content: string;
   publishedAt?: string;
   createdAt: string;
@@ -42,7 +41,7 @@ export interface SolutionRecord {
 }
 
 export interface SiteSettings {
-  overviewStats?: { value: string; label: string; desc?: string; link?: string; live?: boolean }[];
+  overviewStats?: { value: string; label: string; desc?: string }[];
 }
 
 let categoryRecords: CategoryRecord[] | undefined;
@@ -129,7 +128,6 @@ function mapSolutionDetail(s: SolutionRecord, categories: CategoryRecord[]) {
     metaTitle: s.metaTitle || '',
     metaDescription: s.metaDescription || '',
     publishedAt: s.publishedAt || null,
-    relatedSolutionIds: s.relatedSolutionSlugs || [],
     content: s.content
   };
 }

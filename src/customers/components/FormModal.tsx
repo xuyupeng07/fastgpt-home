@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { XIcon } from '@phosphor-icons/react';
+import { X as XIcon } from 'lucide-react';
 import {
   buildContactFormUrl,
   DEFAULT_CTA_MODAL_CONTEXT,
@@ -173,7 +173,7 @@ export default function FormModal() {
             onClick={closeModal}
             className="absolute right-4 top-4 rounded-lg p-2 text-[#667085] transition-colors hover:bg-gray-100 hover:text-[#101828]    sm:right-5 sm:top-5"
           >
-            <XIcon className="h-5 w-5" weight="bold" />
+            <XIcon className="h-5 w-5" strokeWidth={2.5} />
           </button>
         </header>
 

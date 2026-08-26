@@ -1,6 +1,6 @@
 'use client';
 
-import { MagnifyingGlassIcon } from '@phosphor-icons/react';
+import { Search as MagnifyingGlassIcon } from 'lucide-react';
 
 interface SearchBarProps {
   value: string;

@@ -33,7 +33,6 @@ export default function FilterBar({
           currentCategory={currentCategory}
           onCategoryChange={onCategoryChange}
           className="w-full"
-          maskSurface="paper"
         />
       </div>
       <div className="w-56 shrink-0 sm:w-72 lg:w-80">

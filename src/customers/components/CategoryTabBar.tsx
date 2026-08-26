@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { hexToRgba, normalizeHexColor } from '@customers/lib/category-color';
 
@@ -12,18 +14,14 @@ interface CategoryTabBarProps {
   categories: CategoryTabItem[];
   currentCategory: string;
   onCategoryChange: (categoryId: string) => void;
-  onCategoryPrefetch?: (categoryId: string) => void;
   className?: string;
-  maskSurface?: 'paper' | 'admin';
 }
 
 export default function CategoryTabBar({
   categories,
   currentCategory,
   onCategoryChange,
-  onCategoryPrefetch,
-  className = '',
-  maskSurface = 'paper'
+  className = ''
 }: CategoryTabBarProps) {
   const [showLeftMask, setShowLeftMask] = useState(false);
   const [showRightMask, setShowRightMask] = useState(true);
@@ -142,9 +140,6 @@ export default function CategoryTabBar({
     scrollTabIntoView(activeTabId);
   }, [categories, currentCategory, scrollTabIntoView, updateIndicator]);
 
-  const maskGradient =
-    maskSurface === 'admin' ? 'from-[#f5f6f7] via-[#f5f6f7]/80  ' : 'from-white via-white/90  ';
-
   return (
     <div className={`relative flex items-end self-stretch min-w-0 ${className}`.trim()}>
       <div
@@ -162,9 +157,6 @@ export default function CategoryTabBar({
                 key={category.id}
                 data-id={category.id}
                 onClick={() => onCategoryChange(category.id)}
-                onMouseEnter={() => onCategoryPrefetch?.(category.id)}
-                onFocus={() => onCategoryPrefetch?.(category.id)}
-                onTouchStart={() => onCategoryPrefetch?.(category.id)}
                 className={`tab-btn cursor-pointer ${
                   category.id === 'all' ? 'text-[17px] font-semibold' : 'text-[15px] font-medium'
                 } transition-colors z-10 whitespace-nowrap shrink-0 ${
@@ -187,13 +179,13 @@ export default function CategoryTabBar({
       </div>
 
       <div
-        className={`absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r ${maskGradient} to-transparent pointer-events-none z-30 transition-opacity duration-300 ${
+        className={`absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white via-white/90 to-transparent pointer-events-none z-30 transition-opacity duration-300 ${
           showLeftMask ? 'opacity-100' : 'opacity-0'
         }`}
       />
 
       <div
-        className={`absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l ${maskGradient} to-transparent pointer-events-none z-30 transition-opacity duration-300 ${
+        className={`absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white via-white/90 to-transparent pointer-events-none z-30 transition-opacity duration-300 ${
           showRightMask ? 'opacity-100' : 'opacity-0'
         }`}
       />

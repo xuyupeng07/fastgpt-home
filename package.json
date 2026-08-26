@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/verify-content-hygiene.js --mode source && node scripts/verify-technical-content.js && node scripts/verify-technical-authority.js && node scripts/verify-technical-wave.js && node scripts/verify-customers-data.js && node scripts/generate-robots.js && node scripts/generate-llms.js",
+    "prebuild": "node scripts/verify-content-hygiene.js --mode source && node scripts/verify-technical-content.js && node scripts/verify-technical-authority.js && node scripts/verify-technical-wave.js && node scripts/verify-customers-data.js && node scripts/verify-customers-search.js && node scripts/generate-robots.js && node scripts/generate-llms.js",
     "build": "next build && node scripts/clean-locale-output.js && node scripts/clean-faq-rsc.js && node scripts/verify-technical-center.js && node scripts/verify-customers-export.js && node scripts/fix-html-lang.js && node scripts/verify-technical-export.js && node scripts/verify-content-hygiene.js --mode html --root out",
     "start": "npx serve@latest out",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -65,12 +65,12 @@
     "sync:w3-faq": "python3 scripts/sync-w3-faq.py",
     "verify:contact": "node scripts/verify-contact-page.js",
     "verify:customers-data": "node scripts/verify-customers-data.js",
+    "verify:customers-search": "node scripts/verify-customers-search.js",
     "verify:customers-export": "node scripts/verify-customers-export.js"
   },
   "dependencies": {
     "@heroui/react": "^2.8.9",
     "@heroui/theme": "^2.4.26",
-    "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-slot": "^1.0.2",
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.4.24",

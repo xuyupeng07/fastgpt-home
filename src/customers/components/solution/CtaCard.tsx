@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import Image from 'next/image';
-import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight as ArrowRightIcon } from 'lucide-react';
 import type { CtaModalContext } from '@customers/lib/cta';
 import { withBasePath } from '@customers/lib/base-path';
 
@@ -125,7 +125,7 @@ const CtaCard = memo(function CtaCard({
         >
           {isMobile ? '申请 POC' : '咨询 POC 路径'}
           <ArrowRightIcon
-            weight="bold"
+            strokeWidth={2.5}
             className="text-sm transition-transform duration-300 group-hover:translate-x-1"
           />
         </button>

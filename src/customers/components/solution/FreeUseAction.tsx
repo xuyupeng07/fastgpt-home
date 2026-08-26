@@ -1,6 +1,6 @@
 'use client';
 
-import { PlayCircleIcon } from '@phosphor-icons/react';
+import { CirclePlay as PlayCircleIcon } from 'lucide-react';
 import { getSafeFreeUseUrl } from '@customers/lib/free-use-url';
 
 interface FreeUseActionProps {
@@ -30,16 +30,13 @@ export function FreeUseCardBadge({ href, title, className = '' }: FreeUseActionP
       href={freeUseUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={(event) => {
-        event.stopPropagation();
-      }}
       className={`group/free absolute bottom-3 right-3 z-20 inline-flex h-8 w-8 max-w-[calc(100%-1.5rem)] items-center justify-center gap-0 overflow-hidden rounded-full border border-white/75 bg-brand-600 px-0 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(37,99,235,0.34)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-[0_12px_28px_rgba(37,99,235,0.42)] focus-visible:w-[6.25rem] focus-visible:-translate-y-0.5 focus-visible:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white        sm:group-hover:w-[6.25rem] ${className}`.trim()}
       aria-label={`体验案例 ${title}`}
     >
       <span className="pointer-events-none absolute inset-0 rounded-full bg-white/0 transition-colors duration-300 group-hover/free:bg-white/8 group-focus-visible/free:bg-white/8 " />
       <span className="pointer-events-none absolute inset-1 rounded-full bg-white/0 blur-md transition-opacity duration-300 group-hover/free:bg-white/20 group-hover/free:opacity-100 group-focus-visible/free:bg-white/20 group-focus-visible/free:opacity-100 " />
       <PlayCircleIcon
-        weight="fill"
+        strokeWidth={2.5}
         className="relative z-10 shrink-0 text-[18px] transition-transform duration-300 group-hover/free:scale-110 group-focus-visible/free:scale-110"
       />
       <span className="relative z-10 ml-0 max-w-0 translate-x-1 whitespace-nowrap opacity-0 transition-[max-width,opacity,transform,margin] duration-300 group-hover:ml-1.5 group-hover:max-w-[4em] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible/free:ml-1.5 group-focus-visible/free:max-w-[4em] group-focus-visible/free:translate-x-0 group-focus-visible/free:opacity-100">

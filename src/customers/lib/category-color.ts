@@ -22,20 +22,6 @@ function expandShortHexColor(color: string) {
   return `#${r}${r}${g}${g}${b}${b}`.toUpperCase();
 }
 
-function getRandomPaletteIndex(max: number) {
-  if (max <= 1) {
-    return 0;
-  }
-
-  if (typeof globalThis.crypto?.getRandomValues === 'function') {
-    const randomValues = new Uint32Array(1);
-    globalThis.crypto.getRandomValues(randomValues);
-    return randomValues[0] % max;
-  }
-
-  return Math.floor(Math.random() * max);
-}
-
 export function getAutoCategoryColor(seed: string) {
   const safeSeed = seed.trim() || 'default';
   let hash = 0;
@@ -46,21 +32,6 @@ export function getAutoCategoryColor(seed: string) {
   }
 
   return CATEGORY_COLOR_PALETTE[Math.abs(hash) % CATEGORY_COLOR_PALETTE.length];
-}
-
-export function getRandomCategoryColor(excludeColor?: string | null) {
-  const normalizedExcludedColor = excludeColor
-    ? normalizeHexColor(excludeColor, DEFAULT_CATEGORY_COLOR)
-    : null;
-  const availableColors = normalizedExcludedColor
-    ? CATEGORY_COLOR_PALETTE.filter((color) => color !== normalizedExcludedColor)
-    : CATEGORY_COLOR_PALETTE;
-
-  if (availableColors.length === 0) {
-    return DEFAULT_CATEGORY_COLOR;
-  }
-
-  return availableColors[getRandomPaletteIndex(availableColors.length)];
 }
 
 export function normalizeHexColor(color?: string | null, fallback = DEFAULT_CATEGORY_COLOR) {

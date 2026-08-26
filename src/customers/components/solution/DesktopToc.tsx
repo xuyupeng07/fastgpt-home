@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback, type MouseEvent } from 'react';
-import { CaretRightIcon } from '@phosphor-icons/react/dist/ssr';
+import { ChevronRight as CaretRightIcon } from 'lucide-react';
 import type { TocItem } from '@customers/lib/toc';
 import CtaCard from './CtaCard';
 import type { CtaModalContext } from '@customers/lib/cta';
@@ -94,7 +94,7 @@ export default function DesktopToc({
               >
                 <CaretRightIcon
                   className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                  weight="bold"
+                  strokeWidth={2.5}
                 />
               </button>
             </div>
