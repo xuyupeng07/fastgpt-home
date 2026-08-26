@@ -2,6 +2,7 @@
 const assert = require('assert/strict');
 const fs = require('fs');
 const path = require('path');
+const { getDefaultLocale, resolveSiteVariant } = require('./lib/site-variant');
 
 const rootDir = process.cwd();
 const outDir = path.resolve(rootDir, process.argv[2] || 'out');
@@ -10,6 +11,8 @@ const categoriesFile = path.join(rootDir, 'content', 'customers', 'categories.js
 const customersOutDir = path.join(outDir, 'customers');
 const cnBaseUrl = (process.env.NEXT_PUBLIC_CN_HOME_URL || 'https://fastgpt.cn').replace(/\/+$/, '');
 const customersBaseUrl = `${cnBaseUrl}/customers`;
+const siteVariant = resolveSiteVariant();
+const contactPath = getDefaultLocale(siteVariant) === 'zh' ? '/contact' : '/zh/contact';
 const EXPECTED_SOLUTION_COUNT = 89;
 const EXPECTED_CATEGORY_COUNT = 17;
 const EXPECTED_ROUTE_COUNT = 107;
@@ -60,7 +63,7 @@ function assertConsultationLink(html, source, htmlFile, solutionSlug) {
   if (solutionSlug) params.set('utm_term', solutionSlug);
   params.set('utm_content', source);
 
-  const href = `/contact?${params.toString()}`;
+  const href = `${contactPath}?${params.toString()}`;
   assert(
     html.replaceAll('&amp;', '&').includes(`href="${href}"`),
     `Missing customer consultation link for ${source}: ${htmlFile}`
@@ -166,11 +169,7 @@ assert.equal(
 );
 assert.deepEqual(actualRoutes, expectedRoutes, 'Customer export route set mismatch');
 
-const configuredVariant = process.env.NEXT_PUBLIC_SITE_VARIANT;
-const inferredVariant = (process.env.NEXT_PUBLIC_HOME_URL || 'https://fastgpt.cn').includes('.cn')
-  ? 'cn'
-  : 'io';
-if ((configuredVariant || inferredVariant) === 'cn') {
+if (siteVariant === 'cn') {
   const sitemapFile = path.join(outDir, 'sitemap.xml');
   const sitemap = fs.readFileSync(sitemapFile, 'utf8');
   const customerSitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
