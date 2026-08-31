@@ -41,6 +41,13 @@ const SolutionCard = React.memo(function SolutionCard({
       style={animated ? { animationDelay: `${revealDelay}s` } : undefined}
     >
       <div className="card-inner relative flex flex-col h-full w-full overflow-hidden rounded-2xl border border-surface-300 bg-white shadow-[0_1px_2px_rgba(31,35,41,0.04)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-[#b8c0cc] group-hover:shadow-[0_14px_32px_rgba(31,35,41,0.10)] transform-gpu">
+        {hasContent && (
+          <Link
+            href={detailHref}
+            aria-label={solution.title}
+            className="absolute inset-0 z-[1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60"
+          />
+        )}
         <div className="relative h-36 sm:h-40 overflow-hidden bg-surface-100 border-b border-surface-200 img-wrapper">
           <SolutionCoverImage
             thumbnailUrl={solution.thumbnailUrl}
@@ -57,19 +64,10 @@ const SolutionCard = React.memo(function SolutionCard({
           {solution.contentType === 'case' && <PublicCaseRibbon />}
         </div>
 
-        <div className="relative z-10 flex flex-1 flex-col bg-transparent p-3.5 sm:p-4 md:p-4">
+        <div className="relative flex flex-1 flex-col bg-transparent p-3.5 sm:p-4 md:p-4">
           <div className="flex items-start justify-between gap-2 mb-1">
             <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-bold leading-tight text-[#1f2329] transition-colors group-hover:text-brand-600 font-display line-clamp-1">
-              {hasContent ? (
-                <Link
-                  href={detailHref}
-                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 rounded"
-                >
-                  {solution.title}
-                </Link>
-              ) : (
-                solution.title
-              )}
+              {solution.title}
             </h3>
           </div>
           <div className="hidden items-center gap-1 sm:gap-1.5 mb-1 mt-0.5 sm:mt-1">

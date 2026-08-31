@@ -74,8 +74,8 @@ async function verifyContactQueryFlow() {
   );
   assert.match(
     formSource,
-    /source:\s*getSubmissionSource\(\)/,
-    'Contact submission must send the current explicit source'
+    /source:\s*submissionSource\?\.slice\(0, 128\) \|\| getSubmissionSource\(\)/,
+    'Contact submission must send the dialog source or current explicit source'
   );
   assert.match(
     attributionSource,
@@ -125,7 +125,10 @@ function verifyBuiltResourcePolicy() {
       );
       assert(fs.existsSync(assetPath), `Missing local Contact service asset: ${assetPath}`);
       const size = fs.statSync(assetPath).size;
-      assert(size <= 250 * 1024, `${path.relative(root, assetPath)} exceeds the 250 KB asset limit`);
+      assert(
+        size <= 250 * 1024,
+        `${path.relative(root, assetPath)} exceeds the 250 KB asset limit`
+      );
       totalBytes += size;
     }
     assert(
@@ -157,7 +160,10 @@ function verifyBuiltResourcePolicy() {
 
 function verifyCrmState() {
   const defaultContactHtml = resolveHtml('/contact');
-  const hasExplicitCrmEnv = Object.prototype.hasOwnProperty.call(process.env, 'NEXT_PUBLIC_CRM_API_URL');
+  const hasExplicitCrmEnv = Object.prototype.hasOwnProperty.call(
+    process.env,
+    'NEXT_PUBLIC_CRM_API_URL'
+  );
   const crmConfigured = Boolean(process.env.NEXT_PUBLIC_CRM_API_URL?.trim());
   const isPreview = variant === 'preview';
   const hasConfigError = defaultContactHtml.includes('data-crm-config-error');
@@ -180,7 +186,10 @@ function verifyCrmState() {
   }
 
   if (hasExplicitCrmEnv && !crmConfigured) {
-    assert(hasConfigError, 'Production Contact page must expose the missing CRM configuration error');
+    assert(
+      hasConfigError,
+      'Production Contact page must expose the missing CRM configuration error'
+    );
     return;
   }
 

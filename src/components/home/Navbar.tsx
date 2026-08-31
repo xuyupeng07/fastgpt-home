@@ -50,6 +50,7 @@ export default function Navbar({
   variant = 'default',
   publishedLocales,
   consultHref,
+  consultationTrigger = true,
   onConsultClick
 }: {
   links?: NavLink[];
@@ -58,6 +59,7 @@ export default function Navbar({
   variant?: NavbarVariant;
   publishedLocales?: readonly LocaleCode[];
   consultHref?: string;
+  consultationTrigger?: boolean;
   onConsultClick?: () => void;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -221,6 +223,7 @@ export default function Navbar({
             )}
             <a
               href={contactUrl}
+              data-consultation-trigger={consultationTrigger || undefined}
               onClick={onConsultClick}
               {...rybbitClickAttrs(RYBBIT_EVENTS.businessConsultClick, 'home_nav_consult')}
               aria-label={t.consult}
@@ -352,6 +355,7 @@ export default function Navbar({
             <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-hairline-soft">
               <a
                 href={contactUrl}
+                data-consultation-trigger={consultationTrigger || undefined}
                 {...rybbitClickAttrs(
                   RYBBIT_EVENTS.businessConsultClick,
                   'home_nav_mobile_menu_consult'

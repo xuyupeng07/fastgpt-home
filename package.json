@@ -71,6 +71,7 @@
   "dependencies": {
     "@heroui/react": "^2.8.9",
     "@heroui/theme": "^2.4.26",
+    "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-slot": "^1.0.2",
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.4.24",

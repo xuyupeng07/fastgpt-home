@@ -1,6 +1,5 @@
 'use client';
 
-import { CirclePlay as PlayCircleIcon } from 'lucide-react';
 import { getSafeFreeUseUrl } from '@customers/lib/free-use-url';
 
 interface FreeUseActionProps {
@@ -35,10 +34,14 @@ export function FreeUseCardBadge({ href, title, className = '' }: FreeUseActionP
     >
       <span className="pointer-events-none absolute inset-0 rounded-full bg-white/0 transition-colors duration-300 group-hover/free:bg-white/8 group-focus-visible/free:bg-white/8 " />
       <span className="pointer-events-none absolute inset-1 rounded-full bg-white/0 blur-md transition-opacity duration-300 group-hover/free:bg-white/20 group-hover/free:opacity-100 group-focus-visible/free:bg-white/20 group-focus-visible/free:opacity-100 " />
-      <PlayCircleIcon
-        strokeWidth={2.5}
-        className="relative z-10 shrink-0 text-[18px] transition-transform duration-300 group-hover/free:scale-110 group-focus-visible/free:scale-110"
-      />
+      <svg
+        viewBox="0 0 24 24"
+        className="relative z-10 h-[18px] w-[18px] shrink-0 transition-transform duration-300 group-hover/free:scale-110 group-focus-visible/free:scale-110"
+        aria-hidden
+      >
+        <circle cx="12" cy="12" r="11" fill="currentColor" />
+        <path d="M9.6 8.4l6 3.6-6 3.6z" fill="#2563EB" />
+      </svg>
       <span className="relative z-10 ml-0 max-w-0 translate-x-1 whitespace-nowrap opacity-0 transition-[max-width,opacity,transform,margin] duration-300 group-hover:ml-1.5 group-hover:max-w-[4em] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible/free:ml-1.5 group-focus-visible/free:max-w-[4em] group-focus-visible/free:translate-x-0 group-focus-visible/free:opacity-100">
         体验案例
       </span>

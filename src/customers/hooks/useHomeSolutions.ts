@@ -1,7 +1,6 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import type { Solution } from '@customers/components/SolutionCard';
 import { PUBLIC_SOLUTIONS_PAGE_SIZE } from '@customers/lib/solution-pagination';
 import { filterPublicSolutions, type CategoryOption } from '@customers/lib/solution-search';
@@ -18,8 +17,7 @@ export function useHomeSolutions({
   initialSolutions,
   initialCategorySlug
 }: UseHomeSolutionsInput) {
-  const router = useRouter();
-  const currentCategory = initialCategorySlug || 'all';
+  const [currentCategory, setCurrentCategory] = useState(initialCategorySlug || 'all');
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
   const solutionsSectionRef = useRef<HTMLElement>(null);
@@ -60,15 +58,17 @@ export function useHomeSolutions({
     (categoryId: string) => {
       const selectedCategory = categories.find((c) => c.id === categoryId);
       const categorySlug = selectedCategory?.slug || categoryId;
+      setCurrentCategory(categorySlug);
+      setPage(1);
+      // 用 replaceState 同步 URL 而不触发导航：分类切换保持 client-side 丝滑过渡
+      // （indicator 平滑滑动 + 卡片就地过滤），同时 URL 仍可分享、可刷新恢复。
       const href =
         categorySlug === 'all'
           ? withBasePath('/#customers')
           : withBasePath(`/categories/${categorySlug}#customers`);
-      setPage(1);
-      router.push(href, { scroll: false });
-      scrollToSolutionsSection();
+      window.history.replaceState(null, '', href);
     },
-    [categories, router, scrollToSolutionsSection]
+    [categories]
   );
 
   const handleLoadMore = useCallback(() => {

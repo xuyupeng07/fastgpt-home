@@ -26,6 +26,9 @@ import { isPreviewSite } from '@/lib/siteRouting';
 type ContactFormProps = {
   locale: string;
   variant?: 'modal' | 'page';
+  submissionSource?: string;
+  onSuccess?: () => void;
+  onClose?: () => void;
 };
 
 const CRM_API_URL = process.env.NEXT_PUBLIC_CRM_API_URL?.trim().replace(/\/$/, '') || '';
@@ -55,11 +58,14 @@ function FieldLabel({
 }
 
 function FieldError({ id, message }: { id: string; message?: string }) {
-  if (!message) return null;
-
   return (
-    <p id={id} role="alert" className="mt-1.5 text-[12px] leading-5 text-[#d92d20]">
-      {message}
+    <p
+      id={id}
+      role={message ? 'alert' : undefined}
+      aria-hidden={!message}
+      className="mt-0.5 h-4 overflow-hidden truncate text-[11px] leading-4 text-[#d92d20]"
+    >
+      {message || '\u00a0'}
     </p>
   );
 }
@@ -302,7 +308,13 @@ function SelectField({
   );
 }
 
-export default function ContactForm({ locale, variant = 'page' }: ContactFormProps) {
+export default function ContactForm({
+  locale,
+  variant = 'page',
+  submissionSource,
+  onSuccess,
+  onClose
+}: ContactFormProps) {
   const copy = getContactCopy(locale);
   const formRef = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState<ContactFormValues>(INITIAL_CONTACT_FORM);
@@ -451,7 +463,7 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
           budget: values.budget || null,
           notes: values.notes.trim() || null,
           visitor_id: currentVisitorId,
-          source: getSubmissionSource()
+          source: submissionSource?.slice(0, 128) || getSubmissionSource()
         })
       });
 
@@ -473,6 +485,7 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
 
       clearContactFormDraft();
       setStatus('success');
+      onSuccess?.();
     } catch (submitError) {
       const isNetworkError =
         submitError instanceof TypeError ||
@@ -527,6 +540,15 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
           >
             {copy.submitAnother}
           </button>
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="h-10 rounded-md bg-[#155eef] px-4 text-[13px] font-medium text-white transition-colors hover:bg-[#004eeb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#155eef] focus-visible:ring-offset-2"
+            >
+              {copy.close}
+            </button>
+          )}
         </div>
       </div>
     );
@@ -540,10 +562,16 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
       ref={formRef}
       onSubmit={handleSubmit}
       noValidate
-      className="px-5 pb-6 pt-5 sm:px-8 sm:pb-8"
+      className={variant === 'modal' ? 'px-5 py-8 sm:px-8' : 'px-5 pb-6 pt-5 sm:px-8 sm:pb-8'}
     >
       <input type="hidden" name="visitor_id" value={visitorId} />
-      <div className="grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2">
+      <div
+        className={
+          variant === 'modal'
+            ? 'grid grid-cols-1 gap-x-5 gap-y-2 sm:grid-cols-2 sm:gap-y-3'
+            : 'grid grid-cols-1 gap-x-5 gap-y-5 sm:grid-cols-2'
+        }
+      >
         {(['name', 'phone', 'company', 'position'] as const).map((name) => {
           const fieldError = fieldErrors[name];
           return (
@@ -681,7 +709,9 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
             rows={variant === 'modal' ? 3 : 4}
             onChange={(event) => updateValue('notes', event.target.value)}
             placeholder={copy.placeholders.notes}
-            className="w-full resize-y rounded-md border border-[#d0d5dd] bg-white px-3 py-2.5 text-[14px] leading-6 text-[#101828] outline-none placeholder:text-[#98a2b3] transition-colors focus:border-[#155eef] focus:ring-2 focus:ring-[#155eef]/15"
+            className={`contact-notes-textarea w-full rounded-md border border-[#d0d5dd] bg-white px-3 py-2.5 text-[14px] leading-6 text-[#101828] outline-none placeholder:text-[#98a2b3] transition-colors focus:border-[#155eef] focus:ring-2 focus:ring-[#155eef]/15 ${
+              variant === 'modal' ? 'h-24 min-h-24 max-h-24 resize-none' : 'resize-y'
+            }`}
           />
         </label>
       </div>
@@ -699,7 +729,9 @@ export default function ContactForm({ locale, variant = 'page' }: ContactFormPro
       <button
         type="submit"
         disabled={status === 'submitting' || !CRM_API_URL}
-        className="mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#155eef] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[#004eeb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#155eef] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-[#84adff]"
+        className={`${
+          variant === 'modal' ? 'mt-4' : 'mt-6'
+        } inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-[#155eef] px-5 text-[14px] font-medium text-white transition-colors hover:bg-[#004eeb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#155eef] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-[#84adff]`}
       >
         {status === 'submitting' && <LoaderCircle className="animate-spin" size={17} aria-hidden />}
         {status === 'submitting' ? copy.submitting : copy.submit}

@@ -30,24 +30,58 @@ export function filterPublicSolutions(
   currentCategory: string,
   searchQuery = ''
 ) {
-  return solutions
-    .filter((solution) => {
-      const matchesCategory =
-        currentCategory === 'all' ||
-        solution.categorySlug === currentCategory ||
-        solution.categoryName === currentCategory;
+  const filtered = solutions.filter((solution) => {
+    const matchesCategory =
+      currentCategory === 'all' ||
+      solution.categorySlug === currentCategory ||
+      solution.categoryName === currentCategory;
 
-      const matchesSearch = matchesSolutionSearch(
-        solution.title,
-        solution.description,
-        searchQuery,
-        solution.categoryName,
-        solution.categorySlug
-      );
+    const matchesSearch = matchesSolutionSearch(
+      solution.title,
+      solution.description,
+      searchQuery,
+      solution.categoryName,
+      solution.categorySlug
+    );
 
-      return matchesCategory && matchesSearch;
-    })
-    .sort(
+    return matchesCategory && matchesSearch;
+  });
+
+  return interleaveByCategory(filtered);
+}
+
+// 按分类交错排序：组内按 createdAt 倒序（保持每类内部最新在前），
+// 组间按「组内最新案例」排序后 round-robin 轮转，避免同分类案例连续堆叠（尤其首页「全部」视图）。
+function interleaveByCategory(solutions: SolutionCardData[]): SolutionCardData[] {
+  const groups = new Map<string, SolutionCardData[]>();
+  for (const solution of solutions) {
+    const key = solution.categorySlug;
+    const group = groups.get(key);
+    if (group) group.push(solution);
+    else groups.set(key, [solution]);
+  }
+
+  for (const group of groups.values()) {
+    group.sort(
       (left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime()
     );
+  }
+
+  const orderedGroups = Array.from(groups.values()).sort(
+    (left, right) =>
+      new Date(right[0].createdAt).getTime() - new Date(left[0].createdAt).getTime()
+  );
+
+  const result: SolutionCardData[] = [];
+  let added = true;
+  while (added) {
+    added = false;
+    for (const group of orderedGroups) {
+      if (group.length > 0) {
+        result.push(group.shift()!);
+        added = true;
+      }
+    }
+  }
+  return result;
 }

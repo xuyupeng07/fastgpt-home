@@ -44,8 +44,7 @@ export default function SolutionPage({ solution, allSolutions }: SolutionPagePro
   const consultationContext = {
     source: 'customers_bottom' as const,
     solutionId: solution.id,
-    solutionTitle: solution.title,
-    solutionSlug: solution.slug
+    solutionTitle: solution.title
   };
 
   return (

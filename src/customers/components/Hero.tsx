@@ -1,11 +1,13 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import * as m from 'framer-motion/m';
 import GradientBlobs from '@/components/home/GradientBlobs';
 import { StatItem } from '@/components/home/Stats';
 import { useStartUrl } from '@/components/home/hooks/useStartUrl';
 import { formatGitHubStars } from '@/lib/githubStarsDisplay';
+import { getCachedGitHubStars } from '@/lib/githubStarsClient';
 import { getConsultationLinkProps } from '@customers/lib/consultation';
 
 const GITHUB_URL = 'https://github.com/labring/FastGPT';
@@ -27,7 +29,19 @@ export default function Hero({
   stars: number;
 }) {
   const startUrl = useStartUrl();
-  const githubStarsLabel = formatGitHubStars(stars);
+  const [currentStars, setCurrentStars] = useState(stars);
+
+  // 与主站首页 Hero 保持一致：浏览器运行时再 fetch 一次 GitHub Stars，
+  // 覆盖 server 构建时可能的 fallback 值（构建环境拿不到 GitHub API 时）。
+  useEffect(() => {
+    const run = async () => {
+      const nextStars = await getCachedGitHubStars(stars);
+      if (nextStars !== stars) setCurrentStars(nextStars);
+    };
+    run();
+  }, [stars]);
+
+  const githubStarsLabel = formatGitHubStars(currentStars);
   const stats = overviewStats;
   const consultationLink = getConsultationLinkProps({ source: 'home_hero' });
 
