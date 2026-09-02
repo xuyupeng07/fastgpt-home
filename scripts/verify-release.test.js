@@ -364,6 +364,8 @@ test('release source checks run content hygiene first and block dirty published 
     );
     fs.writeFileSync(dirtyPath, '# Temporary fixture\n\nFact Source: internal KB\n');
     const buildInfoPath = path.join(fixtureRoot, 'tsconfig.tsbuildinfo');
+    // 显式创建 fixture，避免依赖仓库实际产物（该文件已加入 gitignore，干净 CI 中不存在）。
+    fs.writeFileSync(buildInfoPath, 'build-info-fixture-bytes');
     const buildInfoBefore = fs.readFileSync(buildInfoPath);
     const result = spawnSync(process.execPath, ['scripts/verify-release.js', '--source-only'], {
       cwd: fixtureRoot,
@@ -425,15 +427,25 @@ test('source-only release leaves the existing build info bytes unchanged', () =>
   const releaseRecordPath = path.join(ROOT, '.release-artifacts', 'release-verification.json');
   const readReleaseRecord = () =>
     fs.existsSync(releaseRecordPath) ? fs.readFileSync(releaseRecordPath) : undefined;
-  const before = fs.readFileSync(buildInfoPath);
-  const releaseRecordBefore = readReleaseRecord();
-  const result = spawnSync(process.execPath, ['scripts/verify-release.js', '--source-only'], {
-    cwd: ROOT,
-    encoding: 'utf8'
-  });
-  assert.equal(result.status, 0, result.stdout + result.stderr);
-  assert.deepEqual(fs.readFileSync(buildInfoPath), before);
-  assert.deepEqual(readReleaseRecord(), releaseRecordBefore);
+
+  // 干净 CI 中 tsconfig.tsbuildinfo 不存在（已 gitignore），测试临时创建 fixture 并在结束后清理，
+  // 避免依赖仓库实际产物，同时保持 cwd=ROOT 以复用 node_modules。
+  const createdFixture = !fs.existsSync(buildInfoPath);
+  if (createdFixture) fs.writeFileSync(buildInfoPath, 'build-info-fixture-bytes');
+
+  try {
+    const before = fs.readFileSync(buildInfoPath);
+    const releaseRecordBefore = readReleaseRecord();
+    const result = spawnSync(process.execPath, ['scripts/verify-release.js', '--source-only'], {
+      cwd: ROOT,
+      encoding: 'utf8'
+    });
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    assert.deepEqual(fs.readFileSync(buildInfoPath), before);
+    assert.deepEqual(readReleaseRecord(), releaseRecordBefore);
+  } finally {
+    if (createdFixture) fs.rmSync(buildInfoPath, { force: true });
+  }
 });
 
 test('release build and workflow wiring preserve source hygiene while enforcing completed HTML exports', () => {

@@ -57,13 +57,21 @@ export default function ConsultationDialog() {
 
   useEffect(() => {
     let cancelled = false;
-    import(`@/locales/${locale}.json`)
-      .then((module) => {
-        if (!cancelled) setCopy(module.default.Home.consultationDialog);
-      })
-      .catch(() => {
-        if (!cancelled) setCopy(null);
-      });
+    const loadCopy = async () => {
+      try {
+        const localeModule = await import(`@/locales/${locale}.json`);
+        if (!cancelled) setCopy(localeModule.default.Home.consultationDialog);
+      } catch {
+        // 语言包加载失败时降级到英文文案，保证弹窗仍可正常打开
+        try {
+          const fallback = await import('@/locales/en.json');
+          if (!cancelled) setCopy(fallback.default.Home.consultationDialog);
+        } catch {
+          if (!cancelled) setCopy(null);
+        }
+      }
+    };
+    loadCopy();
     return () => {
       cancelled = true;
     };
@@ -76,6 +84,8 @@ export default function ConsultationDialog() {
       const trigger = event.target.closest<HTMLAnchorElement>(CONSULTATION_TRIGGER_SELECTOR);
       if (!trigger) return;
 
+      // 文案尚未就绪时不拦截，保留原链接的跳转 fallback，避免咨询入口变成死链接
+      if (!copy) return;
       event.preventDefault();
       triggerRef.current = trigger;
       const isCustomers = pathname?.startsWith('/customers');
@@ -88,7 +98,7 @@ export default function ConsultationDialog() {
     // preventDefault，否则用 <Link> 的咨询按钮会在弹窗拦截前就完成路由跳转。
     document.addEventListener('click', handleConsultationClick, true);
     return () => document.removeEventListener('click', handleConsultationClick, true);
-  }, [pathname]);
+  }, [pathname, copy]);
 
   const handleOpenChange = (nextOpen: boolean) => {
     setOpen(nextOpen);
@@ -110,7 +120,6 @@ export default function ConsultationDialog() {
         closeLabel={getContactCopy(locale).close}
         onPointerDownOutside={(event) => event.preventDefault()}
         onInteractOutside={(event) => event.preventDefault()}
-        onEscapeKeyDown={(event) => event.preventDefault()}
         onCloseAutoFocus={(event) => {
           event.preventDefault();
           triggerRef.current?.focus();
@@ -122,7 +131,7 @@ export default function ConsultationDialog() {
           }`}
         >
           <aside
-            className={`relative overflow-hidden border-b border-[#e4e7ec] bg-[#f7f9fc] px-6 py-7 sm:px-9 sm:py-9 lg:border-b-0 lg:border-r lg:px-10 lg:py-10 ${
+            className={`relative overflow-hidden border-b border-[#e4e7ec] bg-[#f7f9fc] px-6 py-7 sm:px-9 sm:py-9 lg:border-b-0 lg:border-e lg:px-10 lg:py-10 ${
               submitted ? 'hidden' : ''
             }`}
           >
@@ -135,7 +144,7 @@ export default function ConsultationDialog() {
                 {copy.badge}
               </div>
 
-              <DialogHeader className="mt-6 max-w-[430px] text-center lg:mt-7 lg:text-left">
+              <DialogHeader className="mt-6 max-w-[430px] text-center lg:mt-7 lg:text-start">
                 <DialogTitle className="m-0 text-[24px] font-semibold leading-[1.3] tracking-tight text-[#101828] sm:text-[28px] lg:text-[30px]">
                   {copy.title}
                 </DialogTitle>

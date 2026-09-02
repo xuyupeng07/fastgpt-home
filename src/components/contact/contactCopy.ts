@@ -57,6 +57,10 @@ type ContactCopy = {
   rateLimitError: string;
   phoneError: string;
   requiredError: string;
+  validation: {
+    requiredText: string;
+    requiredChoice: string;
+  };
 };
 
 const zh: ContactCopy = {
@@ -100,7 +104,11 @@ const zh: ContactCopy = {
   genericError: '提交失败，请稍后重试。',
   rateLimitError: '提交过于频繁，请稍后再试。',
   phoneError: '请输入有效的手机号或邮箱。',
-  requiredError: '请完整填写必填项。'
+  requiredError: '请完整填写必填项。',
+  validation: {
+    requiredText: '请输入{field}',
+    requiredChoice: '请选择{field}'
+  }
 };
 
 const en: ContactCopy = {
@@ -161,7 +169,11 @@ const en: ContactCopy = {
   genericError: 'Your inquiry could not be sent. Please try again later.',
   rateLimitError: 'Too many submissions. Please try again later.',
   phoneError: 'Enter a valid phone number or email.',
-  requiredError: 'Complete all required fields.'
+  requiredError: 'Complete all required fields.',
+  validation: {
+    requiredText: 'Enter {field}',
+    requiredChoice: 'Select {field}'
+  }
 };
 
 const zhHant: ContactCopy = {
@@ -221,7 +233,11 @@ const zhHant: ContactCopy = {
   genericError: '提交失敗，請稍後重試。',
   rateLimitError: '提交過於頻繁，請稍後再試。',
   phoneError: '請輸入有效的手機號碼或電子郵件。',
-  requiredError: '請完整填寫必填項目。'
+  requiredError: '請完整填寫必填項目。',
+  validation: {
+    requiredText: '請輸入{field}',
+    requiredChoice: '請選擇{field}'
+  }
 };
 
 const ja: ContactCopy = {
@@ -280,7 +296,11 @@ const ja: ContactCopy = {
   genericError: '送信に失敗しました。しばらくしてから再試行してください。',
   rateLimitError: '送信が頻繁すぎます。しばらくしてからもう一度お試しください。',
   phoneError: '有効な電話番号またはメールアドレスを入力してください。',
-  requiredError: '必須項目をすべて入力してください。'
+  requiredError: '必須項目をすべて入力してください。',
+  validation: {
+    requiredText: '{field}を入力してください',
+    requiredChoice: '{field}を選択してください'
+  }
 };
 
 const ar: ContactCopy = {
@@ -339,7 +359,11 @@ const ar: ContactCopy = {
   genericError: 'فشل الإرسال، يرجى المحاولة لاحقاً.',
   rateLimitError: 'إرسال متكرر جداً، يرجى المحاولة لاحقاً.',
   phoneError: 'يرجى إدخال رقم هاتف أو بريد إلكتروني صالح.',
-  requiredError: 'يرجى ملء جميع الحقول المطلوبة.'
+  requiredError: 'يرجى ملء جميع الحقول المطلوبة.',
+  validation: {
+    requiredText: 'يرجى إدخال {field}',
+    requiredChoice: 'يرجى اختيار {field}'
+  }
 };
 
 const vi: ContactCopy = {
@@ -398,7 +422,11 @@ const vi: ContactCopy = {
   genericError: 'Gửi thất bại, vui lòng thử lại sau.',
   rateLimitError: 'Gửi quá thường xuyên, vui lòng thử lại sau.',
   phoneError: 'Vui lòng nhập số điện thoại hoặc email hợp lệ.',
-  requiredError: 'Vui lòng điền đầy đủ các trường bắt buộc.'
+  requiredError: 'Vui lòng điền đầy đủ các trường bắt buộc.',
+  validation: {
+    requiredText: 'Vui lòng nhập {field}',
+    requiredChoice: 'Vui lòng chọn {field}'
+  }
 };
 
 const th: ContactCopy = {
@@ -457,7 +485,11 @@ const th: ContactCopy = {
   genericError: 'ส่งไม่สำเร็จ โปรดลองอีกครั้งในภายหลัง',
   rateLimitError: 'ส่งบ่อยเกินไป โปรดลองอีกครั้งในภายหลัง',
   phoneError: 'กรุณากรอกเบอร์โทรศัพท์หรืออีเมลที่ถูกต้อง',
-  requiredError: 'กรุณากรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วน'
+  requiredError: 'กรุณากรอกข้อมูลในช่องที่จำเป็นให้ครบถ้วน',
+  validation: {
+    requiredText: 'กรุณากรอก{field}',
+    requiredChoice: 'กรุณาเลือก{field}'
+  }
 };
 
 const id: ContactCopy = {
@@ -516,7 +548,11 @@ const id: ContactCopy = {
   genericError: 'Pengiriman gagal, silakan coba lagi nanti.',
   rateLimitError: 'Terlalu sering mengirim, silakan coba lagi nanti.',
   phoneError: 'Masukkan nomor ponsel atau email yang valid.',
-  requiredError: 'Silakan lengkapi semua kolom wajib diisi.'
+  requiredError: 'Silakan lengkapi semua kolom wajib diisi.',
+  validation: {
+    requiredText: 'Masukkan {field}',
+    requiredChoice: 'Pilih {field}'
+  }
 };
 
 const ms: ContactCopy = {
@@ -575,7 +611,11 @@ const ms: ContactCopy = {
   genericError: 'Penghantaran gagal, sila cuba lagi kemudian.',
   rateLimitError: 'Terlalu kerap menghantar, sila cuba lagi kemudian.',
   phoneError: 'Sila masukkan nombor telefon atau e-mel yang sah.',
-  requiredError: 'Sila lengkapkan semua medan wajib.'
+  requiredError: 'Sila lengkapkan semua medan wajib.',
+  validation: {
+    requiredText: 'Sila masukkan {field}',
+    requiredChoice: 'Sila pilih {field}'
+  }
 };
 
 const contactCopy: Partial<Record<LocaleCode, ContactCopy>> = {

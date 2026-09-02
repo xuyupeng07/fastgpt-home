@@ -71,15 +71,13 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 }
 
 function getRequiredFieldError(
-  locale: string,
   copy: ReturnType<typeof getContactCopy>,
   field: keyof ContactFormValues,
   select = false
 ) {
   const label = copy.fields[field];
-  if (locale === 'zh-hant') return (select ? '請選擇' : '請輸入') + label;
-  if (locale === 'zh') return (select ? '请选择' : '请输入') + label;
-  return (select ? 'Select ' : 'Enter ') + label;
+  const template = select ? copy.validation.requiredChoice : copy.validation.requiredText;
+  return template.replace('{field}', label);
 }
 
 const REQUIRED_CONTACT_FIELDS = [
@@ -356,7 +354,7 @@ export default function ContactForm({
 
     const isSelect =
       name === 'usedOpenSource' || name === 'consultationTopic' || name === 'projectStage';
-    if (!value.trim()) return getRequiredFieldError(locale, copy, name, isSelect);
+    if (!value.trim()) return getRequiredFieldError(copy, name, isSelect);
 
     if (name === 'phone') {
       const normalizedValue = value.trim();
